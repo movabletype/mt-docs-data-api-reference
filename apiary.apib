@@ -7,16 +7,84 @@ The Data API is available for Movable Type Pro and Movable Type Advanced / Enter
 
 # Group Assets
 
-+ Model (application/json)
-
-    + blog (object)
-        + id (number)
-    + createdBy (object)
-        + id (number)
-        + displayName (string)
-        + userpicUrl (string)
-    + class (string)
-    + createdDate (datetime)
+<table>
+<thead>
+<tr>
+<th>Property Name </th>
+<th> Type </th>
+<th> Data Type </th>
+<th> Database Column </th>
+<th> Private </th>
+<th> Read Only </th>
+<th> Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id </td>
+<td> value </td>
+<td> unsigned integer </td>
+<td> mt_asset.asset_id </td>
+<td> </td>
+<td> Y </td>
+<td> The ID of this asset.</td>
+</tr>
+<tr>
+<td>label </td>
+<td> value </td>
+<td> string </td>
+<td> mt_asset.asset_label </td>
+<td> </td>
+<td> </td>
+<td> The label of this asset.</td>
+</tr>
+<tr>
+<td>mimeType </td>
+<td> value </td>
+<td> string </td>
+<td> mt_asset.asset_mime_type </td>
+<td> </td>
+<td> Y </td>
+<td> The MIME Type of this asset.</td>
+</tr>
+<tr>
+<td>url </td>
+<td> value </td>
+<td> string </td>
+<td> mt_asset.asset_url </td>
+<td> </td>
+<td> Y </td>
+<td> The permalink URL of this asset.</td>
+</tr>
+<tr>
+<td> filename </td>
+<td> value </td>
+<td> string </td>
+<td> mt_asset.asset_filename </td>
+<td> </td>
+<td> Y </td>
+<td> The filename of this asset that includes file extension.</td>
+</tr>
+<tr>
+<td>description </td>
+<td> value </td>
+<td> string </td>
+<td> mt_asset_asset_description </td>
+<td> </td>
+<td> </td>
+<td> The desciption of this asset.</td>
+</tr>
+<tr>
+<td>tags </td>
+<td> ARRAY </td>
+<td> string </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> A list of tags associated with this asset.</td>
+</tr>
+</tbody>
+</table>
 
 ## Assets Colection [/sites/{site_id}/assets]
 
