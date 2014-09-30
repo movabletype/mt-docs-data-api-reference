@@ -7,89 +7,36 @@ The Data API is available for Movable Type Pro and Movable Type Advanced / Enter
 
 # Group Assets
 
-First Header | Second Header | Third Header
+Property Name | Type | Data Type | Database Column | Private | Read Only | Description
 ------------ | ------------- | ------------
-Content Cell | Content Cell  | Content Cell
-Content Cell | Content Cell  | Content Cell
-
-<table>
-<thead>
-<tr>
-<th>Property Name </th>
-<th> Type </th>
-<th> Data Type </th>
-<th> Database Column </th>
-<th> Private </th>
-<th> Read Only </th>
-<th> Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id </td>
-<td> value </td>
-<td> unsigned integer </td>
-<td> mt_asset.asset_id </td>
-<td> </td>
-<td> Y </td>
-<td> The ID of this asset.</td>
-</tr>
-<tr>
-<td>label </td>
-<td> value </td>
-<td> string </td>
-<td> mt_asset.asset_label </td>
-<td> </td>
-<td> </td>
-<td> The label of this asset.</td>
-</tr>
-<tr>
-<td>mimeType </td>
-<td> value </td>
-<td> string </td>
-<td> mt_asset.asset_mime_type </td>
-<td> </td>
-<td> Y </td>
-<td> The MIME Type of this asset.</td>
-</tr>
-<tr>
-<td>url </td>
-<td> value </td>
-<td> string </td>
-<td> mt_asset.asset_url </td>
-<td> </td>
-<td> Y </td>
-<td> The permalink URL of this asset.</td>
-</tr>
-<tr>
-<td> filename </td>
-<td> value </td>
-<td> string </td>
-<td> mt_asset.asset_filename </td>
-<td> </td>
-<td> Y </td>
-<td> The filename of this asset that includes file extension.</td>
-</tr>
-<tr>
-<td>description </td>
-<td> value </td>
-<td> string </td>
-<td> mt_asset_asset_description </td>
-<td> </td>
-<td> </td>
-<td> The desciption of this asset.</td>
-</tr>
-<tr>
-<td>tags </td>
-<td> ARRAY </td>
-<td> string </td>
-<td> </td>
-<td> </td>
-<td> </td>
-<td> A list of tags associated with this asset.</td>
-</tr>
-</tbody>
-</table>
+id | value  | number | mt_asset.asset_id | Y |  | The ID of this asset.
+label | value  | string | mt_asset.asset_label | | | The label of this asset.
+mimeType | value | string | mt_asset.asset_mime_type | | Y | The MIME Type of this asset.
+url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asset.
+filename | value | string | mt_asset.asset_filename | | Y | The filename of this asset that includes file extension.
+description | value | string | mt_asset_asset_description | | | The desciption of this asset.
+tags | ARRAY | string | | | | A list of tags associated with this asset.
+blog | object | - | | | | The blog of this asset.
+blog.id | value | number | mt_asset.asset_blog_id | | Y | The ID of the blog that contains this asset.
+updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed can update this asset.</dd><dt>false</dt><dd>The user who accessed cannot update this asset.</dd>
+modifiedBy | Object | - | | | Y | The last modified user of this asset.
+modifiedBy.id | value | number | mt_asset.asset_modified_by | Y | Y | The ID of last modified user.
+modifiedBy.userpicUrl | value | string | | | Y | The URL of last modified user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
+modifiedBy.displayName | value | string | | | Y | The display name of last modified user.
+modifiedDate | value | iso 8601 datetime	 | mt_asset.asset_modified_on	 | | Y | The last modified time for this asset.
+createdBy | Object | - | | | Y | The created user of this asset.
+createdBy.id | value | number | mt_asset.asset_created_by | Y | Y | The ID of created user.
+createdBy.userpicUrl | value | string | | | Y | The URL of created user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
+cratedDate | value | iso 8601 datetime	 | mt_asset.asset_created_on	 | | Y | The created time for this asset.
+type | value | string | mt_asset.asset_class | | Y | The type of this asset. The value will be returned localized value with DefaultLanguage.
+class | value | string | mt_asset.asset_class | | | The type of this asset. This value is similar to 'type' attribute but this value is never localized.
+FileExt | value | string | mt_asset.asset_file_ext | | Y | The file extension of this asset. eturns the file extension without the leading period.
+parent | object | - | | | Y | The parent asset of this asset. If this asset is not a child of any assets, will be returned null.
+parent.id | value | number | asset_parent | | | The ID of parent asset.
+meta | object | - | | | Y | The meta information of this asset.
+meta.imageHeight | value | number | | | Y | The height of this asset. If this asset has not height meta informatipn, will be returned null.
+meta.imageWeight | value | number | | | Y | The weight of this asset. If this asset has not weight meta informatipn, will be returned null.
+meta.fileSize | value | number | | | Y | The file size of this asset. If this asset is not file-based asset, will be returned null.
 
 ## Assets Colection [/sites/{site_id}/assets]
 
