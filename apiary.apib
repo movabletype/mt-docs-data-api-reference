@@ -10,7 +10,7 @@ The Data API is available for Movable Type Pro and Movable Type Advanced / Enter
 This is the Assets resource
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description
------------- | ------------- | ------------
+------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------
 id | value  | number | mt_asset.asset_id | Y |  | The ID of this asset.
 label | value  | string | mt_asset.asset_label | | | The label of this asset.
 mimeType | value | string | mt_asset.asset_mime_type | | Y | The MIME Type of this asset.
@@ -25,11 +25,11 @@ modifiedBy | Object | - | | | Y | The last modified user of this asset.
 modifiedBy.id | value | number | mt_asset.asset_modified_by | Y | Y | The ID of last modified user.
 modifiedBy.userpicUrl | value | string | | | Y | The URL of last modified user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
 modifiedBy.displayName | value | string | | | Y | The display name of last modified user.
-modifiedDate | value | iso 8601 datetime	 | mt_asset.asset_modified_on	 | | Y | The last modified time for this asset.
+modifiedDate | value | iso 8601 datetime | mt_asset.asset_modified_on | | Y | The last modified time for this asset.
 createdBy | Object | - | | | Y | The created user of this asset.
 createdBy.id | value | number | mt_asset.asset_created_by | Y | Y | The ID of created user.
 createdBy.userpicUrl | value | string | | | Y | The URL of created user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
-cratedDate | value | iso 8601 datetime	 | mt_asset.asset_created_on	 | | Y | The created time for this asset.
+cratedDate | value | iso 8601 datetime | mt_asset.asset_created_on | | Y | The created time for this asset.
 type | value | string | mt_asset.asset_class | | Y | The type of this asset. The value will be returned localized value with DefaultLanguage.
 class | value | string | mt_asset.asset_class | | | The type of this asset. This value is similar to 'type' attribute but this value is never localized.
 FileExt | value | string | mt_asset.asset_file_ext | | Y | The file extension of this asset. eturns the file extension without the leading period.
