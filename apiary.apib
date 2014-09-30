@@ -1,10 +1,22 @@
 FORMAT: 1A
-HOST: http://www.google.com
+HOST: http://movabletype.org
 
-# Movable Type Data API
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+# Movable Type Data API v2
+The Movable Type Data API is a REST interface to the Movable Type Content Management System.
+The Data API is available for Movable Type Pro and Movable Type Advanced / Enterprise, Version 6.0 and higher.
 
 # Group Assets
+
++ Model (application/json)
+
+    + blog (object)
+        + id (number)
+    + createdBy (object)
+        + id (number)
+        + displayName (string)
+        + userpicUrl (string)
+    + class (string)
+    + createdDate (datetime)
 
 ## Assets Colection [/sites/{site_id}/assets]
 
