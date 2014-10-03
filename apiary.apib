@@ -49,9 +49,9 @@ meta.fileSize | value | number | | | Y | The file size of this asset. If this as
 + Parameters
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
-    + class (optional string) ... The target asset class to retrieve. Available value is 'image', 'audio', 'video', 'file', also something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
-    + sortBy = `created_on` (option, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each assets.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each assets.</dd></dl>
-    + sortOrder = `descend` (option, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For the date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For the date, it means from oldest to newset.    </dd></dl>
+    + class (optional, string) ... The target asset class to retrieve. Available value is 'image', 'audio', 'video', 'file', also something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
+    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each assets.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each assets.</dd></dl>
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For the date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For the date, it means from oldest to newset.    </dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
 
 + Response 200 (application/json)
