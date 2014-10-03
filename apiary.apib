@@ -46,6 +46,14 @@ meta.fileSize | value | number | | | Y | The file size of this asset. If this as
     + site_id (required, number) ... The site ID.
 
 ### listBySite [GET]
+**Status Code**
+
+Code | Description
+---- | -----------
+200 | No Errors.
+403 | Do not have permission to retrieve the list of assets.
+404 | Site not found.
+
 + Parameters
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
@@ -88,10 +96,6 @@ meta.fileSize | value | number | | | Y | The file size of this asset. If this as
           ]
         }
 
-  + Response 403 (text/plain)
-    Do not have permission to retrieve the list of assets.
-  
-  
 ### listByEntry [GET]
 + Parameters
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
