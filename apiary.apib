@@ -40,7 +40,75 @@ meta.imageHeight | value | number | | | Y | The height of this asset. If this as
 meta.imageWeight | value | number | | | Y | The weight of this asset. If this asset has not weight meta informatipn, will be returned null.
 meta.fileSize | value | number | | | Y | The file size of this asset. If this asset is not file-based asset, will be returned null.
 
-## listBySite [/sites/{site_id}/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+## uploadBySite [/sites/{site_id}/assets/upload]
+### Upload a file to specific site. [POST]
+
+*** This endpoint is marked as deprecated in v2.0. ***
+
+**Status Code**
+
+Code | Description
+---- | -----------
+200 | No Errors.
+403 | Do not have permission to upload file.
+404 | Site not found.
+
+**Permissions**
+
++ manage_assets
+
+**Request Body Parameters**
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+path | string | Yes | | The upload destination. You can specify the path to the under the site path.
+file | file | Yes | | Actual file data
+autoRenameIfExists | boolean | | false | If this value is true and the file with the same filename exists, the uploaded file is automatically renamed to the random generated name.
+normalizeOrientation | boolean | | true | If this value is true and the uploaded file has a orientation information in Exif, this file's orientation is automatically normalized.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+
++ Request Assets resource
+
+    + Headers
+    
+            Content-Type: multipart/form-data
+
+    + Body
+    
+            path=/images&file=filedata&autoRenameIfExists=true&normalizeOrientation=false
+
++ Response 200 (application/json)
+
+        {
+          "updatable" : false,
+          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
+          "id" : "1",
+          "modifiedDate" : "2014-09-30T15:28:50+09:00",
+          "parent" : null,
+          "imageHeight" : 425,
+          "blog" : {
+            "id" : "1"
+          },
+          "description" : null,
+          "tags" : [],
+          "imageWidth" : 640,
+          "fileSize" : "27930",
+          "filename" : "0cf61aae.jpg",
+          "createdUser" : {
+            "userpicUrl" : null,
+            "displayName" : "Yuji Takayama"
+          },
+          "type" : "画像",
+          "mimeType" : "image/jpeg",
+          "label" : "0cf61aae.jpg",
+          "class" : "image",
+          "createdDate" : "2014-09-30T15:28:50+09:00",
+          "fileExtension" : "jpg"
+        }
+
+## listBySite [/sites/{site_id}/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields)]
 
 ### New in v2.0: Retrieve assets in the specified site. [GET]
 
