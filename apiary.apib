@@ -55,7 +55,7 @@ Code | Description
 
 **Permissions**
 
-+ manage_assets
++ upload
 
 **Request Body Parameters**
 
@@ -78,6 +78,70 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
     + Body
     
             path=/images&file=filedata&autoRenameIfExists=true&normalizeOrientation=false
+
++ Response 200 (application/json)
+
+        {
+          "updatable" : false,
+          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
+          "id" : "1",
+          "modifiedDate" : "2014-09-30T15:28:50+09:00",
+          "parent" : null,
+          "imageHeight" : 425,
+          "blog" : {
+            "id" : "1"
+          },
+          "description" : null,
+          "tags" : [],
+          "imageWidth" : 640,
+          "fileSize" : "27930",
+          "filename" : "0cf61aae.jpg",
+          "createdUser" : {
+            "userpicUrl" : null,
+            "displayName" : "Yuji Takayama"
+          },
+          "type" : "画像",
+          "mimeType" : "image/jpeg",
+          "label" : "0cf61aae.jpg",
+          "class" : "image",
+          "createdDate" : "2014-09-30T15:28:50+09:00",
+          "fileExtension" : "jpg"
+        }
+
+## upload [/assets/upload]
+### New in v2.0: Upload a file. [POST]
+
+**Status Code**
+
+Code | Description
+---- | -----------
+200 | No Errors.
+403 | Do not have permission to upload file.
+404 | Site not found.
+
+**Permissions**
+
++ upload
+
+**Request Body Parameters**
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+site_id | number | Yes | | The site ID.
+path | string | Yes | | The upload destination. You can specify the path to the under the site path.
+file | file | Yes | | Actual file data
+autoRenameIfExists | boolean | | false | If this value is true and the file with the same filename exists, the uploaded file is automatically renamed to the random generated name.
+normalizeOrientation | boolean | | true | If this value is true and the uploaded file has a orientation information in Exif, this file's orientation is automatically normalized.
+
++ Request Assets resource
+
+    + Headers
+    
+            Content-Type: multipart/form-data
+
+    + Body
+    
+            site_id=1&path=/images&file=filedata&autoRenameIfExists=true&normalizeOrientation=false
 
 + Response 200 (application/json)
 
