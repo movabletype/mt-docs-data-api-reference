@@ -54,6 +54,8 @@ Code | Description
 
 + Parameters
     + site_id (required, number) ... The site ID.
+    + search (optional, string) ... Search query.
+    + searchFields = `label` (optional, string) ... The comma separated field name list to search.
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
     + class (optional, string) ... The target asset class to retrieve. Available value is 'image', 'audio', 'video', 'file', also something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
@@ -206,6 +208,10 @@ Code | Description
 403 | Do not have permission to retrieve an asset.
 404 | Asset (or site) not found.
 
+**Permissions**
+
++ manage_assets
+
 + Parameters
     + site_id (required, number) ... The site ID.
     + asset_id (required, number) ... The asset ID.
@@ -247,7 +253,6 @@ Code | Description
 * This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
-
 Code | Description
 ---- | -----------
 200 | No Errors.
@@ -256,6 +261,7 @@ Code | Description
 404 | Asset (or site) not found.
 405 | Request method is not 'PUT' or 'POST' with '__method=PUT'
 
+** Permissions **
 
 + Parameters
     + site_id (required, number) ... The site ID.
