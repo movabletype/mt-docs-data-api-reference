@@ -98,6 +98,14 @@ Code | Description
 ## listByEntry [/sites/:site_id/entries/:entry_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
 ### New in v2.0: Retrieve assets that related with specified entry. [GET]
 
+**Status Code**
+
+Code | Description
+---- | -----------
+200 | No Errors.
+403 | Do not have permission to retrieve the list of assets.
+404 | Site or entry not found.
+
 + Parameters
     + site_id (required, number) ... The site ID.
     + entry_id (required, number) ... The entry ID.
@@ -109,14 +117,6 @@ Code | Description
     + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
 
 + Response 200 (application/json)
-
-**Status Code**
-
-Code | Description
----- | -----------
-200 | No Errors.
-403 | Do not have permission to retrieve the list of assets.
-404 | Site or entry not found.
 
         {
           "totalResults" : 1,
@@ -150,15 +150,8 @@ Code | Description
           ]
         }
 
-## get [/sites/:site_id/assets/:asset_id]
+## get [/sites/:site_id/assets/:asset_id(?fields)]
 ### New in v2.0: Retrieve single asset by its ID. [GET]
-
-+ Parameters
-    + site_id (required, number) ... The site ID.
-    + asset_id (required, number) ... The asset ID.
-    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
-
-+ Response 200 (application/json)
 
 **Status Code**
 
@@ -167,6 +160,13 @@ Code | Description
 200 | No Errors.
 403 | Do not have permission to retrieve an asset.
 404 | Asset (or site) not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + asset_id (required, number) ... The asset ID.
+    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+
++ Response 200 (application/json)
 
         {
           "updatable" : false,
@@ -195,15 +195,8 @@ Code | Description
           "fileExtension" : "jpg"
         }
 
-## get [/sites/:site_id/assets/:asset_id]
+## get [/sites/:site_id/assets/:asset_id(?fields]
 ### New in v2.0: Retrieve single asset by its ID. [GET]
-
-+ Parameters
-    + site_id (required, number) ... The site ID.
-    + asset_id (required, number) ... The asset ID.
-    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
-
-+ Response 200 (application/json)
 
 **Status Code**
 
@@ -212,6 +205,13 @@ Code | Description
 200 | No Errors.
 403 | Do not have permission to retrieve an asset.
 404 | Asset (or site) not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + asset_id (required, number) ... The asset ID.
+    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+
++ Response 200 (application/json)
 
         {
           "updatable" : false,
@@ -246,43 +246,6 @@ Code | Description
 * Authorization is required.
 * This method accepts PUT and POST with __method=PUT.
 
-+ Parameters
-    + site_id (required, number) ... The site ID.
-    + asset_id (required, number) ... The asset ID.
-
-+ Request Assets resource
-
-    + Body
-
-        asset = {
-          "updatable" : false,
-          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
-          "id" : "1",
-          "modifiedDate" : "2014-09-30T15:28:50+09:00",
-          "parent" : null,
-          "imageHeight" : 425,
-          "blog" : {
-            "id" : "1"
-          },
-          "description" : null,
-          "tags" : [],
-          "imageWidth" : 640,
-          "fileSize" : "27930",
-          "filename" : "0cf61aae.jpg",
-          "createdUser" : {
-            "userpicUrl" : null,
-            "displayName" : "Yuji Takayama"
-          },
-          "type" : "画像",
-          "mimeType" : "image/jpeg",
-          "label" : "0cf61aae.jpg",
-          "class" : "image",
-          "createdDate" : "2014-09-30T15:28:50+09:00",
-          "fileExtension" : "jpg"
-        }
-
-+ Response 200 (application/json)
-
 **Status Code**
 
 Code | Description
@@ -291,7 +254,51 @@ Code | Description
 401 | Authentication required
 403 | Do not have permission to update an asset.
 404 | Asset (or site) not found.
-405	| Request method is not 'PUT' or 'POST' with '__method=PUT'
+405 | Request method is not 'PUT' or 'POST' with '__method=PUT'
+
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + asset_id (required, number) ... The asset ID.
+
++ Request Assets resource
+
+    
+    + Headers
+    
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+    
+            asset={
+              "updatable" : false,
+              "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
+              "id" : "1",
+              "modifiedDate" : "2014-09-30T15:28:50+09:00",
+              "parent" : null,
+              "imageHeight" : 425,
+              "blog" : {
+                "id" : "1"
+              },
+              "description" : null,
+              "tags" : [],
+              "imageWidth" : 640,
+              "fileSize" : "27930",
+              "filename" : "0cf61aae.jpg",
+              "createdUser" : {
+                "userpicUrl" : null,
+                "displayName" : "Yuji Takayama"
+              },
+              "type" : "画像",
+              "mimeType" : "image/jpeg",
+              "label" : "0cf61aae.jpg",
+              "class" : "image",
+              "createdDate" : "2014-09-30T15:28:50+09:00",
+              "fileExtension" : "jpg"
+            }
+
+
++ Response 200 (application/json)
 
         {
           "updatable" : false,
@@ -319,3 +326,54 @@ Code | Description
           "createdDate" : "2014-09-30T15:28:50+09:00",
           "fileExtension" : "jpg"
         }
+
+## delete [/sites/:site_id/assets/:asset_id]
+### New in v2.0: Delete an asset. [DELETE]
+
+* Authorization is required.
+* This method accepts DELETE and POST with __method=DELETE.
+
+**Status Code**
+
+Code | Description
+---- | -----------
+200 | No Errors.
+401 | Authentication required
+403 | Do not have permission to update an asset.
+404 | Asset (or site) not found.
+405 | Request method is not 'DELETE' or 'POST' with '__method=DELETE'
+
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + asset_id (required, number) ... The asset ID.
+
++ Response 200 (application/json)
+
+        {
+          "updatable" : false,
+          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
+          "id" : "1",
+          "modifiedDate" : "2014-09-30T15:28:50+09:00",
+          "parent" : null,
+          "imageHeight" : 425,
+          "blog" : {
+            "id" : "1"
+          },
+          "description" : null,
+          "tags" : [],
+          "imageWidth" : 640,
+          "fileSize" : "27930",
+          "filename" : "0cf61aae.jpg",
+          "createdUser" : {
+            "userpicUrl" : null,
+            "displayName" : "Yuji Takayama"
+          },
+          "type" : "画像",
+          "mimeType" : "image/jpeg",
+          "label" : "0cf61aae.jpg",
+          "class" : "image",
+          "createdDate" : "2014-09-30T15:28:50+09:00",
+          "fileExtension" : "jpg"
+        }
+
