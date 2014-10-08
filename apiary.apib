@@ -253,6 +253,7 @@ Code | Description
 * This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
+
 Code | Description
 ---- | -----------
 200 | No Errors.
@@ -261,7 +262,9 @@ Code | Description
 404 | Asset (or site) not found.
 405 | Request method is not 'PUT' or 'POST' with '__method=PUT'
 
-** Permissions **
+**Permissions**
+
++ manage_assets
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -349,6 +352,9 @@ Code | Description
 404 | Asset (or site) not found.
 405 | Request method is not 'DELETE' or 'POST' with '__method=DELETE'
 
+**Permissions**
+
++ manage_assets
 
 + Parameters
     + site_id (required, number) ... The site ID.
