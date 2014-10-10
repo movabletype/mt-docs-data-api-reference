@@ -11,7 +11,7 @@ This is the Assets resource
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description
 ------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------
-id | value  | number | mt_asset.asset_id | Y |  | The ID of this asset.
+id | value  | number | mt_asset.asset_id | | Y | The ID of this asset.
 label | value  | string | mt_asset.asset_label | | | The label of this asset.
 mimeType | value | string | mt_asset.asset_mime_type | | Y | The MIME Type of this asset.
 url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asset.
@@ -31,14 +31,55 @@ createdBy.id | value | number | mt_asset.asset_created_by | Y | Y | The ID of cr
 createdBy.userpicUrl | value | string | | | Y | The URL of created user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
 cratedDate | value | iso 8601 datetime | mt_asset.asset_created_on | | Y | The created time for this asset.
 type | value | string | mt_asset.asset_class | | Y | The type of this asset. The value will be returned localized value with DefaultLanguage.
-class | value | string | mt_asset.asset_class | | | The type of this asset. This value is similar to 'type' attribute but this value is never localized.
+class | value | string | mt_asset.asset_class | | Y | The type of this asset. This value is similar to 'type' attribute but this value is never localized.
 fileExt | value | string | mt_asset.asset_file_ext | | Y | The file extension of this asset. eturns the file extension without the leading period.
-parent | object | - | | | Y | The parent asset of this asset. If this asset is not a child of any assets, will be returned null.
-parent.id | value | number | asset_parent | | | The ID of parent asset.
-meta | object | - | | | Y | The meta information of this asset.
-meta.imageHeight | value | number | | | Y | The height of this asset. If this asset has not height meta informatipn, will be returned null.
-meta.imageWeight | value | number | | | Y | The weight of this asset. If this asset has not weight meta informatipn, will be returned null.
+parent | object | - | | | | The parent asset of this asset. If this asset is not a child of any assets, will be returned null.
+parent.id | value | number | asset_parent | | Y | The ID of parent asset.
+meta | object | - | | | | The meta information of this asset.
+meta.height | value | number | | | Y | The height of this asset. If this asset has not height meta informatipn, will be returned null.
+meta.width | value | number | | | Y | The width of this asset. If this asset has not weight meta informatipn, will be returned null.
 meta.fileSize | value | number | | | Y | The file size of this asset. If this asset is not file-based asset, will be returned null.
+
+    {
+      "id" : 1,
+      "label" : "The Bridge",
+      "mimeType" : "image/jpeg",
+      "url" : "http://example.com/images/the-bridge.jpg",
+      "filename" : "the-bridge",
+      "description" : "Taken from over the bridge.",
+      "tags" : [
+        "boston",
+        "bridge",
+        "light"
+      ],
+      "blog" : {
+        "id" : 1
+      },
+      "updatable" : true,
+      "modifiedBy" : {
+        "id" : 1,
+        "displayName" : "Yuji Takayama",
+        "userpicUrl" : null
+      },
+      "modifiedDate" : "2014-10-10T13:13:01+09:00",
+      "createdBy" : {
+        "id" : 1,
+        "displayName" : "Yuji Takayama",
+        "userpicUrl" : null
+      },
+      "cratedDate" : "2014-10-10T13:13:01+09:00",
+      "type" : "Image",
+      "class" : "image",
+      "fileExt" : "jpg",
+      "parent" : {
+        "id" : null
+      },
+      "meta" : {
+        "height" : 768,
+        "width" : 1024,
+        "fileSize" : 339773
+      }
+    }
 
 ## uploadBySite [/sites/{site_id}/assets/upload]
 ### Upload a file to specific site. [POST]
@@ -47,11 +88,12 @@ meta.fileSize | value | number | | | Y | The file size of this asset. If this as
 
 **Status Code**
 
-Code | Description
----- | -----------
-200 | No Errors.
-403 | Do not have permission to upload file.
-404 | Site not found.
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to upload file.
+404 | Not Found | Site not found.
+413 | Request Entity Too Large | Upload file size is larger than CGIMaxUpload.
 
 **Permissions**
 
@@ -82,30 +124,44 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
 + Response 200 (application/json)
 
         {
-          "updatable" : false,
-          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
-          "id" : "1",
-          "modifiedDate" : "2014-09-30T15:28:50+09:00",
-          "parent" : null,
-          "imageHeight" : 425,
-          "blog" : {
-            "id" : "1"
-          },
-          "description" : null,
-          "tags" : [],
-          "imageWidth" : 640,
-          "fileSize" : "27930",
-          "filename" : "0cf61aae.jpg",
-          "createdUser" : {
-            "userpicUrl" : null,
-            "displayName" : "Yuji Takayama"
-          },
-          "type" : "画像",
+          "id" : 1,
+          "label" : "The Bridge",
           "mimeType" : "image/jpeg",
-          "label" : "0cf61aae.jpg",
+          "url" : "http://example.com/images/the-bridge.jpg",
+          "filename" : "the-bridge",
+          "description" : "Taken from over the bridge.",
+          "tags" : [
+            "boston",
+            "bridge",
+            "light"
+          ],
+          "blog" : {
+            "id" : 1
+          },
+          "updatable" : true,
+          "modifiedBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "modifiedDate" : "2014-10-10T13:13:01+09:00",
+          "createdBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "cratedDate" : "2014-10-10T13:13:01+09:00",
+          "type" : "Image",
           "class" : "image",
-          "createdDate" : "2014-09-30T15:28:50+09:00",
-          "fileExtension" : "jpg"
+          "fileExt" : "jpg",
+          "parent" : {
+            "id" : null
+          },
+          "meta" : {
+            "height" : 768,
+            "width" : 1024,
+            "fileSize" : 339773
+          }
         }
 
 ## upload [/assets/upload]
@@ -113,11 +169,12 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
 
 **Status Code**
 
-Code | Description
----- | -----------
-200 | No Errors.
-403 | Do not have permission to upload file.
-404 | Site not found.
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to upload file.
+404 | Not Found | Site not found.
+413 | Request Entity Too Large | Upload file size is larger than CGIMaxUpload.
 
 **Permissions**
 
@@ -146,30 +203,44 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
 + Response 200 (application/json)
 
         {
-          "updatable" : false,
-          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
-          "id" : "1",
-          "modifiedDate" : "2014-09-30T15:28:50+09:00",
-          "parent" : null,
-          "imageHeight" : 425,
-          "blog" : {
-            "id" : "1"
-          },
-          "description" : null,
-          "tags" : [],
-          "imageWidth" : 640,
-          "fileSize" : "27930",
-          "filename" : "0cf61aae.jpg",
-          "createdUser" : {
-            "userpicUrl" : null,
-            "displayName" : "Yuji Takayama"
-          },
-          "type" : "画像",
+          "id" : 1,
+          "label" : "The Bridge",
           "mimeType" : "image/jpeg",
-          "label" : "0cf61aae.jpg",
+          "url" : "http://example.com/images/the-bridge.jpg",
+          "filename" : "the-bridge",
+          "description" : "Taken from over the bridge.",
+          "tags" : [
+            "boston",
+            "bridge",
+            "light"
+          ],
+          "blog" : {
+            "id" : 1
+          },
+          "updatable" : true,
+          "modifiedBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "modifiedDate" : "2014-10-10T13:13:01+09:00",
+          "createdBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "cratedDate" : "2014-10-10T13:13:01+09:00",
+          "type" : "Image",
           "class" : "image",
-          "createdDate" : "2014-09-30T15:28:50+09:00",
-          "fileExtension" : "jpg"
+          "fileExt" : "jpg",
+          "parent" : {
+            "id" : null
+          },
+          "meta" : {
+            "height" : 768,
+            "width" : 1024,
+            "fileSize" : 339773
+          }
         }
 
 ## listBySite [/sites/{site_id}/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields)]
@@ -178,11 +249,11 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
 
 **Status Code**
 
-Code | Description
----- | -----------
-200 | No Errors.
-403 | Do not have permission to retrieve the list of assets.
-404 | Site not found.
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve the list of assets.
+404 | Not Found | Site not found.
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -200,31 +271,44 @@ Code | Description
         {
           "totalResults" : 1,
           "items" : [
-            {
-              "updatable" : false,
-              "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
-              "id" : "1",
-              "modifiedDate" : "2014-09-30T15:28:50+09:00",
-              "parent" : null,
-              "imageHeight" : 425,
-              "blog" : {
-                "id" : "1"
-              },
-              "description" : null,
-              "tags" : [],
-              "imageWidth" : 640,
-              "fileSize" : "27930",
-              "filename" : "0cf61aae.jpg",
-              "createdUser" : {
-                "userpicUrl" : null,
-                "displayName" : "Yuji Takayama"
-              },
-              "type" : "画像",
-              "mimeType" : "image/jpeg",
-              "label" : "0cf61aae.jpg",
-              "class" : "image",
-              "createdDate" : "2014-09-30T15:28:50+09:00",
-              "fileExtension" : "jpg"
+          {
+            "id" : 1,
+            "label" : "The Bridge",
+            "mimeType" : "image/jpeg",
+            "url" : "http://example.com/images/the-bridge.jpg",
+            "filename" : "the-bridge",
+            "description" : "Taken from over the bridge.",
+            "tags" : [
+              "boston",
+              "bridge",
+              "light"
+            ],
+            "blog" : {
+              "id" : 1
+            },
+            "updatable" : true,
+            "modifiedBy" : {
+              "id" : 1,
+              "displayName" : "Yuji Takayama",
+              "userpicUrl" : null
+            },
+            "modifiedDate" : "2014-10-10T13:13:01+09:00",
+            "createdBy" : {
+              "id" : 1,
+              "displayName" : "Yuji Takayama",
+              "userpicUrl" : null
+            },
+            "cratedDate" : "2014-10-10T13:13:01+09:00",
+            "type" : "Image",
+            "class" : "image",
+            "fileExt" : "jpg",
+            "parent" : {
+              "id" : null
+            },
+            "meta" : {
+              "height" : 768,
+              "width" : 1024,
+              "fileSize" : 339773
             }
           ]
         }
@@ -234,11 +318,11 @@ Code | Description
 
 **Status Code**
 
-Code | Description
----- | -----------
-200 | No Errors.
-403 | Do not have permission to retrieve the list of assets.
-404 | Site or entry not found.
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve the list of assets.
+404 | Not Found | Site or entry not found.
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -255,31 +339,44 @@ Code | Description
         {
           "totalResults" : 1,
           "items" : [
-            {
-              "updatable" : false,
-              "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
-              "id" : "1",
-              "modifiedDate" : "2014-09-30T15:28:50+09:00",
-              "parent" : null,
-              "imageHeight" : 425,
-              "blog" : {
-                "id" : "1"
-              },
-              "description" : null,
-              "tags" : [],
-              "imageWidth" : 640,
-              "fileSize" : "27930",
-              "filename" : "0cf61aae.jpg",
-              "createdUser" : {
-                "userpicUrl" : null,
-                "displayName" : "Yuji Takayama"
-              },
-              "type" : "画像",
-              "mimeType" : "image/jpeg",
-              "label" : "0cf61aae.jpg",
-              "class" : "image",
-              "createdDate" : "2014-09-30T15:28:50+09:00",
-              "fileExtension" : "jpg"
+          {
+            "id" : 1,
+            "label" : "The Bridge",
+            "mimeType" : "image/jpeg",
+            "url" : "http://example.com/images/the-bridge.jpg",
+            "filename" : "the-bridge",
+            "description" : "Taken from over the bridge.",
+            "tags" : [
+              "boston",
+              "bridge",
+              "light"
+            ],
+            "blog" : {
+              "id" : 1
+            },
+            "updatable" : true,
+            "modifiedBy" : {
+              "id" : 1,
+              "displayName" : "Yuji Takayama",
+              "userpicUrl" : null
+            },
+            "modifiedDate" : "2014-10-10T13:13:01+09:00",
+            "createdBy" : {
+              "id" : 1,
+              "displayName" : "Yuji Takayama",
+              "userpicUrl" : null
+            },
+            "cratedDate" : "2014-10-10T13:13:01+09:00",
+            "type" : "Image",
+            "class" : "image",
+            "fileExt" : "jpg",
+            "parent" : {
+              "id" : null
+            },
+            "meta" : {
+              "height" : 768,
+              "width" : 1024,
+              "fileSize" : 339773
             }
           ]
         }
@@ -289,11 +386,11 @@ Code | Description
 
 **Status Code**
 
-Code | Description
----- | -----------
-200 | No Errors.
-403 | Do not have permission to retrieve an asset.
-404 | Asset (or site) not found.
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve an asset.
+404 | Not Found | Asset (or site) not found.
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -303,30 +400,44 @@ Code | Description
 + Response 200 (application/json)
 
         {
-          "updatable" : false,
-          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
-          "id" : "1",
-          "modifiedDate" : "2014-09-30T15:28:50+09:00",
-          "parent" : null,
-          "imageHeight" : 425,
-          "blog" : {
-            "id" : "1"
-          },
-          "description" : null,
-          "tags" : [],
-          "imageWidth" : 640,
-          "fileSize" : "27930",
-          "filename" : "0cf61aae.jpg",
-          "createdUser" : {
-            "userpicUrl" : null,
-            "displayName" : "Yuji Takayama"
-          },
-          "type" : "画像",
+          "id" : 1,
+          "label" : "The Bridge",
           "mimeType" : "image/jpeg",
-          "label" : "0cf61aae.jpg",
+          "url" : "http://example.com/images/the-bridge.jpg",
+          "filename" : "the-bridge",
+          "description" : "Taken from over the bridge.",
+          "tags" : [
+            "boston",
+            "bridge",
+            "light"
+          ],
+          "blog" : {
+            "id" : 1
+          },
+          "updatable" : true,
+          "modifiedBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "modifiedDate" : "2014-10-10T13:13:01+09:00",
+          "createdBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "cratedDate" : "2014-10-10T13:13:01+09:00",
+          "type" : "Image",
           "class" : "image",
-          "createdDate" : "2014-09-30T15:28:50+09:00",
-          "fileExtension" : "jpg"
+          "fileExt" : "jpg",
+          "parent" : {
+            "id" : null
+          },
+          "meta" : {
+            "height" : 768,
+            "width" : 1024,
+            "fileSize" : 339773
+          }
         }
 
 ## get [/sites/:site_id/assets/:asset_id(?fields]
@@ -334,11 +445,11 @@ Code | Description
 
 **Status Code**
 
-Code | Description
----- | -----------
-200 | No Errors.
-403 | Do not have permission to retrieve an asset.
-404 | Asset (or site) not found.
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve an asset.
+404 | Not Found | Asset (or site) not found.
 
 **Permissions**
 
@@ -352,30 +463,44 @@ Code | Description
 + Response 200 (application/json)
 
         {
-          "updatable" : false,
-          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
-          "id" : "1",
-          "modifiedDate" : "2014-09-30T15:28:50+09:00",
-          "parent" : null,
-          "imageHeight" : 425,
-          "blog" : {
-            "id" : "1"
-          },
-          "description" : null,
-          "tags" : [],
-          "imageWidth" : 640,
-          "fileSize" : "27930",
-          "filename" : "0cf61aae.jpg",
-          "createdUser" : {
-            "userpicUrl" : null,
-            "displayName" : "Yuji Takayama"
-          },
-          "type" : "画像",
+          "id" : 1,
+          "label" : "The Bridge",
           "mimeType" : "image/jpeg",
-          "label" : "0cf61aae.jpg",
+          "url" : "http://example.com/images/the-bridge.jpg",
+          "filename" : "the-bridge",
+          "description" : "Taken from over the bridge.",
+          "tags" : [
+            "boston",
+            "bridge",
+            "light"
+          ],
+          "blog" : {
+            "id" : 1
+          },
+          "updatable" : true,
+          "modifiedBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "modifiedDate" : "2014-10-10T13:13:01+09:00",
+          "createdBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "cratedDate" : "2014-10-10T13:13:01+09:00",
+          "type" : "Image",
           "class" : "image",
-          "createdDate" : "2014-09-30T15:28:50+09:00",
-          "fileExtension" : "jpg"
+          "fileExt" : "jpg",
+          "parent" : {
+            "id" : null
+          },
+          "meta" : {
+            "height" : 768,
+            "width" : 1024,
+            "fileSize" : 339773
+          }
         }
 
 ## update [/sites/:site_id/assets/:asset_id]
@@ -386,13 +511,13 @@ Code | Description
 
 **Status Code**
 
-Code | Description
----- | -----------
-200 | No Errors.
-401 | Authentication required
-403 | Do not have permission to update an asset.
-404 | Asset (or site) not found.
-405 | Request method is not 'PUT' or 'POST' with '__method=PUT'
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+401 | Unauthorized | Authentication required
+403 | Forbidden | Do not have permission to update an asset.
+404 | Not Found | Asset (or site) not found.
+405 | Method Not Allowed | Request method is not 'PUT' or 'POST' with '__method=PUT'
 
 **Permissions**
 
@@ -412,60 +537,65 @@ Code | Description
     + Body
     
             asset={
-              "updatable" : false,
               "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
               "id" : "1",
-              "modifiedDate" : "2014-09-30T15:28:50+09:00",
               "parent" : null,
-              "imageHeight" : 425,
               "blog" : {
                 "id" : "1"
               },
-              "description" : null,
-              "tags" : [],
-              "imageWidth" : 640,
-              "fileSize" : "27930",
-              "filename" : "0cf61aae.jpg",
-              "createdUser" : {
-                "userpicUrl" : null,
-                "displayName" : "Yuji Takayama"
-              },
-              "type" : "画像",
-              "mimeType" : "image/jpeg",
-              "label" : "0cf61aae.jpg",
-              "class" : "image",
-              "createdDate" : "2014-09-30T15:28:50+09:00",
-              "fileExtension" : "jpg"
+              "description" : "Over the rainbow.",
+              "tags" : [
+                "boston",
+                "bridge",
+                "light",
+                "night"
+              ],
+              "label" : "Night Bridge",
             }
 
 
 + Response 200 (application/json)
 
         {
-          "updatable" : false,
-          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
-          "id" : "1",
-          "modifiedDate" : "2014-09-30T15:28:50+09:00",
-          "parent" : null,
-          "imageHeight" : 425,
-          "blog" : {
-            "id" : "1"
-          },
-          "description" : null,
-          "tags" : [],
-          "imageWidth" : 640,
-          "fileSize" : "27930",
-          "filename" : "0cf61aae.jpg",
-          "createdUser" : {
-            "userpicUrl" : null,
-            "displayName" : "Yuji Takayama"
-          },
-          "type" : "画像",
+          "id" : 1,
+          "label" : "Night Bridge",
           "mimeType" : "image/jpeg",
-          "label" : "0cf61aae.jpg",
+          "url" : "http://example.com/images/the-bridge.jpg",
+          "filename" : "the-bridge",
+          "description" : "Over the rainbow.",
+          "tags" : [
+            "boston",
+            "bridge",
+            "light",
+            "night"
+          ],
+          "blog" : {
+            "id" : 1
+          },
+          "updatable" : true,
+          "modifiedBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "modifiedDate" : "2014-10-10T14:13:01+09:00",
+          "createdBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "cratedDate" : "2014-10-10T13:13:01+09:00",
+          "type" : "Image",
           "class" : "image",
-          "createdDate" : "2014-09-30T15:28:50+09:00",
-          "fileExtension" : "jpg"
+          "fileExt" : "jpg",
+          "parent" : {
+            "id" : null
+          },
+          "meta" : {
+            "height" : 768,
+            "width" : 1024,
+            "fileSize" : 339773
+          }
         }
 
 ## delete [/sites/:site_id/assets/:asset_id]
@@ -476,13 +606,13 @@ Code | Description
 
 **Status Code**
 
-Code | Description
----- | -----------
-200 | No Errors.
-401 | Authentication required
-403 | Do not have permission to update an asset.
-404 | Asset (or site) not found.
-405 | Request method is not 'DELETE' or 'POST' with '__method=DELETE'
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+401 | Unauthorized | Authentication required
+403 | Forbidden | Do not have permission to delete an asset.
+404 | Not Found | Asset (or site) not found.
+405 | Method Not Allowed | Request method is not 'DELETE' or 'POST' with '__method=DELETE'
 
 **Permissions**
 
@@ -495,29 +625,72 @@ Code | Description
 + Response 200 (application/json)
 
         {
-          "updatable" : false,
-          "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
-          "id" : "1",
-          "modifiedDate" : "2014-09-30T15:28:50+09:00",
-          "parent" : null,
-          "imageHeight" : 425,
-          "blog" : {
-            "id" : "1"
-          },
-          "description" : null,
-          "tags" : [],
-          "imageWidth" : 640,
-          "fileSize" : "27930",
-          "filename" : "0cf61aae.jpg",
-          "createdUser" : {
-            "userpicUrl" : null,
-            "displayName" : "Yuji Takayama"
-          },
-          "type" : "画像",
+          "id" : 1,
+          "label" : "The Bridge",
           "mimeType" : "image/jpeg",
-          "label" : "0cf61aae.jpg",
+          "url" : "http://example.com/images/the-bridge.jpg",
+          "filename" : "the-bridge",
+          "description" : "Taken from over the bridge.",
+          "tags" : [
+            "boston",
+            "bridge",
+            "light"
+          ],
+          "blog" : {
+            "id" : 1
+          },
+          "updatable" : false,
+          "modifiedBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "modifiedDate" : "2014-10-10T13:13:01+09:00",
+          "createdBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "cratedDate" : "2014-10-10T13:13:01+09:00",
+          "type" : "Image",
           "class" : "image",
-          "createdDate" : "2014-09-30T15:28:50+09:00",
-          "fileExtension" : "jpg"
+          "fileExt" : "jpg",
+          "parent" : {
+            "id" : null
+          },
+          "meta" : {
+            "height" : 768,
+            "width" : 1024,
+            "fileSize" : 339773
+          }
         }
 
+## getThubmbnail [/sites/:site_id/assets/:asset_id/thumbnail(?width, height, scale, square)]
+### New in v2.0: Get thumbnail of an asset. [GET]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+400 | Bad Request | An asset does not support to generate thumbnail file.
+403 | Forbidden | Do not have permission to update an asset.
+404 | Not Found | Asset (or site) not found.
+
+**Permissions**
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + asset_id (required, number) ... The asset ID.
+    + width (optional, number) ... The height of the thumbnail to generate. If this is the only parameter specified then the thumbnail’s width will be scaled proportionally to the height. When the longer value than the original image is specified, it will be ignored.
+    + height (optional, number) ... The width of the thumbnail to generate. If this is the only parameter specified then the thumbnail’s height will be scaled proportionally to the width. When both of height and width are specified, the longer side of the original image will be processed, and the lesser side will be scaled proportionally.
+    + scale (optional, string) ... The percentage by which to reduce or increase the size of the current asset.
+    + square (optional, boolean) ... If set to true then the thumbnail generated will be square, where the length of each side of the square will be equal to the shortest side of the image.
+
++ Response 200 (application/json)
+
+        {
+          "height": 200,
+          "width": 200,
+          "url": "http://example.com/assets_c/2014/10/the-bridge-200x200-1.jpg"
+        }
