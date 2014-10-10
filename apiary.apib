@@ -5,9 +5,14 @@ HOST: http://movabletype.org
 The Movable Type Data API is a REST interface to the Movable Type Content Management System.
 The Data API is available for Movable Type Pro and Movable Type Advanced / Enterprise, Version 6.0 and higher.
 
+**TBD**
+
++ How to upload/set the value of asset type custom fields.
++ How to set custom sort order of categories.
+
 # Group Assets
 
-This is the Assets resource
+This is the Assets resource.
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description
 ------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------
@@ -39,6 +44,9 @@ meta | object | - | | | | The meta information of this asset.
 meta.height | value | number | | | Y | The height of this asset. If this asset has not height meta informatipn, will be returned null.
 meta.width | value | number | | | Y | The width of this asset. If this asset has not weight meta informatipn, will be returned null.
 meta.fileSize | value | number | | | Y | The file size of this asset. If this asset is not file-based asset, will be returned null.
+customFields | ARRAY | - | | | | The list of customfields data for this asset.
+customFields.basename | value | string | mt_field.field_basename | | | The basename of this customfield.
+customFields.value | value | string | | | | The value of this customfield.
 
     {
       "id" : 1,
@@ -78,7 +86,13 @@ meta.fileSize | value | number | | | Y | The file size of this asset. If this as
         "height" : 768,
         "width" : 1024,
         "fileSize" : 339773
-      }
+      },
+      "customFields" : [
+        {
+          "basename" : "cf_flag",
+          "value" : "1"
+        }
+      ],
     }
 
 ## uploadBySite [/sites/{site_id}/assets/upload]
@@ -256,7 +270,7 @@ Code | Status | Description
 404 | Not Found | Site not found.
 
 + Parameters
-    + site_id (required, number) ... The site ID.
+    + site_id (required, number) ... The site ID. If 0 specified, will retrieve system-level assets.
     + search (optional, string) ... Search query.
     + searchFields = `label` (optional, string) ... The comma separated field name list to search.
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
@@ -391,69 +405,6 @@ Code | Status | Description
 200 | OK | No Errors.
 403 | Forbidden | Do not have permission to retrieve an asset.
 404 | Not Found | Asset (or site) not found.
-
-+ Parameters
-    + site_id (required, number) ... The site ID.
-    + asset_id (required, number) ... The asset ID.
-    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
-
-+ Response 200 (application/json)
-
-        {
-          "id" : 1,
-          "label" : "The Bridge",
-          "mimeType" : "image/jpeg",
-          "url" : "http://example.com/images/the-bridge.jpg",
-          "filename" : "the-bridge",
-          "description" : "Taken from over the bridge.",
-          "tags" : [
-            "boston",
-            "bridge",
-            "light"
-          ],
-          "blog" : {
-            "id" : 1
-          },
-          "updatable" : true,
-          "modifiedBy" : {
-            "id" : 1,
-            "displayName" : "Yuji Takayama",
-            "userpicUrl" : null
-          },
-          "modifiedDate" : "2014-10-10T13:13:01+09:00",
-          "createdBy" : {
-            "id" : 1,
-            "displayName" : "Yuji Takayama",
-            "userpicUrl" : null
-          },
-          "cratedDate" : "2014-10-10T13:13:01+09:00",
-          "type" : "Image",
-          "class" : "image",
-          "fileExt" : "jpg",
-          "parent" : {
-            "id" : null
-          },
-          "meta" : {
-            "height" : 768,
-            "width" : 1024,
-            "fileSize" : 339773
-          }
-        }
-
-## get [/sites/:site_id/assets/:asset_id(?fields]
-### New in v2.0: Retrieve single asset by its ID. [GET]
-
-**Status Code**
-
-Code | Status | Description
----- | ------ | -----------
-200 | OK | No Errors.
-403 | Forbidden | Do not have permission to retrieve an asset.
-404 | Not Found | Asset (or site) not found.
-
-**Permissions**
-
-+ manage_assets
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -696,3 +647,160 @@ Code | Status | Description
           "width": 200,
           "url": "http://example.com/assets_c/2014/10/the-bridge-200x200-1.jpg"
         }
+
+# Group Categories
+
+This is the Categories resource.
+
+Property Name | Type | Data Type | Database Column | Private | Read Only | Description
+------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------
+blog | object | - | | | | The blog of this category.
+blog.id | value | number | mt_category.category_blog_id | | Y | The ID of the blog that contains this category.
+id | value | number | mt_category.category_id | | Y | The ID of this category.
+class | value | string | mt_category.category_class | | Y | The object class for this category.
+label | value | string | mt_category.category_label | | Y | The label of this category.
+description | value | string | mt_category.category_description | | Y | The description of this category.
+parent | value | number | mt_category.cateogry_parent | | | The ID of the parent category for this category.
+basename | value | string | mt_category_category_basename | | | The basename of this category.
+customFields | ARRAY | - | | | | The list of customfields data for this category.
+customFields.basename | value | string | mt_field.field_basename | | | The basename of this customfield.
+customFields.value | value | string | | | | The value of this customfield.
+updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed can update this category.</dd><dt>false</dt><dd>The user who accessed cannot update this category.</dd>
+archiveLink | value | strin | | | Y | The category archive URL of this category. If "Categroy" archive mapping is not configured, this value will be null. 
+
+
+        {
+          "basename" : "news",
+          "parent" : "0",
+          "archiveLink" : "http://example.com/news/index.html",
+          "updatable" : false,
+          "label" : "News",
+          "class" : "category",
+          "id" : 2,
+          "blog" : {
+            "id" : "1"
+          },
+          "description" : null
+        },
+
+## listBySite [/sites/{site_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top)]
+
+### Retrieve categories in the specified site. [GET]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve the list of categories.
+404 | Not Found | Site not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + search (optional, string) ... Search query.
+    + searchFields = `label,basename` (optional, string) ... The comma separated field name list to search.
+    + limit = `10` (optional, number) ... Maximum number of categories to retrieve.
+    + offset = `0` (optional, number) ... 0-indexed offset.
+    + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>label</dt><dd>Sort by the label of each categories.</dd></dl>
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return categories in descending order.</dd><dt>ascend</dt><dd>Return categories in ascending order.</dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + top = `0` (optional, number) ... If set to 1, retrieves only top level categories.
+
++ Response 200 (application/json)
+
+        {
+          "totalResults" : "1",
+          "items" : [
+            {
+            "basename" : "news",
+            "parent" : "0",
+            "archiveLink" : "http://example.com/news/index.html",
+            "updatable" : false,
+            "label" : "News",
+            "class" : "category",
+            "id" : 2,
+            "blog" : {
+              "id" : "1"
+            },
+            "description" : null
+          ]
+        }
+
+## listByEntry [/sites/{site_id}/entries/{entry_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields)]
+
+### Retrieve categories in the specified site. [GET]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve the list of categories.
+404 | Not Found | Site not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + entry_id (required, number) ... The entry ID.
+    + type (optional, string) ... <dl><dt>primary</dt><dd>If set to primary, will retrieves primary category only.</dd><dt>secondary</dt><dd>If set to secondary, will retrieves secondary categories only.</dd></dl>
+    + search (optional, string) ... Search query.
+    + searchFields = `label,basename` (optional, string) ... The comma separated field name list to search.
+    + limit = `10` (optional, number) ... Maximum number of categories to retrieve.
+    + offset = `0` (optional, number) ... 0-indexed offset.
+    + sortBy (optional, string) ... If this parameter not given, the array arranged in order of the primary-category and the secondary-categories is returned. <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>label</dt><dd>Sort by the label of each categories.</dd></dl>
+    + sortOrder = (optional, string) ... <dl><dt>descend</dt><dd>(default) Return categories in descending order.</dd><dt>ascend</dt><dd>Return categories in ascending order.</dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+
++ Response 200 (application/json)
+
+        {
+          "totalResults" : "1",
+          "items" : [
+            {
+            "basename" : "news",
+            "parent" : "0",
+            "archiveLink" : "http://example.com/news/index.html",
+            "updatable" : false,
+            "label" : "News",
+            "class" : "category",
+            "id" : 2,
+            "blog" : {
+              "id" : "1"
+            },
+            "description" : null
+          ]
+        }
+
+## get [/sites/{site_id}/categories/{category_id}(?fields)]
+
+### Retrieve single category by its ID. [GET]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve an category.
+404 | Not Found | Category or site not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + category_id (required, number) ... The category ID.
+    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+
++ Response 200 (application/json)
+
+        {
+          "basename" : "news",
+          "parent" : "0",
+          "archiveLink" : "http://example.com/news/index.html",
+          "updatable" : false,
+          "label" : "News",
+          "class" : "category",
+          "id" : 2,
+          "blog" : {
+            "id" : "1"
+          },
+          "description" : null
+        }
+
+
