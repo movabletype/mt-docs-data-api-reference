@@ -1091,3 +1091,21 @@ categories | ARRAY | Yes | | Array of Categories resource that were rearranged.
     
             category=[{"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "category","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"}]}]
 
++ Response 200 (application/json)
+
+        [
+          {
+            "basename" : "news",
+            "parent" : "0",
+            "archiveLink" : "http://example.com/news/index.html",
+            "updatable" : false,
+            "label" : "News",
+            "class" : "category",
+            "id" : 2,
+            "blog" : {
+              "id" : "1"
+            },
+            "description" : null
+          }
+        ]
+
