@@ -1109,3 +1109,130 @@ categories | ARRAY | Yes | | Array of Categories resource that were rearranged.
           }
         ]
 
+
+# Group Comments
+
+This is the Comments resource.
+
+Property Name | Type | Data Type | Database Column | Private | Read Only | Description
+------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------
+author | Object | - | | | Y | The commenter of this comment.
+author.id | value | number | mt_comment.comment_commenter_id | Y | Y | The ID of this commenter. If commenter is not a registerd user, this field is empty.
+author.displayName | value | string | mt_comment.comment_author | | Y | The display name of this commenter.
+author.userpicUrl | value | number | | | Y | The URL of this commenter's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If a commenter is not a registered user or a commenter does not set own userpic, will be returned empty string.
+entry | Object | - | | | Y | The container entry of this comment.
+entry.id | value | number | mt_comment.comment_entry_id | | Y | The ID of the entry that contains this comment.
+blog | Object | | | | Y | The blog of this comment.
+blog.id | value | number | mt_comment.comment_blog_id | | Y | The ID of the blog that contains this comment.
+id | value | number | mt_comment.comment_id | | Y | The ID of this comment.
+date | value | iso 8601 datetime | mt_comment.comment_created_on | | Y | The creation time for this comment.
+body | value | string | mt_comment.comment_text | | | The contents of this comment.
+link | value | string | | | Y | The permalink for this comment.
+parent | value | number | mt_comment.comment_parent_id | | | The ID of the parent of this comment. If this comment is not a reply, will be returned 0.
+status | value | string | | | | The publishing status of this comment. <dl><dt>Approved</dt><dd>This comment has been approved.<br />In the database, comment_visible = 1 and comment_junk_status = 1.</dd><dt>Pending</dt><dd>This comment has not been approved.<br />In the database, comment_visible = 0 and comment_junk_status = 1.</dd><dt>Spam</dt><dd>This comment has been marked as Spam.<br />In the database, comment_visible = 0 and comment_junk_status = -1.</dd></dl>
+updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed can update this comment.</dd><dt>false</dt><dd>The user who accessed cannot update this comment.</dd>
+customFields | ARRAY | - | | | | The list of customfields data for this category.
+customFields.basename | value | string | mt_field.field_basename | | | The basename of this customfield.
+customFields.value | value | string | | | | The value of this customfield.
+
+
+        {
+          "author" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : "http://example.com/mt-static/support/assets_c/userpics/userpic-1-32x32.png"
+          },
+          "entry" : {
+            "id" : 1
+          },
+          "blog" : {
+            "id" : 1
+          },
+          "id" : 2,
+          "date" : "2013-01-11T12:48:12+09:00",
+          "body" : "This is a test comment.\nHe he he",
+          "link" : "http://example.com/blog/2012/01/entry.html#comment-2",
+          "parent" : 1,
+          "status" : "Approved",
+          "updatable": true,
+          "customFields" : {
+            "items" : [
+              {
+                "basename" : "cf_fields_1",
+                "value" : "Test data"
+              },
+              {
+                "basename" : "cf_field_2",
+                "value" : "Test data 2"
+              }
+            ]
+          }
+        }
+
+## listBySite [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top)]
+
+### Retrieve a list of comments in the specified site. [GET]
+
++ Authorization is required if want to include unpublished comments.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve the list of comments.
+404 | Not Found | Site not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + search (optional, string) ... Search query.
+    + searchFields = `body` (optional, string) ... The comma separated field name list to search.
+    + limit = `10` (optional, number) ... Maximum number of comments to retrieve.
+    + offset = `0` (optional, number) ... 0-indexed offset.
+    + sortBy = `id` (optional, string) ... The field name for sort.
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return comments in descending order.</dd><dt>ascend</dt><dd>Return comments in ascending order.</dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Comments resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + includeIds (optional, string) ... The comma separated ID list of comments to include to result.
+    + excludeIds (optional, string) ... The comma separated ID list of comments to exclude from result.
+    + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
+    + entryStatus (optional, string) ... Filter by container entry's status. <dl><dt>Draft</dt><dd>entry_status is 1.</dd><dt>Publish</dt><dd>entry_status is 2.</dd><dt>Review</dt><dd>entry_status is 3.</dd><dt>Future</dt><dd>entry_status is 4.</dd><dt>Spam</dt><dd>entry_status is 5.</dd></dl>
+
+
++ Response 200 (application/json)
+
+        {
+          "totalResults" : "1",
+          "items" : [
+            {
+              "author" : {
+                "id" : 1,
+                "displayName" : "Yuji Takayama",
+                "userpicUrl" : "http://example.com/mt-static/support/assets_c/userpics/userpic-1-32x32.png"
+              },
+              "entry" : {
+                "id" : 1
+              },
+              "blog" : {
+                "id" : 1
+              },
+              "id" : 2,
+              "date" : "2013-01-11T12:48:12+09:00",
+              "body" : "This is a test comment.\nHe he he",
+              "link" : "http://example.com/blog/2012/01/entry.html#comment-2",
+              "parent" : 1,
+              "status" : "Approved",
+              "updatable": true,
+              "customFields" : [
+                {
+                  "basename" : "cf_fields_1",
+                  "value" : "Test data"
+                },
+                {
+                  "basename" : "cf_field_2",
+                  "value" : "Test data 2"
+                }
+              ]
+            }
+          ]
+        }
+
