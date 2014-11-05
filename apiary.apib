@@ -447,7 +447,7 @@ Code | Status | Description
           }
         }
 
-## update [/sites/:site_id/assets/:asset_id]
+## update and delete [/sites/:site_id/assets/:asset_id]
 ### New in v2.0: Update an asset. [PUT]
 
 * Authorization is required.
@@ -542,7 +542,6 @@ Code | Status | Description
           }
         }
 
-## delete [/sites/:site_id/assets/:asset_id]
 ### New in v2.0: Delete an asset. [DELETE]
 
 * Authorization is required.
@@ -706,7 +705,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
                   "value" : ""
                 }
 
-## listBySite [/sites/{site_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top)]
+## listBySite [/sites/{site_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 ### Retrieve categories in the specified site. [GET]
 
@@ -841,7 +840,7 @@ Code | Status | Description
           ]
         }
 
-## listSiblingCategories [/sites/{site_id}/categories/{category_id}/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields)]
+## listSiblingCategories [/sites/{site_id}/categories/{category_id}/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 ### New in v2.0: Retrieve siblings categories from the specified category. [GET]
 
@@ -961,6 +960,26 @@ category | Object | Yes | | Single Categories resource
     
             category={"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "category","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"}]}
 
++ Response 200 (application/json)
+  
+        {
+          "totalResults" : "1",
+          "items" : [
+            {
+            "basename" : "news",
+            "parent" : "0",
+            "archiveLink" : "http://example.com/news/index.html",
+            "updatable" : false,
+            "label" : "News",
+            "class" : "category",
+            "id" : 2,
+            "blog" : {
+              "id" : "1"
+            },
+            "description" : null
+          ]
+        }
+
 ## get [/sites/{site_id}/categories/{category_id}(?fields)]
 
 ### New in v2.0: Retrieve single category by its ID. [GET]
@@ -994,7 +1013,7 @@ Code | Status | Description
           "description" : null
         }
 
-## updateCategory [/sites/{site_id}/categories/{category_id}]
+## upload and delete [/sites/{site_id}/categories/{category_id}]
 
 ### New in v2.0: Update an existing category. [PUT]
 + Authorization is required.
@@ -1032,7 +1051,21 @@ category | Object | Yes | | Single Categories resource
     
             category={"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "category","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"}]}
 
-## deleteCategory [/sites/{site_id}/categories/{category_id}]
++ Response 200 (application/json)
+
+        {
+          "basename" : "news",
+          "parent" : "0",
+          "archiveLink" : "http://example.com/news/index.html",
+          "updatable" : false,
+          "label" : "News",
+          "class" : "category",
+          "id" : 2,
+          "blog" : {
+            "id" : "1"
+          },
+          "description" : null
+        }
 
 ### New in v2.0: Delete an existing category. [DELETE]
 + Authorization is required.
@@ -1186,7 +1219,7 @@ customFields.value | value | string | | | | The value of this customfield.
           }
         }
 
-## listBySite [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top)]
+## listBySite [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
 
 ### Retrieve a list of comments in the specified site. [GET]
 
