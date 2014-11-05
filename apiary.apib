@@ -60,7 +60,7 @@ url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asse
                 "fileSize" : 194272,
                 "height" : "600"
               },
-              "url" : "http://example.comimages/1ab89ee2.jpg",
+              "url" : "http://example.com/images/1ab89ee2.jpg",
               "id" : "5",
               "modifiedDate" : "2014-11-05T12:59:36+09:00",
               "modifiedBy" : {
@@ -645,31 +645,31 @@ Code | Status | Description
 
 This is the Categories resource.
 
-Property Name | Type | Data Type | Database Column | Private | Read Only | Description
------------- | ------------- | ------------ | ------------ | ------------- | ------------ | ------------
-archiveLink | value | string | | | Y | The category archive URL of this category. If "Categroy" archive mapping is not configured, this value will be null. New in v2.
-basename | value | string | mt_category_category_basename | | | The basename of this category.
-blog | object | - | | | | The blog of this category.
-blog.id | value | number | mt_category.category_blog_id | | Y | The ID of the blog that contains this category.
-class | value | string | mt_category.category_class | | Y | The object class for this category.
-createdBy | Object | - | | | Y | The created user of this category.
-createdBy.displayName | value | string | | | Y | The display name of created user.
-createdBy.id | value | number | mt_category.category_created_by | Y | Y | The ID of created user.
-createdBy.userpicUrl | value | string | | | Y | The URL of created user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
-createdDate | value | iso 8601 datetime | mt_ctegory.category_created_on | | Y | The created time for this category.
-customFields | ARRAY | - | | | | The list of customfields data for this category.
-customFields.basename | value | string | mt_field.field_basename | | | The basename of this customfield.
-customFields.value | value | string | | | | The value of this customfield.
-description | value | string | mt_category.category_description | | Y | The description of this category.
-id | value | number | mt_category.category_id | | Y | The ID of this category.
-label | value | string | mt_category.category_label | | Y | The label of this category.
-modifiedBy | Object | - | | | Y | The last modified user of this asset.
-modifiedBy.id | value | number | mt_category.category_modified_by | Y | Y | The ID of last modified user.
-modifiedBy.userpicUrl | value | string | | | Y | The URL of last modified user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
-modifiedBy.displayName | value | string | | | Y | The display name of last modified user.
-modifiedDate | value | iso 8601 datetime | mt_category.category_modified_on | | Y | The last modified time for this category.
-parent | value | number | mt_category.cateogry_parent | | | The ID of the parent category for this category. This field can be updated from v2.
-updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed can update this category.</dd><dt>false</dt><dd>The user who accessed cannot update this category.</dd>
+Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
+------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------ | ------------
+archiveLink | value | string | | | Y | The category archive URL of this category. If "Categroy" archive mapping is not configured, this value will be null. | v2
+basename | value | string | mt_category_category_basename | | | The basename of this category. | v1
+blog | object | - | | | | The blog of this category. | v1
+blog.id | value | number | mt_category.category_blog_id | | Y | The ID of the blog that contains this category. | v1
+class | value | string | mt_category.category_class | | Y | The object class for this category. | v1
+createdBy | Object | - | | | Y | The created user of this category. | v2
+createdBy.displayName | value | string | | | Y | The display name of created user. | v2
+createdBy.id | value | number | mt_category.category_created_by | Y | Y | The ID of created user. | v2
+createdBy.userpicUrl | value | string | | | Y | The URL of created user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. | v2
+createdDate | value | iso 8601 datetime | mt_ctegory.category_created_on | | Y | The created time for this category. | v2
+customFields | ARRAY | - | | | | The list of customfields data for this category. | v1
+customFields.basename | value | string | mt_field.field_basename | | | The basename of this customfield. | v1
+customFields.value | value | string | | | | The value of this customfield. | v1
+description | value | string | mt_category.category_description | | Y | The description of this category. | v1
+id | value | number | mt_category.category_id | | Y | The ID of this category. | v1
+label | value | string | mt_category.category_label | | Y | The label of this category. | v1
+modifiedBy | Object | - | | | Y | The last modified user of this asset. | v2
+modifiedBy.id | value | number | mt_category.category_modified_by | Y | Y | The ID of last modified user. | v2
+modifiedBy.userpicUrl | value | string | | | Y | The URL of last modified user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. | v2
+modifiedBy.displayName | value | string | | | Y | The display name of last modified user. | v2
+modifiedDate | value | iso 8601 datetime | mt_category.category_modified_on | | Y | The last modified time for this category. | v2
+parent | value | number | mt_category.cateogry_parent | | | The ID of the parent category for this category. This field can be updated from v2.  | v1
+updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed can update this category.</dd><dt>false</dt><dd>The user who accessed cannot update this category.</dd> | v2
 
 
             {
