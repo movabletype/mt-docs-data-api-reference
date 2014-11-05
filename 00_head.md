@@ -10,5 +10,3 @@ The Data API is available for Movable Type Pro and Movable Type Advanced / Enter
 + How to upload/set the value of asset type custom fields.
 + Think about anonymous comment.
 
-
-
