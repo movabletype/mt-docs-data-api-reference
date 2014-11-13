@@ -324,7 +324,7 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## newCommentToPage [/sites/{site_id}/pages/{page_id}/comments]
+## postNewCommentForEntry [/sites/{site_id}/pages/{page_id}/comments]
 
 ### New In v2.0: Create a new comment for page. [POST]
 
@@ -393,9 +393,9 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## newCommentToPage [/sites/{site_id}/pages/{page_id}/comments]
+## replyComment [/sites/{site_id}/comments/{comment_id}]
 
-### New In v2.0: Create a new comment for page. [GET]
+### Reply to specified comment. [POST]
 
 + Authorization is required.
 
@@ -404,8 +404,8 @@ comment | Object | Yes | | Single Comments resource
 Code | Status | Description
 ---- | ------ | -----------
 200 | OK | No Errors.
-403 | Forbidden | Do not have permission to create a new coment.
-404 | Not Found | Site or Page not found.
+403 | Forbidden | Do not have permission to reply coment.
+404 | Not Found | Site or Comment not found.
 
 **Permission**
 
@@ -433,6 +433,156 @@ comment | Object | Yes | | Single Comments resource
 
 + Response 200 (application/json)
   
+        {
+          "link" : "http://example.com/blog/2014/11/hello-movable-type.html#comment-1",
+          "parent" : null,
+          "entry" : {
+            "id" : "45"
+          },
+          "createdBy" : {
+            "id" : 2
+            "userpicUrl" : null,
+            "displayName" : "Ichiro Aikawa"
+          },
+          "status" : "Approved",
+          "date" : "2014-11-05T14:41:39+09:00",
+          "updatable" : false,
+          "blog" : {
+            "id" : "22"
+          },
+          "author" : {
+            "id" : 2
+            "userpicUrl" : null,
+            "displayName" : "Ichiro Aikawa"
+          },
+          "body" : "<p>Hi, congrats!</p>",
+          "createdDate" : "2014-11-05T14:41:39+09:00",
+          "id" : 1,
+          "modifiedDate" : "2014-11-05T14:41:39+09:00",
+          "customFields" : []
+        }
+
+## get [/sites/{site_id}/comments/{comment_id}(?fields)]
+
+### Retrieve a single comment by its ID. [GET]
+
++ Authorization is required if the comment status is "unpublished". If the comment status is "published", then this method can be called without authorization.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve the requested comment.
+404 | Not Found | Site or Comment not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + comment_id (required, number) ... The comment ID.
+    + fields (optional, string) ... The field list to retrieve as part of the Comments resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+
++ Response 200 (application/json)
+
+        {
+          "link" : "http://example.com/blog/2014/11/hello-movable-type.html#comment-1",
+          "parent" : null,
+          "entry" : {
+            "id" : "45"
+          },
+          "createdBy" : {
+            "id" : 2
+            "userpicUrl" : null,
+            "displayName" : "Ichiro Aikawa"
+          },
+          "status" : "Approved",
+          "date" : "2014-11-05T14:41:39+09:00",
+          "updatable" : false,
+          "blog" : {
+            "id" : "22"
+          },
+          "author" : {
+            "id" : 2
+            "userpicUrl" : null,
+            "displayName" : "Ichiro Aikawa"
+          },
+          "body" : "<p>Hi, congrats!</p>",
+          "createdDate" : "2014-11-05T14:41:39+09:00",
+          "id" : 1,
+          "modifiedDate" : "2014-11-05T14:41:39+09:00",
+          "customFields" : []
+        }
+
+## update [/sites/{site_id}/comments/{comment_id}]
+
+### Retrieve a single comment by its ID. [PUT]
+
++ Authorization is required.
++ This method accepts PUT and POST with __method=PUT.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to update the requested comment.
+404 | Not Found | Site or Comment not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + comment_id (required, number) ... The comment ID.
+
++ Response 200 (application/json)
+
+        {
+          "link" : "http://example.com/blog/2014/11/hello-movable-type.html#comment-1",
+          "parent" : null,
+          "entry" : {
+            "id" : "45"
+          },
+          "createdBy" : {
+            "id" : 2
+            "userpicUrl" : null,
+            "displayName" : "Ichiro Aikawa"
+          },
+          "status" : "Approved",
+          "date" : "2014-11-05T14:41:39+09:00",
+          "updatable" : false,
+          "blog" : {
+            "id" : "22"
+          },
+          "author" : {
+            "id" : 2
+            "userpicUrl" : null,
+            "displayName" : "Ichiro Aikawa"
+          },
+          "body" : "<p>Hi, congrats!</p>",
+          "createdDate" : "2014-11-05T14:41:39+09:00",
+          "id" : 1,
+          "modifiedDate" : "2014-11-05T14:41:39+09:00",
+          "customFields" : []
+        }
+
+## delete [/sites/{site_id}/comments/{comment_id}]
+
+### Retrieve a single comment by its ID. [DELETE]
+
++ Authorization is required.
++ This method accepts PUT and POST with __method=DELETE.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to delete the requested comment.
+404 | Not Found | Site or Comment not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + comment_id (required, number) ... The comment ID.
+
++ Response 200 (application/json)
+
         {
           "link" : "http://example.com/blog/2014/11/hello-movable-type.html#comment-1",
           "parent" : null,
