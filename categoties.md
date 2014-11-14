@@ -399,7 +399,7 @@ category | Object | Yes | | Single Categories resource
     + site_id (required, number) ... The site ID.
     + category_id (required, number) ... The category ID.
 
-+ Request Assets resource
++ Request Categories resource
 
     + Headers
     
