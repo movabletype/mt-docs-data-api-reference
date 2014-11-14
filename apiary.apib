@@ -1555,7 +1555,7 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## replyComment [/sites/{site_id}/comments/{comment_id}]
+## replyComment [/sites/{site_id}/comments/{comment_id}/replies]
 
 ### Reply to specified comment. [POST]
 
@@ -1581,7 +1581,7 @@ comment | Object | Yes | | Single Comments resource
 
 + Parameters
     + site_id (required, number) ... The site ID.
-    + page_id (required, number) ... The page ID.
+    + comment_id (required, number) ... The page ID.
 
 + Request Assets resource
 
@@ -1676,7 +1676,7 @@ Code | Status | Description
 
 ## update and delete [/sites/{site_id}/comments/{comment_id}]
 
-### Retrieve a single comment by its ID. [PUT]
+### Update an exsiting comment. [PUT]
 
 + Authorization is required.
 + This method accepts PUT and POST with __method=PUT.
@@ -1725,7 +1725,7 @@ Code | Status | Description
         }
 
 
-### Retrieve a single comment by its ID. [DELETE]
+### Delete an existing comment. [DELETE]
 
 + Authorization is required.
 + This method accepts PUT and POST with __method=DELETE.
@@ -1858,7 +1858,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listBySite [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## listBySite [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### Retrieve a list of entries in the specified site. [GET]
 
@@ -1945,7 +1945,7 @@ Code | Status | Description
           ]
         }
 
-## listByCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## listByCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries by specific category. [GET]
 
@@ -2033,7 +2033,7 @@ Code | Status | Description
           ]
         }
 
-## listByAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## listByAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries that related with specific asset. [GET]
 
@@ -2230,9 +2230,6 @@ Code | Status | Description
 **Permissions**
 
 + create_post
-
-+ Parameters
-    + site_id (required, number) ... The site ID.
 
 **Request Body Parameters**
 

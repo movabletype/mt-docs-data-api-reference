@@ -393,7 +393,7 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## replyComment [/sites/{site_id}/comments/{comment_id}]
+## replyComment [/sites/{site_id}/comments/{comment_id}/replies]
 
 ### Reply to specified comment. [POST]
 
@@ -419,7 +419,7 @@ comment | Object | Yes | | Single Comments resource
 
 + Parameters
     + site_id (required, number) ... The site ID.
-    + page_id (required, number) ... The page ID.
+    + comment_id (required, number) ... The page ID.
 
 + Request Assets resource
 
@@ -514,7 +514,7 @@ Code | Status | Description
 
 ## update and delete [/sites/{site_id}/comments/{comment_id}]
 
-### Retrieve a single comment by its ID. [PUT]
+### Update an exsiting comment. [PUT]
 
 + Authorization is required.
 + This method accepts PUT and POST with __method=PUT.
@@ -563,7 +563,7 @@ Code | Status | Description
         }
 
 
-### Retrieve a single comment by its ID. [DELETE]
+### Delete an existing comment. [DELETE]
 
 + Authorization is required.
 + This method accepts PUT and POST with __method=DELETE.

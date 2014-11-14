@@ -83,7 +83,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listBySite [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## listBySite [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### Retrieve a list of entries in the specified site. [GET]
 
@@ -170,7 +170,7 @@ Code | Status | Description
           ]
         }
 
-## listByCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## listByCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries by specific category. [GET]
 
@@ -258,7 +258,7 @@ Code | Status | Description
           ]
         }
 
-## listByAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## listByAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries that related with specific asset. [GET]
 
@@ -455,9 +455,6 @@ Code | Status | Description
 **Permissions**
 
 + create_post
-
-+ Parameters
-    + site_id (required, number) ... The site ID.
 
 **Request Body Parameters**
 
