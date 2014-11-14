@@ -512,7 +512,7 @@ Code | Status | Description
           "customFields" : []
         }
 
-## update [/sites/{site_id}/comments/{comment_id}]
+## update and delete [/sites/{site_id}/comments/{comment_id}]
 
 ### Retrieve a single comment by its ID. [PUT]
 
@@ -562,7 +562,6 @@ Code | Status | Description
           "customFields" : []
         }
 
-## delete [/sites/{site_id}/comments/{comment_id}]
 
 ### Retrieve a single comment by its ID. [DELETE]
 
