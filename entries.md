@@ -440,11 +440,11 @@ Code | Status | Description
 
 + Authorization is required.
 
-** Update in v2.0 **
+**Update in v2.0**
  
  + You can attach categories and assets in the one request.
 
-** Status Code **
+**Status Code**
 
 Code | Status | Description
 ---- | ------ | -----------
@@ -452,7 +452,7 @@ Code | Status | Description
 403 | Forbidden | Do not have permission to create a new entry.
 404 | Not Found | Site not found.
 
-** Permissions **
+**Permissions**
 
 + create_post
 
