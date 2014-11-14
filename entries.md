@@ -113,7 +113,6 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of entries to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of entries to exclude from result.
-    + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
     + status (optional, string) ... Filter by container entry's status. <dl><dt>Draft</dt><dd>entry_status is 1.</dd><dt>Publish</dt><dd>entry_status is 2.</dd><dt>Review</dt><dd>entry_status is 3.</dd><dt>Future</dt><dd>entry_status is 4.</dd><dt>Spam</dt><dd>entry_status is 5.</dd></dl>
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of entries to retrieve as part of the Entries resource. If this parameter is not supplied, no entries will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned.
@@ -201,7 +200,6 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of entries to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of entries to exclude from result.
-    + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
     + status (optional, string) ... Filter by container entry's status. <dl><dt>Draft</dt><dd>entry_status is 1.</dd><dt>Publish</dt><dd>entry_status is 2.</dd><dt>Review</dt><dd>entry_status is 3.</dd><dt>Future</dt><dd>entry_status is 4.</dd><dt>Spam</dt><dd>entry_status is 5.</dd></dl>
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of entries to retrieve as part of the Entries resource. If this parameter is not supplied, no entries will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned.
@@ -289,7 +287,6 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of entries to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of entries to exclude from result.
-    + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
     + status (optional, string) ... Filter by container entry's status. <dl><dt>Draft</dt><dd>entry_status is 1.</dd><dt>Publish</dt><dd>entry_status is 2.</dd><dt>Review</dt><dd>entry_status is 3.</dd><dt>Future</dt><dd>entry_status is 4.</dd><dt>Spam</dt><dd>entry_status is 5.</dd></dl>
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of entries to retrieve as part of the Entries resource. If this parameter is not supplied, no entries will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned.
@@ -377,7 +374,6 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of entries to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of entries to exclude from result.
-    + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
     + status (optional, string) ... Filter by container entry's status. <dl><dt>Draft</dt><dd>entry_status is 1.</dd><dt>Publish</dt><dd>entry_status is 2.</dd><dt>Review</dt><dd>entry_status is 3.</dd><dt>Future</dt><dd>entry_status is 4.</dd><dt>Spam</dt><dd>entry_status is 5.</dd></dl>
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of entries to retrieve as part of the Entries resource. If this parameter is not supplied, no entries will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned.
