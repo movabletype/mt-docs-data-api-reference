@@ -10,6 +10,11 @@ The Data API is available for Movable Type Pro and Movable Type Advanced / Enter
 + How to upload/set the value of asset type custom fields.
 + Think about anonymous comment.
 
+
+
+
+
+
 # Group Assets
 
 This is the Assets resource.
@@ -89,7 +94,7 @@ url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asse
               "fileExtension" : "jpg"
             },
 
-## uploadBySite [/sites/{site_id}/assets/upload]
+## uploadAssetForSite [/sites/{site_id}/assets/upload]
 ### Upload a file to specific site. [POST]
 
 + This endpoint is marked as deprecated in v2.0.
@@ -172,7 +177,7 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-## upload [/assets/upload]
+## uploadAsset [/assets/upload]
 ### New in v2.0: Upload a file. [POST]
 
 **Status Code**
@@ -251,7 +256,7 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-## listBySite [/sites/{site_id}/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields)]
+## listAssets [/sites/{site_id}/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields)]
 
 ### New in v2.0: Retrieve assets in the specified site. [GET]
 
@@ -321,7 +326,7 @@ Code | Status | Description
           ]
         }
 
-## listByEntry [/sites/:site_id/entries/:entry_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+## listAssetsForEntry [/sites/:site_id/entries/:entry_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
 ### New in v2.0: Retrieve assets that related with specified entry. [GET]
 
 **Status Code**
@@ -389,7 +394,144 @@ Code | Status | Description
           ]
         }
 
-## get [/sites/:site_id/assets/:asset_id(?fields)]
+## listAssetsForPage [/sites/:site_id/pages/:page_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+### New in v2.0: Retrieve assets that related with specified page. [GET]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve the list of assets.
+404 | Not Found | Site or page not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + page_id (required, number) ... The page ID.
+    + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
+    + offset = `0` (optional, number) ... 0-indexed offset.
+    + class (optional, string) ... The target asset class to retrieve. Available value is image, audio, video, file or something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
+    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each assets.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each assets.</dd></dl>
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For the date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For the date, it means from oldest to newset.    </dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+
++ Response 200 (application/json)
+
+        {
+          "totalResults" : 1,
+          "items" : [
+          {
+            "id" : 1,
+            "label" : "The Bridge",
+            "mimeType" : "image/jpeg",
+            "url" : "http://example.com/images/the-bridge.jpg",
+            "filename" : "the-bridge",
+            "description" : "Taken from over the bridge.",
+            "tags" : [
+              "boston",
+              "bridge",
+              "light"
+            ],
+            "blog" : {
+              "id" : 1
+            },
+            "updatable" : true,
+            "modifiedBy" : {
+              "id" : 1,
+              "displayName" : "Yuji Takayama",
+              "userpicUrl" : null
+            },
+            "modifiedDate" : "2014-10-10T13:13:01+09:00",
+            "createdBy" : {
+              "id" : 1,
+              "displayName" : "Yuji Takayama",
+              "userpicUrl" : null
+            },
+            "cratedDate" : "2014-10-10T13:13:01+09:00",
+            "type" : "Image",
+            "class" : "image",
+            "fileExt" : "jpg",
+            "parent" : {
+              "id" : null
+            },
+            "meta" : {
+              "height" : 768,
+              "width" : 1024,
+              "fileSize" : 339773
+            }
+          ]
+        }
+
+## listAssetsForSiteAndTag [/sites/:site_id/tags/:tag_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+### New in v2.0: Retrieve assets that related with specified tag. [GET]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve the list of assets.
+404 | Not Found | Site or tag not found.
+
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + page_id (required, number) ... The page ID.
+    + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
+    + offset = `0` (optional, number) ... 0-indexed offset.
+    + class (optional, string) ... The target asset class to retrieve. Available value is image, audio, video, file or something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
+    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each assets.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each assets.</dd></dl>
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For the date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For the date, it means from oldest to newset.    </dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+
++ Response 200 (application/json)
+
+        {
+          "totalResults" : 1,
+          "items" : [
+          {
+            "id" : 1,
+            "label" : "The Bridge",
+            "mimeType" : "image/jpeg",
+            "url" : "http://example.com/images/the-bridge.jpg",
+            "filename" : "the-bridge",
+            "description" : "Taken from over the bridge.",
+            "tags" : [
+              "boston",
+              "bridge",
+              "light"
+            ],
+            "blog" : {
+              "id" : 1
+            },
+            "updatable" : true,
+            "modifiedBy" : {
+              "id" : 1,
+              "displayName" : "Yuji Takayama",
+              "userpicUrl" : null
+            },
+            "modifiedDate" : "2014-10-10T13:13:01+09:00",
+            "createdBy" : {
+              "id" : 1,
+              "displayName" : "Yuji Takayama",
+              "userpicUrl" : null
+            },
+            "cratedDate" : "2014-10-10T13:13:01+09:00",
+            "type" : "Image",
+            "class" : "image",
+            "fileExt" : "jpg",
+            "parent" : {
+              "id" : null
+            },
+            "meta" : {
+              "height" : 768,
+              "width" : 1024,
+              "fileSize" : 339773
+            }
+          ]
+        }
+
+## getAsset [/sites/:site_id/assets/:asset_id(?fields)]
 ### New in v2.0: Retrieve single asset by its ID. [GET]
 
 **Status Code**
@@ -448,7 +590,7 @@ Code | Status | Description
           }
         }
 
-## update and delete [/sites/:site_id/assets/:asset_id]
+## updateAsset and deleteAsset [/sites/:site_id/assets/:asset_id]
 ### New in v2.0: Update an asset. [PUT]
 
 * Authorization is required.
