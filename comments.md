@@ -62,7 +62,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields" : []
         }
 
-## listBySite [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
+## listComments [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
 
 ### Retrieve a list of comments in the specified site. [GET]
 
@@ -127,7 +127,7 @@ Code | Status | Description
           ]
         }
 
-## listByEntry [/sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## listCommentsForEntry [/sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
 
 ### Retrieve a list of comments for the specified entry. [GET]
 
@@ -191,7 +191,7 @@ Code | Status | Description
           ]
         }
 
-## listByPage [/sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## listCommentsForPage [/sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
 
 ### Retrieve a list of comments for the specified page. [GET]
 
@@ -255,9 +255,9 @@ Code | Status | Description
           ]
         }
 
-## newCommentToEntry [/sites/{site_id}/entries/{entry_id}/comments]
+## createComment [/sites/{site_id}/entries/{entry_id}/comments]
 
-### New In v2.0: Create a new comment for entry. [POST]
+### Create a new comment for entry. [POST]
 
 + Authorization is required.
 
@@ -393,7 +393,7 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## replyComment [/sites/{site_id}/comments/{comment_id}/replies]
+## createReplyComment [/sites/{site_id}/comments/{comment_id}/replies]
 
 ### Reply to specified comment. [POST]
 
@@ -462,7 +462,7 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## get [/sites/{site_id}/comments/{comment_id}(?fields)]
+## getComment [/sites/{site_id}/comments/{comment_id}(?fields)]
 
 ### Retrieve a single comment by its ID. [GET]
 
@@ -512,7 +512,7 @@ Code | Status | Description
           "customFields" : []
         }
 
-## update and delete [/sites/{site_id}/comments/{comment_id}]
+## updateComment and deleteComment [/sites/{site_id}/comments/{comment_id}]
 
 ### Update an exsiting comment. [PUT]
 

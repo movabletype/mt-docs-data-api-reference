@@ -83,7 +83,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listBySite [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## listEntries [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### Retrieve a list of entries in the specified site. [GET]
 
@@ -169,7 +169,7 @@ Code | Status | Description
           ]
         }
 
-## listByCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## listEntriesForCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries by specific category. [GET]
 
@@ -256,7 +256,7 @@ Code | Status | Description
           ]
         }
 
-## listByAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## listEntriesForAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries that related with specific asset. [GET]
 
@@ -343,7 +343,7 @@ Code | Status | Description
           ]
         }
 
-## listByTag [/sites/{site_id}/tags/{tag_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## listEntriesForSiteAndTag [/sites/{site_id}/tags/{tag_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries that related with specific tag. [GET]
 
@@ -517,7 +517,7 @@ entry | Object | Yes | | Single Entries resource
           ]
         }
 
-## get [/sites/{site_id}/entries/{entry_id}(?fields)]
+## getEntry [/sites/{site_id}/entries/{entry_id}(?fields)]
 
 ### Retrieve a single entry by its ID. [GET]
 
@@ -583,7 +583,7 @@ Code | Status | Description
         }
 
 
-## update and delete [/sites/{site_id}/entries/{entry_id}]
+## updateEntry and deleteEntry [/sites/{site_id}/entries/{entry_id}]
 
 ### Update an existing entry. [PUT]
 

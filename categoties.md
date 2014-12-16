@@ -63,7 +63,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
                   "value" : ""
                 }
 
-## listBySite [/sites/{site_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
+## listCategories [/sites/{site_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 ### Retrieve categories in the specified site. [GET]
 
@@ -108,7 +108,7 @@ Code | Status | Description
           ]
         }
 
-## listByEntry [/sites/{site_id}/entries/{entry_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
+## listCategoriesForEntry [/sites/{site_id}/entries/{entry_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
 
 ### New in v2.0: Retrieve categories in the specified entry. [GET]
 
@@ -338,7 +338,7 @@ category | Object | Yes | | Single Categories resource
           ]
         }
 
-## get [/sites/{site_id}/categories/{category_id}(?fields)]
+## getCategory [/sites/{site_id}/categories/{category_id}(?fields)]
 
 ### New in v2.0: Retrieve single category by its ID. [GET]
 
@@ -371,7 +371,7 @@ Code | Status | Description
           "description" : null
         }
 
-## upload and delete [/sites/{site_id}/categories/{category_id}]
+## updateCategory and deleteCategory [/sites/{site_id}/categories/{category_id}]
 
 ### New in v2.0: Update an existing category. [PUT]
 + Authorization is required.
