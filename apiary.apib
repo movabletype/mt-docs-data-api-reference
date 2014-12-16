@@ -848,7 +848,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
                   "value" : ""
                 }
 
-## listBySite [/sites/{site_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
+## listCategories [/sites/{site_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 ### Retrieve categories in the specified site. [GET]
 
@@ -893,7 +893,7 @@ Code | Status | Description
           ]
         }
 
-## listByEntry [/sites/{site_id}/entries/{entry_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
+## listCategoriesForEntry [/sites/{site_id}/entries/{entry_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
 
 ### New in v2.0: Retrieve categories in the specified entry. [GET]
 
@@ -1123,7 +1123,7 @@ category | Object | Yes | | Single Categories resource
           ]
         }
 
-## get [/sites/{site_id}/categories/{category_id}(?fields)]
+## getCategory [/sites/{site_id}/categories/{category_id}(?fields)]
 
 ### New in v2.0: Retrieve single category by its ID. [GET]
 
@@ -1156,7 +1156,7 @@ Code | Status | Description
           "description" : null
         }
 
-## upload and delete [/sites/{site_id}/categories/{category_id}]
+## updateCategory and deleteCategory [/sites/{site_id}/categories/{category_id}]
 
 ### New in v2.0: Update an existing category. [PUT]
 + Authorization is required.
@@ -1366,7 +1366,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields" : []
         }
 
-## listBySite [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
+## listComments [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
 
 ### Retrieve a list of comments in the specified site. [GET]
 
@@ -1431,7 +1431,7 @@ Code | Status | Description
           ]
         }
 
-## listByEntry [/sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## listCommentsForEntry [/sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
 
 ### Retrieve a list of comments for the specified entry. [GET]
 
@@ -1495,7 +1495,7 @@ Code | Status | Description
           ]
         }
 
-## listByPage [/sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## listCommentsForPage [/sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
 
 ### Retrieve a list of comments for the specified page. [GET]
 
@@ -1559,9 +1559,9 @@ Code | Status | Description
           ]
         }
 
-## newCommentToEntry [/sites/{site_id}/entries/{entry_id}/comments]
+## createComment [/sites/{site_id}/entries/{entry_id}/comments]
 
-### New In v2.0: Create a new comment for entry. [POST]
+### Create a new comment for entry. [POST]
 
 + Authorization is required.
 
@@ -1697,7 +1697,7 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## replyComment [/sites/{site_id}/comments/{comment_id}/replies]
+## createReplyComment [/sites/{site_id}/comments/{comment_id}/replies]
 
 ### Reply to specified comment. [POST]
 
@@ -1766,7 +1766,7 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## get [/sites/{site_id}/comments/{comment_id}(?fields)]
+## getComment [/sites/{site_id}/comments/{comment_id}(?fields)]
 
 ### Retrieve a single comment by its ID. [GET]
 
@@ -1816,7 +1816,7 @@ Code | Status | Description
           "customFields" : []
         }
 
-## update and delete [/sites/{site_id}/comments/{comment_id}]
+## updateComment and deleteComment [/sites/{site_id}/comments/{comment_id}]
 
 ### Update an exsiting comment. [PUT]
 
@@ -2000,7 +2000,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listBySite [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## listEntries [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### Retrieve a list of entries in the specified site. [GET]
 
@@ -2086,7 +2086,7 @@ Code | Status | Description
           ]
         }
 
-## listByCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## listEntriesForCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries by specific category. [GET]
 
@@ -2173,7 +2173,7 @@ Code | Status | Description
           ]
         }
 
-## listByAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## listEntriesForAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries that related with specific asset. [GET]
 
@@ -2260,7 +2260,7 @@ Code | Status | Description
           ]
         }
 
-## listByTag [/sites/{site_id}/tags/{tag_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## listEntriesForSiteAndTag [/sites/{site_id}/tags/{tag_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
 
 ### New in v2.0: Retrieve a list of entries that related with specific tag. [GET]
 
@@ -2434,7 +2434,7 @@ entry | Object | Yes | | Single Entries resource
           ]
         }
 
-## get [/sites/{site_id}/entries/{entry_id}(?fields)]
+## getEntry [/sites/{site_id}/entries/{entry_id}(?fields)]
 
 ### Retrieve a single entry by its ID. [GET]
 
@@ -2500,7 +2500,7 @@ Code | Status | Description
         }
 
 
-## update and delete [/sites/{site_id}/entries/{entry_id}]
+## updateEntry and deleteEntry [/sites/{site_id}/entries/{entry_id}]
 
 ### Update an existing entry. [PUT]
 
