@@ -590,7 +590,7 @@ Code | Status | Description
 + Authorization is required.
 + This method accepts PUT and POST with __method=PUT.
 
-** Update in v2.0 **
+**Update in v2.0**
  
  + You can attach/detach categories and assets in the one request.
 
