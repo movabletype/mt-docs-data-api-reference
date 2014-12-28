@@ -783,6 +783,95 @@ Code | Status | Description
           "url": "http://example.com/assets_c/2014/10/the-bridge-200x200-1.jpg"
         }
 
+# Group Authentication
+
+## createEntry [/sites/{site_id}/entries]
+
+### Create a new entry. [POST]
+
++ Authorization is required.
+
+**Update in v2.0**
+ 
+ + You can attach categories and assets in the one request.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to create a new entry.
+404 | Not Found | Site not found.
+
+**Permissions**
+
++ create_post
+
+**Request Body Parameters**
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+entry | Object | Yes | | Single Entries resource
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+
++ Request Entries resource
+
+    + Headers
+    
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+    
+            entry={"excerpt" : "We are excited to announce that Six Apar...","status" : "Publish","allowComments" : true,"body" : "¥u003cp¥u003e¥u003cspan¥u003eWe are excited to announce that Six Apart has acquired Topics, a dynamic online publishing product. This offering will provide Six Apart customers with an easy and cost-effective way to adapt existing content to evolving digital platforms.¥u003c/span¥u003e¥u003c/p¥u003e¥n¥u003cp¥u003e¥u003cspan¥u003eThis new product will save Six Apart customers a significant amount of time and money by allowing users to upgrade their websites and applications without migrating from their current content management systems. Clients who need to scale large amounts of data or even revamp a website on an entirely new platform can now achieve these changes with minimal effort.¥u003c/span¥u003e¥u003c/p¥u003e¥n¥u003cp¥u003e¥u003cspan¥u003eSix Apart customers will benefit not only from saved time and money, but also from ease of use. Topics does not have a user interface, so there is no new software to learn. Instead, it exists as a middle layer between the data library and the published page - automatically gathering, organizing and redistributing data.¥u003c/span¥u003e¥u003c/p¥u003e","keywords" : "","allowTrackbacks" : false,"basename" : "six_apart_acquires_topics_server_to_simplify_site_upgrades","title" : "Six Apart Acquires Topics Server to Simplify Site Upgrades","more" : "","customFields" : [{"basename" : "place","value" : "New York City"},{"basename" : "agenda","value" : "Movable Type¥nTopics"}]}
+
++ Response 200 (application/json)
+  
+        {
+          "excerpt" : "We are excited to announce that Six Apar...",
+          "status" : "Publish",
+          "date" : "2014-11-14T13:08:42¥u002b09:00",
+          "updatable" : false,
+          "author" : {
+            "userpicUrl" : null,
+            "displayName" : "Yuji Takayama"
+          },
+          "allowComments" : true,
+          "comments" : [],
+          "permalink" : "http://localhost/blog/20141114-1/2014/11/six-apart-acquires-topics-server-to-simplify-site-upgrades.html",
+          "body" : "¥u003cp¥u003e¥u003cspan¥u003eWe are excited to announce that Six Apart has acquired Topics, a dynamic online publishing product. This offering will provide Six Apart customers with an easy and cost-effective way to adapt existing content to evolving digital platforms.¥u003c/span¥u003e¥u003c/p¥u003e¥n¥u003cp¥u003e¥u003cspan¥u003eThis new product will save Six Apart customers a significant amount of time and money by allowing users to upgrade their websites and applications without migrating from their current content management systems. Clients who need to scale large amounts of data or even revamp a website on an entirely new platform can now achieve these changes with minimal effort.¥u003c/span¥u003e¥u003c/p¥u003e¥n¥u003cp¥u003e¥u003cspan¥u003eSix Apart customers will benefit not only from saved time and money, but also from ease of use. Topics does not have a user interface, so there is no new software to learn. Instead, it exists as a middle layer between the data library and the published page - automatically gathering, organizing and redistributing data.¥u003c/span¥u003e¥u003c/p¥u003e",
+          "keywords" : "",
+          "allowTrackbacks" : false,
+          "id" : 5,
+          "trackbacks" : [],
+          "modifiedDate" : "2014-11-14T13:17:52¥u002b09:00",
+          "trackbackCount" : "0",
+          "categories" : [],
+          "blog" : {
+            "id" : "1"
+          },
+          "commentCount" : "0",
+          "tags" : [],
+          "basename" : "six_apart_acquires_topics_server_to_simplify_site_upgrades",
+          "assets" : [],
+          "pingsSentUrl" : [],
+          "title" : "Six Apart Acquires Topics Server to Simplify Site Upgrades",
+          "class" : "entry",
+          "createdDate" : "2014-11-14T13:17:52¥u002b09:00",
+          "more" : "",
+          "customFields" : [
+            {
+              "basename" : "place",
+              "value" : "New York City"
+            },
+            {
+              "basename" : "agenda",
+              "value" : "Movable Type¥nTopics"
+            }
+          ]
+        }
+
 # Group Categories
 
 This is the Categories resource.
@@ -2507,7 +2596,7 @@ Code | Status | Description
 + Authorization is required.
 + This method accepts PUT and POST with __method=PUT.
 
-** Update in v2.0 **
+**Update in v2.0**
  
  + You can attach/detach categories and assets in the one request.
 
