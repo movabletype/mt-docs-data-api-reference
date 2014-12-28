@@ -1,6 +1,5 @@
 # Group Entries
 
-
 This is the Entries resource.
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
