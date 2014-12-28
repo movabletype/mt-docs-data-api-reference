@@ -1,6 +1,7 @@
 # Group Assets
 
 This is the Assets resource.
+test
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
 ------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------ | ------------
