@@ -495,7 +495,148 @@ Code | Status | Description
           ]
         }
 
-## insertNewBlog [/sites/:site_id]
+## insertNewWebsite [/sites]
+
+### New in v2.0: Create a new website. [POST]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to create a new website.
+404 | Not Found | Site not found.
+
+**Permissions**
++ create_website
+
+**Request Body Parameters**
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+blog | Object | Yes | | Single Sites resource
+
++ Request Sites resource
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+            X-MT-Authorization: MTAuth accessToken=<Token>
+
+    + Body
+
+            website={"url" : "http://example.com/", "name" : "New Website", "sitePath":"/path/to/document_root/"}
+
+
++ Response 200 (application/json)
+
+        {
+          "serverOffset" : 9,
+          "themeId" : "rainier",
+          "statusDefault" : "Publish",
+          "autodiscoverLinks" : false,
+          "useRevision" : true,
+          "relativeUrl" : "/",
+          "entryCustomPrefs" : [
+            "title",
+            "body",
+            "category",
+            "tags",
+            "feedback",
+            "publishing",
+            "assets"
+          ],
+          "archivePath" : "/path/to/document_root/",
+          "useCommentConfirmation" : true,
+          "url" : "http://example.com/",
+          "smartReplaceFields" : [
+            "title",
+            "text",
+            "text_more",
+            "keywords",
+            "excerpt",
+            "tags"
+          ],
+          "timezone" : "+09:00",
+          "daysOrPosts" : "posts",
+          "sortOrderPosts" : "descend",
+          "convertParas" : "richtext",
+          "name" : "New Website",
+          "description" : null,
+          "includeSystem" : null,
+          "archiveUrl" : "http://example.com/",
+          "allowCommentHtml" : true,
+          "fileExtension" : "html",
+          "smartReplace" : 0,
+          "junkFolderExpiry" : 14,
+          "publishEmptyArchive" : false,
+          "dateLanguage" : "ja",
+          "listOnIndex" : 10,
+          "pingWeblogs" : false,
+          "emailNewComments" : 1,
+          "language" : "",
+          "autolinkUrls" : true,
+          "sanitizeSpec" : 0,
+          "customFields" : [],
+          "emailNewPings" : 1,
+          "nofollowUrls" : true,
+          "createdBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
+          "pingGoogle" : false,
+          "convertParasComments" : 1,
+          "sitePath" : "/path/to/document_root/",
+          "id" : "10",
+          "parent" : null,
+          "archiveTypePreferred" : "",
+          "contentCss" : null,
+          "junkScoreThreshold" : 0,
+          "internalAutodiscovery" : false,
+          "createdDate" : "2015-03-24T22:03:47+09:00",
+          "class" : "website",
+          "moderateComments" : 2,
+          "allowCommentsDefault" : true,
+          "includeCache" : false,
+          "allowCommenterRegist" : true,
+          "maxRevisionsEntry" : 20,
+          "updatable" : true,
+          "requireCommentEmails" : false,
+          "ccLicenseImage" : "",
+          "allowComments" : true,
+          "allowPingsDefault" : true,
+          "pingOthers" : [],
+          "dynamicCache" : false,
+          "basenameLimit" : 100,
+          "modifiedDate" : "2015-03-24T22:03:47+09:00",
+          "dynamicConditional" : false,
+          "pageCustomPrefs" : [
+            "title",
+            "body",
+            "category",
+            "tags",
+            "feedback",
+            "publishing",
+            "assets"
+          ],
+          "allowPings" : true,
+          "commenterAuthenticators" : [
+            "MovableType"
+          ],
+          "host" : "example.com",
+          "ccLicenseUrl" : "",
+          "newCreatedUserRoles" : [],
+          "wordsInExcerpt" : 40,
+          "sortOrderComments" : "ascend",
+          "followAuthLinks" : true,
+          "allowUnregComments" : false,
+          "maxRevisionsTemplate" : 20,
+          "moderatePings" : true,
+          "customDynamicTemplates" : "none"
+        }
+
+## insertNewBlog, updateSite and deleteSite [/sites/:site_id]
 
 ### New in v2.0: Create a new blog. [POST]
 
@@ -641,152 +782,6 @@ blog | Object | Yes | | Single Sites resource
           "customDynamicTemplates" : "none"
         }
 
-## insertNewWebsite [/sites]
-
-### New in v2.0: Create a new website. [POST]
-
-**Status Code**
-
-Code | Status | Description
----- | ------ | -----------
-200 | OK | No Errors.
-403 | Forbidden | Do not have permission to create a new website.
-404 | Not Found | Site not found.
-
-**Permissions**
-+ create_website
-
-**Request Body Parameters**
-
-Name | Type | Required | Default | Description
----- | ---- | -------- | ------- | -----------
-blog | Object | Yes | | Single Sites resource
-
-+ Parameters
-    + site_id (required, number) ... The site ID.
-
-+ Request Sites resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth accessToken=<Token>
-
-    + Body
-
-            website={"url" : "http://example.com/", "name" : "New Website", "sitePath":"/path/to/document_root/"}
-
-
-+ Response 200 (application/json)
-
-        {
-          "serverOffset" : 9,
-          "themeId" : "rainier",
-          "statusDefault" : "Publish",
-          "autodiscoverLinks" : false,
-          "useRevision" : true,
-          "relativeUrl" : "/",
-          "entryCustomPrefs" : [
-            "title",
-            "body",
-            "category",
-            "tags",
-            "feedback",
-            "publishing",
-            "assets"
-          ],
-          "archivePath" : "/path/to/document_root/",
-          "useCommentConfirmation" : true,
-          "url" : "http://example.com/",
-          "smartReplaceFields" : [
-            "title",
-            "text",
-            "text_more",
-            "keywords",
-            "excerpt",
-            "tags"
-          ],
-          "timezone" : "+09:00",
-          "daysOrPosts" : "posts",
-          "sortOrderPosts" : "descend",
-          "convertParas" : "richtext",
-          "name" : "New Website",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/",
-          "allowCommentHtml" : true,
-          "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
-          "publishEmptyArchive" : false,
-          "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
-          "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
-          "customFields" : [],
-          "emailNewPings" : 1,
-          "nofollowUrls" : true,
-          "createdBy" : {
-            "userpicUrl" : null,
-            "id" : "1",
-            "displayName" : "Yuji Takayama"
-          },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
-          "sitePath" : "/path/to/document_root/",
-          "id" : "10",
-          "parent" : null,
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
-          "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T22:03:47+09:00",
-          "class" : "website",
-          "moderateComments" : 2,
-          "allowCommentsDefault" : true,
-          "includeCache" : false,
-          "allowCommenterRegist" : true,
-          "maxRevisionsEntry" : 20,
-          "updatable" : true,
-          "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
-          "allowComments" : true,
-          "allowPingsDefault" : true,
-          "pingOthers" : [],
-          "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T22:03:47+09:00",
-          "dynamicConditional" : false,
-          "pageCustomPrefs" : [
-            "title",
-            "body",
-            "category",
-            "tags",
-            "feedback",
-            "publishing",
-            "assets"
-          ],
-          "allowPings" : true,
-          "commenterAuthenticators" : [
-            "MovableType"
-          ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
-          "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
-          "sortOrderComments" : "ascend",
-          "followAuthLinks" : true,
-          "allowUnregComments" : false,
-          "maxRevisionsTemplate" : 20,
-          "moderatePings" : true,
-          "customDynamicTemplates" : "none"
-        }
-
-## update [/sites/:site_id]
-
 ### New in v2.0: Update an existing blog or website. [PUT]
 
 **Status Code**
@@ -928,8 +923,6 @@ blog | Object | Yes | | Single Sites resource
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
-
-## delete [/sites/:site_id]
 
 ### New in v2.0: Delete an existing blog or website. [DELETE]
 
