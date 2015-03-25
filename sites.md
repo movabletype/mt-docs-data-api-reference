@@ -349,6 +349,9 @@ Code | Status | Description
 
 ## listSitesByParent [/sites/:site_id/children(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds,)]
 
++ Authorization is required.
++ This method accepts PUT and POST with __method=PUT.
+
 ### New in v2.0: Retrieve sites by parent ID [GET]
 
 **Status Code**
@@ -498,6 +501,9 @@ Code | Status | Description
 ## insertNewWebsite [/sites]
 
 ### New in v2.0: Create a new website. [POST]
+
++ Authorization is required.
++ This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 
@@ -784,6 +790,9 @@ blog | Object | Yes | | Single Sites resource
 
 ### New in v2.0: Update an existing blog or website. [PUT]
 
++ Authorization is required.
++ This method accepts PUT and POST with __method=PUT.
+
 **Status Code**
 
 Code | Status | Description
@@ -925,6 +934,9 @@ blog | Object | Yes | | Single Sites resource
         }
 
 ### New in v2.0: Delete an existing blog or website. [DELETE]
+
++ Authorization is required.
++ This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 

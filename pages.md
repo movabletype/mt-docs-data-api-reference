@@ -611,7 +611,7 @@ Code | Status | Description
         }
 
 
-## updateEntry and deleteEntry [/sites/{site_id}/pages/{page_id}]
+## updatePage and deletePage [/sites/{site_id}/pages/{page_id}]
 
 ### Update an existing page. [PUT]
 
