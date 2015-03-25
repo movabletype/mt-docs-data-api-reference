@@ -4210,9 +4210,9 @@ blog | Object | Yes | | Single Sites resource
 
 ## insertNewBlog, updateSite and deleteSite [/sites/:site_id]
 
-+ Authorization is required.
-
 ### New in v2.0: Create a new blog. [POST]
+
++ Authorization is required.
 
 **Status Code**
 
@@ -4632,6 +4632,133 @@ Code | Status | Description
           "followAuthLinks" : true,
           "allowUnregComments" : false,
           "maxRevisionsTemplate" : 20,
+          "moderatePings" : true,
+          "customDynamicTemplates" : "none"
+        }
+
+
+## getBlog [/sites/:site_id(?fields)]
+### Retrieve a single website/blog by its ID. [GET]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to get an existing Site.
+404 | Not Found | Site not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + fields (optional, string) ... The field list to retrieve as part of the Sites resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+
++ Response 200 (application/json)
+
+        {
+          "serverOffset" : 9,
+          "themeId" : "rainier",
+          "statusDefault" : "Publish",
+          "autodiscoverLinks" : false,
+          "useRevision" : true,
+          "relativeUrl" : "/blog/",
+          "entryCustomPrefs" : [
+          "title",
+          "body",
+          "category",
+          "tags",
+          "feedback",
+          "publishing",
+          "assets"
+          ],
+          "archivePath" : "/path/to/document_root/blog",
+          "useCommentConfirmation" : true,
+          "url" : "http://example.com/blog/",
+          "smartReplaceFields" : [
+            "title",
+            "text",
+            "text_more",
+            "keywords",
+            "excerpt",
+            "tags"
+          ],
+          "timezone" : "+09:00",
+          "daysOrPosts" : "posts",
+          "sortOrderPosts" : "descend",
+          "convertParas" : "richtext",
+          "name" : "New Blog",
+          "description" : null,
+          "includeSystem" : null,
+          "archiveUrl" : "http://example.com/blog/",
+          "allowCommentHtml" : true,
+          "fileExtension" : "html",
+          "smartReplace" : 0,
+          "junkFolderExpiry" : 14,
+          "publishEmptyArchive" : false,
+          "dateLanguage" : "ja",
+          "listOnIndex" : 10,
+          "pingWeblogs" : false,
+          "emailNewComments" : 1,
+          "language" : "",
+          "autolinkUrls" : true,
+          "sanitizeSpec" : 0,
+          "customFields" : [],
+          "emailNewPings" : 1,
+          "nofollowUrls" : true,
+          "createdBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
+          "pingGoogle" : false,
+          "convertParasComments" : 1,
+          "sitePath" : "/path/to/document_root/blog",
+          "id" : "9",
+          "parent" : {
+            "name" : "First Website",
+            "id" : "1"
+          },
+          "archiveTypePreferred" : "",
+          "contentCss" : null,
+          "junkScoreThreshold" : 0,
+          "internalAutodiscovery" : false,
+          "createdDate" : "2015-03-24T15:15:56+09:00",
+          "class" : "blog",
+          "moderateComments" : 2,
+          "allowCommentsDefault" : true,
+          "includeCache" : false,
+          "allowCommenterRegist" : true,
+          "maxRevisionsEntry" : "20",
+          "updatable" : true,
+          "requireCommentEmails" : false,
+          "ccLicenseImage" : "",
+          "allowComments" : true,
+          "allowPingsDefault" : true,
+          "pingOthers" : [],
+          "dynamicCache" : false,
+          "basenameLimit" : 100,
+          "modifiedDate" : "2015-03-24T15:15:56+09:00",
+          "dynamicConditional" : false,
+          "pageCustomPrefs" : [
+            "title",
+            "body",
+            "category",
+            "tags",
+            "feedback",
+            "publishing",
+            "assets"
+          ],
+          "allowPings" : true,
+          "commenterAuthenticators" : [
+            "MovableType"
+          ],
+          "host" : "example.com",
+          "ccLicenseUrl" : "",
+          "newCreatedUserRoles" : [],
+          "wordsInExcerpt" : 40,
+          "sortOrderComments" : "ascend",
+          "followAuthLinks" : true,
+          "allowUnregComments" : false,
+          "maxRevisionsTemplate" : "20",
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
