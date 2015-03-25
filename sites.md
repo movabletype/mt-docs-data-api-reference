@@ -219,7 +219,7 @@ Code | Status | Description
 404 | Not Found | User not found.
 
 + Parameters
-    + user_id required, number or 'me') ... The user ID or the word 'me'.
+    + user_id (required, number or 'me') ... The user ID or the word 'me'.
     + search (optional, string) ... Search query.
     + searchFields = `name` (optional, string) ... Only 'name' is available.
     + limit = `25` (optional, number) ... Maximum number of sites to retrieve.

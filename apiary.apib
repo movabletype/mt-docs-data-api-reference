@@ -472,7 +472,7 @@ Code | Status | Description
 
 + Parameters
     + site_id (required, number) ... The site ID.
-    + page_id (required, number) ... The page ID.
+    + tag_id (required, number) ... The tag ID.
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
     + class (optional, string) ... The target asset class to retrieve. Available value is image, audio, video, file or something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
@@ -3640,7 +3640,7 @@ Code | Status | Description
 404 | Not Found | User not found.
 
 + Parameters
-    + user_id required, number or 'me') ... The user ID or the word 'me'.
+    + user_id (required, number or 'me') ... The user ID or the word 'me'.
     + search (optional, string) ... Search query.
     + searchFields = `name` (optional, string) ... Only 'name' is available.
     + limit = `25` (optional, number) ... Maximum number of sites to retrieve.

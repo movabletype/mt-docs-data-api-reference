@@ -459,7 +459,7 @@ Code | Status | Description
 
 + Parameters
     + site_id (required, number) ... The site ID.
-    + page_id (required, number) ... The page ID.
+    + tag_id (required, number) ... The tag ID.
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
     + class (optional, string) ... The target asset class to retrieve. Available value is image, audio, video, file or something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
