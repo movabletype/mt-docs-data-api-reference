@@ -204,7 +204,155 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
               "customDynamicTemplates" : "none"
             }
 
-## listSites [/sites(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds,)]
+## listByUser [/users/:user_id/sites(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds)]
+
++ Authorization is required.
+
+### Retrieve a list of sites by user [GET]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve the list of sites.
+404 | Not Found | User not found.
+
++ Parameters
+    + user_id required, number or 'me') ... The user ID or the word 'me'.
+    + search (optional, string) ... Search query.
+    + searchFields = `name` (optional, string) ... Only 'name' is available.
+    + limit = `25` (optional, number) ... Maximum number of sites to retrieve.
+    + offset = `0` (optional, number) ... 0-indexed offset.
+    + sortBy = `name` (optional, string) ... Only 'name' is available
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return sites in descending order.</dd><dt>ascend</dt><dd>Return sites in ascending order.</dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Sites resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + includeIds (optional, string) ... The comma separated ID list of sites to include to result.
+    + excludeIds (optional, string) ... The comma separated ID list of sites to exclude from result.
+
++ Response 200 (application/json)
+
+        {
+          "totalResults" : 1,
+          "items" : [
+            {
+              "serverOffset" : "9",
+              "themeId" : "rainier",
+              "statusDefault" : "Publish",
+              "autodiscoverLinks" : false,
+              "useRevision" : true,
+              "relativeUrl" : "/",
+              "entryCustomPrefs" : [
+                "title",
+                "text",
+                "category",
+                "excerpt",
+                "keywords",
+                "tags",
+                "feedback",
+                "assets",
+                "customfield_license_fee",
+                "customfield_foo"
+              ],
+              "archivePath" : "/path/to/document_root/",
+              "useCommentConfirmation" : true,
+              "url" : "http://example.com/",
+              "smartReplaceFields" : [
+                "title",
+                "text",
+                "text_more",
+                "keywords",
+                "excerpt",
+                "tags"
+              ],
+              "modifiedBy" : {
+                "userpicUrl" : null,
+                "id" : "1",
+                "displayName" : "Yuji Takayama"
+              },
+              "timezone" : "+09:00",
+              "daysOrPosts" : "posts",
+              "sortOrderPosts" : "descend",
+              "name" : "Six Apart Shop",
+              "convertParas" : "richtext",
+              "description" : "",
+              "includeSystem" : "",
+              "archiveUrl" : "http://example.com",
+              "allowCommentHtml" : true,
+              "fileExtension" : "html",
+              "smartReplace" : "0",
+              "junkFolderExpiry" : "14",
+              "publishEmptyArchive" : false,
+              "dateLanguage" : "ja",
+              "listOnIndex" : "10",
+              "pingWeblogs" : true,
+              "emailNewComments" : "1",
+              "language" : "ja",
+              "autolinkUrls" : true,
+              "sanitizeSpec" : "0",
+              "customFields" : [],
+              "emailNewPings" : "1",
+              "nofollowUrls" : true,
+              "createdBy" : {
+                "userpicUrl" : null,
+                "id" : "1",
+                "displayName" : "Yuji Takayama"
+              },
+              "pingGoogle" : true,
+              "convertParasComments" : "1",
+              "sitePath" : "/path/to/document_root/",
+              "id" : "1",
+              "parent" : null,
+              "archiveTypePreferred" : "Individual",
+              "contentCss" : "{{theme_static}}css/editor.css",
+              "junkScoreThreshold" : "0",
+              "internalAutodiscovery" : false,
+              "createdDate" : "2014-12-28T23:09:45+09:00",
+              "class" : "website",
+              "moderateComments" : "2",
+              "allowCommentsDefault" : true,
+              "includeCache" : false,
+              "allowCommenterRegist" : true,
+              "maxRevisionsEntry" : "20",
+              "updatable" : true,
+              "requireCommentEmails" : false,
+              "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
+              "allowComments" : true,
+              "allowPingsDefault" : false,
+              "pingOthers" : [],
+              "dynamicCache" : false,
+              "basenameLimit" : "100",
+              "modifiedDate" : "2015-03-12T12:16:24+09:00",
+              "dynamicConditional" : false,
+              "pageCustomPrefs" : [
+                "title",
+                "text",
+                "excerpt",
+                "keywords",
+                "tags",
+                "feedback",
+                "assets"
+              ],
+              "allowPings" : false,
+              "commenterAuthenticators" : [
+                "MovableType"
+              ],
+              "host" : "localhost",
+              "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
+              "newCreatedUserRoles" : [],
+              "wordsInExcerpt" : "40",
+              "sortOrderComments" : "ascend",
+              "followAuthLinks" : true,
+              "allowUnregComments" : false,
+              "maxRevisionsTemplate" : "20",
+              "moderatePings" : true,
+              "customDynamicTemplates" : "none"
+            }
+          ]
+        }
+
+
+## listSites [/sites(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds)]
 
 ### New in v2.0: Retrieve sites [GET]
 
@@ -348,9 +496,6 @@ Code | Status | Description
         }
 
 ## listSitesByParent [/sites/:site_id/children(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds,)]
-
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
 
 ### New in v2.0: Retrieve sites by parent ID [GET]
 
@@ -644,6 +789,8 @@ blog | Object | Yes | | Single Sites resource
 
 ## insertNewBlog, updateSite and deleteSite [/sites/:site_id]
 
++ Authorization is required.
+
 ### New in v2.0: Create a new blog. [POST]
 
 **Status Code**
@@ -936,7 +1083,7 @@ blog | Object | Yes | | Single Sites resource
 ### New in v2.0: Delete an existing blog or website. [DELETE]
 
 + Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
++ This method accepts DELETE and POST with __method=DELETE.
 
 **Status Code**
 
