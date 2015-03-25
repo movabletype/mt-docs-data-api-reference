@@ -110,11 +110,11 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
 + Request Assets resource
 
     + Headers
-    
+
             Content-Type: multipart/form-data
 
     + Body
-    
+
             path=/images&file=filedata&autoRenameIfExists=true&normalizeOrientation=false
 
 + Response 200 (application/json)
@@ -189,11 +189,11 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
 + Request Assets resource
 
     + Headers
-    
+
             Content-Type: multipart/form-data
 
     + Body
-    
+
             site_id=1&path=/images&file=filedata&autoRenameIfExists=true&normalizeOrientation=false
 
 + Response 200 (application/json)
@@ -599,13 +599,13 @@ Code | Status | Description
 
 + Request Assets resource
 
-    
+
     + Headers
-    
+
             Content-Type: application/x-www-form-urlencoded
 
     + Body
-    
+
             asset={
               "url" : "http://localhost/blog/20140917-2/images/0cf61aae.jpg",
               "id" : "1",
