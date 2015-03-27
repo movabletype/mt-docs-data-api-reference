@@ -218,7 +218,7 @@ entry | Object | Yes | | Single Entries resource
 
 ### Retrieve a single user by its own ID. [GET]
 
-+ Authentication is required if want to get non-active user or want to get private properties.
++ Authentication is required.
 
 **Status Code**
 
