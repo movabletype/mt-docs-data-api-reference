@@ -175,7 +175,7 @@ entry | Object | Yes | | Single Entries resource
 + Parameters
     + site_id (required, number) ... The site ID.
 
-+ Request Entries resource
++ Request
 
     + Headers
 
@@ -300,7 +300,7 @@ Code | Status | Description
 + Parameters
     + user_id (required, number or the word 'me') ... The user ID.
 
-+ Request Entries resource
++ Request
 
     + Headers
 
@@ -361,7 +361,7 @@ Code | Status | Description
 + Parameters
     + user_id (required, number) ... The user ID.
 
-+ Request Entries resource
++ Request
 
     + Headers
 
@@ -417,7 +417,7 @@ Code | Status | Description
 + Parameters
     + user_id (required, number) ... The user ID.
 
-+ Request Entries resource
++ Request
 
     + Headers
 
@@ -451,7 +451,7 @@ Code | Status | Description
 + Parameters
     + user_id (required, number) ... The user ID.
 
-+ Request Entries resource
++ Request
 
     + Headers
 
@@ -485,7 +485,7 @@ Code | Status | Description
 + Parameters
     + user_id (required, number) ... The user ID.
 
-+ Request Entries resource
++ Request
 
     + Headers
 
