@@ -1,4 +1,4 @@
-# Group Users
+# Group Authentication
 
 ## authorization [/authorization?(redirectUrl,clientId)]
 
