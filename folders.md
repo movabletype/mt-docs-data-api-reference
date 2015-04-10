@@ -1,26 +1,5 @@
 #Group Folders
 
-## Data Structure
-
-### Folders Resource (object)
-- id: 1 (number, required) - The unique identifier for a product
-- name: A green door (string, required)
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-    Sed sed lacus a arcu vehicula ultricies sed vel nibh. Mauris id cursus felis.
-
-    Interdum et malesuada fames ac ante ipsum primis in faucibus.
-
-    - unus
-    - duo
-    - tres
-    - quattuor
-
-- price: 12.50 (number, required)
-- tags: home, green (array)
-
-
 This is the Folders resource.
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
