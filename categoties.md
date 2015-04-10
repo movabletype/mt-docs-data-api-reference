@@ -311,15 +311,15 @@ category | Object | Yes | | Single Categories resource
 + Request Assets resource
 
     + Headers
-    
+
             Content-Type: application/x-www-form-urlencoded
 
     + Body
-    
+
             category={"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "category","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"}]}
 
 + Response 200 (application/json)
-  
+
         {
           "totalResults" : "1",
           "items" : [
@@ -371,7 +371,7 @@ Code | Status | Description
           "description" : null
         }
 
-## updateCategory and deleteCategory [/sites/{site_id}/categories/{category_id}]
+## updateCategory [/sites/{site_id}/categories/{category_id}]
 
 ### New in v2.0: Update an existing category. [PUT]
 + Authorization is required.
@@ -402,11 +402,11 @@ category | Object | Yes | | Single Categories resource
 + Request Categories resource
 
     + Headers
-    
+
             Content-Type: application/x-www-form-urlencoded
 
     + Body
-    
+
             category={"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "category","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"}]}
 
 + Response 200 (application/json)
@@ -425,6 +425,7 @@ category | Object | Yes | | Single Categories resource
           "description" : null
         }
 
+## deleteCategory [/sites/{site_id}/categories/{category_id}]
 ### New in v2.0: Delete an existing category. [DELETE]
 + Authorization is required.
 + This method accepts DELETE and POST with __method=DELETE.
@@ -492,11 +493,11 @@ categories | ARRAY | Yes | | Array of Categories resource that were rearranged.
 + Request Assets resource
 
     + Headers
-    
+
             Content-Type: application/x-www-form-urlencoded
 
     + Body
-    
+
             category=[{"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "category","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"}]}]
 
 + Response 200 (application/json)

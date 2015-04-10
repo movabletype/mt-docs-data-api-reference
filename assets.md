@@ -573,7 +573,7 @@ Code | Status | Description
           }
         }
 
-## updateAsset and deleteAsset [/sites/:site_id/assets/:asset_id]
+## updateAsset [/sites/:site_id/assets/:asset_id]
 ### New in v2.0: Update an asset. [PUT]
 
 * Authorization is required.
@@ -668,6 +668,7 @@ Code | Status | Description
           }
         }
 
+## deleteAsset [/sites/:site_id/assets/:asset_id]
 ### New in v2.0: Delete an asset. [DELETE]
 
 * Authorization is required.

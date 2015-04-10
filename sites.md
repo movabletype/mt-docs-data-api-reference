@@ -787,7 +787,7 @@ blog | Object | Yes | | Single Sites resource
           "customDynamicTemplates" : "none"
         }
 
-## insertNewBlog, updateSite and deleteSite [/sites/:site_id]
+## insertNewBlog [/sites/:site_id]
 
 ### New in v2.0: Create a new blog. [POST]
 
@@ -935,6 +935,7 @@ blog | Object | Yes | | Single Sites resource
           "customDynamicTemplates" : "none"
         }
 
+## updateSite [/sites/:site_id]
 ### New in v2.0: Update an existing blog or website. [PUT]
 
 + Authorization is required.
@@ -1080,6 +1081,7 @@ blog | Object | Yes | | Single Sites resource
           "customDynamicTemplates" : "none"
         }
 
+## deleteSite [/sites/:site_id]
 ### New in v2.0: Delete an existing blog or website. [DELETE]
 
 + Authorization is required.

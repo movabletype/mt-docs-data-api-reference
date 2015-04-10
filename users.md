@@ -276,7 +276,7 @@ Code | Status | Description
           "customFields" : []
         }
 
-## updateUser and deleteUser [/users/:user_id]
+## updateUser [/users/:user_id]
 
 ### Update oneself or another one's user data. [PUT]
 
@@ -339,6 +339,7 @@ Code | Status | Description
           "customFields" : []
         }
 
+## deleteUser [/users/:user_id]
 ### New in v2.0: Delete user. [DELETE]
 
 + Authentication is required.

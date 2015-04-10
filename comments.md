@@ -286,15 +286,15 @@ comment | Object | Yes | | Single Comments resource
 + Request Assets resource
 
     + Headers
-    
+
             Content-Type: application/x-www-form-urlencoded
 
     + Body
-    
+
             comment={"body" : "This is a test comment.\nHe he he"}
 
 + Response 200 (application/json)
-  
+
         {
           "link" : "http://example.com/blog/2014/11/hello-movable-type.html#comment-1",
           "parent" : null,
@@ -355,15 +355,15 @@ comment | Object | Yes | | Single Comments resource
 + Request Assets resource
 
     + Headers
-    
+
             Content-Type: application/x-www-form-urlencoded
 
     + Body
-    
+
             comment={"body" : "This is a test comment.\nHe he he"}
 
 + Response 200 (application/json)
-  
+
         {
           "link" : "http://example.com/blog/2014/11/hello-movable-type.html#comment-1",
           "parent" : null,
@@ -424,15 +424,15 @@ comment | Object | Yes | | Single Comments resource
 + Request Assets resource
 
     + Headers
-    
+
             Content-Type: application/x-www-form-urlencoded
 
     + Body
-    
+
             comment={"body" : "This is a test comment.\nHe he he"}
 
 + Response 200 (application/json)
-  
+
         {
           "link" : "http://example.com/blog/2014/11/hello-movable-type.html#comment-1",
           "parent" : null,
@@ -512,7 +512,7 @@ Code | Status | Description
           "customFields" : []
         }
 
-## updateComment and deleteComment [/sites/{site_id}/comments/{comment_id}]
+## updateComment [/sites/{site_id}/comments/{comment_id}]
 
 ### Update an exsiting comment. [PUT]
 
@@ -563,6 +563,7 @@ Code | Status | Description
         }
 
 
+## updateComment [/sites/{site_id}/comments/{comment_id}]
 ### Delete an existing comment. [DELETE]
 
 + Authorization is required.

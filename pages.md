@@ -611,7 +611,7 @@ Code | Status | Description
         }
 
 
-## updatePage and deletePage [/sites/{site_id}/pages/{page_id}]
+## updatePage [/sites/{site_id}/pages/{page_id}]
 
 ### Update an existing page. [PUT]
 
@@ -698,6 +698,7 @@ Code | Status | Description
           ]
         }
 
+## deletePage [/sites/{site_id}/pages/{page_id}]
 ### Delete an existing page. [DELETE]
 
 + Authorization is required.

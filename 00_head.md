@@ -5,9 +5,6 @@ HOST: http://movabletype.org
 The Movable Type Data API is a REST interface to the Movable Type Content Management System.
 The Data API is available for Movable Type Pro and Movable Type Advanced / Enterprise, Version 6.0 and higher.
 
-**TBD**
-
-+ How to upload/set the value of asset type custom fields.
-+ Think about anonymous comment.
+[Movable Type](http://www.movabletype.jp/ ) > [開発者向け ドキュメント](http://www.movabletype.jp/developers/) > [Movable Type Data API ドキュメント](http://www.movabletype.jp/developers/data-api/)
 
 
