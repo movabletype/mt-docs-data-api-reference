@@ -257,7 +257,7 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## export_site_theme [/sites/:site_id/export_theme]
+## exportSiteTheme [/sites/:site_id/export_theme]
 
 ### New in v2.0: Export site's theme. [POST]
 
