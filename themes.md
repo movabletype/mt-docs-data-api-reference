@@ -11,7 +11,7 @@ description | value | string | - | Y | Y | The description for this theme. | v2
 id | value | string | - | Y | Y | The ID for this theme. | v2
 inUse | value | boolean | - | Y | Y | This property is displayed only in system scope. <dl><dt>true</dt><dd>This theme is in used by any site.</dd><dt>false</dt><dd>This theme is not in use.</dd></dl> | v2
 label | value | string | - | Y | Y | The label for this theme. | v2
-uninstallable | value | boolean | - | Y | Y | <dl>dt>true</dt><dd>This theme is able to uninstall.</dd><dt>false</dt><dd>This theme is not able to uninstall.</dd></dl> | v2
+uninstallable | value | boolean | - | Y | Y | <dl><dt>true</dt><dd>This theme is able to uninstall.</dd><dt>false</dt><dd>This theme is not able to uninstall.</dd></dl> | v2
 version | value | string | - | Y | Y | The version number for this theme. | v2
 
         {
