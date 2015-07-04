@@ -7,33 +7,33 @@ Property Name | Type | Data Type | Database Column | Private | Read Only | Descr
 blog | object | - | | | | The blog of this asset. | v2
 blog.id | value | number | mt_asset.asset_blog_id | | Y | The ID of the blog that contains this asset. | v2
 class | value | string | mt_asset.asset_class | | Y | The type of this asset. This value is similar to 'type' attribute but this value is never localized. | v2
-createdBy | Object | - | | | Y | The created user of this asset. | v2
-createdBy.id | value | number | mt_asset.asset_created_by | Y | Y | The ID of created user. | v2
-createdBy.displayName | value | string | | | Y | The display name of created user. | v2
-createdBy.userpicUrl | value | string | | | Y | The URL of created user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. | v2
+createdBy | Object | - | | | Y | The user who created this asset. | v2
+createdBy.id | value | number | mt_asset.asset_created_by | Y | Y | The ID of user who created asset. | v2
+createdBy.displayName | value | string | | | Y | The display name of user who created asset. | v2
+createdBy.userpicUrl | value | string | | | Y | The URL of creating user’s userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, empty string will be returned. | v2
 createdDate | value | iso 8601 datetime | mt_asset.asset_created_on | | Y | The created time for this asset. | v2
 customFields | ARRAY | - | | | | The list of customfields data for this asset. | v2
 customFields.basename | value | string | mt_field.field_basename | | | The basename of this customfield. | v2
 customFields.value | value | string | | | | The value of this customfield. | v2
-description | value | string | mt_asset_asset_description | | | The desciption of this asset. | v1
-fileExt | value | string | mt_asset.asset_file_ext | | Y | The file extension of this asset. eturns the file extension without the leading period. | v2
+description | value | string | mt_asset_asset_description | | | The description of this asset. | v1
+fileExt | value | string | mt_asset.asset_file_ext | | Y | The file extension of this asset. Returns the file extension without the leading period. | v2
 filename | value | string | mt_asset.asset_filename | | Y | The filename of this asset that includes file extension. | v1
 id | value  | number | mt_asset.asset_id | | Y | The ID of this asset. | v1
 label | value  | string | mt_asset.asset_label | | | The label of this asset. | v1
 meta | object | - | | | | The meta information of this asset. | v2
-meta.fileSize | value | number | | | Y | The file size of this asset. If this asset is not file-based asset, will be returned null. | v2
-meta.height | value | number | | | Y | The height of this asset. If this asset has not height meta informatipn, will be returned null. | v2
-meta.width | value | number | | | Y | The width of this asset. If this asset has not weight meta informatipn, will be returned null. | v2
+meta.fileSize | value | number | | | Y | The file size of this asset. If this asset is not file-based asset, will return null. | v2
+meta.height | value | number | | | Y | The height of this asset. If this asset has no height meta information, will return null. | v2
+meta.width | value | number | | | Y | The width of this asset. If this asset has no width meta information, will return null. | v2
 mimeType | value | string | mt_asset.asset_mime_type | | Y | The MIME Type of this asset. | v1
-modifiedBy | Object | - | | | Y | The last modified user of this asset. | v2
-modifiedBy.displayName | value | string | | | Y | The display name of last modified user. | v2
-modifiedBy.id | value | number | mt_asset.asset_modified_by | Y | Y | The ID of last modified user. | v2
-modifiedBy.userpicUrl | value | string | | | Y | The URL of last modified user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. | v2
+modifiedBy | Object | - | | | Y | The user who last modified this asset. | v2
+modifiedBy.displayName | value | string | | | Y | The display name of user who last modified asset. | v2
+modifiedBy.id | value | number | mt_asset.asset_modified_by | Y | Y | The ID of user who last modified asset. | v2
+modifiedBy.userpicUrl | value | string | | | Y | The URL of last modified user’s userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, empty string will be returned. | v2
 modifiedDate | value | iso 8601 datetime | mt_asset.asset_modified_on | | Y | The last modified time for this asset. | v2
-parent | object | - | | | | The parent asset of this asset. If this asset is not a child of any assets, will be returned null. | v2
+parent | object | - | | | | The parent asset of this asset. If this asset is not a child of any assets, will return null. | v2
 parent.id | value | number | asset_parent | | Y | The ID of parent asset. | v2
 tags | ARRAY | string | | | | A list of tags associated with this asset. | v1
-type | value | string | mt_asset.asset_class | | Y | The type of this asset. The value will be returned localized value with DefaultLanguage. | v2
+type | value | string | mt_asset.asset_class | | Y | The type of this asset. The value returned will be localized value with DefaultLanguage. | v2
 updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed can update this asset.</dd><dt>false</dt><dd>The user who accessed cannot update this asset.</dd> | v2
 url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asset. | v1
 
@@ -77,7 +77,7 @@ url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asse
               "fileExtension" : "jpg"
             },
 
-## uploadAssetForSite [/sites/{site_id}/assets/upload]
+## uploadAssetForSite [/sites/:site_id/assets/upload]
 ### Upload a file to specific site. [POST]
 
 + This endpoint is marked as deprecated in v2.0.
@@ -89,6 +89,7 @@ Code | Status | Description
 200 | OK | No Errors.
 403 | Forbidden | Do not have permission to upload file.
 404 | Not Found | Site not found.
+409 | Conflict | Uploaded file already exists.
 413 | Request Entity Too Large | Upload file size is larger than CGIMaxUpload.
 
 **Permissions**
@@ -99,10 +100,10 @@ Code | Status | Description
 
 Name | Type | Required | Default | Description
 ---- | ---- | -------- | ------- | -----------
-path | string | Yes | | The upload destination. You can specify the path to the under the site path.
+path | string | Yes | | The upload destination. You can specify the path to be under the site path.
 file | file | Yes | | Actual file data
-autoRenameIfExists | boolean | | false | If this value is true and the file with the same filename exists, the uploaded file is automatically renamed to the random generated name.
-normalizeOrientation | boolean | | true | If this value is true and the uploaded file has a orientation information in Exif, this file's orientation is automatically normalized.
+autoRenameIfExists | boolean | | false | If this value is true and a file with the same filename exists, the uploaded file is automatically renamed to a random generated name.
+normalizeOrientation | boolean | | true | If this value is true and the uploaded file has orientation information in Exif data, this file’s orientation is automatically normalized.
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -160,7 +161,7 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-## uploadAsset [/assets/upload]
+## uploadAsset [/assets/upload(?overwrite_once)]
 ### New in v2.0: Upload a file. [POST]
 
 **Status Code**
@@ -170,6 +171,7 @@ Code | Status | Description
 200 | OK | No Errors.
 403 | Forbidden | Do not have permission to upload file.
 404 | Not Found | Site not found.
+409 | Conflict | Uploaded file already exists.
 413 | Request Entity Too Large | Upload file size is larger than CGIMaxUpload.
 
 **Permissions**
@@ -181,10 +183,14 @@ Code | Status | Description
 Name | Type | Required | Default | Description
 ---- | ---- | -------- | ------- | -----------
 site_id | number | Yes | | The site ID.
-path | string | Yes | | The upload destination. You can specify the path to the under the site path.
+path | string | Yes | | The upload destination. You can specify the path to be under the site path.
 file | file | Yes | | Actual file data
-autoRenameIfExists | boolean | | false | If this value is true and the file with the same filename exists, the uploaded file is automatically renamed to the random generated name.
-normalizeOrientation | boolean | | true | If this value is true and the uploaded file has a orientation information in Exif, this file's orientation is automatically normalized.
+autoRenameIfExists | boolean | | false | If this value is true and a file with the same filename exists, the uploaded file is automatically renamed to a random generated name.
+normalizeOrientation | boolean | | true | If this value is true and the uploaded file has orientation information in Exif data, this file’s orientation is automatically normalized.
+
++ parameter
+
+    + overwrite_once (optional, number) ... If  specify “1”, the API always overwrites an existing file with the uploaded file. This parameter is available in Movable Type 6.1.2
 
 + Request Assets resource
 
@@ -239,7 +245,7 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-## listAssets [/sites/{site_id}/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields)]
+## listAssets [/sites/:site_id/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields, relatedAssets)]
 
 ### New in v2.0: Retrieve assets in the specified site. [GET]
 
@@ -254,13 +260,14 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID. If 0 specified, will retrieve system-level assets.
     + search (optional, string) ... Search query.
-    + searchFields = `label` (optional, string) ... The comma separated field name list to search.
+    + searchFields = `label` (optional, string) ... The comma separated list of field names to search.
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
-    + class (optional, string) ... The target asset class to retrieve. Available value is 'image', 'audio', 'video', 'file', also something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
-    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each assets.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each assets.</dd></dl>
-    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For the date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For the date, it means from oldest to newset.    </dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + class (optional, string) ... The target asset class to retrieve. Supported values are 'image’, 'audio’, 'video’, 'file’, and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
+    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
+    + relatedAssets (optional, boolean) ... If you want to retrieve related assets (e.g. thumbnail, popup html) that generated by original asset, you should specify this parameter as true.
 
 + Response 200 (application/json)
 
@@ -325,10 +332,10 @@ Code | Status | Description
     + entry_id (required, number) ... The entry ID.
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
-    + class (optional, string) ... The target asset class to retrieve. Available value is image, audio, video, file or something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
-    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each assets.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each assets.</dd></dl>
-    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For the date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For the date, it means from oldest to newset.    </dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + class (optional, string) ... The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
+    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset.</dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
 
 + Response 200 (application/json)
 
@@ -393,10 +400,10 @@ Code | Status | Description
     + page_id (required, number) ... The page ID.
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
-    + class (optional, string) ... The target asset class to retrieve. Available value is image, audio, video, file or something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
-    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each assets.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each assets.</dd></dl>
-    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For the date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For the date, it means from oldest to newset.    </dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + class (optional, string) ... The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
+    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset.</dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
 
 + Response 200 (application/json)
 
@@ -462,10 +469,10 @@ Code | Status | Description
     + tag_id (required, number) ... The tag ID.
     + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
-    + class (optional, string) ... The target asset class to retrieve. Available value is image, audio, video, file or something added by any plugins. If you want to retrieve multiple class, specify the strings which separated by comma.
-    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each assets.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each assets. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each assets.</dd></dl>
-    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For the date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For the date, it means from oldest to newset.    </dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + class (optional, string) ... The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
+    + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset.</dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
+    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
+    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. The list of fields should be separated by commas. If this parameter is not specified, all fields will be returned.
 
 + Response 200 (application/json)
 
@@ -528,7 +535,7 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID.
     + asset_id (required, number) ... The asset ID.
-    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + fields (optional, string) ... The field list to retrieve as part of the Assets resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
 
 + Response 200 (application/json)
 
@@ -754,8 +761,8 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID.
     + asset_id (required, number) ... The asset ID.
-    + width (optional, number) ... The height of the thumbnail to generate. If this is the only parameter specified then the thumbnail’s width will be scaled proportionally to the height. When the longer value than the original image is specified, it will be ignored.
-    + height (optional, number) ... The width of the thumbnail to generate. If this is the only parameter specified then the thumbnail’s height will be scaled proportionally to the width. When both of height and width are specified, the longer side of the original image will be processed, and the lesser side will be scaled proportionally.
+    + width (optional, number) ... The width of the thumbnail to generate. If this is the only parameter specified then the thumbnail’s width will be scaled proportionally to the height. When a value longer than the original image is specified, it will be ignored.
+    + height (optional, number) ... The height of the thumbnail to generate. If this is the only parameter specified then the thumbnail’s height will be scaled proportionally to the width. When both of height and width are specified, the longer side of the original image will be processed, and the lesser side will be scaled proportionally.
     + scale (optional, string) ... The percentage by which to reduce or increase the size of the current asset.
     + square (optional, boolean) ... If set to true then the thumbnail generated will be square, where the length of each side of the square will be equal to the shortest side of the image.
 

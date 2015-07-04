@@ -4,15 +4,15 @@ This is the Categories resource.
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
 ------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------ | ------------
-archiveLink | value | string | | | Y | The category archive URL of this category. If "Categroy" archive mapping is not configured, this value will be null. | v2
+archiveLink | value | string | | | Y | The category archive URL of this category. If “Category” archive mapping is not configured, this value will be null. | v2
 basename | value | string | mt_category_category_basename | | | The basename of this category. | v1
 blog | object | - | | | | The blog of this category. | v1
 blog.id | value | number | mt_category.category_blog_id | | Y | The ID of the blog that contains this category. | v1
 class | value | string | mt_category.category_class | | Y | The object class for this category. | v1
-createdBy | Object | - | | | Y | The created user of this category. | v2
-createdBy.displayName | value | string | | | Y | The display name of created user. | v2
-createdBy.id | value | number | mt_category.category_created_by | Y | Y | The ID of created user. | v2
-createdBy.userpicUrl | value | string | | | Y | The URL of created user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. | v2
+createdBy | Object | - | | | Y | The user who created this category. | v2
+createdBy.displayName | value | string | | | Y | The display name of the user who created this category. | v2
+createdBy.id | value | number | mt_category.category_created_by | Y | Y | The ID of the user who created this category. | v2
+createdBy.userpicUrl | value | string | | | Y | The URL of created user’s userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, empty string will be returned. | v2
 createdDate | value | iso 8601 datetime | mt_ctegory.category_created_on | | Y | The created time for this category. | v2
 customFields | ARRAY | - | | | | The list of customfields data for this category. | v1
 customFields.basename | value | string | mt_field.field_basename | | | The basename of this customfield. | v1
@@ -20,10 +20,10 @@ customFields.value | value | string | | | | The value of this customfield. | v1
 description | value | string | mt_category.category_description | | Y | The description of this category. | v1
 id | value | number | mt_category.category_id | | Y | The ID of this category. | v1
 label | value | string | mt_category.category_label | | Y | The label of this category. | v1
-modifiedBy | Object | - | | | Y | The last modified user of this asset. | v2
-modifiedBy.id | value | number | mt_category.category_modified_by | Y | Y | The ID of last modified user. | v2
-modifiedBy.userpicUrl | value | string | | | Y | The URL of last modified user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. | v2
-modifiedBy.displayName | value | string | | | Y | The display name of last modified user. | v2
+modifiedBy | Object | - | | | Y | The user who last modified this category. | v2
+modifiedBy.id | value | number | mt_category.category_modified_by | Y | Y | The ID of user who last modified category. | v2
+modifiedBy.displayName | value | string | | | Y | The display name of user who last modified category. | v2
+modifiedBy.userpicUrl | value | string | | | Y | The URL of last modified user’s userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, empty string will be returned. | v2
 modifiedDate | value | iso 8601 datetime | mt_category.category_modified_on | | Y | The last modified time for this category. | v2
 parent | value | number | mt_category.cateogry_parent | | | The ID of the parent category for this category. This field can be updated from v2.  | v1
 updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed can update this category.</dd><dt>false</dt><dd>The user who accessed cannot update this category.</dd> | v2
@@ -63,7 +63,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
                   "value" : ""
                 }
 
-## listCategories [/sites/{site_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
+## listCategories [/sites/:site_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 ### Retrieve categories in the specified site. [GET]
 
@@ -78,15 +78,15 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID.
     + search (optional, string) ... Search query.
-    + searchFields = `label,basename` (optional, string) ... The comma separated field name list to search.
+    + searchFields = `label,basename` (optional, string) ... The comma separated list of field names to search.
     + limit = `10` (optional, number) ... Maximum number of categories to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
-    + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each categories. </dd><dt>id</dt><dd>Sort by its own ID.</dd><dt>basename</dt><dd>Sort by the basename of each categories.</dd><dt>label</dt><dd>Sort by the label of each categories.</dd></dl>
+    + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each category.</dd><dt>id</dt><dd>Sort by the ID of each category.</dd><dt>basename</dt><dd>Sort by the basename of each category.</dd><dt>label</dt><dd>Sort by the label of each category.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return categories in descending order.</dd><dt>ascend</dt><dd>Return categories in ascending order.</dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
     + top = `0` (optional, number) ... If set to 1, retrieves only top level categories. New in v2
-    + includeIds (optional, string) ... The comma separated ID list of categories to include to result.
-    + excludeIds (optional, string) ... The comma separated ID list of categories to exclude from result.
+    + includeIds (optional, string) ... The comma separated list of category IDs to include in result.
+    + excludeIds (optional, string) ... The comma separated list of category IDs to exclude from result.
 
 + Response 200 (application/json)
 
@@ -108,7 +108,7 @@ Code | Status | Description
           ]
         }
 
-## listCategoriesForEntry [/sites/{site_id}/entries/{entry_id}/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
+## listCategoriesForEntry [/sites/:site_id/entries/:entry_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
 
 ### New in v2.0: Retrieve categories in the specified entry. [GET]
 
@@ -129,15 +129,15 @@ Code | Status | Description
     + site_id (required, number) ... The site ID.
     + entry_id (required, number) ... The entry ID.
     + search (optional, string) ... Search query.
-    + searchFields = `label,basename` (optional, string) ... The comma separated field name list to search.
+    + searchFields = `label,basename` (optional, string) ... The comma separated list of field names to search.
     + limit = `10` (optional, number) ... Maximum number of categories to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
-    + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each categories. </dd><dt>id</dt><dd>Sort by its own ID.</dd><dt>basename</dt><dd>Sort by the basename of each categories.</dd><dt>label</dt><dd>Sort by the label of each categories.</dd></dl>
+    + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each category.</dd><dt>id</dt><dd>Sort by the ID of each category.</dd><dt>basename</dt><dd>Sort by the basename of each category.</dd><dt>label</dt><dd>Sort by the label of each category.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return categories in descending order.</dd><dt>ascend</dt><dd>Return categories in ascending order.</dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
     + top = `0` (optional, number) ... If set to 1, retrieves only top level categories. New in v2
-    + includeIds (optional, string) ... The comma separated ID list of categories to include to result.
-    + excludeIds (optional, string) ... The comma separated ID list of categories to exclude from result.
+    + includeIds (optional, string) ... The comma separated list of category IDs to include in result.
+    + excludeIds (optional, string) ... The comma separated list of category IDs to exclude from result.
     + type (optional, string) ... <dl><dt>primary</dt><dd>Retrieve primary category only</dd><dt>secondary</dt><dd>Retrieve secondary categories only</dd></dl>
 
 + Response 200 (application/json)
@@ -160,7 +160,7 @@ Code | Status | Description
           ]
         }
 
-## listParentCategories [/sites/{site_id}/categories/{category_id}/parents(?maxDepth, includeCurrent)]
+## listParentCategories [/sites/:site_id/categories/:category_id/parents(?maxDepth, includeCurrent)]
 
 ### New in v2.0: Retrieve parent categories from the specified category. [GET]
 
@@ -198,7 +198,7 @@ Code | Status | Description
           ]
         }
 
-## listSiblingCategories [/sites/{site_id}/categories/{category_id}/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
+## listSiblingCategories [/sites/:site_id/categories/:category_id/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 ### New in v2.0: Retrieve siblings categories from the specified category. [GET]
 
@@ -214,15 +214,15 @@ Code | Status | Description
     + site_id (required, number) ... The site ID.
     + category_id (required, number) ... The category ID.
     + search (optional, string) ... Search query.
-    + searchFields = `label,basename` (optional, string) ... The comma separated field name list to search.
+    + searchFields = `label,basename` (optional, string) ... The comma separated list of field names to search.
     + limit = `10` (optional, number) ... Maximum number of categories to retrieve.
     + offset = `0` (optional, number) ... 0-indexed offset.
-    + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each categories. </dd><dt>id</dt><dd>Sort by its own ID.</dd><dt>basename</dt><dd>Sort by the basename of each categories.</dd><dt>label</dt><dd>Sort by the label of each categories.</dd></dl>
+    + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each category.</dd><dt>id</dt><dd>Sort by the ID of each category.</dd><dt>basename</dt><dd>Sort by the basename of each category.</dd><dt>label</dt><dd>Sort by the label of each category.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return categories in descending order.</dd><dt>ascend</dt><dd>Return categories in ascending order.</dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
     + top = `0` (optional, number) ... If set to 1, retrieves only top level categories. New in v2
-    + includeIds (optional, string) ... The comma separated ID list of categories to include to result.
-    + excludeIds (optional, string) ... The comma separated ID list of categories to exclude from result.
+    + includeIds (optional, string) ... The comma separated list of category IDs to include in result.
+    + excludeIds (optional, string) ... The comma separated list of category IDs to exclude from result.
 
 + Response 200 (application/json)
 
@@ -244,7 +244,7 @@ Code | Status | Description
           ]
         }
 
-## listChildCategories [/sites/{site_id}/categories/{category_id}/children(?maxDepth, includeCurrent)]
+## listChildCategories [/sites/:site_id/categories/:category_id/children(?maxDepth, includeCurrent)]
 
 ### New in v2.0: Retrieve child categories from the specified category. [GET]
 
@@ -260,7 +260,7 @@ Code | Status | Description
     + site_id (required, number) ... The site ID.
     + category_id (required, number) ... The category ID.
     + maxDepth = `0` (optional, number) ... The depth of retrieving parent categories.
-    + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The list does not include current category.</dd><dt>0</dt><dd>The list includes current category.</dd></dl>
+    + includeCurrent = `0` (optional, number) ... <dl><dt>0</dt><dd>The list does not include current category.</dd><dt>1</dt><dd>The list includes current category.</dd></dl>
 
 + Response 200 (application/json)
 
@@ -282,7 +282,7 @@ Code | Status | Description
           ]
         }
 
-## createCategory [/sites/{site_id}/categories]
+## createCategory [/sites/:site_id/categories]
 
 ### New in v2.0: Create a new category. [GET]
 + Authorization is required.
@@ -338,7 +338,7 @@ category | Object | Yes | | Single Categories resource
           ]
         }
 
-## getCategory [/sites/{site_id}/categories/{category_id}(?fields)]
+## getCategory [/sites/:site_id/categories/:category_id(?fields)]
 
 ### New in v2.0: Retrieve single category by its ID. [GET]
 
@@ -353,7 +353,7 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID.
     + category_id (required, number) ... The category ID.
-    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + fields (optional, string) ... The field list to retrieve as part of the Categories resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
 
 + Response 200 (application/json)
 
@@ -371,7 +371,7 @@ Code | Status | Description
           "description" : null
         }
 
-## updateCategory [/sites/{site_id}/categories/{category_id}]
+## updateCategory [/sites/:site_id/categories/:category_id]
 
 ### New in v2.0: Update an existing category. [PUT]
 + Authorization is required.
@@ -425,7 +425,7 @@ category | Object | Yes | | Single Categories resource
           "description" : null
         }
 
-## deleteCategory [/sites/{site_id}/categories/{category_id}]
+## deleteCategory [/sites/:site_id/categories/:category_id]
 ### New in v2.0: Delete an existing category. [DELETE]
 + Authorization is required.
 + This method accepts DELETE and POST with __method=DELETE.
@@ -463,7 +463,7 @@ Code | Status | Description
           "description" : null
         }
 
-## permutateCategories [/sites/{site_id}/categories/permutate]
+## permutateCategories [/sites/:site_id/categories/permutate]
 
 ### New in v2.0: Rearrange existing categories in a new order. [POST]
 + Authorization is required.

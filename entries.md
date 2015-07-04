@@ -736,3 +736,123 @@ Code | Status | Description
           ]
         }
 
+## previewEntry [/sites/:site_id/entries/preview(?raw)]
+### new in v2.0: Make a preview for a entry. [POST]
+
++ Authorization is required.
++ **This endpoint is available in Movable Type 6.1.2 or later.**
+
+**Permissions**
+
++ create_post
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + raw (optional, number) ...  If specify “1”, will be returned preview contents.
+
++ Request Entries resource
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            entry={ "title" : "My First Post", "body" : "This is my first post!" }
+
+
++ Response 200 (application/json)
+
+        {
+          "status": "success",
+          "preview": "http://example.com/2015/07/my-first-post.html"
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": {
+            "message": "Do not have permission to get entry preview.",
+            "code": "403"
+          }
+        }
+
++ Response 404 (application/json)
+
+        {
+          "error": {
+            "message": "Site not found",
+            "code": "404"
+          }
+        }
+
++ Response 500 (application/json)
+
+        {
+          "error": {
+            "message": "Some error message is here",
+            "code": "500"
+          }
+        }
+
+## previewEntryById [/sites/:site_id/entries/:entry_id/preview(?raw)]
+### new in v2.0: Make a preview for a entry with existing data. [POST]
+
++ Authorization is required.
++ **This endpoint is available in Movable Type 6.1.2 or later.**
++ ***entry*** parameter is required. If you just want to get preview entry from existing data, you should provide ***entry*** parameter with empty json.
+
+**Permissions**
+
++ create_post
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + entry_id (required, number) ... The entry ID.
+    + raw (optional, number) ...  If specify “1”, will be returned preview contents.
+
++ Request Templates resource
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            entry={}
+
+
++ Response 200 (application/json)
+
+        {
+          "status": "success",
+          "preview": "http://example.com/2015/07/existing-entry.html"
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": {
+            "message": "Do not have permission to get entry preview.",
+            "code": "403"
+          }
+        }
+
++ Response 404 (application/json)
+
+        {
+          "error": {
+            "message": "Site not found / Entry not found",
+            "code": "404"
+          }
+        }
+
++ Response 500 (application/json)
+
+        {
+          "error": {
+            "message": "Some error message is here",
+            "code": "500"
+          }
+        }
+

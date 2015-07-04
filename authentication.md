@@ -19,7 +19,7 @@
     + password (required, string) ... The password of the user.
     + remember (optional, boolean) ... If true (generally, "1" is specified.), a new session will be created as a persistent session. If you want to specify false, you can pass "" or "0" to this parameter.
     + clientId (optional, string) ... If you want create a new session or access token, you should specify the clientId. If you specify  session id via "X-MT-Authorization" in the request header, clientId is not required.
-    + mtDataApiLoginMagicToken (optional, string) ... This is not required if you authenticate except via browser. If this parameter is passed and valid the MT will set cookie in order to start a session.
+    + mtDataApiLoginMagicToken (optional, string) ... This is not required if you authenticate except via browser. If this parameter is passed and valid Movable Type will set cookie in order to start a session.
 
 + Request
 
@@ -49,7 +49,7 @@
               }
             }
 
-## revokeSession [/authentication]
+## revokeAuthentication [/authentication]
 ### Invalidate current session. This is like logout. [DELETE]
 
 + Invalidate current session. This is like logout. All access tokens related to that session are invalidated too.
@@ -72,7 +72,6 @@
             }
 
 ## token [/token]
-
 ### Create new access token related to current session. [POST]
 
 + Attributes

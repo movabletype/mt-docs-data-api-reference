@@ -770,3 +770,123 @@ Code | Status | Description
           ]
         }
 
+## previewPage [/sites/:site_id/pages/preview(?raw)]
+### new in v2.0: Make a preview for a page. [POST]
+
++ Authorization is required.
++ **This endpoint is available in Movable Type 6.1.2 or later.**
+
+**Permissions**
+
++ manage_pages
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + raw (optional, number) ...  If specify “1”, will be returned preview contents.
+
++ Request Entries resource
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            page={ "title" : "My First Post", "body" : "This is my first post!" }
+
+
++ Response 200 (application/json)
+
+        {
+          "status": "success",
+          "preview": "http://example.com/my-first-post.html"
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": {
+            "message": "Do not have permission to get page preview.",
+            "code": "403"
+          }
+        }
+
++ Response 404 (application/json)
+
+        {
+          "error": {
+            "message": "Site not found",
+            "code": "404"
+          }
+        }
+
++ Response 500 (application/json)
+
+        {
+          "error": {
+            "message": "Some error message is here",
+            "code": "500"
+          }
+        }
+
+## previewPageById [/sites/:site_id/pages/:page_id/preview(?raw)]
+### new in v2.0: Make a preview for a page with existing data. [POST]
+
++ Authorization is required.
++ **This endpoint is available in Movable Type 6.1.2 or later.**
++ ***page*** parameter is required. If you just want to get preview page from existing data, you should provide ***page*** parameter with empty json.
+
+**Permissions**
+
++ manage_post
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + page_id (required, number) ... The page ID.
+    + raw (optional, number) ...  If specify “1”, will be returned preview contents.
+
++ Request Templates resource
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            page={}
+
+
++ Response 200 (application/json)
+
+        {
+          "status": "success",
+          "preview": "http://example.com/existing-page.html"
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": {
+            "message": "Do not have permission to get entry preview.",
+            "code": "403"
+          }
+        }
+
++ Response 404 (application/json)
+
+        {
+          "error": {
+            "message": "Site not found / Page not found",
+            "code": "404"
+          }
+        }
+
++ Response 500 (application/json)
+
+        {
+          "error": {
+            "message": "Some error message is here",
+            "code": "500"
+          }
+        }
+
