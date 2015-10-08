@@ -489,8 +489,6 @@ page | Object | Yes | | Single Pages resource
 
     + Body
 
-            page={"excerpt" : "We are excited to announce that Six Apar...","status" : "Publish","allowComments" : true,"body" : "¥u003cp¥u003e¥u003cspan¥u003eWe are excited to announce that Six Apart has acquired Topics, a dynamic online publishing product. This offering will provide Six Apart customers with an easy and cost-effective way to adapt existing content to evolving digital platforms.¥u003c/span¥u003e¥u003c/p¥u003e¥n¥u003cp¥u003e¥u003cspan¥u003eThis new product will save Six Apart customers a significant amount of time and money by allowing users to upgrade their websites and applications without migrating from their current content management systems. Clients who need to scale large amounts of data or even revamp a website on an entirely new platform can now achieve these changes with minimal effort.¥u003c/span¥u003e¥u003c/p¥u003e¥n¥u003cp¥u003e¥u003cspan¥u003eSix Apart customers will benefit not only from saved time and money, but also from ease of use. Topics does not have a user interface, so there is no new software to learn. Instead, it exists as a middle layer between the data library and the published page - automatically gathering, organizing and redistributing data.¥u003c/span¥u003e¥u003c/p¥u003e","keywords" : "","allowTrackbacks" : false,"basename" : "six_apart_acquires_topics_server_to_simplify_site_upgrades","title" : "Six Apart Acquires Topics Server to Simplify Site Upgrades","more" : "","customFields" : [{"basename" : "place","value" : "New York City"},{"basename" : "agenda","value" : "Movable Type¥nTopics"}]}
-
 + Response 200 (application/json)
 
         {
