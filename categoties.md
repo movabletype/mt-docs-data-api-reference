@@ -87,6 +87,9 @@ Code | Status | Description
     + top = `0` (optional, number) ... If set to 1, retrieves only top level categories. New in v2
     + includeIds (optional, string) ... The comma separated list of category IDs to include in result.
     + excludeIds (optional, string) ... The comma separated list of category IDs to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -139,6 +142,9 @@ Code | Status | Description
     + includeIds (optional, string) ... The comma separated list of category IDs to include in result.
     + excludeIds (optional, string) ... The comma separated list of category IDs to exclude from result.
     + type (optional, string) ... <dl><dt>primary</dt><dd>Retrieve primary category only</dd><dt>secondary</dt><dd>Retrieve secondary categories only</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -177,6 +183,9 @@ Code | Status | Description
     + category_id (required, number) ... The category ID.
     + maxDepth = `0` (optional, number) ... The depth of retrieving parent categories.
     + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The list does not include current category.</dd><dt>0</dt><dd>The list includes current category.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -223,6 +232,9 @@ Code | Status | Description
     + top = `0` (optional, number) ... If set to 1, retrieves only top level categories. New in v2
     + includeIds (optional, string) ... The comma separated list of category IDs to include in result.
     + excludeIds (optional, string) ... The comma separated list of category IDs to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -261,6 +273,9 @@ Code | Status | Description
     + category_id (required, number) ... The category ID.
     + maxDepth = `0` (optional, number) ... The depth of retrieving parent categories.
     + includeCurrent = `0` (optional, number) ... <dl><dt>0</dt><dd>The list does not include current category.</dd><dt>1</dt><dd>The list includes current category.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 

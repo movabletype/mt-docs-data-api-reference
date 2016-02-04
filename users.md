@@ -103,6 +103,9 @@ Code | Status | Description
     + excludeIds (optional, string) ... The comma separated ID list of users to exclude from result.
     + status (optional, string) ... Filter by users's status. <dl><dt>active</dt><dd>status is Active</dd><dt>disabled</dt><dd>status is Disabled.</dd><dt>pending</dt><dd>status is Pending</dd></dl>
     + lockout ... Filter by user's lockout status. <dl><dt>locked_out</dt><dd>Locked out user only</dd><dt>not_locked_out</dt><dd>Not locked out user only</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 

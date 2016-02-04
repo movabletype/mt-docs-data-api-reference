@@ -66,6 +66,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + includeIds (optional, string) ... The comma separated ID list of folders to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of folders to exclude from result.
     + top = `0` (optional, number) ... If set to 1, retrieves only top level folders.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -106,6 +109,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + folder_id (required, number) ... The folder ID.
     + maxDepth (optional, numner) ... The depth of retrieving parent folders.
     + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The results includes current folder.</dd><dt>0</dt>The results do not include current folder.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -154,6 +160,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + includeIds (optional, string) ... The comma separated ID list of folders to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of folders to exclude from result.
     + top = `0` (optional, number) ... If set to 1, retrieves only top level folders.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -195,6 +204,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + folder_id (required, number) ... The folder ID.
     + maxDepth (optional, numner) ... The depth of retrieving child folders.
     + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The results includes current folder.</dd><dt>0</dt>The results do not include current folder.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 

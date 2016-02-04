@@ -58,7 +58,10 @@ upatable | value | boolean | |  | Y | <dl><dt>true</dt><dd>The user who accessed
     + fields (optional, string) ... The field list to retrieve as part of the Logs resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
     + includeIds (optional, string) ... The comma separated list of log IDs to include in result.
     + excludeIds (optional, string) ... The comma separated list of log IDSs to exclude from result.
-    + level (optional, string) ... The comma separated list of level name to filter logs. Available value is foolows.<ul><li>security</li><li>error</li><li>warning</li><li>info</li><li>debug</li><li>security_or_error</li><li>security_or_error_or_warning</li><li>not_debug</li><li>debug_or_error</li></ul>
+    + level (optional, string) ... The comma separated list of level name to filter logs. Available value are foolows.<ul><li>security</li><li>error</li><li>warning</li><li>info</li><li>debug</li><li>security_or_error</li><li>security_or_error_or_warning</li><li>not_debug</li><li>debug_or_error</li></ul>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Request
 

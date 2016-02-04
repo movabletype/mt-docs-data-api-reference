@@ -229,6 +229,9 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Sites resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of sites to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of sites to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -373,6 +376,9 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Sites resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of sites to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of sites to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -518,6 +524,9 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Sites resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of sites to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of sites to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 

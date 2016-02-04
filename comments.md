@@ -89,6 +89,9 @@ Code | Status | Description
     + excludeIds (optional, string) ... The comma separated ID list of comments to exclude from result.
     + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
     + entryStatus (optional, string) ... Filter by container entry's status. <dl><dt>Draft</dt><dd>entry_status is 1.</dd><dt>Publish</dt><dd>entry_status is 2.</dd><dt>Review</dt><dd>entry_status is 3.</dd><dt>Future</dt><dd>entry_status is 4.</dd><dt>Spam</dt><dd>entry_status is 5.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 
 + Response 200 (application/json)
@@ -154,6 +157,9 @@ Code | Status | Description
     + includeIds (optional, string) ... The comma separated ID list of comments to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of comments to exclude from result.
     + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -218,6 +224,9 @@ Code | Status | Description
     + includeIds (optional, string) ... The comma separated ID list of comments to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of comments to exclude from result.
     + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
