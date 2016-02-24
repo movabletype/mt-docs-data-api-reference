@@ -62,11 +62,11 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields" : []
         }
 
-## listComments [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
+# Comments [/sites/{site_id}/comments/:comment_id]
 
-### Retrieve a list of comments in the specified site. [GET]
+## Retrieve a list of comments. [GET /sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
 
-+ Authorization is required if want to include unpublished comments.
+Authorization is required if want to include unpublished comments.
 
 **Status Code**
 
@@ -130,11 +130,9 @@ Code | Status | Description
           ]
         }
 
-## listCommentsForEntry [/sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## Retrieve a list of comments that related with entry. [GET /sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
 
-### Retrieve a list of comments for the specified entry. [GET]
-
-+ Authorization is required if want to include unpublished comments.
+Authorization is required if want to include unpublished comments.
 
 **Status Code**
 
@@ -197,11 +195,9 @@ Code | Status | Description
           ]
         }
 
-## listCommentsForPage [/sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## Retrieve a list of comments that related with page. [GET /sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
 
-### Retrieve a list of comments for the specified page. [GET]
-
-+ Authorization is required if want to include unpublished comments.
+Authentication is required if want to include unpublished comments.
 
 **Status Code**
 
@@ -264,11 +260,9 @@ Code | Status | Description
           ]
         }
 
-## createComment [/sites/{site_id}/entries/{entry_id}/comments]
+## Create a new comment for entry. [POST /sites/{site_id}/entries/{entry_id}/comments]
 
-### Create a new comment for entry. [POST]
-
-+ Authorization is required.
+Authentication required.
 
 **Status Code**
 
@@ -333,11 +327,9 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## postNewCommentForEntry [/sites/{site_id}/pages/{page_id}/comments]
+## Create a new comment for page. [POST /sites/{site_id}/pages/{page_id}/comments]
 
-### New In v2.0: Create a new comment for page. [POST]
-
-+ Authorization is required.
+Authentication required.
 
 **Status Code**
 
@@ -402,11 +394,9 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## createReplyComment [/sites/{site_id}/comments/{comment_id}/replies]
+## Reply to comment [POST /sites/{site_id}/comments/{comment_id}/replies]
 
-### Reply to specified comment. [POST]
-
-+ Authorization is required.
+Authentication required.
 
 **Status Code**
 
@@ -471,11 +461,9 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## getComment [/sites/{site_id}/comments/{comment_id}(?fields)]
+## Retrieve a single comment by its ID. [GET /sites/{site_id}/comments/{comment_id}(?fields)]
 
-### Retrieve a single comment by its ID. [GET]
-
-+ Authorization is required if the comment status is "unpublished". If the comment status is "published", then this method can be called without authorization.
+Authorization is required if the comment status is "unpublished".  
 
 **Status Code**
 
@@ -521,12 +509,11 @@ Code | Status | Description
           "customFields" : []
         }
 
-## updateComment [/sites/{site_id}/comments/{comment_id}]
+## Update an exsiting comment. [PUT]
 
-### Update an exsiting comment. [PUT]
+Authentication required.
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 
@@ -572,11 +559,11 @@ Code | Status | Description
         }
 
 
-## updateComment [/sites/{site_id}/comments/{comment_id}]
-### Delete an existing comment. [DELETE]
+## Delete an existing comment. [DELETE]
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=DELETE.
+Authentication required.
+
+This method accepts PUT and POST with __method=DELETE.
 
 **Status Code**
 

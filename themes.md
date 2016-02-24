@@ -25,11 +25,14 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
           "label": "Rainier"
         }
 
-## listThemes [/themes]
+# Themes [/themes]
 
-### New in v2.0: Retrieve a list of themes. [GET]
+## Retrieve a list of themes [GET]
+Retrieve a list of all of the installed theme.
 
-+ Authentication is required
+:::note
+Authentication required
+:::
 
 **Permissions**
 
@@ -139,11 +142,12 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## getTheme [/themes/:theme_id]
+## Retrieve a single theme [GET /themes/{theme_id}]
+Retrieve a single theme by its ID.
 
-### New in v2.0: Retrieve a single theme by its ID. [GET]
-
-+ Authentication is required
+:::note
+Authentication required
+:::
 
 **Permissions**
 
@@ -180,11 +184,14 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## applyThemeToSite [/sites/:site_id/themes/:theme_id/apply]
+# Utilities [/sites/{site_id}/themes/{theme_id}]
 
-### New in v2.0: Apply a theme to site. [POST]
+## Apply theme [POST /sites/{site_id}/themes/{theme_id}/apply]
+Apply theme to site.
 
-+ Authentication is required
+:::note
+Authentication required
+:::
 
 **Permissions**
 
@@ -214,13 +221,14 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
           }
         }
 
+## Uninstall theme [DELETE /themes/{theme_id}]
+Uninstall theme from MT.  
+When successful, you can take Themes Resource that was deleted. However, this theme is already removed from the Movable Type. You cannot apply this theme to.
 
-## uninstall_theme [/themes/:theme_id]
 
-### Uninstall a specified theme from the MT.  [DELETE]
-
-+ Authentication is required
-+ When successful, you can take Themes Resource that was deleted. However, this theme is already removed from the Movable Type. You cannot apply this theme to.
+:::note
+Authentication required
+:::
 
 **Permissions**
 
@@ -257,12 +265,15 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## exportSiteTheme [/sites/:site_id/export_theme]
+## Export theme [POST /sites/{site_id}/export_theme]
+Exporting current theme element as a new theme.
 
-### New in v2.0: Export site's theme. [POST]
-
-+ Authentication is required
-+ This endpoint will export current theme elements of specified site into theme directory.
+:::note
+Authentication required
+:::
+:::note
+This endpoint will export current theme elements of specified site into theme directory.
+:::
 
 **Permissions**
 

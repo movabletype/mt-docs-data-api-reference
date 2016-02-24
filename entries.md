@@ -83,11 +83,10 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listEntries [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+# Entries [/sites/:site_id/entries/:entry_id]
+## Retrieve a list of entries in the specified site. [GET /sites/:site_id/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
-### Retrieve a list of entries in the specified site. [GET]
-
-+ Authorization is required if want to include unpublished entries.
+Authentication required if want to include unpublished entries.
 
 **Status Code**
 
@@ -172,11 +171,9 @@ Code | Status | Description
           ]
         }
 
-## listEntriesForCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of entries by category. [GET /sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
-### New in v2.0: Retrieve a list of entries by specific category. [GET]
-
-+ Authorization is required if want to include unpublished entries.
+Authentication required. if want to include unpublished entries.
 
 **Status Code**
 
@@ -262,11 +259,9 @@ Code | Status | Description
           ]
         }
 
-## listEntriesForAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of entries that related with asset. [GET /sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
-### New in v2.0: Retrieve a list of entries that related with specific asset. [GET]
-
-+ Authorization is required if want to include unpublished entries.
+Authentication required. if want to include unpublished entries.
 
 **Status Code**
 
@@ -352,11 +347,9 @@ Code | Status | Description
           ]
         }
 
-## listEntriesForSiteAndTag [/sites/{site_id}/tags/{tag_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of entries that related with tag. [GET /sites/{site_id}/tags/{tag_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
 
-### New in v2.0: Retrieve a list of entries that related with specific tag. [GET]
-
-+ Authorization is required if want to include unpublished entries.
++ Authentication required. if want to include unpublished entries.
 
 **Status Code**
 
@@ -442,11 +435,9 @@ Code | Status | Description
           ]
         }
 
-## createEntry [/sites/{site_id}/entries]
+## Create a new entry. [POST /sites/{site_id}/entries]
 
-### Create a new entry. [POST]
-
-+ Authorization is required.
++ Authentication required.
 
 **Update in v2.0**
 
@@ -529,11 +520,9 @@ entry | Object | Yes | | Single Entries resource
           ]
         }
 
-## getEntry [/sites/{site_id}/entries/{entry_id}(?fields)]
+## Retrieve a single entry by its ID. [GET /sites/{site_id}/entries/:entry_id(?fields)]
 
-### Retrieve a single entry by its ID. [GET]
-
-+ Authorization is required if the entry status is "unpublished". If the entry status is "published", then this method can be called without authorization.
+Authentication required if the entry status is "unpublished".
 
 **Status Code**
 
@@ -595,16 +584,11 @@ Code | Status | Description
         }
 
 
-## updateEntry [/sites/{site_id}/entries/{entry_id}]
+## Update an existing entry. [PUT]
 
-### Update an existing entry. [PUT]
+Authentication required.
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
-
-**Update in v2.0**
-
- + You can attach/detach categories and assets in the one request.
+This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 
@@ -679,10 +663,10 @@ Code | Status | Description
           ]
         }
 
-## deleteEntry [/sites/{site_id}/entries/{entry_id}]
-### Delete an existing entry. [DELETE]
+## Delete an existing entry. [DELETE]
 
-+ Authorization is required.
+Authentication required.
+
 This method accepts PUT and POST with __method=DELETE.
 
 **Status Code**
@@ -748,11 +732,12 @@ Code | Status | Description
           ]
         }
 
-## previewEntry [/sites/:site_id/entries/preview(?raw)]
-### new in v2.0: Make a preview for a entry. [POST]
+# Preview [/sites/:site_id/entries/preview(?raw)]
+## Make a preview by specified data. [POST]
 
-+ Authorization is required.
-+ **This endpoint is available in Movable Type 6.1.2 or later.**
+Authentication required.
+
+**This endpoint is available in Movable Type 6.1.2 or later.**
 
 **Permissions**
 
@@ -762,11 +747,7 @@ Code | Status | Description
     + site_id (required, number) ... The site ID.
     + raw (optional, number) ...  If specify “1”, will be returned preview contents.
 
-+ Request Entries resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 
@@ -807,12 +788,13 @@ Code | Status | Description
           }
         }
 
-## previewEntryById [/sites/:site_id/entries/:entry_id/preview(?raw)]
-### new in v2.0: Make a preview for a entry with existing data. [POST]
+## Make a preview for existing data. [POST /sites/:site_id/entries/:entry_id/preview(?raw)]
 
-+ Authorization is required.
-+ **This endpoint is available in Movable Type 6.1.2 or later.**
-+ ***entry*** parameter is required. If you just want to get preview entry from existing data, you should provide ***entry*** parameter with empty json.
+Authentication required.
+
+**This endpoint is available in Movable Type 6.1.2 or later.**
+
+***entry*** parameter is required. If you just want to get preview entry from existing data, you should provide ***entry*** parameter with empty json. This will be fixed in the future.
 
 **Permissions**
 
@@ -823,11 +805,7 @@ Code | Status | Description
     + entry_id (required, number) ... The entry ID.
     + raw (optional, number) ...  If specify “1”, will be returned preview contents.
 
-+ Request Templates resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 

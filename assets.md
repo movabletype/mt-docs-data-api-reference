@@ -1,6 +1,7 @@
 # Group Assets
-
 This is the Assets resource.
+
++ Model (application/json)
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
 ------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------ | ------------
@@ -77,92 +78,9 @@ url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asse
               "fileExtension" : "jpg"
             },
 
-## uploadAssetForSite [/sites/:site_id/assets/upload]
-### Upload a file to specific site. [POST]
-
-+ This endpoint is marked as deprecated in v2.0.
-
-**Status Code**
-
-Code | Status | Description
----- | ------ | -----------
-200 | OK | No Errors.
-403 | Forbidden | Do not have permission to upload file.
-404 | Not Found | Site not found.
-409 | Conflict | Uploaded file already exists.
-413 | Request Entity Too Large | Upload file size is larger than CGIMaxUpload.
-
-**Permissions**
-
-+ upload
-
-**Request Body Parameters**
-
-Name | Type | Required | Default | Description
----- | ---- | -------- | ------- | -----------
-path | string | Yes | | The upload destination. You can specify the path to be under the site path.
-file | file | Yes | | Actual file data
-autoRenameIfExists | boolean | | false | If this value is true and a file with the same filename exists, the uploaded file is automatically renamed to a random generated name.
-normalizeOrientation | boolean | | true | If this value is true and the uploaded file has orientation information in Exif data, this file’s orientation is automatically normalized.
-
-+ Parameters
-    + site_id (required, number) ... The site ID.
-
-+ Request Assets resource
-
-    + Headers
-
-            Content-Type: multipart/form-data
-
-    + Body
-
-            path=/images&file=filedata&autoRenameIfExists=true&normalizeOrientation=false
-
-+ Response 200 (application/json)
-
-        {
-          "id" : 1,
-          "label" : "The Bridge",
-          "mimeType" : "image/jpeg",
-          "url" : "http://example.com/images/the-bridge.jpg",
-          "filename" : "the-bridge",
-          "description" : "Taken from over the bridge.",
-          "tags" : [
-            "boston",
-            "bridge",
-            "light"
-          ],
-          "blog" : {
-            "id" : 1
-          },
-          "updatable" : true,
-          "modifiedBy" : {
-            "id" : 1,
-            "displayName" : "Yuji Takayama",
-            "userpicUrl" : null
-          },
-          "modifiedDate" : "2014-10-10T13:13:01+09:00",
-          "createdBy" : {
-            "id" : 1,
-            "displayName" : "Yuji Takayama",
-            "userpicUrl" : null
-          },
-          "cratedDate" : "2014-10-10T13:13:01+09:00",
-          "type" : "Image",
-          "class" : "image",
-          "fileExt" : "jpg",
-          "parent" : {
-            "id" : null
-          },
-          "meta" : {
-            "height" : 768,
-            "width" : 1024,
-            "fileSize" : 339773
-          }
-        }
-
-## uploadAsset [/assets/upload(?overwrite_once)]
-### New in v2.0: Upload a file. [POST]
+# Upload [/assets/upload(?overwrite_once)]
+## Upload a single file. [POST]
+Upload a single file.
 
 **Status Code**
 
@@ -192,15 +110,11 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
 
     + overwrite_once (optional, number) ... If  specify “1”, the API always overwrites an existing file with the uploaded file. This parameter is available in Movable Type 6.1.2
 
-+ Request Assets resource
-
-    + Headers
-
-            Content-Type: multipart/form-data
++ Request multipart/form-data
 
     + Body
 
-            site_id=1&path=/images&file=filedata&autoRenameIfExists=true&normalizeOrientation=false
+            site_id=1&path=/images&file={filedata}&autoRenameIfExists=true&normalizeOrientation=false
 
 + Response 200 (application/json)
 
@@ -245,9 +159,89 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-## listAssets [/sites/:site_id/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields, relatedAssets)]
+## DEPRECATED - Upload a single file. [POST /sites/:site_id/assets/upload]
+***This endpoint is marked as deprecated in v2.0.***
 
-### New in v2.0: Retrieve assets in the specified site. [GET]
+Upload single file to specific site.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to upload file.
+404 | Not Found | Site not found.
+409 | Conflict | Uploaded file already exists.
+413 | Request Entity Too Large | Upload file size is larger than CGIMaxUpload.
+
+**Permissions**
+
++ upload
+
+
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+path | string | Yes | | The upload destination. You can specify the path to be under the site path. This parameter is required.
+file | file | Yes | | Actual file data
+autoRenameIfExists | boolean | | false | If this value is true and a file with the same filename exists, the uploaded file is automatically renamed to a random generated name.
+normalizeOrientation | boolean | | true | If this value is true and the uploaded file has orientation information in Exif data, this file’s orientation is automatically normalized.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+
++ Request (multipart/form-data)
+
+    + Body
+
+            path=/images&file={filedata}&autoRenameIfExists=true&normalizeOrientation=false
+
++ Response 200 (application/json)
+
+        {
+          "id" : 1,
+          "label" : "The Bridge",
+          "mimeType" : "image/jpeg",
+          "url" : "http://example.com/images/the-bridge.jpg",
+          "filename" : "the-bridge",
+          "description" : "Taken from over the bridge.",
+          "tags" : [
+            "boston",
+            "bridge",
+            "light"
+          ],
+          "blog" : {
+            "id" : 1
+          },
+          "updatable" : true,
+          "modifiedBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "modifiedDate" : "2014-10-10T13:13:01+09:00",
+          "createdBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "cratedDate" : "2014-10-10T13:13:01+09:00",
+          "type" : "Image",
+          "class" : "image",
+          "fileExt" : "jpg",
+          "parent" : {
+            "id" : null
+          },
+          "meta" : {
+            "height" : 768,
+            "width" : 1024,
+            "fileSize" : 339773
+          }
+        }
+
+# Assets [/sites/:site_id/assets/:asset_id]
+## Retrieve a list of assets. [GET /sites/:site_id/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields, relatedAssets)]
+Retrieve list of assets in the specified site.
 
 **Status Code**
 
@@ -319,8 +313,7 @@ Code | Status | Description
           ]
         }
 
-## listAssetsForEntry [/sites/:site_id/entries/:entry_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
-### New in v2.0: Retrieve assets that related with specified entry. [GET]
+## Retrieve a list of assets that related with entry [GET /sites/:site_id/entries/:entry_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
 
 **Status Code**
 
@@ -390,8 +383,8 @@ Code | Status | Description
           ]
         }
 
-## listAssetsForPage [/sites/:site_id/pages/:page_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
-### New in v2.0: Retrieve assets that related with specified page. [GET]
+## Retrieve a list of assets that related with page [GET /sites/:site_id/pages/:page_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+Retrieve assets that related with specified page.
 
 **Status Code**
 
@@ -461,8 +454,7 @@ Code | Status | Description
           ]
         }
 
-## listAssetsForSiteAndTag [/sites/:site_id/tags/:tag_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
-### New in v2.0: Retrieve assets that related with specified tag. [GET]
+## Retrieve a list of assets that related with tag. [GET /sites/:site_id/tags/:tag_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
 
 **Status Code**
 
@@ -533,8 +525,7 @@ Code | Status | Description
           ]
         }
 
-## getAsset [/sites/:site_id/assets/:asset_id(?fields)]
-### New in v2.0: Retrieve single asset by its ID. [GET]
+## Retrieve a single asset by its ID. [GET /sites/:site_id/assets/:asset_id(?fields)]
 
 **Status Code**
 
@@ -592,11 +583,11 @@ Code | Status | Description
           }
         }
 
-## updateAsset [/sites/:site_id/assets/:asset_id]
-### New in v2.0: Update an asset. [PUT]
+## Update an asset. [PUT]
 
-* Authorization is required.
-* This method accepts PUT and POST with __method=PUT.
+Authentication required.
+
+This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 
@@ -687,11 +678,11 @@ Code | Status | Description
           }
         }
 
-## deleteAsset [/sites/:site_id/assets/:asset_id]
-### New in v2.0: Delete an asset. [DELETE]
+## Delete an asset. [DELETE]
 
-* Authorization is required.
-* This method accepts DELETE and POST with __method=DELETE.
+Authentication required.
+
+This method accepts DELETE and POST with __method=DELETE.
 
 **Status Code**
 
@@ -754,8 +745,8 @@ Code | Status | Description
           }
         }
 
-## getThubmbnail [/sites/:site_id/assets/:asset_id/thumbnail(?width, height, scale, square)]
-### New in v2.0: Get thumbnail of an asset. [GET]
+# Thumbnail [/sites/:site_id/assets/:asset_id/thumbnail(?width, height, scale, square)]
+## Get thumbnail image for an asset. [GET]
 
 This endpoint requires one of parameter 'width' or 'height' or 'scale' Also, cannot use these parameters at same time.
 

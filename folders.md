@@ -48,11 +48,10 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields": []
         },
 
-## listFolders [//sites/:site_id/folders(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+# Folders [/sites/:site_id/folders/:folder_id]
+## Retrieve a list of folders [GET //sites/:site_id/folders(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
 
-### New in v2.0: Retrieve a list of folders. [GET]
-
-+ Authentication required if you want to get private properties.
+Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID
@@ -98,11 +97,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listParentFolders [/sites/:site_id/folders/:folder_id/parents(?maxDepth, includeCurrent)]
+## Retrieve a list of parent folders [GET /sites/:site_id/folders/:folder_id/parents(?maxDepth, includeCurrent)]
 
-### New in v2.0: Retrieve a list of parent folders of the requested folder. [GET]
-
-+ Authentication required if you want to get private properties.
+Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -141,11 +138,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listSiblingFolders [/sites/:site_id/folders/:folder_id/siblings(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+## Retrieve a list of sibling folders [GET /sites/:site_id/folders/:folder_id/siblings(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
 
-### New in v2.0: Retrieve a list of sibling folders of the requested folder. [GET]
-
-+ Authentication required if you want to get private properties.
+Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID
@@ -192,9 +187,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listChildFolders [/sites/:site_id/folders/:folder_id/children(?maxDepth, includeCurrent)]
-
-### New in v2.0: Retrieve a list of child folders of the requested folder. [GET]
+## Retrieve a list of child folders [GET /sites/:site_id/folders/:folder_id/children(?maxDepth, includeCurrent)]
 
 
 + Authentication required if you want to get private properties.

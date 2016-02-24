@@ -88,11 +88,15 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
             }
 
 
-## visitsForPath [/sites/:site_id/stats/path/visits(?startDate, endDate, limit, offset, path)]
+# PageStats [/sites/{site_id}/stats]
 
-+ Authorization is required.
+## Retrieve a list of visits data for each path [GET /sites/{site_id}/stats/path/visits{?startDate,endDate,limit,offset,path}]
+Retrieve a list of visits data for each path from the provider.
 
-### Retrieve visits count for each path from provider. [GET]
+:::note
+Authentication required.
+:::
+
 
 + Parameters
     + site_id (required, Number) ... The site ID.
@@ -153,11 +157,13 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## visitsForDate [/sites/:site_id/stats/date/visits(?startDate, endDate, limit, offset, path)]
+## Retrieve a list of visits data for each date [GET /sites/{site_id}/stats/date/visits{?startDate,endDate,limit,offset,path}]
 
-+ Authorization is required.
+Retrieve a list of visits data for each date from the provider.
 
-### Retrieve visits count for each date from provider. [GET]
+:::note
+Authentication required.
+:::
 
 + Parameters
     + site_id (required, Number) ... The site ID.
@@ -220,11 +226,12 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## pageviewsForPath [/sites/:site_id/stats/path/pageviews(?startDate, endDate, limit, offset, path, uniquePath)]
+## Retrieve a list of page view data for each path [GET /sites/{site_id}/stats/path/pageviews{?startDate,endDate,limit,offset,path,uniquePath}]
+Retrieve a list of page view data for each path from the provider.
 
-+ Authorization is required.
-
-### Retrieve pageviews count for each path from provider. [GET]
+:::note
+Authentication required.
+:::
 
 + Parameters
     + site_id (required, Number) ... The site ID.
@@ -286,11 +293,12 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## pageviewsForDate [/sites/:site_id/stats/date/pageviews(?startDate, endDate, limit, offset, path)]
+## Retrieve a list of page view data for each date [GET /sites/{site_id}/stats/date/pageviews{?startDate,endDate,limit,offset,path}]
+Retrieve a list of page view data for each date from the provider.
 
-+ Authorization is required.
-
-### Retrieve pageviews count for each date from provider. [GET]
+:::note
+Authentication required.
+:::
 
 + Parameters
     + site_id (required, Number) ... The site ID.
@@ -354,11 +362,12 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## getProvider [/sites/:site_id/stats/provider]
+# Provider [/sites/{site_id}/stats/provider]
+## Retrieve current provider [GET]
 
-+ Authorization is required.
-
-### Retrieve a current effective provider. [GET]
+:::note
+Authentication required.
+:::
 
 + Parameters
     + site_id (required, Number) ... The site ID.

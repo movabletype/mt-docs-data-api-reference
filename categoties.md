@@ -63,9 +63,8 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
                   "value" : ""
                 }
 
-## listCategories [/sites/:site_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
-
-### Retrieve categories in the specified site. [GET]
+# Categories [/sites/:site_id/categories/:category_id]
+## Retrieve a list of categories [GET /sites/:site_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 **Status Code**
 
@@ -111,9 +110,7 @@ Code | Status | Description
           ]
         }
 
-## listCategoriesForEntry [/sites/:site_id/entries/:entry_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
-
-### New in v2.0: Retrieve categories in the specified entry. [GET]
+## Retrieve a list of categories that related with entry. [GET /sites/:site_id/entries/:entry_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
 
 **Status Code**
 
@@ -166,9 +163,7 @@ Code | Status | Description
           ]
         }
 
-## listParentCategories [/sites/:site_id/categories/:category_id/parents(?maxDepth, includeCurrent)]
-
-### New in v2.0: Retrieve parent categories from the specified category. [GET]
+## Retrieve a list of parent categories. [GET /sites/:site_id/categories/:category_id/parents(?maxDepth, includeCurrent)]
 
 **Status Code**
 
@@ -207,9 +202,7 @@ Code | Status | Description
           ]
         }
 
-## listSiblingCategories [/sites/:site_id/categories/:category_id/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
-
-### New in v2.0: Retrieve siblings categories from the specified category. [GET]
+## Retrieve a list of siblings categories. [GET /sites/:site_id/categories/:category_id/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 **Status Code**
 
@@ -256,9 +249,7 @@ Code | Status | Description
           ]
         }
 
-## listChildCategories [/sites/:site_id/categories/:category_id/children(?maxDepth, includeCurrent)]
-
-### New in v2.0: Retrieve child categories from the specified category. [GET]
+## Retrieve a list of child categories. [GET /sites/:site_id/categories/:category_id/children(?maxDepth, includeCurrent)]
 
 **Status Code**
 
@@ -297,10 +288,8 @@ Code | Status | Description
           ]
         }
 
-## createCategory [/sites/:site_id/categories]
-
-### New in v2.0: Create a new category. [GET]
-+ Authorization is required.
+## Create a new category. [GET /sites/:site_id/categories]
+Authentication required.
 
 **Status Code**
 
@@ -353,9 +342,7 @@ category | Object | Yes | | Single Categories resource
           ]
         }
 
-## getCategory [/sites/:site_id/categories/:category_id(?fields)]
-
-### New in v2.0: Retrieve single category by its ID. [GET]
+## Retrieve a single category by its ID. [GET /sites/:site_id/categories/:category_id(?fields)]
 
 **Status Code**
 
@@ -386,11 +373,10 @@ Code | Status | Description
           "description" : null
         }
 
-## updateCategory [/sites/:site_id/categories/:category_id]
+## Update an existing category. [PUT]
+Authentication required.
 
-### New in v2.0: Update an existing category. [PUT]
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 
@@ -440,11 +426,12 @@ category | Object | Yes | | Single Categories resource
           "description" : null
         }
 
-## deleteCategory [/sites/:site_id/categories/:category_id]
-### New in v2.0: Delete an existing category. [DELETE]
-+ Authorization is required.
-+ This method accepts DELETE and POST with __method=DELETE.
-+ This method returns deleted Category resource.
+## Delete an existing category. [DELETE]
+Authentication required.
+
+This method accepts DELETE and POST with __method=DELETE.
+
+This method returns deleted Category resource.
 
 **Status Code**
 
@@ -478,11 +465,10 @@ Code | Status | Description
           "description" : null
         }
 
-## permutateCategories [/sites/:site_id/categories/permutate]
+## Rearrange existing categories in a new order. [POST /sites/:site_id/categories/permutate]
+Authentication required.
 
-### New in v2.0: Rearrange existing categories in a new order. [POST]
-+ Authorization is required.
-+ This method returns rearranged Categories resource.
+This method returns rearranged Categories resource.
 
 **Status Code**
 

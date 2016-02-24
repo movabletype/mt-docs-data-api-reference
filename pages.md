@@ -87,11 +87,14 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listPages [/sites/{site_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+# Pages [/sites/{site_id}/pages/{page_id}]
 
-### New in v2.0: Retrieve a list of pages in the specified site. [GET]
+## Retrieve a list of pages [GET /sites/{site_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
+Retrieve a list of pages.
 
-+ Authorization is required if want to include unpublished pages.
+:::note
+Authentication required if want to include unpublished pages.
+:::
 
 **Status Code**
 
@@ -180,11 +183,12 @@ Code | Status | Description
           ]
         }
 
-## listPagesForFolder [/sites/{site_id}/folders/{folder_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of pages by folder [GET /sites/{site_id}/folders/{folder_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
+Retrieve a list of pages by folder.
 
-### New in v2.0: Retrieve a list of pages by specific folder. [GET]
-
-+ Authorization is required if want to include unpublished pages.
+:::note
+Authentication required if want to include unpublished pages.
+:::
 
 **Status Code**
 
@@ -274,11 +278,12 @@ Code | Status | Description
           ]
         }
 
-## listPagesForAsset [/sites/{site_id}/assets/{asset_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of pages that related with asset [GET /sites/{site_id}/assets/{asset_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
+Retrieve a list of pages that related with asset.
 
-### New in v2.0: Retrieve a list of pages that related with specific asset. [GET]
-
-+ Authorization is required if want to include unpublished pages.
+:::note
+Authentication required if want to include unpublished pages.
+:::
 
 **Status Code**
 
@@ -368,11 +373,12 @@ Code | Status | Description
           ]
         }
 
-## listPagesForSiteAndTag [/sites/{site_id}/tags/{tag_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of pages that related with tag [GET /sites/{site_id}/tags/{tag_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
+Retrieve a list of pages that related with tag.
 
-### New in v2.0: Retrieve a list of pages that related with specific tag. [GET]
-
-+ Authorization is required if want to include unpublished pages.
+:::note
+Authentication required if want to include unpublished pages.
+:::
 
 **Status Code**
 
@@ -462,15 +468,12 @@ Code | Status | Description
           ]
         }
 
-## createPage [/sites/{site_id}/pages]
+### Create a new page [POST /sites/{site_id}/pages]
+Create a new page.
 
-### Create a new page. [POST]
-
-+ Authorization is required.
-
-**Update in v2.0**
-
- + You can attach folder and assets in the one request.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -551,11 +554,12 @@ page | Object | Yes | | Single Pages resource
           ]
         }
 
-## getPage [/sites/{site_id}/pages/{page_id}(?fields)]
+### Retrieve a single page by its ID [GET /sites/{site_id}/pages/{page_id}{?fields}]
+Retrieve a single page by its ID.
 
-### Retrieve a single page by its ID. [GET]
-
-+ Authorization is required if the page status is "unpublished". If the page status is "published", then this method can be called without authorization.
+:::note
+Authentication required if the page status is "unpublished".
+:::
 
 **Status Code**
 
@@ -621,12 +625,16 @@ Code | Status | Description
         }
 
 
-## updatePage [/sites/{site_id}/pages/{page_id}]
+## Update an existing page [PUT]
+Update an existing page.
 
-### Update an existing page. [PUT]
+:::note
+Authentication required.
+:::
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+:::note
+This method accepts PUT and POST with __method=PUT.
+:::
 
 ** Update in v2.0 **
 
@@ -708,11 +716,16 @@ Code | Status | Description
           ]
         }
 
-## deletePage [/sites/{site_id}/pages/{page_id}]
-### Delete an existing page. [DELETE]
+## Delete an existing page [DELETE]
+Delete an existing page.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
+
+:::note
 This method accepts PUT and POST with __method=DELETE.
+:::
 
 **Status Code**
 
@@ -780,10 +793,14 @@ Code | Status | Description
           ]
         }
 
-## previewPage [/sites/:site_id/pages/preview(?raw)]
-### new in v2.0: Make a preview for a page. [POST]
+# previewPage [/sites/{site_id}/pages/preview{?raw}]
+## Make a preview by specified data [POST]
+Make a preview by specified data.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
+
 + **This endpoint is available in Movable Type 6.1.2 or later.**
 
 **Permissions**
@@ -839,12 +856,18 @@ Code | Status | Description
           }
         }
 
-## previewPageById [/sites/:site_id/pages/:page_id/preview(?raw)]
-### new in v2.0: Make a preview for a page with existing data. [POST]
+## Make a preview for exising data [POST /sites/{site_id}/pages/{page_id}/preview{?raw}]
+Make a preview for exising data.
 
-+ Authorization is required.
+:::note
++ Authentication required.
+:::
+
 + **This endpoint is available in Movable Type 6.1.2 or later.**
+
+:::warning
 + ***page*** parameter is required. If you just want to get preview page from existing data, you should provide ***page*** parameter with empty json.
+:::
 
 **Permissions**
 

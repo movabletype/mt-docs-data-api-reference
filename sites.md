@@ -10,12 +10,14 @@ allowComments | value | boolean | mt_blog.blog_allow_reg_comments<br>mt_blog.blo
 allowCommentsDefault | value | boolean | mt_blog.blog_allow_comments_default | Y | | The state of the comment acceptance of default in this site. <dl><dt>true</dt><dd>Comments are accepted.</dd><dt>false</dt><dd>Comments are not accepted.</dd></dl> | v2
 allowPings | value | boolean | mt_blog.blog_allow_pings | Y | - | <dl><dt>true</dt><dd>Accept TrackBacks from any source.</dd><dt>false</dt><dd>Do not accept.</dd></dl> | v2
 allowPingsDefault | value | boolean | mt_blog.blog_allow_pings_default | Y | | The state of the comment acceptance of default in this site. Available value is follows. <dl><dt>true</dt><dd>Trackbacks are accepted.</dd><dt>false</dt><dd>Trackbacks are not accepted.</dd></dl> | v2
+allowToChangeAtUpload | value | boolean | mt_blog.blog_allow_to_change_at_upload | Y | | <dl><dt>true</dt><dd>Allow user to change the upload destination when upload a file.</dd><dt>false</dt><dd>Not allowed.<dd></dl> | v3.01
 allowUnregComments | value | boolean | mt_blog.blog_allow_unreg_comments | Y | | <dl><dt>true</dt><dd>Allow comments from anonymous or unauthenticated users.</dd><dt>false</dt><dd>Not allowed.</dd></dl> | v2
 archivePath | value | string | mt_blog.blog_archive_path | Y | | The archive path for this site. This property only accepts absolute path. | v2
 archiveTypePreferred | value | string | mt_blog.blog_archive_type_preferred | Y | | The preferred archive type for this site. | v2
 archiveUrl | value | string | mt_blog.blog_archive_url | | | The archive url of this site. [Update in v2] This property was changed to updatable. | v1
 autodiscoverLinks | value | boolean | mt_blog.blog_autodiscovery_links | Y | | <dl><dt>true</dt><dd>Enable External TrackBack Auto-Discovery.</dd><dt>false</dt><dd>Disable.</dd></dl> | v2
 autolinkUrls | value | boolean | mt_blog.blog_autolink_urls | Y | | <dl><dt>true</dt><dd>Transform URLs in comment text into HTML links</dd><dt>false</dt><dd>Do not transform.</dd></dl> | v2
+autoRenameNonAscii | value | boolean | mt_blog_meta.auto_rename_non_ascii | Y | | <dl><dt>true</dt><dd>Uploded file name  will be automatically changed to randam filename if uploaded filename contains non-ascii character.</dd><dt>false</dt><dd>File name is not changed.</dd></dl> | v3.01
 basenameLimit | value | number | mt_blog.blog_basename_limit | Y | | The maximum length of basename. | v2
 ccLicenseImage | value | string | mt_blog.blog_cc_license | - | Y | The URL for the Creative Commons License image for this site. | v2
 ccLicenseUrl | value | string | mt_blog.blog_cc_license | - | Y | The URL for the Creative Commons License url for this site. | v2
@@ -38,6 +40,7 @@ dynamicConditional | value | boolean | | Y | | Cannot set this property when dyn
 entryCustomPrefs | ARRAY | string | | Y | Y | Default displayed fields of this site's entry. Available value is follows.<dl><dt>title</dt><dd>Title field</dd><dt>text</dt><dd>Body and extended field</dd><dt>category</dt><dd>Category list</dd><dt>excerpt</dt><dd>Excerpt field</dd><dt>keywords</dt><dd>Keyword field</dd><dt>tags</dt><dd>Tags field</dd><dt>feedback</dt><dd>Comment and trackback setting field</dd><dt>assets</dt><dd>Entry assets list</dd><dt>customfield_&lt;basename&gt;</dt><dd>Each custom Fields</dd></dl> | v2
 emailNewComments | value | number | mt_blog.blog_email_new_comments | Y | | Email notification when posting comment to this site.<dl><dt>0</dt><dd>Off.</dd><dt>1</dt><dd>On.</dd><dt>2</dt><dd>Only when attension is required.</dd></dl> | v2
 emailNewPings | value | number | mt_blog.blog_email_new_pings | Y | | "Email notification setting when accepting trackback to this site. <dl><dt>0</dt><dd>Off.</dd><dt>1</dt><dd>On.</dd><dt>2</dt><dd>Only when attention is required.</dd></dl> | v2
+extraPath | value | string | mt_blog_meta.blog_extra_path | Y | | The raw data of extra path for default upload destination. If extra path is not configured, this value is a blank string.| v3.01
 fileExtension | value | string | mt_blog.blog_file_extension | Y | | The file extension for this site. | v2
 followAuthLinks | value | boolean | mt_blog_meta.follow_auth_links | Y | | <dl><dt>true</dt><dd>Do not add the 'nofollow' attribute when a comment is submitted by a trusted commenter.</dd><dt>false</dt><dd>Add the 'nofollow' attribute .</dd></dl> | v2
 host | value | string | mt_blog.blog_site_url | - | Y | The host name of this site. | v2
@@ -63,6 +66,8 @@ newCreatedUserRoles | ARRAY | Role | - | Y | | Assigned to users that are create
 newCreatedUserRole.id | value | number | mt_role.role_id | Y | Y |  | v2
 newCreatedUserRole.name | value | string | mt_role.role_name | Y | Y |  | v2
 nofollowUrls | value | boolean | mt_blog_meta.nofollow_urls | Y | | <dl><dt>true</dt><dd>All URLs in comments and TrackBacks will be assigned a 'nofollow' link relation.</dd><dt>false</dt><dd>Not assigned.</dl> | v2
+normalizeOrientation | value | boolean | mt_blog_meta.normalize_orientation | Y | | <dl><dt>true</dt><dd>Image orientation is normalized automatically when the image file contains orientation information.</dd><dt>false</dt><dd>Image orientation is will never normalized.</dd></dl> | v3.01   
+operationIfExists | value | number | mt_blog_meta.operation_if_exists | Y | |  <dl><dt>1</dt><dd>The upload file will be changed to random file name automatically.</dd><dt>2</dt><dd>The existing file will be overwritten.</dd><dt>3</dt><dd>Upload will be canceled.</dd> | v3.01
 pageCustomPrefs | ARRAY | string | | Y | Y | Default displayed fields of this site's page. Available value is follows. <dl><dt>title</dt><dd>Title field</dd><dt>text</dt><dd>Body and extended field</dd><dt>category</dt><dd>Category list</dd><dt>excerpt</dt><dd>Excerpt field</dd><dt>keywords</dt></dd>Keyword field</dd><dt>tags</dt><dd>Tags field</dd><dt>feedback</dt><dd>Comment and trackback setting field</dd><dt>assets</dt><dd>Page assets list</dd><dt>customfield_&lt;basename&gt;</dt><dd>Each custom Fields</dd></dl>| v2
 parent | Object | - | - | - | Y | The parent website of this blog. If this object is Websites Resource, this object must be null. | v2
 parent.id | value | number | mt_blog.blog_parent_id (mt_blog.blog_id) | - | Y | The ID of parent website. | v2
@@ -85,6 +90,9 @@ statusDefault | value | string | mt_blog.blog_status_default | Y | | The default
 themeId | value | string | mt_blog.blog_theme_id | Y | | The theme ID for this site. | v2
 timezone | value | number | mt_blog.mt_server_offset | - | Y | The timezone of this site. | v2
 updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>Current user can update this website.</dd><dt>false</dt><dd>Current user cannot update this website.</dd> | v2
+uploadDestination | Object | - | - | - | Y | The default configuration for upload destination of this site. | v3.01
+uploadDestination.path | value | string | mt_blog_meta.blog_upload_destination | Y | | The full path for default upload destination. The value begin with site path and contains extra path if extra_path configured. If default upload destination is not configured, this value is just a same as site_path.| v3.01
+uploadDestination.raw | value | string | mt_blog_meta.blog_upload_destination | Y | | The raw data of default upload destination. If default upload destination is not configured, this value is a blank string.| v3.01
 url | value | string | mt_blog.blog_site_url | | | The site url of this site.  [Update in v2] This property was changed to updatable. | v1
 useCommentComfirmation | value | boolean | mt_blog.blog_use_comment_confirmation | Y | | <dl><dt>true</dt><dd>Each commenter's browser will be redirected to a comment confirmation page after their comment is accepted.</dd><dt>false</dt><dd>Will not.</dd></dl> | v2
 useRevision | value | boolean | mt_blog.blog_use_revision | Y | | <dl><dt>true</dt><dd>Revision history is enabled.</dd><dt>false</dt><dd>Revision history is disabled.</dd></dl> | v2
@@ -99,17 +107,14 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
               "relativeUrl" : "/",
               "entryCustomPrefs" : [
                 "title",
-                "text",
+                "body",
                 "category",
-                "excerpt",
-                "keywords",
                 "tags",
                 "feedback",
-                "assets",
-                "customfield_license_fee",
-                "customfield_foo"
+                "publishing",
+                "assets"
               ],
-              "archivePath" : "/path/to/document_root/",
+              "archivePath" : "/path/to/archive_root",
               "useCommentConfirmation" : true,
               "url" : "http://example.com/",
               "smartReplaceFields" : [
@@ -125,22 +130,26 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
+              "operationIfExists" : "2",
               "timezone" : "+09:00",
               "daysOrPosts" : "posts",
               "sortOrderPosts" : "descend",
-              "name" : "Six Apart Shop",
+              "name" : "First Website",
               "convertParas" : "richtext",
               "description" : "",
+              "autoRenameNonAscii" : true,
               "includeSystem" : "",
-              "archiveUrl" : "http://example.com",
+              "archiveUrl" : "http://example.com/archives/",
               "allowCommentHtml" : true,
               "fileExtension" : "html",
-              "smartReplace" : "0",
+              "smartReplace" : 0,
               "junkFolderExpiry" : "14",
               "publishEmptyArchive" : false,
               "dateLanguage" : "ja",
               "listOnIndex" : "10",
-              "pingWeblogs" : true,
+              "pingWeblogs" : false,
+              "extraPath" : "uploads",
+              "normalizeOrientation" : false,
               "emailNewComments" : "1",
               "language" : "ja",
               "autolinkUrls" : true,
@@ -153,47 +162,52 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
-              "pingGoogle" : true,
+              "pingGoogle" : false,
               "convertParasComments" : "1",
-              "sitePath" : "/path/to/document_root/",
+              "sitePath" : "/path/to/site_path",
               "id" : "1",
               "parent" : null,
               "archiveTypePreferred" : "Individual",
               "contentCss" : "{{theme_static}}css/editor.css",
               "junkScoreThreshold" : "0",
               "internalAutodiscovery" : false,
-              "createdDate" : "2014-12-28T23:09:45+09:00",
+              "createdDate" : "2016-01-21T11:18:38+09:00",
               "class" : "website",
               "moderateComments" : "2",
               "allowCommentsDefault" : true,
               "includeCache" : false,
               "allowCommenterRegist" : true,
+              "allowToChangeAtUpload" : false,
+              "uploadDestination" : {
+                "path" : "/path/to/upload/dest",
+                "raw" : "%s/%y/%m"
+              },
               "maxRevisionsEntry" : "20",
               "updatable" : true,
               "requireCommentEmails" : false,
-              "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
+              "ccLicenseImage" : "",
               "allowComments" : true,
               "allowPingsDefault" : false,
               "pingOthers" : [],
-              "dynamicCache" : false,
               "basenameLimit" : "100",
-              "modifiedDate" : "2015-03-12T12:16:24+09:00",
-              "dynamicConditional" : false,
+              "dynamicCache" : false,
+              "modifiedDate" : "2016-01-21T11:30:03+09:00",
+              "allowPings" : false,
               "pageCustomPrefs" : [
                 "title",
-                "text",
-                "excerpt",
-                "keywords",
+                "body",
+                "category",
                 "tags",
                 "feedback",
+                "publishing",
                 "assets"
               ],
-              "allowPings" : false,
+              "dynamicConditional" : false,
               "commenterAuthenticators" : [
                 "MovableType"
               ],
-              "host" : "localhost",
-              "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
+              "host" : "example.com",
+              "ccLicenseUrl" : "",
               "newCreatedUserRoles" : [],
               "wordsInExcerpt" : "40",
               "sortOrderComments" : "ascend",
@@ -204,11 +218,14 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
               "customDynamicTemplates" : "none"
             }
 
-## listByUser [/users/:user_id/sites(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds)]
+# Sites [/sites/{site_id}]
 
-+ Authorization is required.
+## Retrieve a list of sites by user [GET /users/{user_id}/sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,dateField,dateFrom,dateTo}]
+Retrieve a list of sites by user. The list includes only the site for which the user has any permissions.
 
-### Retrieve a list of sites by user [GET]
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -247,17 +264,14 @@ Code | Status | Description
               "relativeUrl" : "/",
               "entryCustomPrefs" : [
                 "title",
-                "text",
+                "body",
                 "category",
-                "excerpt",
-                "keywords",
                 "tags",
                 "feedback",
-                "assets",
-                "customfield_license_fee",
-                "customfield_foo"
+                "publishing",
+                "assets"
               ],
-              "archivePath" : "/path/to/document_root/",
+              "archivePath" : "/path/to/archive_root",
               "useCommentConfirmation" : true,
               "url" : "http://example.com/",
               "smartReplaceFields" : [
@@ -273,22 +287,26 @@ Code | Status | Description
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
+              "operationIfExists" : "2",
               "timezone" : "+09:00",
               "daysOrPosts" : "posts",
               "sortOrderPosts" : "descend",
-              "name" : "Six Apart Shop",
+              "name" : "First Website",
               "convertParas" : "richtext",
               "description" : "",
+              "autoRenameNonAscii" : true,
               "includeSystem" : "",
-              "archiveUrl" : "http://example.com",
+              "archiveUrl" : "http://example.com/archives/",
               "allowCommentHtml" : true,
               "fileExtension" : "html",
-              "smartReplace" : "0",
+              "smartReplace" : 0,
               "junkFolderExpiry" : "14",
               "publishEmptyArchive" : false,
               "dateLanguage" : "ja",
               "listOnIndex" : "10",
-              "pingWeblogs" : true,
+              "pingWeblogs" : false,
+              "extraPath" : "uploads",
+              "normalizeOrientation" : false,
               "emailNewComments" : "1",
               "language" : "ja",
               "autolinkUrls" : true,
@@ -301,47 +319,52 @@ Code | Status | Description
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
-              "pingGoogle" : true,
+              "pingGoogle" : false,
               "convertParasComments" : "1",
-              "sitePath" : "/path/to/document_root/",
+              "sitePath" : "/path/to/site_path",
               "id" : "1",
               "parent" : null,
               "archiveTypePreferred" : "Individual",
               "contentCss" : "{{theme_static}}css/editor.css",
               "junkScoreThreshold" : "0",
               "internalAutodiscovery" : false,
-              "createdDate" : "2014-12-28T23:09:45+09:00",
+              "createdDate" : "2016-01-21T11:18:38+09:00",
               "class" : "website",
               "moderateComments" : "2",
               "allowCommentsDefault" : true,
               "includeCache" : false,
               "allowCommenterRegist" : true,
+              "allowToChangeAtUpload" : false,
+              "uploadDestination" : {
+                "path" : "/path/to/upload/dest",
+                "raw" : "%s/%y/%m"
+              },
               "maxRevisionsEntry" : "20",
               "updatable" : true,
               "requireCommentEmails" : false,
-              "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
+              "ccLicenseImage" : "",
               "allowComments" : true,
               "allowPingsDefault" : false,
               "pingOthers" : [],
-              "dynamicCache" : false,
               "basenameLimit" : "100",
-              "modifiedDate" : "2015-03-12T12:16:24+09:00",
-              "dynamicConditional" : false,
+              "dynamicCache" : false,
+              "modifiedDate" : "2016-01-21T11:30:03+09:00",
+              "allowPings" : false,
               "pageCustomPrefs" : [
                 "title",
-                "text",
-                "excerpt",
-                "keywords",
+                "body",
+                "category",
                 "tags",
                 "feedback",
+                "publishing",
                 "assets"
               ],
-              "allowPings" : false,
+              "dynamicConditional" : false,
               "commenterAuthenticators" : [
                 "MovableType"
               ],
-              "host" : "localhost",
-              "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
+              "host" : "example.com",
+              "ccLicenseUrl" : "",
               "newCreatedUserRoles" : [],
               "wordsInExcerpt" : "40",
               "sortOrderComments" : "ascend",
@@ -355,9 +378,8 @@ Code | Status | Description
         }
 
 
-## listSites [/sites(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds)]
-
-### New in v2.0: Retrieve sites [GET]
+## Retrieve a list of sites [GET /sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIdsdateFirld,dateFrom,dateTo}]
+Retrieve a list of sites.
 
 **Status Code**
 
@@ -394,17 +416,14 @@ Code | Status | Description
               "relativeUrl" : "/",
               "entryCustomPrefs" : [
                 "title",
-                "text",
+                "body",
                 "category",
-                "excerpt",
-                "keywords",
                 "tags",
                 "feedback",
-                "assets",
-                "customfield_license_fee",
-                "customfield_foo"
+                "publishing",
+                "assets"
               ],
-              "archivePath" : "/path/to/document_root/",
+              "archivePath" : "/path/to/archive_root",
               "useCommentConfirmation" : true,
               "url" : "http://example.com/",
               "smartReplaceFields" : [
@@ -420,22 +439,26 @@ Code | Status | Description
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
+              "operationIfExists" : "2",
               "timezone" : "+09:00",
               "daysOrPosts" : "posts",
               "sortOrderPosts" : "descend",
-              "name" : "Six Apart Shop",
+              "name" : "First Website",
               "convertParas" : "richtext",
               "description" : "",
+              "autoRenameNonAscii" : true,
               "includeSystem" : "",
-              "archiveUrl" : "http://example.com",
+              "archiveUrl" : "http://example.com/archives/",
               "allowCommentHtml" : true,
               "fileExtension" : "html",
-              "smartReplace" : "0",
+              "smartReplace" : 0,
               "junkFolderExpiry" : "14",
               "publishEmptyArchive" : false,
               "dateLanguage" : "ja",
               "listOnIndex" : "10",
-              "pingWeblogs" : true,
+              "pingWeblogs" : false,
+              "extraPath" : "uploads",
+              "normalizeOrientation" : false,
               "emailNewComments" : "1",
               "language" : "ja",
               "autolinkUrls" : true,
@@ -448,47 +471,52 @@ Code | Status | Description
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
-              "pingGoogle" : true,
+              "pingGoogle" : false,
               "convertParasComments" : "1",
-              "sitePath" : "/path/to/document_root/",
+              "sitePath" : "/path/to/site_path",
               "id" : "1",
               "parent" : null,
               "archiveTypePreferred" : "Individual",
               "contentCss" : "{{theme_static}}css/editor.css",
               "junkScoreThreshold" : "0",
               "internalAutodiscovery" : false,
-              "createdDate" : "2014-12-28T23:09:45+09:00",
+              "createdDate" : "2016-01-21T11:18:38+09:00",
               "class" : "website",
               "moderateComments" : "2",
               "allowCommentsDefault" : true,
               "includeCache" : false,
               "allowCommenterRegist" : true,
+              "allowToChangeAtUpload" : false,
+              "uploadDestination" : {
+                "path" : "/path/to/upload/dest",
+                "raw" : "%s/%y/%m"
+              },
               "maxRevisionsEntry" : "20",
               "updatable" : true,
               "requireCommentEmails" : false,
-              "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
+              "ccLicenseImage" : "",
               "allowComments" : true,
               "allowPingsDefault" : false,
               "pingOthers" : [],
-              "dynamicCache" : false,
               "basenameLimit" : "100",
-              "modifiedDate" : "2015-03-12T12:16:24+09:00",
-              "dynamicConditional" : false,
+              "dynamicCache" : false,
+              "modifiedDate" : "2016-01-21T11:30:03+09:00",
+              "allowPings" : false,
               "pageCustomPrefs" : [
                 "title",
-                "text",
-                "excerpt",
-                "keywords",
+                "body",
+                "category",
                 "tags",
                 "feedback",
+                "publishing",
                 "assets"
               ],
-              "allowPings" : false,
+              "dynamicConditional" : false,
               "commenterAuthenticators" : [
                 "MovableType"
               ],
-              "host" : "localhost",
-              "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
+              "host" : "example.com",
+              "ccLicenseUrl" : "",
               "newCreatedUserRoles" : [],
               "wordsInExcerpt" : "40",
               "sortOrderComments" : "ascend",
@@ -501,9 +529,8 @@ Code | Status | Description
           ]
         }
 
-## listSitesByParent [/sites/:site_id/children(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds,)]
-
-### New in v2.0: Retrieve sites by parent ID [GET]
+## Retrieve a list of sites by parent site [GET /sites/{site_id}/children{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,dateField,dateFrom,dateTo}]
+Retrieve a list of sites by parent site
 
 **Status Code**
 
@@ -652,12 +679,16 @@ Code | Status | Description
           ]
         }
 
-## insertNewWebsite [/sites]
+## Create a new website [POST /sites]
+Create a new website.
 
-### New in v2.0: Create a new website. [POST]
+:::note
+Authentication required.
+:::
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+:::note
+This method accepts PUT and POST with __method=PUT.
+:::
 
 **Status Code**
 
@@ -676,12 +707,11 @@ Name | Type | Required | Default | Description
 ---- | ---- | -------- | ------- | -----------
 blog | Object | Yes | | Single Sites resource
 
-+ Request Sites resource
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth accessToken=<Token>
+            X-MT-Authorization: MTAuth accessToken={Token}
 
     + Body
 
@@ -691,7 +721,7 @@ blog | Object | Yes | | Single Sites resource
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
+          "serverOffset" : "9",
           "themeId" : "rainier",
           "statusDefault" : "Publish",
           "autodiscoverLinks" : false,
@@ -699,12 +729,15 @@ blog | Object | Yes | | Single Sites resource
           "relativeUrl" : "/",
           "entryCustomPrefs" : [
             "title",
-            "body",
+            "text",
             "category",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
-            "assets"
+            "assets",
+            "customfield_license_fee",
+            "customfield_foo"
           ],
           "archivePath" : "/path/to/document_root/",
           "useCommentConfirmation" : true,
@@ -717,90 +750,99 @@ blog | Object | Yes | | Single Sites resource
             "excerpt",
             "tags"
           ],
+          "modifiedBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
           "timezone" : "+09:00",
           "daysOrPosts" : "posts",
           "sortOrderPosts" : "descend",
+          "name" : "Six Apart Shop",
           "convertParas" : "richtext",
-          "name" : "New Website",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/",
+          "description" : "",
+          "includeSystem" : "",
+          "archiveUrl" : "http://example.com",
           "allowCommentHtml" : true,
           "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
+          "smartReplace" : "0",
+          "junkFolderExpiry" : "14",
           "publishEmptyArchive" : false,
           "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
+          "listOnIndex" : "10",
+          "pingWeblogs" : true,
+          "emailNewComments" : "1",
+          "language" : "ja",
           "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
+          "sanitizeSpec" : "0",
           "customFields" : [],
-          "emailNewPings" : 1,
+          "emailNewPings" : "1",
           "nofollowUrls" : true,
           "createdBy" : {
             "userpicUrl" : null,
             "id" : "1",
             "displayName" : "Yuji Takayama"
           },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
+          "pingGoogle" : true,
+          "convertParasComments" : "1",
           "sitePath" : "/path/to/document_root/",
-          "id" : "10",
-          "parent" : null,
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
+          "id" : "2",
+          "parent" : {
+            "id": "1",
+            "name": "Parent Website"
+          },
+          "archiveTypePreferred" : "Individual",
+          "contentCss" : "{{theme_static}}css/editor.css",
+          "junkScoreThreshold" : "0",
           "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T22:03:47+09:00",
+          "createdDate" : "2014-12-28T23:09:45+09:00",
           "class" : "website",
-          "moderateComments" : 2,
+          "moderateComments" : "2",
           "allowCommentsDefault" : true,
           "includeCache" : false,
           "allowCommenterRegist" : true,
-          "maxRevisionsEntry" : 20,
+          "maxRevisionsEntry" : "20",
           "updatable" : true,
           "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
+          "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
           "allowComments" : true,
-          "allowPingsDefault" : true,
+          "allowPingsDefault" : false,
           "pingOthers" : [],
           "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T22:03:47+09:00",
+          "basenameLimit" : "100",
+          "modifiedDate" : "2015-03-12T12:16:24+09:00",
           "dynamicConditional" : false,
           "pageCustomPrefs" : [
             "title",
-            "body",
-            "category",
+            "text",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
             "assets"
           ],
-          "allowPings" : true,
+          "allowPings" : false,
           "commenterAuthenticators" : [
             "MovableType"
           ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
+          "host" : "localhost",
+          "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
           "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
+          "wordsInExcerpt" : "40",
           "sortOrderComments" : "ascend",
           "followAuthLinks" : true,
           "allowUnregComments" : false,
-          "maxRevisionsTemplate" : 20,
+          "maxRevisionsTemplate" : "20",
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
 
-## insertNewBlog [/sites/:site_id]
+## Create a new blog under the site [POST /sites/{site_id}]
+Create a new blog under the site.
 
-### New in v2.0: Create a new blog. [POST]
-
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -822,12 +864,11 @@ blog | Object | Yes | | Single Sites resource
 + Parameters
     + site_id (required, number) ... The site ID.
 
-+ Request Sites resource
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth accessToken=<Token>
+            X-MT-Authorization: MTAuth accessToken={Token}
 
     + Body
 
@@ -836,90 +877,13 @@ blog | Object | Yes | | Single Sites resource
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
-          "themeId" : "rainier",
-          "statusDefault" : "Publish",
-          "autodiscoverLinks" : false,
-          "useRevision" : true,
-          "relativeUrl" : "/blog/",
-          "entryCustomPrefs" : [
-          "title",
-          "body",
-          "category",
-          "tags",
-          "feedback",
-          "publishing",
-          "assets"
-          ],
-          "archivePath" : "/path/to/document_root/blog",
-          "useCommentConfirmation" : true,
-          "url" : "http://example.com/blog/",
-          "smartReplaceFields" : [
-            "title",
-            "text",
-            "text_more",
-            "keywords",
-            "excerpt",
-            "tags"
-          ],
-          "timezone" : "+09:00",
-          "daysOrPosts" : "posts",
-          "sortOrderPosts" : "descend",
-          "convertParas" : "richtext",
-          "name" : "New Blog",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/blog/",
-          "allowCommentHtml" : true,
-          "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
-          "publishEmptyArchive" : false,
-          "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
-          "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
-          "customFields" : [],
-          "emailNewPings" : 1,
-          "nofollowUrls" : true,
-          "createdBy" : {
-            "userpicUrl" : null,
-            "id" : "1",
-            "displayName" : "Yuji Takayama"
-          },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
-          "sitePath" : "/path/to/document_root/blog",
-          "id" : "9",
-          "parent" : {
-            "name" : "First Website",
-            "id" : "1"
-          },
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
-          "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T15:15:56+09:00",
-          "class" : "blog",
-          "moderateComments" : 2,
-          "allowCommentsDefault" : true,
-          "includeCache" : false,
-          "allowCommenterRegist" : true,
-          "maxRevisionsEntry" : "20",
-          "updatable" : true,
-          "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
-          "allowComments" : true,
-          "allowPingsDefault" : true,
-          "pingOthers" : [],
-          "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T15:15:56+09:00",
-          "dynamicConditional" : false,
-          "pageCustomPrefs" : [
+            "serverOffset" : "9",
+            "themeId" : "mt_community_forum",
+            "statusDefault" : "Publish",
+            "autodiscoverLinks" : false,
+            "useRevision" : true,
+            "relativeUrl" : "/communityforum/",
+            "entryCustomPrefs" : [
             "title",
             "body",
             "category",
@@ -927,28 +891,118 @@ blog | Object | Yes | | Single Sites resource
             "feedback",
             "publishing",
             "assets"
-          ],
-          "allowPings" : true,
-          "commenterAuthenticators" : [
+            ],
+            "archivePath" : "/path/to/archive_root",
+            "useCommentConfirmation" : true,
+            "url" : "https://example.com/",
+            "smartReplaceFields" : [
+            "title",
+            "text",
+            "text_more",
+            "keywords",
+            "excerpt",
+            "tags"
+            ],
+            "operationIfExists" : 1,
+            "timezone" : "+09:00",
+            "daysOrPosts" : "posts",
+            "sortOrderPosts" : "descend",
+            "name" : "CommunityForum",
+            "convertParas" : "richtext",
+            "description" : null,
+            "autoRenameNonAscii" : true,
+            "includeSystem" : null,
+            "archiveUrl" : "https://example.com/archives/",
+            "allowCommentHtml" : true,
+            "fileExtension" : "html",
+            "smartReplace" : 0,
+            "junkFolderExpiry" : "14",
+            "publishEmptyArchive" : false,
+            "dateLanguage" : "ja",
+            "listOnIndex" : "10",
+            "pingWeblogs" : false,
+            "extraPath" : "",
+            "normalizeOrientation" : true,
+            "emailNewComments" : "1",
+            "language" : "ja",
+            "autolinkUrls" : true,
+            "sanitizeSpec" : "0",
+            "customFields" : [],
+            "emailNewPings" : "1",
+            "nofollowUrls" : true,
+            "createdBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+            },
+            "pingGoogle" : false,
+            "convertParasComments" : "1",
+            "sitePath" : "/path/to/site_root",
+            "id" : "4",
+            "parent" : {
+            "name" : "First Website",
+            "id" : "1"
+            },
+            "archiveTypePreferred" : "Individual",
+            "contentCss" : null,
+            "junkScoreThreshold" : "0",
+            "internalAutodiscovery" : false,
+            "createdDate" : "2016-02-09T16:20:24+09:00",
+            "class" : "blog",
+            "moderateComments" : "2",
+            "allowCommentsDefault" : true,
+            "includeCache" : false,
+            "allowCommenterRegist" : true,
+            "allowToChangeAtUpload" : true,
+            "uploadDestination" : {
+            "path" : "/path/to/upload/destination",
+            "raw" : ""
+            },
+            "maxRevisionsEntry" : null,
+            "updatable" : true,
+            "requireCommentEmails" : false,
+            "ccLicenseImage" : "",
+            "allowComments" : true,
+            "allowPingsDefault" : true,
+            "pingOthers" : [],
+            "basenameLimit" : "100",
+            "dynamicCache" : false,
+            "modifiedDate" : "2016-02-09T16:20:24+09:00",
+            "allowPings" : false,
+            "pageCustomPrefs" : [
+            "title",
+            "body",
+            "category",
+            "tags",
+            "feedback",
+            "publishing",
+            "assets"
+            ],
+            "dynamicConditional" : false,
+            "commenterAuthenticators" : [
             "MovableType"
-          ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
-          "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
-          "sortOrderComments" : "ascend",
-          "followAuthLinks" : true,
-          "allowUnregComments" : false,
-          "maxRevisionsTemplate" : "20",
-          "moderatePings" : true,
-          "customDynamicTemplates" : "none"
+            ],
+            "host" : "example.com",
+            "ccLicenseUrl" : "",
+            "newCreatedUserRoles" : [],
+            "wordsInExcerpt" : "40",
+            "sortOrderComments" : "ascend",
+            "followAuthLinks" : true,
+            "allowUnregComments" : false,
+            "maxRevisionsTemplate" : null,
+            "moderatePings" : true,
+            "customDynamicTemplates" : "none"
         }
 
-## updateSite [/sites/:site_id]
-### New in v2.0: Update an existing blog or website. [PUT]
+## Update an existing blog or website [PUT]
+Update an existing blog or website.
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+:::note
+Authentication required.
+:::
+:::note
+This method accepts PUT and POST with __method=PUT.
+:::
 
 **Status Code**
 
@@ -970,11 +1024,10 @@ blog | Object | Yes | | Single Sites resource
 + Parameters
     + site_id (required, number) ... The site ID.
 
-+ Request Sites resource
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
@@ -985,7 +1038,7 @@ blog | Object | Yes | | Single Sites resource
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
+          "serverOffset" : "9",
           "themeId" : "rainier",
           "statusDefault" : "Publish",
           "autodiscoverLinks" : false,
@@ -993,12 +1046,15 @@ blog | Object | Yes | | Single Sites resource
           "relativeUrl" : "/",
           "entryCustomPrefs" : [
             "title",
-            "body",
+            "text",
             "category",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
-            "assets"
+            "assets",
+            "customfield_license_fee",
+            "customfield_foo"
           ],
           "archivePath" : "/path/to/document_root/",
           "useCommentConfirmation" : true,
@@ -1011,90 +1067,103 @@ blog | Object | Yes | | Single Sites resource
             "excerpt",
             "tags"
           ],
+          "modifiedBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
           "timezone" : "+09:00",
           "daysOrPosts" : "posts",
           "sortOrderPosts" : "descend",
+          "name" : "Six Apart Shop",
           "convertParas" : "richtext",
-          "name" : "Our new Website",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/",
+          "description" : "",
+          "includeSystem" : "",
+          "archiveUrl" : "http://example.com",
           "allowCommentHtml" : true,
           "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
+          "smartReplace" : "0",
+          "junkFolderExpiry" : "14",
           "publishEmptyArchive" : false,
           "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
+          "listOnIndex" : "10",
+          "pingWeblogs" : true,
+          "emailNewComments" : "1",
+          "language" : "ja",
           "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
+          "sanitizeSpec" : "0",
           "customFields" : [],
-          "emailNewPings" : 1,
+          "emailNewPings" : "1",
           "nofollowUrls" : true,
           "createdBy" : {
             "userpicUrl" : null,
             "id" : "1",
             "displayName" : "Yuji Takayama"
           },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
+          "pingGoogle" : true,
+          "convertParasComments" : "1",
           "sitePath" : "/path/to/document_root/",
-          "id" : "10",
-          "parent" : null,
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
+          "id" : "2",
+          "parent" : {
+            "id": "1",
+            "name": "Parent Website"
+          },
+          "archiveTypePreferred" : "Individual",
+          "contentCss" : "{{theme_static}}css/editor.css",
+          "junkScoreThreshold" : "0",
           "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T22:03:47+09:00",
+          "createdDate" : "2014-12-28T23:09:45+09:00",
           "class" : "website",
-          "moderateComments" : 2,
+          "moderateComments" : "2",
           "allowCommentsDefault" : true,
           "includeCache" : false,
           "allowCommenterRegist" : true,
-          "maxRevisionsEntry" : 20,
+          "maxRevisionsEntry" : "20",
           "updatable" : true,
           "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
+          "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
           "allowComments" : true,
-          "allowPingsDefault" : true,
+          "allowPingsDefault" : false,
           "pingOthers" : [],
           "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T22:03:47+09:00",
+          "basenameLimit" : "100",
+          "modifiedDate" : "2015-03-12T12:16:24+09:00",
           "dynamicConditional" : false,
           "pageCustomPrefs" : [
             "title",
-            "body",
-            "category",
+            "text",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
             "assets"
           ],
-          "allowPings" : true,
+          "allowPings" : false,
           "commenterAuthenticators" : [
             "MovableType"
           ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
+          "host" : "localhost",
+          "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
           "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
+          "wordsInExcerpt" : "40",
           "sortOrderComments" : "ascend",
           "followAuthLinks" : true,
           "allowUnregComments" : false,
-          "maxRevisionsTemplate" : 20,
+          "maxRevisionsTemplate" : "20",
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
 
-## deleteSite [/sites/:site_id]
-### New in v2.0: Delete an existing blog or website. [DELETE]
+## Delete an existing blog or website [DELETE]
+Delete an existing blog or website.
 
-+ Authorization is required.
-+ This method accepts DELETE and POST with __method=DELETE.
+:::note
+Authentication required.
+:::
+
+:::note
+This method accepts DELETE and POST with __method=DELETE.
+:::
 
 **Status Code**
 
@@ -1111,17 +1180,16 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth accessToken=<Token>
+            X-MT-Authorization: MTAuth accessToken={Token}
 
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
+          "serverOffset" : "9",
           "themeId" : "rainier",
           "statusDefault" : "Publish",
           "autodiscoverLinks" : false,
@@ -1129,12 +1197,15 @@ Code | Status | Description
           "relativeUrl" : "/",
           "entryCustomPrefs" : [
             "title",
-            "body",
+            "text",
             "category",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
-            "assets"
+            "assets",
+            "customfield_license_fee",
+            "customfield_foo"
           ],
           "archivePath" : "/path/to/document_root/",
           "useCommentConfirmation" : true,
@@ -1147,88 +1218,96 @@ Code | Status | Description
             "excerpt",
             "tags"
           ],
+          "modifiedBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
           "timezone" : "+09:00",
           "daysOrPosts" : "posts",
           "sortOrderPosts" : "descend",
+          "name" : "Six Apart Shop",
           "convertParas" : "richtext",
-          "name" : "Our new Website",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/",
+          "description" : "",
+          "includeSystem" : "",
+          "archiveUrl" : "http://example.com",
           "allowCommentHtml" : true,
           "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
+          "smartReplace" : "0",
+          "junkFolderExpiry" : "14",
           "publishEmptyArchive" : false,
           "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
+          "listOnIndex" : "10",
+          "pingWeblogs" : true,
+          "emailNewComments" : "1",
+          "language" : "ja",
           "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
+          "sanitizeSpec" : "0",
           "customFields" : [],
-          "emailNewPings" : 1,
+          "emailNewPings" : "1",
           "nofollowUrls" : true,
           "createdBy" : {
             "userpicUrl" : null,
             "id" : "1",
             "displayName" : "Yuji Takayama"
           },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
+          "pingGoogle" : true,
+          "convertParasComments" : "1",
           "sitePath" : "/path/to/document_root/",
-          "id" : "10",
-          "parent" : null,
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
+          "id" : "2",
+          "parent" : {
+            "id": "1",
+            "name": "Parent Website"
+          },
+          "archiveTypePreferred" : "Individual",
+          "contentCss" : "{{theme_static}}css/editor.css",
+          "junkScoreThreshold" : "0",
           "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T22:03:47+09:00",
+          "createdDate" : "2014-12-28T23:09:45+09:00",
           "class" : "website",
-          "moderateComments" : 2,
+          "moderateComments" : "2",
           "allowCommentsDefault" : true,
           "includeCache" : false,
           "allowCommenterRegist" : true,
-          "maxRevisionsEntry" : 20,
+          "maxRevisionsEntry" : "20",
           "updatable" : true,
           "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
+          "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
           "allowComments" : true,
-          "allowPingsDefault" : true,
+          "allowPingsDefault" : false,
           "pingOthers" : [],
           "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T22:03:47+09:00",
+          "basenameLimit" : "100",
+          "modifiedDate" : "2015-03-12T12:16:24+09:00",
           "dynamicConditional" : false,
           "pageCustomPrefs" : [
             "title",
-            "body",
-            "category",
+            "text",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
             "assets"
           ],
-          "allowPings" : true,
+          "allowPings" : false,
           "commenterAuthenticators" : [
             "MovableType"
           ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
+          "host" : "localhost",
+          "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
           "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
+          "wordsInExcerpt" : "40",
           "sortOrderComments" : "ascend",
           "followAuthLinks" : true,
           "allowUnregComments" : false,
-          "maxRevisionsTemplate" : 20,
+          "maxRevisionsTemplate" : "20",
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
 
 
-## getBlog [/sites/:site_id(?fields)]
-### Retrieve a single website/blog by its ID. [GET]
+### Retrieve a single website/blog by its ID [GET /sites/{site_id}{?fields}]
+Retrieve a single website/blog by its ID.
 
 **Status Code**
 
@@ -1245,24 +1324,27 @@ Code | Status | Description
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
+          "serverOffset" : "9",
           "themeId" : "rainier",
           "statusDefault" : "Publish",
           "autodiscoverLinks" : false,
           "useRevision" : true,
-          "relativeUrl" : "/blog/",
+          "relativeUrl" : "/",
           "entryCustomPrefs" : [
-          "title",
-          "body",
-          "category",
-          "tags",
-          "feedback",
-          "publishing",
-          "assets"
+            "title",
+            "text",
+            "category",
+            "excerpt",
+            "keywords",
+            "tags",
+            "feedback",
+            "assets",
+            "customfield_license_fee",
+            "customfield_foo"
           ],
-          "archivePath" : "/path/to/document_root/blog",
+          "archivePath" : "/path/to/document_root/",
           "useCommentConfirmation" : true,
-          "url" : "http://example.com/blog/",
+          "url" : "http://example.com/",
           "smartReplaceFields" : [
             "title",
             "text",
@@ -1271,80 +1353,85 @@ Code | Status | Description
             "excerpt",
             "tags"
           ],
+          "modifiedBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
           "timezone" : "+09:00",
           "daysOrPosts" : "posts",
           "sortOrderPosts" : "descend",
+          "name" : "Six Apart Shop",
           "convertParas" : "richtext",
-          "name" : "New Blog",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/blog/",
+          "description" : "",
+          "includeSystem" : "",
+          "archiveUrl" : "http://example.com",
           "allowCommentHtml" : true,
           "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
+          "smartReplace" : "0",
+          "junkFolderExpiry" : "14",
           "publishEmptyArchive" : false,
           "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
+          "listOnIndex" : "10",
+          "pingWeblogs" : true,
+          "emailNewComments" : "1",
+          "language" : "ja",
           "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
+          "sanitizeSpec" : "0",
           "customFields" : [],
-          "emailNewPings" : 1,
+          "emailNewPings" : "1",
           "nofollowUrls" : true,
           "createdBy" : {
             "userpicUrl" : null,
             "id" : "1",
             "displayName" : "Yuji Takayama"
           },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
-          "sitePath" : "/path/to/document_root/blog",
-          "id" : "9",
+          "pingGoogle" : true,
+          "convertParasComments" : "1",
+          "sitePath" : "/path/to/document_root/",
+          "id" : "2",
           "parent" : {
-            "name" : "First Website",
-            "id" : "1"
+            "id": "1",
+            "name": "Parent Website"
           },
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
+          "archiveTypePreferred" : "Individual",
+          "contentCss" : "{{theme_static}}css/editor.css",
+          "junkScoreThreshold" : "0",
           "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T15:15:56+09:00",
-          "class" : "blog",
-          "moderateComments" : 2,
+          "createdDate" : "2014-12-28T23:09:45+09:00",
+          "class" : "website",
+          "moderateComments" : "2",
           "allowCommentsDefault" : true,
           "includeCache" : false,
           "allowCommenterRegist" : true,
           "maxRevisionsEntry" : "20",
           "updatable" : true,
           "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
+          "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
           "allowComments" : true,
-          "allowPingsDefault" : true,
+          "allowPingsDefault" : false,
           "pingOthers" : [],
           "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T15:15:56+09:00",
+          "basenameLimit" : "100",
+          "modifiedDate" : "2015-03-12T12:16:24+09:00",
           "dynamicConditional" : false,
           "pageCustomPrefs" : [
             "title",
-            "body",
-            "category",
+            "text",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
             "assets"
           ],
-          "allowPings" : true,
+          "allowPings" : false,
           "commenterAuthenticators" : [
             "MovableType"
           ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
+          "host" : "localhost",
+          "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
           "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
+          "wordsInExcerpt" : "40",
           "sortOrderComments" : "ascend",
           "followAuthLinks" : true,
           "allowUnregComments" : false,
@@ -1352,4 +1439,3 @@ Code | Status | Description
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
-
