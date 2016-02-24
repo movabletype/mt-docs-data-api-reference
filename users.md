@@ -72,11 +72,13 @@ textFormat | value | string | mt_author.author_text_format | Y | | The text form
           "customFields" : []
         }
 
-## listUsers [/users(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, lockout)]
+# Users [/users/{user_id}]
+## Retrieve a list of users [GET /users{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,lockout,dateField,dateFrom,dateTo}]
+Retrieve a list of users. This list does not include the commenter.
 
-### New in v2.0: Retrieve a list of users in the specified site. [GET]
-
-+ Authentication is required if want to include non-active users. Also, want to get private properties.
+:::note
+Authentication required if you want to include inactive users or to get the private properties.
+:::
 
 **Status Code**
 
@@ -103,6 +105,9 @@ Code | Status | Description
     + excludeIds (optional, string) ... The comma separated ID list of users to exclude from result.
     + status (optional, string) ... Filter by users's status. <dl><dt>active</dt><dd>status is Active</dd><dt>disabled</dt><dd>status is Disabled.</dd><dt>pending</dt><dd>status is Pending</dd></dl>
     + lockout ... Filter by user's lockout status. <dl><dt>locked_out</dt><dd>Locked out user only</dd><dt>not_locked_out</dt><dd>Not locked out user only</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -149,11 +154,12 @@ Code | Status | Description
           ]
         }
 
-## createUser [/users]
+## Create a new user [POST /users]
+Create a new user.
 
-### New in v2.0: Create a new user. [POST]
-
-+ Authentication is required.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -175,11 +181,10 @@ entry | Object | Yes | | Single Entries resource
 + Parameters
     + site_id (required, number) ... The site ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
@@ -214,11 +219,12 @@ entry | Object | Yes | | Single Entries resource
           "customFields" : []
         }
 
-## getUser [/users/:user_id(?fields)]
+### Retrieve a single user by ID [GET /users/{user_id}(?fields)]
+Retrieve a single user by ID.
 
-### Retrieve a single user by its own ID. [GET]
-
-+ Authentication is required if want to get non-active user or want to get private properties.
+:::note
+Authentication required if want to get inactive user or want to get the private properties.
+:::
 
 **Status Code**
 
@@ -276,12 +282,15 @@ Code | Status | Description
           "customFields" : []
         }
 
-## updateUser [/users/:user_id]
+### Update user [PUT]
+Update an existing user.
 
-### Update oneself or another one's user data. [PUT]
-
-+ Authentication is required.
+:::note
+Authentication required.
+:::
+:::note
 + This method accepts PUT and POST with __method=PUT.
+:::
 
 **Status Code**
 
@@ -300,11 +309,10 @@ Code | Status | Description
 + Parameters
     + user_id (required, number or the word 'me') ... The user ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
@@ -339,12 +347,18 @@ Code | Status | Description
           "customFields" : []
         }
 
-## deleteUser [/users/:user_id]
-### New in v2.0: Delete user. [DELETE]
+### Delete user. [DELETE]
+Delete an existing user.
 
-+ Authentication is required.
+:::note
+Authentication required.
+:::
+:::note
 + This method accepts DELETE and POST with __method=DELETE.
-+ Cannot delete oneself. Also, cannot delete system administrator user.
+:::
+:::warning
++ Cannot delete oneself. Also, cannot delete system administrator.
+:::
 
 **Status Code**
 
@@ -397,11 +411,14 @@ Code | Status | Description
           "customFields" : []
         }
 
-## unlockUser [/users/:user_id/unlock]
+# Utilities [/users/{user_id}]
 
-### Unlock user account. [POST]
+### Unlock user [POST /users/{user_id}/unlock]
+Unlock user account.
 
-+ Authentication is required.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -431,11 +448,13 @@ Code | Status | Description
           "status": "success"
         }
 
-## recoverPasswordForUser [/users/:user_id/recover_password]
 
-### Send the link for password recovery to specified user by email. [POST]
+## Send recover link by user ID [POST /users/{user_id}/recover_password]
+Send a email that contains the link for password recovery to user.
 
-+ Authentication is required.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -466,12 +485,16 @@ Code | Status | Description
           "message": <Result message>
         }
 
-## recoverPassword [/recover_password]
+## Send recover link by email address  [POST /recover_password]
+Send a email that contains the link for password recovery to user.  
+In this endpoint, to search for the user in an e-mail address but if more than one user has the same e-mail address, it will be judged by the username.
 
-### Send the link for password recovery to specified email. [POST]
-
-+ This method always returns successful code if it does not found a user, because security reason.
-+ Authentication is not required.
+:::note
+Authentication not required.
+:::
+:::warning
++ This method always returns successful by security reason.
+:::
 
 **Status Code**
 
@@ -483,14 +506,14 @@ Code | Status | Description
 
 + administer
 
-+ Parameters
-    + user_id (required, number) ... The user ID.
++ Message Body Parameters
+    + email (required, string) ... The e-mail address to search for.
+    + name (optional, string) ... The username for to decide user.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body

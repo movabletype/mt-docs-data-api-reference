@@ -1,15 +1,161 @@
 FORMAT: 1A
-HOST: http://movabletype.org
+HOST: http://your-host/path-to-mt/mt-data-api.cgi/v3
 
-# Movable Type Data API v2
+# Movable Type Data API v3
 The Movable Type Data API is a REST interface to the Movable Type Content Management System.
 The Data API is available for Movable Type Pro and Movable Type Advanced / Enterprise, Version 6.0 and higher.
 
+Movable Type Data API v3 was released in Movable Type 6.0
+
 <p><a href="http://www.movabletype.jp/">Movable Type</a> &gt; <a href="http://www.movabletype.jp/developers/">開発者向け ドキュメント</a> &gt; <a href="http://www.movabletype.jp/developers/data-api/">Movable Type Data API ドキュメント</a></p>
 
-# Group Assets
+# Group Common API
 
+Common API
+
+# Version [/version]
+## Get server API version [GET]
+Retrieves Data API version of the server.
+
+**This endpoint is available in Movable Type 6.2.4 or later.**
+
+This endpoint does not need /v3 or something API endpoint version identifier.  
+You can  call like: https://host/path/your-mt-data-api.cgi/version
+
++ Response 200 (application/json)
+
+        {
+          "endpointVersion": "v3",
+          "apiVersion": "3.01"
+        }
+# Group Authentication
+
+# Authentication [/authentication]
+## User authentication by username and password [POST]
+Create a new session and access token. This is like sign-in.
+
++ Attributes
+    + username (required, string) ... The username for authentication.
+    + password (required, string) ... The password for authentication. From version 3, it was changed to use web services password instead of the password. 
+    + clientId (required, string) ... If you want to create a new session or access token, you should specify the clientId. If you specify  session id via "X-MT-Authorization" in the request header, clientId is not required.
+    + remember (optional, boolean) ... If true (generally, "1" is specified.), a new session will be created as a persistent session. If you want to specify false, you can pass "" or "0" to this parameter.
+    + mtDataApiLoginMagicToken (optional, string) ... This is not required if you authenticate except via browser. If this parameter is passed and valid Movable Type will set cookie in order to start a session.
+
++ Request
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            username={Your Sign-in Name}&password={Your sign-in Password}&clientid={Your Client ID}
+
++ Response 200 (application/json)
+
+            {
+              "accessToken" : "EowKdyeBcEUNbiFEXlp0bdQz5RJgdkJYLbBDRJ4m",
+              "sessionId" : "8VtaTLTLp8V9OR5Dz40hO7by8wf0wbCsCkBue0Xv",
+              "expiresIn" : 3600,
+              "remember" : false
+            }
+
++ Response 401 (application/json)
+
+            {
+              "error" : {
+                "code" : 401,
+                "message" : "Invalid login"
+              }
+            }
+
+## Invalidate current session [DELETE]
+Invalidate current session. This is like sign-out. All access tokens related to that session will invalidated too.
+
+This method accepts DELETE or POST with __method=DELETE.
+
++ Attributes
+    + clientId (optional, string) ... If you specify session id via "X-MT-Authorization" in the request header, clientId is not required.
+
++ Request
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+            X-MT-Authorization: MTAuth sessionId={session_id}
+
++ Response 200 (application/json)
+
+            {
+              "status" : "success"
+            }
+
+## User authentication via sing-in Screen [GET /authorization?(redirectUrl,clientId)]
+When this endpoint called from application, user will move to sign-in screen of Movable Type.  
+And then user will move to new location that specified in the redirectUrl parameter when user has been authenticated.
+
+If your application is running on web browser, you should use this endpoint instead of `/authenticatoin`.
+
+
++ Parameters
+    + redirectUrl (required, string) ... Specify the redirect location where the user moves after sign in.
+    + clientId (required, string) ... The client identifier. 
+
+
+# Token [/token]
+## Create a new access token [POST]
+
+Create a new access token that related to current session.
+
++ Attributes
+    + clientId (optional, string) ... If you specify  session id via "X-MT-Authorization" in the request header, clientId is not required.
+
++ Request
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+            X-MT-Authorization: MTAuth sessionId={SessionId}
+
++ Response 200 (application/json)
+
+            {
+              "accessToken" : "EowKdyeBcEUNbiFEXlp0bdQz5RJgdkJYLbBDRJ4m",
+              "expiresIn" : 3600,
+            }
+
++ Response 401 (application/json)
+
+            {
+              "error" : {
+                "code" : 401,
+                "message" : "Unauthorized"
+              }
+            }
+
+## Invalidate current access token. This is not sign-out. [DELETE]
+
+Invalidate current access token. This is not sign-out. If the browser has active session ID, new access token can be obtained easily.
+
+This method accepts DELETE and POST with __method=DELETE.
+
++ Request
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+            X-MT-Authorization: MTAuth accessToken={AccessToken}
+
++ Response 200 (application/json)
+
+            {
+              "status" : "success"
+            }
+
+# Group Assets
 This is the Assets resource.
+
++ Model (application/json)
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
 ------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------ | ------------
@@ -86,92 +232,9 @@ url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asse
               "fileExtension" : "jpg"
             },
 
-## uploadAssetForSite [/sites/:site_id/assets/upload]
-### Upload a file to specific site. [POST]
-
-+ This endpoint is marked as deprecated in v2.0.
-
-**Status Code**
-
-Code | Status | Description
----- | ------ | -----------
-200 | OK | No Errors.
-403 | Forbidden | Do not have permission to upload file.
-404 | Not Found | Site not found.
-409 | Conflict | Uploaded file already exists.
-413 | Request Entity Too Large | Upload file size is larger than CGIMaxUpload.
-
-**Permissions**
-
-+ upload
-
-**Request Body Parameters**
-
-Name | Type | Required | Default | Description
----- | ---- | -------- | ------- | -----------
-path | string | Yes | | The upload destination. You can specify the path to be under the site path.
-file | file | Yes | | Actual file data
-autoRenameIfExists | boolean | | false | If this value is true and a file with the same filename exists, the uploaded file is automatically renamed to a random generated name.
-normalizeOrientation | boolean | | true | If this value is true and the uploaded file has orientation information in Exif data, this file’s orientation is automatically normalized.
-
-+ Parameters
-    + site_id (required, number) ... The site ID.
-
-+ Request Assets resource
-
-    + Headers
-
-            Content-Type: multipart/form-data
-
-    + Body
-
-            path=/images&file=filedata&autoRenameIfExists=true&normalizeOrientation=false
-
-+ Response 200 (application/json)
-
-        {
-          "id" : 1,
-          "label" : "The Bridge",
-          "mimeType" : "image/jpeg",
-          "url" : "http://example.com/images/the-bridge.jpg",
-          "filename" : "the-bridge",
-          "description" : "Taken from over the bridge.",
-          "tags" : [
-            "boston",
-            "bridge",
-            "light"
-          ],
-          "blog" : {
-            "id" : 1
-          },
-          "updatable" : true,
-          "modifiedBy" : {
-            "id" : 1,
-            "displayName" : "Yuji Takayama",
-            "userpicUrl" : null
-          },
-          "modifiedDate" : "2014-10-10T13:13:01+09:00",
-          "createdBy" : {
-            "id" : 1,
-            "displayName" : "Yuji Takayama",
-            "userpicUrl" : null
-          },
-          "cratedDate" : "2014-10-10T13:13:01+09:00",
-          "type" : "Image",
-          "class" : "image",
-          "fileExt" : "jpg",
-          "parent" : {
-            "id" : null
-          },
-          "meta" : {
-            "height" : 768,
-            "width" : 1024,
-            "fileSize" : 339773
-          }
-        }
-
-## uploadAsset [/assets/upload(?overwrite_once)]
-### New in v2.0: Upload a file. [POST]
+# Upload [/assets/upload(?overwrite_once)]
+## Upload a single file. [POST]
+Upload a single file.
 
 **Status Code**
 
@@ -201,15 +264,11 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
 
     + overwrite_once (optional, number) ... If  specify “1”, the API always overwrites an existing file with the uploaded file. This parameter is available in Movable Type 6.1.2
 
-+ Request Assets resource
-
-    + Headers
-
-            Content-Type: multipart/form-data
++ Request multipart/form-data
 
     + Body
 
-            site_id=1&path=/images&file=filedata&autoRenameIfExists=true&normalizeOrientation=false
+            site_id=1&path=/images&file={filedata}&autoRenameIfExists=true&normalizeOrientation=false
 
 + Response 200 (application/json)
 
@@ -254,9 +313,89 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-## listAssets [/sites/:site_id/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields, relatedAssets)]
+## DEPRECATED - Upload a single file. [POST /sites/:site_id/assets/upload]
+***This endpoint is marked as deprecated in v2.0.***
 
-### New in v2.0: Retrieve assets in the specified site. [GET]
+Upload single file to specific site.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to upload file.
+404 | Not Found | Site not found.
+409 | Conflict | Uploaded file already exists.
+413 | Request Entity Too Large | Upload file size is larger than CGIMaxUpload.
+
+**Permissions**
+
++ upload
+
+
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+path | string | Yes | | The upload destination. You can specify the path to be under the site path. This parameter is required.
+file | file | Yes | | Actual file data
+autoRenameIfExists | boolean | | false | If this value is true and a file with the same filename exists, the uploaded file is automatically renamed to a random generated name.
+normalizeOrientation | boolean | | true | If this value is true and the uploaded file has orientation information in Exif data, this file’s orientation is automatically normalized.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+
++ Request (multipart/form-data)
+
+    + Body
+
+            path=/images&file={filedata}&autoRenameIfExists=true&normalizeOrientation=false
+
++ Response 200 (application/json)
+
+        {
+          "id" : 1,
+          "label" : "The Bridge",
+          "mimeType" : "image/jpeg",
+          "url" : "http://example.com/images/the-bridge.jpg",
+          "filename" : "the-bridge",
+          "description" : "Taken from over the bridge.",
+          "tags" : [
+            "boston",
+            "bridge",
+            "light"
+          ],
+          "blog" : {
+            "id" : 1
+          },
+          "updatable" : true,
+          "modifiedBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "modifiedDate" : "2014-10-10T13:13:01+09:00",
+          "createdBy" : {
+            "id" : 1,
+            "displayName" : "Yuji Takayama",
+            "userpicUrl" : null
+          },
+          "cratedDate" : "2014-10-10T13:13:01+09:00",
+          "type" : "Image",
+          "class" : "image",
+          "fileExt" : "jpg",
+          "parent" : {
+            "id" : null
+          },
+          "meta" : {
+            "height" : 768,
+            "width" : 1024,
+            "fileSize" : 339773
+          }
+        }
+
+# Assets [/sites/:site_id/assets/:asset_id]
+## Retrieve a list of assets. [GET /sites/:site_id/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields, relatedAssets)]
+Retrieve list of assets in the specified site.
 
 **Status Code**
 
@@ -277,6 +416,9 @@ Code | Status | Description
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Assets resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
     + relatedAssets (optional, boolean) ... If you want to retrieve related assets (e.g. thumbnail, popup html) that generated by original asset, you should specify this parameter as true.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -325,8 +467,7 @@ Code | Status | Description
           ]
         }
 
-## listAssetsForEntry [/sites/:site_id/entries/:entry_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
-### New in v2.0: Retrieve assets that related with specified entry. [GET]
+## Retrieve a list of assets that related with entry [GET /sites/:site_id/entries/:entry_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
 
 **Status Code**
 
@@ -345,6 +486,9 @@ Code | Status | Description
     + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset.</dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Assets resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -393,8 +537,8 @@ Code | Status | Description
           ]
         }
 
-## listAssetsForPage [/sites/:site_id/pages/:page_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
-### New in v2.0: Retrieve assets that related with specified page. [GET]
+## Retrieve a list of assets that related with page [GET /sites/:site_id/pages/:page_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+Retrieve assets that related with specified page.
 
 **Status Code**
 
@@ -413,6 +557,9 @@ Code | Status | Description
     + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset.</dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Assets resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -461,8 +608,7 @@ Code | Status | Description
           ]
         }
 
-## listAssetsForSiteAndTag [/sites/:site_id/tags/:tag_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
-### New in v2.0: Retrieve assets that related with specified tag. [GET]
+## Retrieve a list of assets that related with tag. [GET /sites/:site_id/tags/:tag_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
 
 **Status Code**
 
@@ -482,6 +628,9 @@ Code | Status | Description
     + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset.</dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Assets resource. The list of fields should be separated by commas. If this parameter is not specified, all fields will be returned.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -530,8 +679,7 @@ Code | Status | Description
           ]
         }
 
-## getAsset [/sites/:site_id/assets/:asset_id(?fields)]
-### New in v2.0: Retrieve single asset by its ID. [GET]
+## Retrieve a single asset by its ID. [GET /sites/:site_id/assets/:asset_id(?fields)]
 
 **Status Code**
 
@@ -589,11 +737,11 @@ Code | Status | Description
           }
         }
 
-## updateAsset [/sites/:site_id/assets/:asset_id]
-### New in v2.0: Update an asset. [PUT]
+## Update an asset. [PUT]
 
-* Authorization is required.
-* This method accepts PUT and POST with __method=PUT.
+Authentication required.
+
+This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 
@@ -684,11 +832,11 @@ Code | Status | Description
           }
         }
 
-## deleteAsset [/sites/:site_id/assets/:asset_id]
-### New in v2.0: Delete an asset. [DELETE]
+## Delete an asset. [DELETE]
 
-* Authorization is required.
-* This method accepts DELETE and POST with __method=DELETE.
+Authentication required.
+
+This method accepts DELETE and POST with __method=DELETE.
 
 **Status Code**
 
@@ -751,8 +899,8 @@ Code | Status | Description
           }
         }
 
-## getThubmbnail [/sites/:site_id/assets/:asset_id/thumbnail(?width, height, scale, square)]
-### New in v2.0: Get thumbnail of an asset. [GET]
+# Thumbnail [/sites/:site_id/assets/:asset_id/thumbnail(?width, height, scale, square)]
+## Get thumbnail image for an asset. [GET]
 
 This endpoint requires one of parameter 'width' or 'height' or 'scale' Also, cannot use these parameters at same time.
 
@@ -782,127 +930,6 @@ Code | Status | Description
           "width": 200,
           "url": "http://example.com/assets_c/2014/10/the-bridge-200x200-1.jpg"
         }
-
-# Group Authentication
-
-## authorization [/authorization?(redirectUrl,clientId)]
-
-### Show sign in screen, then redirect to application screen. [GET]
-
-+ Parameters
-    + redirectUrl (required, string) ... After a successful sign-in, you will be redirected to the specified URL with "#_login".
-    + clientId (required, string) ... The client ID of the application. You should use same clientid in you app.
-
-+ Response 200 (application/json)
-
-## authentication [/authentication]
-
-### Create new session and access token. This is like sign-in. [POST]
-
-+ Attributes
-    + username (required, string) ... The username to authenticate.
-    + password (required, string) ... The password of the user.
-    + remember (optional, boolean) ... If true (generally, "1" is specified.), a new session will be created as a persistent session. If you want to specify false, you can pass "" or "0" to this parameter.
-    + clientId (optional, string) ... If you want create a new session or access token, you should specify the clientId. If you specify  session id via "X-MT-Authorization" in the request header, clientId is not required.
-    + mtDataApiLoginMagicToken (optional, string) ... This is not required if you authenticate except via browser. If this parameter is passed and valid Movable Type will set cookie in order to start a session.
-
-+ Request
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
-
-    + Body
-
-            username=<Your Sign-in Name>&password=<Your sign-in Password>&clientid=<Your Client ID>
-
-+ Response 200 (application/json)
-
-            {
-              "accessToken" : "EowKdyeBcEUNbiFEXlp0bdQz5RJgdkJYLbBDRJ4m",
-              "sessionId" : "8VtaTLTLp8V9OR5Dz40hO7by8wf0wbCsCkBue0Xv",
-              "expiresIn" : 3600,
-              "remember" : true
-            }
-
-+ Response 401 (application/json)
-
-            {
-              "error" : {
-                "code" : 401,
-                "message" : "Invalid login"
-              }
-            }
-
-## revokeAuthentication [/authentication]
-### Invalidate current session. This is like logout. [DELETE]
-
-+ Invalidate current session. This is like logout. All access tokens related to that session are invalidated too.
-+ This method accepts DELETE and POST with __method=DELETE.
-
-+ Attributes
-    + clientId (optional, string) ... If you specify session id via "X-MT-Authorization" in the request header, clientId is not required.
-
-+ Request
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth sessionId=<SessionId>
-
-+ Response 200 (application/json)
-
-            {
-              "status" : "success"
-            }
-
-## token [/token]
-### Create new access token related to current session. [POST]
-
-+ Attributes
-    + clientId (optional, string) ... If you specify  session id via "X-MT-Authorization" in the request header, clientId is not required.
-
-+ Request
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth sessionId=<SessionId>
-
-+ Response 200 (application/json)
-
-            {
-              "accessToken" : "EowKdyeBcEUNbiFEXlp0bdQz5RJgdkJYLbBDRJ4m",
-              "expiresIn" : 3600,
-            }
-
-+ Response 401 (application/json)
-
-            {
-              "error" : {
-                "code" : 401,
-                "message" : "Unauthorized"
-              }
-            }
-
-## RevokeToken [/token]
-### Invalidate current access token. This is not logout. [DELETE]
-
-+ Invalidate current access token. This is not logout. If the browser has active session id, new access token can be obtained easily.
-+ This method accepts DELETE and POST with __method=DELETE.
-
-+ Request
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth accessToken=<AccessToken>
-
-+ Response 200 (application/json)
-
-            {
-              "status" : "success"
-            }
 
 # Group Categories
 
@@ -969,9 +996,8 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
                   "value" : ""
                 }
 
-## listCategories [/sites/:site_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
-
-### Retrieve categories in the specified site. [GET]
+# Categories [/sites/:site_id/categories/:category_id]
+## Retrieve a list of categories [GET /sites/:site_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 **Status Code**
 
@@ -993,6 +1019,9 @@ Code | Status | Description
     + top = `0` (optional, number) ... If set to 1, retrieves only top level categories. New in v2
     + includeIds (optional, string) ... The comma separated list of category IDs to include in result.
     + excludeIds (optional, string) ... The comma separated list of category IDs to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -1014,9 +1043,7 @@ Code | Status | Description
           ]
         }
 
-## listCategoriesForEntry [/sites/:site_id/entries/:entry_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
-
-### New in v2.0: Retrieve categories in the specified entry. [GET]
+## Retrieve a list of categories that related with entry. [GET /sites/:site_id/entries/:entry_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
 
 **Status Code**
 
@@ -1045,6 +1072,9 @@ Code | Status | Description
     + includeIds (optional, string) ... The comma separated list of category IDs to include in result.
     + excludeIds (optional, string) ... The comma separated list of category IDs to exclude from result.
     + type (optional, string) ... <dl><dt>primary</dt><dd>Retrieve primary category only</dd><dt>secondary</dt><dd>Retrieve secondary categories only</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -1066,9 +1096,7 @@ Code | Status | Description
           ]
         }
 
-## listParentCategories [/sites/:site_id/categories/:category_id/parents(?maxDepth, includeCurrent)]
-
-### New in v2.0: Retrieve parent categories from the specified category. [GET]
+## Retrieve a list of parent categories. [GET /sites/:site_id/categories/:category_id/parents(?maxDepth, includeCurrent)]
 
 **Status Code**
 
@@ -1083,6 +1111,9 @@ Code | Status | Description
     + category_id (required, number) ... The category ID.
     + maxDepth = `0` (optional, number) ... The depth of retrieving parent categories.
     + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The list does not include current category.</dd><dt>0</dt><dd>The list includes current category.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -1104,9 +1135,7 @@ Code | Status | Description
           ]
         }
 
-## listSiblingCategories [/sites/:site_id/categories/:category_id/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
-
-### New in v2.0: Retrieve siblings categories from the specified category. [GET]
+## Retrieve a list of siblings categories. [GET /sites/:site_id/categories/:category_id/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
 
 **Status Code**
 
@@ -1129,6 +1158,9 @@ Code | Status | Description
     + top = `0` (optional, number) ... If set to 1, retrieves only top level categories. New in v2
     + includeIds (optional, string) ... The comma separated list of category IDs to include in result.
     + excludeIds (optional, string) ... The comma separated list of category IDs to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -1150,9 +1182,7 @@ Code | Status | Description
           ]
         }
 
-## listChildCategories [/sites/:site_id/categories/:category_id/children(?maxDepth, includeCurrent)]
-
-### New in v2.0: Retrieve child categories from the specified category. [GET]
+## Retrieve a list of child categories. [GET /sites/:site_id/categories/:category_id/children(?maxDepth, includeCurrent)]
 
 **Status Code**
 
@@ -1167,6 +1197,9 @@ Code | Status | Description
     + category_id (required, number) ... The category ID.
     + maxDepth = `0` (optional, number) ... The depth of retrieving parent categories.
     + includeCurrent = `0` (optional, number) ... <dl><dt>0</dt><dd>The list does not include current category.</dd><dt>1</dt><dd>The list includes current category.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -1188,10 +1221,8 @@ Code | Status | Description
           ]
         }
 
-## createCategory [/sites/:site_id/categories]
-
-### New in v2.0: Create a new category. [GET]
-+ Authorization is required.
+## Create a new category. [GET /sites/:site_id/categories]
+Authentication required.
 
 **Status Code**
 
@@ -1244,9 +1275,7 @@ category | Object | Yes | | Single Categories resource
           ]
         }
 
-## getCategory [/sites/:site_id/categories/:category_id(?fields)]
-
-### New in v2.0: Retrieve single category by its ID. [GET]
+## Retrieve a single category by its ID. [GET /sites/:site_id/categories/:category_id(?fields)]
 
 **Status Code**
 
@@ -1277,11 +1306,10 @@ Code | Status | Description
           "description" : null
         }
 
-## updateCategory [/sites/:site_id/categories/:category_id]
+## Update an existing category. [PUT]
+Authentication required.
 
-### New in v2.0: Update an existing category. [PUT]
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 
@@ -1331,11 +1359,12 @@ category | Object | Yes | | Single Categories resource
           "description" : null
         }
 
-## deleteCategory [/sites/:site_id/categories/:category_id]
-### New in v2.0: Delete an existing category. [DELETE]
-+ Authorization is required.
-+ This method accepts DELETE and POST with __method=DELETE.
-+ This method returns deleted Category resource.
+## Delete an existing category. [DELETE]
+Authentication required.
+
+This method accepts DELETE and POST with __method=DELETE.
+
+This method returns deleted Category resource.
 
 **Status Code**
 
@@ -1369,11 +1398,10 @@ Code | Status | Description
           "description" : null
         }
 
-## permutateCategories [/sites/:site_id/categories/permutate]
+## Rearrange existing categories in a new order. [POST /sites/:site_id/categories/permutate]
+Authentication required.
 
-### New in v2.0: Rearrange existing categories in a new order. [POST]
-+ Authorization is required.
-+ This method returns rearranged Categories resource.
+This method returns rearranged Categories resource.
 
 **Status Code**
 
@@ -1488,11 +1516,11 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields" : []
         }
 
-## listComments [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
+# Comments [/sites/{site_id}/comments/:comment_id]
 
-### Retrieve a list of comments in the specified site. [GET]
+## Retrieve a list of comments. [GET /sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
 
-+ Authorization is required if want to include unpublished comments.
+Authorization is required if want to include unpublished comments.
 
 **Status Code**
 
@@ -1515,6 +1543,9 @@ Code | Status | Description
     + excludeIds (optional, string) ... The comma separated ID list of comments to exclude from result.
     + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
     + entryStatus (optional, string) ... Filter by container entry's status. <dl><dt>Draft</dt><dd>entry_status is 1.</dd><dt>Publish</dt><dd>entry_status is 2.</dd><dt>Review</dt><dd>entry_status is 3.</dd><dt>Future</dt><dd>entry_status is 4.</dd><dt>Spam</dt><dd>entry_status is 5.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 
 + Response 200 (application/json)
@@ -1553,11 +1584,9 @@ Code | Status | Description
           ]
         }
 
-## listCommentsForEntry [/sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## Retrieve a list of comments that related with entry. [GET /sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
 
-### Retrieve a list of comments for the specified entry. [GET]
-
-+ Authorization is required if want to include unpublished comments.
+Authorization is required if want to include unpublished comments.
 
 **Status Code**
 
@@ -1580,6 +1609,9 @@ Code | Status | Description
     + includeIds (optional, string) ... The comma separated ID list of comments to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of comments to exclude from result.
     + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -1617,11 +1649,9 @@ Code | Status | Description
           ]
         }
 
-## listCommentsForPage [/sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## Retrieve a list of comments that related with page. [GET /sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
 
-### Retrieve a list of comments for the specified page. [GET]
-
-+ Authorization is required if want to include unpublished comments.
+Authentication is required if want to include unpublished comments.
 
 **Status Code**
 
@@ -1644,6 +1674,9 @@ Code | Status | Description
     + includeIds (optional, string) ... The comma separated ID list of comments to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of comments to exclude from result.
     + status (optional, string) ... Filter by status.<dl><dt>Approved</dt><dd>comment_visible is 1 and comment_junk_status is 1.</dd><dt>Pending</dt><dd>comment_visible is 0 and comment_junk_status is 1.</dd><dt>Spam</dt><dd>comment_junk_status is -1.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -1681,11 +1714,9 @@ Code | Status | Description
           ]
         }
 
-## createComment [/sites/{site_id}/entries/{entry_id}/comments]
+## Create a new comment for entry. [POST /sites/{site_id}/entries/{entry_id}/comments]
 
-### Create a new comment for entry. [POST]
-
-+ Authorization is required.
+Authentication required.
 
 **Status Code**
 
@@ -1750,11 +1781,9 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## postNewCommentForEntry [/sites/{site_id}/pages/{page_id}/comments]
+## Create a new comment for page. [POST /sites/{site_id}/pages/{page_id}/comments]
 
-### New In v2.0: Create a new comment for page. [POST]
-
-+ Authorization is required.
+Authentication required.
 
 **Status Code**
 
@@ -1819,11 +1848,9 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## createReplyComment [/sites/{site_id}/comments/{comment_id}/replies]
+## Reply to comment [POST /sites/{site_id}/comments/{comment_id}/replies]
 
-### Reply to specified comment. [POST]
-
-+ Authorization is required.
+Authentication required.
 
 **Status Code**
 
@@ -1888,11 +1915,9 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## getComment [/sites/{site_id}/comments/{comment_id}(?fields)]
+## Retrieve a single comment by its ID. [GET /sites/{site_id}/comments/{comment_id}(?fields)]
 
-### Retrieve a single comment by its ID. [GET]
-
-+ Authorization is required if the comment status is "unpublished". If the comment status is "published", then this method can be called without authorization.
+Authorization is required if the comment status is "unpublished".  
 
 **Status Code**
 
@@ -1938,12 +1963,11 @@ Code | Status | Description
           "customFields" : []
         }
 
-## updateComment [/sites/{site_id}/comments/{comment_id}]
+## Update an exsiting comment. [PUT]
 
-### Update an exsiting comment. [PUT]
+Authentication required.
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 
@@ -1989,11 +2013,11 @@ Code | Status | Description
         }
 
 
-## updateComment [/sites/{site_id}/comments/{comment_id}]
-### Delete an existing comment. [DELETE]
+## Delete an existing comment. [DELETE]
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=DELETE.
+Authentication required.
+
+This method accepts PUT and POST with __method=DELETE.
 
 **Status Code**
 
@@ -2123,11 +2147,10 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listEntries [/sites/{site_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+# Entries [/sites/:site_id/entries/:entry_id]
+## Retrieve a list of entries in the specified site. [GET /sites/:site_id/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
-### Retrieve a list of entries in the specified site. [GET]
-
-+ Authorization is required if want to include unpublished entries.
+Authentication required if want to include unpublished entries.
 
 **Status Code**
 
@@ -2157,6 +2180,9 @@ Code | Status | Description
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of comments to retrieve as part of the Entries resource. If this parameter is not supplied, no comments will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned.
     + no_text_filter = `0` (optional, number) ... If you want to fetch the raw text, set to '1'. New in v2
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -2209,11 +2235,9 @@ Code | Status | Description
           ]
         }
 
-## listEntriesForCategory [/sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of entries by category. [GET /sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
-### New in v2.0: Retrieve a list of entries by specific category. [GET]
-
-+ Authorization is required if want to include unpublished entries.
+Authentication required. if want to include unpublished entries.
 
 **Status Code**
 
@@ -2244,6 +2268,9 @@ Code | Status | Description
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of comments to retrieve as part of the Entries resource. If this parameter is not supplied, no comments will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned.
     + no_text_filter = `0` (optional, number) ... If you want to fetch the raw text, set to '1'. New in v2
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -2296,11 +2323,9 @@ Code | Status | Description
           ]
         }
 
-## listEntriesForAsset [/sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of entries that related with asset. [GET /sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
 
-### New in v2.0: Retrieve a list of entries that related with specific asset. [GET]
-
-+ Authorization is required if want to include unpublished entries.
+Authentication required. if want to include unpublished entries.
 
 **Status Code**
 
@@ -2331,6 +2356,9 @@ Code | Status | Description
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of comments to retrieve as part of the Entries resource. If this parameter is not supplied, no comments will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned.
     + no_text_filter = `0` (optional, number) ... If you want to fetch the raw text, set to '1'. New in v2
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -2383,11 +2411,9 @@ Code | Status | Description
           ]
         }
 
-## listEntriesForSiteAndTag [/sites/{site_id}/tags/{tag_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of entries that related with tag. [GET /sites/{site_id}/tags/{tag_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
 
-### New in v2.0: Retrieve a list of entries that related with specific tag. [GET]
-
-+ Authorization is required if want to include unpublished entries.
++ Authentication required. if want to include unpublished entries.
 
 **Status Code**
 
@@ -2418,6 +2444,9 @@ Code | Status | Description
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of comments to retrieve as part of the Entries resource. If this parameter is not supplied, no comments will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned.
     + no_text_filter = `0` (optional, number) ... If you want to fetch the raw text, set to '1'. New in v2
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -2470,11 +2499,9 @@ Code | Status | Description
           ]
         }
 
-## createEntry [/sites/{site_id}/entries]
+## Create a new entry. [POST /sites/{site_id}/entries]
 
-### Create a new entry. [POST]
-
-+ Authorization is required.
++ Authentication required.
 
 **Update in v2.0**
 
@@ -2557,11 +2584,9 @@ entry | Object | Yes | | Single Entries resource
           ]
         }
 
-## getEntry [/sites/{site_id}/entries/{entry_id}(?fields)]
+## Retrieve a single entry by its ID. [GET /sites/{site_id}/entries/:entry_id(?fields)]
 
-### Retrieve a single entry by its ID. [GET]
-
-+ Authorization is required if the entry status is "unpublished". If the entry status is "published", then this method can be called without authorization.
+Authentication required if the entry status is "unpublished".
 
 **Status Code**
 
@@ -2623,16 +2648,11 @@ Code | Status | Description
         }
 
 
-## updateEntry [/sites/{site_id}/entries/{entry_id}]
+## Update an existing entry. [PUT]
 
-### Update an existing entry. [PUT]
+Authentication required.
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
-
-**Update in v2.0**
-
- + You can attach/detach categories and assets in the one request.
+This method accepts PUT and POST with __method=PUT.
 
 **Status Code**
 
@@ -2707,10 +2727,10 @@ Code | Status | Description
           ]
         }
 
-## deleteEntry [/sites/{site_id}/entries/{entry_id}]
-### Delete an existing entry. [DELETE]
+## Delete an existing entry. [DELETE]
 
-+ Authorization is required.
+Authentication required.
+
 This method accepts PUT and POST with __method=DELETE.
 
 **Status Code**
@@ -2776,11 +2796,12 @@ Code | Status | Description
           ]
         }
 
-## previewEntry [/sites/:site_id/entries/preview(?raw)]
-### new in v2.0: Make a preview for a entry. [POST]
+# Preview [/sites/:site_id/entries/preview(?raw)]
+## Make a preview by specified data. [POST]
 
-+ Authorization is required.
-+ **This endpoint is available in Movable Type 6.1.2 or later.**
+Authentication required.
+
+**This endpoint is available in Movable Type 6.1.2 or later.**
 
 **Permissions**
 
@@ -2790,11 +2811,7 @@ Code | Status | Description
     + site_id (required, number) ... The site ID.
     + raw (optional, number) ...  If specify “1”, will be returned preview contents.
 
-+ Request Entries resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 
@@ -2835,12 +2852,13 @@ Code | Status | Description
           }
         }
 
-## previewEntryById [/sites/:site_id/entries/:entry_id/preview(?raw)]
-### new in v2.0: Make a preview for a entry with existing data. [POST]
+## Make a preview for existing data. [POST /sites/:site_id/entries/:entry_id/preview(?raw)]
 
-+ Authorization is required.
-+ **This endpoint is available in Movable Type 6.1.2 or later.**
-+ ***entry*** parameter is required. If you just want to get preview entry from existing data, you should provide ***entry*** parameter with empty json.
+Authentication required.
+
+**This endpoint is available in Movable Type 6.1.2 or later.**
+
+***entry*** parameter is required. If you just want to get preview entry from existing data, you should provide ***entry*** parameter with empty json. This will be fixed in the future.
 
 **Permissions**
 
@@ -2851,11 +2869,7 @@ Code | Status | Description
     + entry_id (required, number) ... The entry ID.
     + raw (optional, number) ...  If specify “1”, will be returned preview contents.
 
-+ Request Templates resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 
@@ -2946,11 +2960,10 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields": []
         },
 
-## listFolders [//sites/:site_id/folders(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+# Folders [/sites/:site_id/folders/:folder_id]
+## Retrieve a list of folders [GET //sites/:site_id/folders(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
 
-### New in v2.0: Retrieve a list of folders. [GET]
-
-+ Authentication required if you want to get private properties.
+Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID
@@ -2964,6 +2977,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + includeIds (optional, string) ... The comma separated ID list of folders to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of folders to exclude from result.
     + top = `0` (optional, number) ... If set to 1, retrieves only top level folders.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -2993,17 +3009,18 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listParentFolders [/sites/:site_id/folders/:folder_id/parents(?maxDepth, includeCurrent)]
+## Retrieve a list of parent folders [GET /sites/:site_id/folders/:folder_id/parents(?maxDepth, includeCurrent)]
 
-### New in v2.0: Retrieve a list of parent folders of the requested folder. [GET]
-
-+ Authentication required if you want to get private properties.
+Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID.
     + folder_id (required, number) ... The folder ID.
     + maxDepth (optional, numner) ... The depth of retrieving parent folders.
     + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The results includes current folder.</dd><dt>0</dt>The results do not include current folder.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -3033,11 +3050,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listSiblingFolders [/sites/:site_id/folders/:folder_id/siblings(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+## Retrieve a list of sibling folders [GET /sites/:site_id/folders/:folder_id/siblings(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
 
-### New in v2.0: Retrieve a list of sibling folders of the requested folder. [GET]
-
-+ Authentication required if you want to get private properties.
+Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID
@@ -3052,6 +3067,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + includeIds (optional, string) ... The comma separated ID list of folders to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of folders to exclude from result.
     + top = `0` (optional, number) ... If set to 1, retrieves only top level folders.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -3081,9 +3099,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listChildFolders [/sites/:site_id/folders/:folder_id/children(?maxDepth, includeCurrent)]
-
-### New in v2.0: Retrieve a list of child folders of the requested folder. [GET]
+## Retrieve a list of child folders [GET /sites/:site_id/folders/:folder_id/children(?maxDepth, includeCurrent)]
 
 
 + Authentication required if you want to get private properties.
@@ -3093,6 +3109,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + folder_id (required, number) ... The folder ID.
     + maxDepth (optional, numner) ... The depth of retrieving child folders.
     + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The results includes current folder.</dd><dt>0</dt>The results do not include current folder.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -3122,138 +3141,6 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-
-This is the Logs resource.
-
-Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
------------- | ------------- | ------------ | ------------ | ------------- | ------------ | ------------ | ------------
-blog | Object | Blog | |  | Y | The blog of this log. | v2
-blog.id | value | Number | mt_log.log_blog_id |  | Y | The ID of the blog that contains this log. | v2
-by | Object | User | |  | Y | Created user of this log. | v2
-by.id | value | Number | mt_log.log_author_id |  | | The ID of this log creator. | v2
-by.displayName | value | String | mt_author.author_nickname |  | Y | The display name of this log creator. | v2
-by.userpicUrl | value | String | mt_author.author_userpic |  | | The URL of this log creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. | v2
-category | value | String | mt_log.log_category |  |  | The category of this log. | v2
-class | value | String | mt_log.log_class |  |  | The class of this log. | v2
-date | value | iso 8601 datetime | mt_log.log_created_on |  | Y | Created date of this log. | v2
-id | value | Number | mt_log.log_id |  | Y | The ID of this log. | v2
-ip | value | String | mt_log.log_ip |  | Y | The remote IP address of this log creator. | v2
-level | value | String | mt_log.log_level |  |  | The level of this log. <dl><dt>INFO</dt><dd>log_level is 1.</dd><dt>WARNING</dt><dd>log_level is 2.</dd><dt>ERROR</dt><dd>log_level is 4.</dd><dt>SECURITY</dt><dd>log_level is 8.</dd><dt>DEBUG</dt><dd>log_level is 16.</dd></dl> | New in v2
-message | value | String | mt_log.log_message |  |  | The message of this log. | v2
-metadata | value | String | mt_log.log_metadata |  |  | The metadata of this log. | v2
-upatable | value | boolean | |  | Y | <dl><dt>true</dt><dd>The user who accessed can update this entry.</dd><dt>false</dt><dd>The user who accessed cannot update this entry.</dd></dl> | v2
-
-                {
-                  "ip": "127.0.0.1",
-                  "date": "2015-06-29T09:29:35+09:00",
-                  "updatable": true,
-                  "blog": {
-                    "id": "1"
-                  },
-                  "message": "Some log messages here.",
-                  "by": {
-                    "userpicUrl": null,
-                    "id": "1",
-                    "displayName": "Yuji Takayama"
-                  },
-                  "level": "INFO",
-                  "metadata": "",
-                  "category": "new",
-                  "class": "template",
-                  "id": "370"
-                }
-
-## listLogs [/sites/:site_id/logs(?site_id, limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, level)]
-### New in v2.0: Retrieve a list of logs in the specified site. [GET]
-
-+ Authorization is required.
-
-#####  Permissions
-+ view_blog_log for website and blog.
-+ view_log for the system.
-
-+ Parameters
-    + site_id (required, number) ... The site ID. If 0 specified, will load from global template in the system.
-    + search (optional, string) ... Search query.
-    + searchFields = `message,ip` (optional, string) ... The comma separated list of field names to search. Available value is 'message' and 'ip'.
-    + limit = `25` (optional, number) ... Maximum number of logs to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
-    + sortBy = `created_on` (optional, string) ... <ul><li>id</li><li>created_on</li><li>blog_id</li><li>author_id</li><li>level</li><li>class</li></ul>
-    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>Return templates in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return templates in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Logs resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
-    + includeIds (optional, string) ... The comma separated list of log IDs to include in result.
-    + excludeIds (optional, string) ... The comma separated list of log IDSs to exclude from result.
-    + level (optional, string) ... The comma separated list of level name to filter logs. Available value is foolows.<ul><li>security</li><li>error</li><li>warning</li><li>info</li><li>debug</li><li>security_or_error</li><li>security_or_error_or_warning</li><li>not_debug</li><li>debug_or_error</li></ul>
-
-+ Request
-
-    + Headers
-
-            X-MT-Authorization: MTAuth accessToken=<accessToken>
-
-+ Response 200 (application/json)
-
-        {
-          "totalResults": "224",
-          "items": [
-            {
-              "ip": "127.0.0.1",
-              "date": "2015-06-29T09:29:35+09:00",
-              "updatable": true,
-              "blog": {
-                "id": "1"
-              },
-              "message": "Some log messages here.",
-              "by": {
-                "userpicUrl": null,
-                "id": "1",
-                "displayName": "Yuji Takayama"
-              },
-              "level": "INFO",
-              "metadata": "",
-              "category": "new",
-              "class": "template",
-              "id": "370"
-            }
-          ]
-        }
-
-
-+ Response 401 (application/json)
-
-        {
-          "error": {
-            "message": "Unauthorized",
-            "code": 401
-          }
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": {
-            "message": "Do not have permission to retrieve the list of activity logs.",
-            "code": "403"
-          }
-        }
-
-+ Response 404 (application/json)
-
-        {
-          "error": {
-            "message": "Site not found",
-            "code": "404"
-          }
-        }
-
-+ Response 500 (application/json)
-
-        {
-          "error": {
-            "message": "Some error message is here",
-            "code": "500"
-          }
-        }
 
 # Group Pages
 
@@ -3344,11 +3231,14 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listPages [/sites/{site_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+# Pages [/sites/{site_id}/pages/{page_id}]
 
-### New in v2.0: Retrieve a list of pages in the specified site. [GET]
+## Retrieve a list of pages [GET /sites/{site_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
+Retrieve a list of pages.
 
-+ Authorization is required if want to include unpublished pages.
+:::note
+Authentication required if want to include unpublished pages.
+:::
 
 **Status Code**
 
@@ -3378,6 +3268,9 @@ Code | Status | Description
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of pages to retrieve as part of the Pages resource. If this parameter is not supplied, no pages will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Pages resource. If this parameter is not supplied, no trackbacks will be returned.
     + no_text_filter = `0` (optional, number) ... If you want to fetch the raw text, set to '1'. New in v2
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -3434,11 +3327,12 @@ Code | Status | Description
           ]
         }
 
-## listPagesForFolder [/sites/{site_id}/folders/{folder_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of pages by folder [GET /sites/{site_id}/folders/{folder_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
+Retrieve a list of pages by folder.
 
-### New in v2.0: Retrieve a list of pages by specific folder. [GET]
-
-+ Authorization is required if want to include unpublished pages.
+:::note
+Authentication required if want to include unpublished pages.
+:::
 
 **Status Code**
 
@@ -3469,6 +3363,9 @@ Code | Status | Description
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of comments to retrieve as part of the Pages resource. If this parameter is not supplied, no comments will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Pages resource. If this parameter is not supplied, no trackbacks will be returned.
     + no_text_filter = `0` (optional, number) ... If you want to fetch the raw text, set to '1'. New in v2
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -3525,11 +3422,12 @@ Code | Status | Description
           ]
         }
 
-## listPagesForAsset [/sites/{site_id}/assets/{asset_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of pages that related with asset [GET /sites/{site_id}/assets/{asset_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
+Retrieve a list of pages that related with asset.
 
-### New in v2.0: Retrieve a list of pages that related with specific asset. [GET]
-
-+ Authorization is required if want to include unpublished pages.
+:::note
+Authentication required if want to include unpublished pages.
+:::
 
 **Status Code**
 
@@ -3560,6 +3458,9 @@ Code | Status | Description
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of pages to retrieve as part of the Pages resource. If this parameter is not supplied, no pages will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Pages resource. If this parameter is not supplied, no trackbacks will be returned.
     + no_text_filter = `0` (optional, number) ... If you want to fetch the raw text, set to '1'. New in v2
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -3616,11 +3517,12 @@ Code | Status | Description
           ]
         }
 
-## listPagesForSiteAndTag [/sites/{site_id}/tags/{tag_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of pages that related with tag [GET /sites/{site_id}/tags/{tag_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
+Retrieve a list of pages that related with tag.
 
-### New in v2.0: Retrieve a list of pages that related with specific tag. [GET]
-
-+ Authorization is required if want to include unpublished pages.
+:::note
+Authentication required if want to include unpublished pages.
+:::
 
 **Status Code**
 
@@ -3651,6 +3553,9 @@ Code | Status | Description
     + maxComments (optional, number) ... This is an optional parameter. Maximum number of pages to retrieve as part of the Pages resource. If this parameter is not supplied, no pages will be returned.
     + maxTrackbacks (optional, number) ... This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Pages resource. If this parameter is not supplied, no trackbacks will be returned.
     + no_text_filter = `0` (optional, number) ... If you want to fetch the raw text, set to '1'.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -3707,15 +3612,12 @@ Code | Status | Description
           ]
         }
 
-## createPage [/sites/{site_id}/pages]
+### Create a new page [POST /sites/{site_id}/pages]
+Create a new page.
 
-### Create a new page. [POST]
-
-+ Authorization is required.
-
-**Update in v2.0**
-
- + You can attach folder and assets in the one request.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -3796,11 +3698,12 @@ page | Object | Yes | | Single Pages resource
           ]
         }
 
-## getPage [/sites/{site_id}/pages/{page_id}(?fields)]
+### Retrieve a single page by its ID [GET /sites/{site_id}/pages/{page_id}{?fields}]
+Retrieve a single page by its ID.
 
-### Retrieve a single page by its ID. [GET]
-
-+ Authorization is required if the page status is "unpublished". If the page status is "published", then this method can be called without authorization.
+:::note
+Authentication required if the page status is "unpublished".
+:::
 
 **Status Code**
 
@@ -3866,12 +3769,16 @@ Code | Status | Description
         }
 
 
-## updatePage [/sites/{site_id}/pages/{page_id}]
+## Update an existing page [PUT]
+Update an existing page.
 
-### Update an existing page. [PUT]
+:::note
+Authentication required.
+:::
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+:::note
+This method accepts PUT and POST with __method=PUT.
+:::
 
 ** Update in v2.0 **
 
@@ -3953,11 +3860,16 @@ Code | Status | Description
           ]
         }
 
-## deletePage [/sites/{site_id}/pages/{page_id}]
-### Delete an existing page. [DELETE]
+## Delete an existing page [DELETE]
+Delete an existing page.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
+
+:::note
 This method accepts PUT and POST with __method=DELETE.
+:::
 
 **Status Code**
 
@@ -4025,10 +3937,14 @@ Code | Status | Description
           ]
         }
 
-## previewPage [/sites/:site_id/pages/preview(?raw)]
-### new in v2.0: Make a preview for a page. [POST]
+# previewPage [/sites/{site_id}/pages/preview{?raw}]
+## Make a preview by specified data [POST]
+Make a preview by specified data.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
+
 + **This endpoint is available in Movable Type 6.1.2 or later.**
 
 **Permissions**
@@ -4084,12 +4000,18 @@ Code | Status | Description
           }
         }
 
-## previewPageById [/sites/:site_id/pages/:page_id/preview(?raw)]
-### new in v2.0: Make a preview for a page with existing data. [POST]
+## Make a preview for exising data [POST /sites/{site_id}/pages/{page_id}/preview{?raw}]
+Make a preview for exising data.
 
-+ Authorization is required.
+:::note
++ Authentication required.
+:::
+
 + **This endpoint is available in Movable Type 6.1.2 or later.**
+
+:::warning
 + ***page*** parameter is required. If you just want to get preview page from existing data, you should provide ***page*** parameter with empty json.
+:::
 
 **Permissions**
 
@@ -4223,12 +4145,18 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           "createdDate" : "2015-03-21T19:37:53+09:00"
         }
 
-## listPermissions [/permissions(?limit, offset, sortBy, sortOrder, fields, blogIds)]
+# List Permissions [/permissions]
+## Retrieve a list of permissions [GET /permissions{?limit,offset,sortBy,sortOrder,fields,blogIds,dateField,dateFrom,dateTo}]
+Retrieve a list of permissions. Only system administrator can call this endpoint.
 
-### New in v2.0: Retrieve a list of permissions. [GET]
+:::note
+Authentication required
+:::
 
-+ Authentication is required
-+ Need Administer privilege.
+**Permissions**
+
++ Administer
+
 
 + Parameters
     + limit = `25` (optional, number) ... Maximum number of permissions to retrieve.
@@ -4237,6 +4165,9 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + blogIds (optional, number) ... The comma-separated blog id list that to be included in the result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Request
 
@@ -4306,12 +4237,12 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## listPermissionsForUser [/users/:user_id/permissions(?limit, offset, sortBy, sortOrder, fields, blogIds)]
+## Retrieve a list of permissions by user [GET /users/{user_id}/permissions{?limit,offset,sortBy,sortOrder,fields,blogIds,dateField,dateFrom,dateTo}]
+Retrieve a list of permissions by user.
 
-### Retrieve a list of permissions for user. [GET]
-
-+ Authentication is required
-+ If you want to get others list, you should have Administer privilege.
+:::note
+Authentication required
+:::
 
 + Parameters
     + user_id (required, number or the word 'me') ... The user ID.
@@ -4321,6 +4252,9 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + blogIds (optional, number) ... The comma-separated blog id list that to be included in the result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Request
 
@@ -4390,11 +4324,13 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## listPermissionsForSite [/sites/:site_id/permissions(?limit, offset, sortBy, sortOrder, fields)]
+## Retrieve a list of permissions by site [GET /sites/{site_id}/permissions{?limit,offset,sortBy,sortOrder,fields,dateField,dateFrom,dateTo}]
+Retrieve a list of permissions by site.
 
-### New in v2.0: Retrieve a list of permissions for site. [GET]
+:::note
+Authentication required
+:::
 
-+ Authentication is required
 + Permissions
   + Administer
   + Website Administrator for websites
@@ -4407,6 +4343,9 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
     + sortBy = `bog_id` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>id</li><li>blog_id</li><li>author_id</li><li>created_by</li><li>created_on</li></ul>
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Request
 
@@ -4476,11 +4415,13 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## listPermissionsForRole [/roles/:role_id/permissions(?limit, offset, sortBy, sortOrder, fields, blogIds)]
+## Retrieve a list of permissions by role [GET /roles/{role_id}/permissions{?limit,offset,sortBy,sortOrder,fields,blogIds,dateField,dateFrom,dateTo}]
+Retrieve a list of permissions by role. Only system administrator can call this endpoint.
 
-### New in v2.0: Retrieve a list of permissions by role. [GET]
+:::note
+Authentication required
+:::
 
-+ Authentication is required
 + Permissions
   + Administer
 
@@ -4492,6 +4433,9 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + blogIds (optional, number) ... The comma-separated blog id list that to be included in the result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Request
 
@@ -4561,72 +4505,87 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## grantPermissionToSite [/sites/:site_id/permissions/grant]
+# Grant permission [/sites/{site_id}/permissions/grant]
+## Grant permissions to site. [POST /sites/{site_id}/permissions/grant]
 
-### New in v2.0: Grant permissions to site. [POST]
+:::note
+Authentication required
+:::note
 
-+ Authentication is required
-+ You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog)
+:::note
+You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog).
+:::
 
 + Parameters
 
   + site_id (required, number) ... The site ID.
+
++ HTML Body Parameters
   + role_id (required, number) ... The role ID.
   + user_id (required, number) ... The user ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
 
-            role_id=1&user_id=4
+            role_id=<role_id>&user_id=<user_id>
 
 + Response 200 (application/json)
 
         {"status":"success"}
 
-## grantPermissionToUser [/users/:user_id/permissions/grant]
+## Grant permissions to user. [POST /users/{user_id}/permissions/grant]
 
-### New in v2.0: Grant permissions to user. [POST]
+:::note
+Authentication required
+:::
 
-+ Authentication is required
-+   You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog)
+:::note
+You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog).
+:::
 
 + Parameters
 
   + user_id (required, number) ... The user ID.
+
++ HTML Body Parameters
   + site_id (required, number) ... The site ID.
   + role_id (required, number) ... The role ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
 
-            role_id=1&site_id=1
+            role_id=<role_id>&site_id=<site_id>
 
 + Response 200 (application/json)
 
         {"status":"success"}
 
-## revokePermissionFromSite [/sites/:site_id/permissions/revoke]
+# Revoke permission [/sites/{site_id}/permissions/revoke]
 
-### New in v2.0: Revoke permissions from site. [POST]
+## Revoke permissions from site. [POST /sites/{site_id}/permissions/revoke]
 
-+ Authentication is required
-+ You should have revoke_role(Need revoke_administer_role when granting role having administer_blog )
+:::note
+Authentication required
+:::
+:::note
++ You should have revoke_role(Need revoke_administer_role when granting role having administer_blog ).
+:::
 
 + Parameters
 
   + site_id (required, number) ... The site ID.
+
++ HTML Body Parameters
   + user_id (required, number) ... The user ID.
   + role_id (required, number) ... The role ID.
 
@@ -4639,35 +4598,38 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
 
     + Body
 
-            role_id=1&user_id=1
+            role_id=<role_id>&user_id=<user_id>
 
 + Response 200 (application/json)
 
         {"status":"success"}
 
-## revokePermissionFromUser [/users/:user_id/permissions/revoke]
+### Revoke permissions from user. [POST /users/{user_id}/permissions/revoke]
 
-### New in v2.0: Revoke permissions from user. [POST]
-
-+ Authentication is required
-+ You should have revoke_role(Need revoke_administer_role when granting role having administer_blog )
+:::note
+Authentication required
+:::
+:::note
++ You should have revoke_role(Need revoke_administer_role when granting role having administer_blog ).
+:::
 
 + Parameters
 
   + user_id (required, number) ... The user ID.
+
++ HTML Body Parameters
   + site_id (required, number) ... The site ID.
   + role_id (required, number) ... The role ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
 
-            role_id=1&site_id=1
+            role_id=<role_id>&site_id=<site_id>
 
 + Response 200 (application/json)
 
@@ -4675,9 +4637,11 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
 
 # Group Search
 
-## Search [/search(?search, blog_id, IncludeBlogs, ExcludeBlogs, limit, offset, SearchSortBy, SearchResultDisplay, SearchMaxResults)]
+# Search [/search{?search,blog_id,IncludeBlogs,ExcludeBlogs,limit,offset,SearchSortBy,SearchResultDisplay,SearchMaxResults}]
 
-### New in v2.0: Searching entries. [GET]
+## Searching the entries. [GET]
+Searching the entries. This endpoint is like a mt-search.cgi, but more faster.
+
 
 + Parameters
 
@@ -4745,12 +4709,14 @@ allowComments | value | boolean | mt_blog.blog_allow_reg_comments<br>mt_blog.blo
 allowCommentsDefault | value | boolean | mt_blog.blog_allow_comments_default | Y | | The state of the comment acceptance of default in this site. <dl><dt>true</dt><dd>Comments are accepted.</dd><dt>false</dt><dd>Comments are not accepted.</dd></dl> | v2
 allowPings | value | boolean | mt_blog.blog_allow_pings | Y | - | <dl><dt>true</dt><dd>Accept TrackBacks from any source.</dd><dt>false</dt><dd>Do not accept.</dd></dl> | v2
 allowPingsDefault | value | boolean | mt_blog.blog_allow_pings_default | Y | | The state of the comment acceptance of default in this site. Available value is follows. <dl><dt>true</dt><dd>Trackbacks are accepted.</dd><dt>false</dt><dd>Trackbacks are not accepted.</dd></dl> | v2
+allowToChangeAtUpload | value | boolean | mt_blog.blog_allow_to_change_at_upload | Y | | <dl><dt>true</dt><dd>Allow user to change the upload destination when upload a file.</dd><dt>false</dt><dd>Not allowed.<dd></dl> | v3.01
 allowUnregComments | value | boolean | mt_blog.blog_allow_unreg_comments | Y | | <dl><dt>true</dt><dd>Allow comments from anonymous or unauthenticated users.</dd><dt>false</dt><dd>Not allowed.</dd></dl> | v2
 archivePath | value | string | mt_blog.blog_archive_path | Y | | The archive path for this site. This property only accepts absolute path. | v2
 archiveTypePreferred | value | string | mt_blog.blog_archive_type_preferred | Y | | The preferred archive type for this site. | v2
 archiveUrl | value | string | mt_blog.blog_archive_url | | | The archive url of this site. [Update in v2] This property was changed to updatable. | v1
 autodiscoverLinks | value | boolean | mt_blog.blog_autodiscovery_links | Y | | <dl><dt>true</dt><dd>Enable External TrackBack Auto-Discovery.</dd><dt>false</dt><dd>Disable.</dd></dl> | v2
 autolinkUrls | value | boolean | mt_blog.blog_autolink_urls | Y | | <dl><dt>true</dt><dd>Transform URLs in comment text into HTML links</dd><dt>false</dt><dd>Do not transform.</dd></dl> | v2
+autoRenameNonAscii | value | boolean | mt_blog_meta.auto_rename_non_ascii | Y | | <dl><dt>true</dt><dd>Uploded file name  will be automatically changed to randam filename if uploaded filename contains non-ascii character.</dd><dt>false</dt><dd>File name is not changed.</dd></dl> | v3.01
 basenameLimit | value | number | mt_blog.blog_basename_limit | Y | | The maximum length of basename. | v2
 ccLicenseImage | value | string | mt_blog.blog_cc_license | - | Y | The URL for the Creative Commons License image for this site. | v2
 ccLicenseUrl | value | string | mt_blog.blog_cc_license | - | Y | The URL for the Creative Commons License url for this site. | v2
@@ -4773,6 +4739,7 @@ dynamicConditional | value | boolean | | Y | | Cannot set this property when dyn
 entryCustomPrefs | ARRAY | string | | Y | Y | Default displayed fields of this site's entry. Available value is follows.<dl><dt>title</dt><dd>Title field</dd><dt>text</dt><dd>Body and extended field</dd><dt>category</dt><dd>Category list</dd><dt>excerpt</dt><dd>Excerpt field</dd><dt>keywords</dt><dd>Keyword field</dd><dt>tags</dt><dd>Tags field</dd><dt>feedback</dt><dd>Comment and trackback setting field</dd><dt>assets</dt><dd>Entry assets list</dd><dt>customfield_&lt;basename&gt;</dt><dd>Each custom Fields</dd></dl> | v2
 emailNewComments | value | number | mt_blog.blog_email_new_comments | Y | | Email notification when posting comment to this site.<dl><dt>0</dt><dd>Off.</dd><dt>1</dt><dd>On.</dd><dt>2</dt><dd>Only when attension is required.</dd></dl> | v2
 emailNewPings | value | number | mt_blog.blog_email_new_pings | Y | | "Email notification setting when accepting trackback to this site. <dl><dt>0</dt><dd>Off.</dd><dt>1</dt><dd>On.</dd><dt>2</dt><dd>Only when attention is required.</dd></dl> | v2
+extraPath | value | string | mt_blog_meta.blog_extra_path | Y | | The raw data of extra path for default upload destination. If extra path is not configured, this value is a blank string.| v3.01
 fileExtension | value | string | mt_blog.blog_file_extension | Y | | The file extension for this site. | v2
 followAuthLinks | value | boolean | mt_blog_meta.follow_auth_links | Y | | <dl><dt>true</dt><dd>Do not add the 'nofollow' attribute when a comment is submitted by a trusted commenter.</dd><dt>false</dt><dd>Add the 'nofollow' attribute .</dd></dl> | v2
 host | value | string | mt_blog.blog_site_url | - | Y | The host name of this site. | v2
@@ -4798,6 +4765,8 @@ newCreatedUserRoles | ARRAY | Role | - | Y | | Assigned to users that are create
 newCreatedUserRole.id | value | number | mt_role.role_id | Y | Y |  | v2
 newCreatedUserRole.name | value | string | mt_role.role_name | Y | Y |  | v2
 nofollowUrls | value | boolean | mt_blog_meta.nofollow_urls | Y | | <dl><dt>true</dt><dd>All URLs in comments and TrackBacks will be assigned a 'nofollow' link relation.</dd><dt>false</dt><dd>Not assigned.</dl> | v2
+normalizeOrientation | value | boolean | mt_blog_meta.normalize_orientation | Y | | <dl><dt>true</dt><dd>Image orientation is normalized automatically when the image file contains orientation information.</dd><dt>false</dt><dd>Image orientation is will never normalized.</dd></dl> | v3.01   
+operationIfExists | value | number | mt_blog_meta.operation_if_exists | Y | |  <dl><dt>1</dt><dd>The upload file will be changed to random file name automatically.</dd><dt>2</dt><dd>The existing file will be overwritten.</dd><dt>3</dt><dd>Upload will be canceled.</dd> | v3.01
 pageCustomPrefs | ARRAY | string | | Y | Y | Default displayed fields of this site's page. Available value is follows. <dl><dt>title</dt><dd>Title field</dd><dt>text</dt><dd>Body and extended field</dd><dt>category</dt><dd>Category list</dd><dt>excerpt</dt><dd>Excerpt field</dd><dt>keywords</dt></dd>Keyword field</dd><dt>tags</dt><dd>Tags field</dd><dt>feedback</dt><dd>Comment and trackback setting field</dd><dt>assets</dt><dd>Page assets list</dd><dt>customfield_&lt;basename&gt;</dt><dd>Each custom Fields</dd></dl>| v2
 parent | Object | - | - | - | Y | The parent website of this blog. If this object is Websites Resource, this object must be null. | v2
 parent.id | value | number | mt_blog.blog_parent_id (mt_blog.blog_id) | - | Y | The ID of parent website. | v2
@@ -4820,6 +4789,9 @@ statusDefault | value | string | mt_blog.blog_status_default | Y | | The default
 themeId | value | string | mt_blog.blog_theme_id | Y | | The theme ID for this site. | v2
 timezone | value | number | mt_blog.mt_server_offset | - | Y | The timezone of this site. | v2
 updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>Current user can update this website.</dd><dt>false</dt><dd>Current user cannot update this website.</dd> | v2
+uploadDestination | Object | - | - | - | Y | The default configuration for upload destination of this site. | v3.01
+uploadDestination.path | value | string | mt_blog_meta.blog_upload_destination | Y | | The full path for default upload destination. The value begin with site path and contains extra path if extra_path configured. If default upload destination is not configured, this value is just a same as site_path.| v3.01
+uploadDestination.raw | value | string | mt_blog_meta.blog_upload_destination | Y | | The raw data of default upload destination. If default upload destination is not configured, this value is a blank string.| v3.01
 url | value | string | mt_blog.blog_site_url | | | The site url of this site.  [Update in v2] This property was changed to updatable. | v1
 useCommentComfirmation | value | boolean | mt_blog.blog_use_comment_confirmation | Y | | <dl><dt>true</dt><dd>Each commenter's browser will be redirected to a comment confirmation page after their comment is accepted.</dd><dt>false</dt><dd>Will not.</dd></dl> | v2
 useRevision | value | boolean | mt_blog.blog_use_revision | Y | | <dl><dt>true</dt><dd>Revision history is enabled.</dd><dt>false</dt><dd>Revision history is disabled.</dd></dl> | v2
@@ -4834,17 +4806,14 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
               "relativeUrl" : "/",
               "entryCustomPrefs" : [
                 "title",
-                "text",
+                "body",
                 "category",
-                "excerpt",
-                "keywords",
                 "tags",
                 "feedback",
-                "assets",
-                "customfield_license_fee",
-                "customfield_foo"
+                "publishing",
+                "assets"
               ],
-              "archivePath" : "/path/to/document_root/",
+              "archivePath" : "/path/to/archive_root",
               "useCommentConfirmation" : true,
               "url" : "http://example.com/",
               "smartReplaceFields" : [
@@ -4860,22 +4829,26 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
+              "operationIfExists" : "2",
               "timezone" : "+09:00",
               "daysOrPosts" : "posts",
               "sortOrderPosts" : "descend",
-              "name" : "Six Apart Shop",
+              "name" : "First Website",
               "convertParas" : "richtext",
               "description" : "",
+              "autoRenameNonAscii" : true,
               "includeSystem" : "",
-              "archiveUrl" : "http://example.com",
+              "archiveUrl" : "http://example.com/archives/",
               "allowCommentHtml" : true,
               "fileExtension" : "html",
-              "smartReplace" : "0",
+              "smartReplace" : 0,
               "junkFolderExpiry" : "14",
               "publishEmptyArchive" : false,
               "dateLanguage" : "ja",
               "listOnIndex" : "10",
-              "pingWeblogs" : true,
+              "pingWeblogs" : false,
+              "extraPath" : "uploads",
+              "normalizeOrientation" : false,
               "emailNewComments" : "1",
               "language" : "ja",
               "autolinkUrls" : true,
@@ -4888,47 +4861,52 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
-              "pingGoogle" : true,
+              "pingGoogle" : false,
               "convertParasComments" : "1",
-              "sitePath" : "/path/to/document_root/",
+              "sitePath" : "/path/to/site_path",
               "id" : "1",
               "parent" : null,
               "archiveTypePreferred" : "Individual",
               "contentCss" : "{{theme_static}}css/editor.css",
               "junkScoreThreshold" : "0",
               "internalAutodiscovery" : false,
-              "createdDate" : "2014-12-28T23:09:45+09:00",
+              "createdDate" : "2016-01-21T11:18:38+09:00",
               "class" : "website",
               "moderateComments" : "2",
               "allowCommentsDefault" : true,
               "includeCache" : false,
               "allowCommenterRegist" : true,
+              "allowToChangeAtUpload" : false,
+              "uploadDestination" : {
+                "path" : "/path/to/upload/dest",
+                "raw" : "%s/%y/%m"
+              },
               "maxRevisionsEntry" : "20",
               "updatable" : true,
               "requireCommentEmails" : false,
-              "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
+              "ccLicenseImage" : "",
               "allowComments" : true,
               "allowPingsDefault" : false,
               "pingOthers" : [],
-              "dynamicCache" : false,
               "basenameLimit" : "100",
-              "modifiedDate" : "2015-03-12T12:16:24+09:00",
-              "dynamicConditional" : false,
+              "dynamicCache" : false,
+              "modifiedDate" : "2016-01-21T11:30:03+09:00",
+              "allowPings" : false,
               "pageCustomPrefs" : [
                 "title",
-                "text",
-                "excerpt",
-                "keywords",
+                "body",
+                "category",
                 "tags",
                 "feedback",
+                "publishing",
                 "assets"
               ],
-              "allowPings" : false,
+              "dynamicConditional" : false,
               "commenterAuthenticators" : [
                 "MovableType"
               ],
-              "host" : "localhost",
-              "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
+              "host" : "example.com",
+              "ccLicenseUrl" : "",
               "newCreatedUserRoles" : [],
               "wordsInExcerpt" : "40",
               "sortOrderComments" : "ascend",
@@ -4939,11 +4917,14 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
               "customDynamicTemplates" : "none"
             }
 
-## listByUser [/users/:user_id/sites(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds)]
+# Sites [/sites/{site_id}]
 
-+ Authorization is required.
+## Retrieve a list of sites by user [GET /users/{user_id}/sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,dateField,dateFrom,dateTo}]
+Retrieve a list of sites by user. The list includes only the site for which the user has any permissions.
 
-### Retrieve a list of sites by user [GET]
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -4964,6 +4945,9 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Sites resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of sites to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of sites to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -4979,17 +4963,14 @@ Code | Status | Description
               "relativeUrl" : "/",
               "entryCustomPrefs" : [
                 "title",
-                "text",
+                "body",
                 "category",
-                "excerpt",
-                "keywords",
                 "tags",
                 "feedback",
-                "assets",
-                "customfield_license_fee",
-                "customfield_foo"
+                "publishing",
+                "assets"
               ],
-              "archivePath" : "/path/to/document_root/",
+              "archivePath" : "/path/to/archive_root",
               "useCommentConfirmation" : true,
               "url" : "http://example.com/",
               "smartReplaceFields" : [
@@ -5005,22 +4986,26 @@ Code | Status | Description
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
+              "operationIfExists" : "2",
               "timezone" : "+09:00",
               "daysOrPosts" : "posts",
               "sortOrderPosts" : "descend",
-              "name" : "Six Apart Shop",
+              "name" : "First Website",
               "convertParas" : "richtext",
               "description" : "",
+              "autoRenameNonAscii" : true,
               "includeSystem" : "",
-              "archiveUrl" : "http://example.com",
+              "archiveUrl" : "http://example.com/archives/",
               "allowCommentHtml" : true,
               "fileExtension" : "html",
-              "smartReplace" : "0",
+              "smartReplace" : 0,
               "junkFolderExpiry" : "14",
               "publishEmptyArchive" : false,
               "dateLanguage" : "ja",
               "listOnIndex" : "10",
-              "pingWeblogs" : true,
+              "pingWeblogs" : false,
+              "extraPath" : "uploads",
+              "normalizeOrientation" : false,
               "emailNewComments" : "1",
               "language" : "ja",
               "autolinkUrls" : true,
@@ -5033,47 +5018,52 @@ Code | Status | Description
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
-              "pingGoogle" : true,
+              "pingGoogle" : false,
               "convertParasComments" : "1",
-              "sitePath" : "/path/to/document_root/",
+              "sitePath" : "/path/to/site_path",
               "id" : "1",
               "parent" : null,
               "archiveTypePreferred" : "Individual",
               "contentCss" : "{{theme_static}}css/editor.css",
               "junkScoreThreshold" : "0",
               "internalAutodiscovery" : false,
-              "createdDate" : "2014-12-28T23:09:45+09:00",
+              "createdDate" : "2016-01-21T11:18:38+09:00",
               "class" : "website",
               "moderateComments" : "2",
               "allowCommentsDefault" : true,
               "includeCache" : false,
               "allowCommenterRegist" : true,
+              "allowToChangeAtUpload" : false,
+              "uploadDestination" : {
+                "path" : "/path/to/upload/dest",
+                "raw" : "%s/%y/%m"
+              },
               "maxRevisionsEntry" : "20",
               "updatable" : true,
               "requireCommentEmails" : false,
-              "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
+              "ccLicenseImage" : "",
               "allowComments" : true,
               "allowPingsDefault" : false,
               "pingOthers" : [],
-              "dynamicCache" : false,
               "basenameLimit" : "100",
-              "modifiedDate" : "2015-03-12T12:16:24+09:00",
-              "dynamicConditional" : false,
+              "dynamicCache" : false,
+              "modifiedDate" : "2016-01-21T11:30:03+09:00",
+              "allowPings" : false,
               "pageCustomPrefs" : [
                 "title",
-                "text",
-                "excerpt",
-                "keywords",
+                "body",
+                "category",
                 "tags",
                 "feedback",
+                "publishing",
                 "assets"
               ],
-              "allowPings" : false,
+              "dynamicConditional" : false,
               "commenterAuthenticators" : [
                 "MovableType"
               ],
-              "host" : "localhost",
-              "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
+              "host" : "example.com",
+              "ccLicenseUrl" : "",
               "newCreatedUserRoles" : [],
               "wordsInExcerpt" : "40",
               "sortOrderComments" : "ascend",
@@ -5087,9 +5077,8 @@ Code | Status | Description
         }
 
 
-## listSites [/sites(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds)]
-
-### New in v2.0: Retrieve sites [GET]
+## Retrieve a list of sites [GET /sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIdsdateFirld,dateFrom,dateTo}]
+Retrieve a list of sites.
 
 **Status Code**
 
@@ -5108,6 +5097,9 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Sites resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of sites to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of sites to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -5123,17 +5115,14 @@ Code | Status | Description
               "relativeUrl" : "/",
               "entryCustomPrefs" : [
                 "title",
-                "text",
+                "body",
                 "category",
-                "excerpt",
-                "keywords",
                 "tags",
                 "feedback",
-                "assets",
-                "customfield_license_fee",
-                "customfield_foo"
+                "publishing",
+                "assets"
               ],
-              "archivePath" : "/path/to/document_root/",
+              "archivePath" : "/path/to/archive_root",
               "useCommentConfirmation" : true,
               "url" : "http://example.com/",
               "smartReplaceFields" : [
@@ -5149,22 +5138,26 @@ Code | Status | Description
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
+              "operationIfExists" : "2",
               "timezone" : "+09:00",
               "daysOrPosts" : "posts",
               "sortOrderPosts" : "descend",
-              "name" : "Six Apart Shop",
+              "name" : "First Website",
               "convertParas" : "richtext",
               "description" : "",
+              "autoRenameNonAscii" : true,
               "includeSystem" : "",
-              "archiveUrl" : "http://example.com",
+              "archiveUrl" : "http://example.com/archives/",
               "allowCommentHtml" : true,
               "fileExtension" : "html",
-              "smartReplace" : "0",
+              "smartReplace" : 0,
               "junkFolderExpiry" : "14",
               "publishEmptyArchive" : false,
               "dateLanguage" : "ja",
               "listOnIndex" : "10",
-              "pingWeblogs" : true,
+              "pingWeblogs" : false,
+              "extraPath" : "uploads",
+              "normalizeOrientation" : false,
               "emailNewComments" : "1",
               "language" : "ja",
               "autolinkUrls" : true,
@@ -5177,47 +5170,52 @@ Code | Status | Description
                 "id" : "1",
                 "displayName" : "Yuji Takayama"
               },
-              "pingGoogle" : true,
+              "pingGoogle" : false,
               "convertParasComments" : "1",
-              "sitePath" : "/path/to/document_root/",
+              "sitePath" : "/path/to/site_path",
               "id" : "1",
               "parent" : null,
               "archiveTypePreferred" : "Individual",
               "contentCss" : "{{theme_static}}css/editor.css",
               "junkScoreThreshold" : "0",
               "internalAutodiscovery" : false,
-              "createdDate" : "2014-12-28T23:09:45+09:00",
+              "createdDate" : "2016-01-21T11:18:38+09:00",
               "class" : "website",
               "moderateComments" : "2",
               "allowCommentsDefault" : true,
               "includeCache" : false,
               "allowCommenterRegist" : true,
+              "allowToChangeAtUpload" : false,
+              "uploadDestination" : {
+                "path" : "/path/to/upload/dest",
+                "raw" : "%s/%y/%m"
+              },
               "maxRevisionsEntry" : "20",
               "updatable" : true,
               "requireCommentEmails" : false,
-              "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
+              "ccLicenseImage" : "",
               "allowComments" : true,
               "allowPingsDefault" : false,
               "pingOthers" : [],
-              "dynamicCache" : false,
               "basenameLimit" : "100",
-              "modifiedDate" : "2015-03-12T12:16:24+09:00",
-              "dynamicConditional" : false,
+              "dynamicCache" : false,
+              "modifiedDate" : "2016-01-21T11:30:03+09:00",
+              "allowPings" : false,
               "pageCustomPrefs" : [
                 "title",
-                "text",
-                "excerpt",
-                "keywords",
+                "body",
+                "category",
                 "tags",
                 "feedback",
+                "publishing",
                 "assets"
               ],
-              "allowPings" : false,
+              "dynamicConditional" : false,
               "commenterAuthenticators" : [
                 "MovableType"
               ],
-              "host" : "localhost",
-              "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
+              "host" : "example.com",
+              "ccLicenseUrl" : "",
               "newCreatedUserRoles" : [],
               "wordsInExcerpt" : "40",
               "sortOrderComments" : "ascend",
@@ -5230,9 +5228,8 @@ Code | Status | Description
           ]
         }
 
-## listSitesByParent [/sites/:site_id/children(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds,)]
-
-### New in v2.0: Retrieve sites by parent ID [GET]
+## Retrieve a list of sites by parent site [GET /sites/{site_id}/children{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,dateField,dateFrom,dateTo}]
+Retrieve a list of sites by parent site
 
 **Status Code**
 
@@ -5253,6 +5250,9 @@ Code | Status | Description
     + fields (optional, string) ... The field list to retrieve as part of the Sites resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) ... The comma separated ID list of sites to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of sites to exclude from result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -5378,12 +5378,16 @@ Code | Status | Description
           ]
         }
 
-## insertNewWebsite [/sites]
+## Create a new website [POST /sites]
+Create a new website.
 
-### New in v2.0: Create a new website. [POST]
+:::note
+Authentication required.
+:::
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+:::note
+This method accepts PUT and POST with __method=PUT.
+:::
 
 **Status Code**
 
@@ -5402,12 +5406,11 @@ Name | Type | Required | Default | Description
 ---- | ---- | -------- | ------- | -----------
 blog | Object | Yes | | Single Sites resource
 
-+ Request Sites resource
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth accessToken=<Token>
+            X-MT-Authorization: MTAuth accessToken={Token}
 
     + Body
 
@@ -5417,7 +5420,7 @@ blog | Object | Yes | | Single Sites resource
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
+          "serverOffset" : "9",
           "themeId" : "rainier",
           "statusDefault" : "Publish",
           "autodiscoverLinks" : false,
@@ -5425,12 +5428,15 @@ blog | Object | Yes | | Single Sites resource
           "relativeUrl" : "/",
           "entryCustomPrefs" : [
             "title",
-            "body",
+            "text",
             "category",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
-            "assets"
+            "assets",
+            "customfield_license_fee",
+            "customfield_foo"
           ],
           "archivePath" : "/path/to/document_root/",
           "useCommentConfirmation" : true,
@@ -5443,90 +5449,99 @@ blog | Object | Yes | | Single Sites resource
             "excerpt",
             "tags"
           ],
+          "modifiedBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
           "timezone" : "+09:00",
           "daysOrPosts" : "posts",
           "sortOrderPosts" : "descend",
+          "name" : "Six Apart Shop",
           "convertParas" : "richtext",
-          "name" : "New Website",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/",
+          "description" : "",
+          "includeSystem" : "",
+          "archiveUrl" : "http://example.com",
           "allowCommentHtml" : true,
           "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
+          "smartReplace" : "0",
+          "junkFolderExpiry" : "14",
           "publishEmptyArchive" : false,
           "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
+          "listOnIndex" : "10",
+          "pingWeblogs" : true,
+          "emailNewComments" : "1",
+          "language" : "ja",
           "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
+          "sanitizeSpec" : "0",
           "customFields" : [],
-          "emailNewPings" : 1,
+          "emailNewPings" : "1",
           "nofollowUrls" : true,
           "createdBy" : {
             "userpicUrl" : null,
             "id" : "1",
             "displayName" : "Yuji Takayama"
           },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
+          "pingGoogle" : true,
+          "convertParasComments" : "1",
           "sitePath" : "/path/to/document_root/",
-          "id" : "10",
-          "parent" : null,
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
+          "id" : "2",
+          "parent" : {
+            "id": "1",
+            "name": "Parent Website"
+          },
+          "archiveTypePreferred" : "Individual",
+          "contentCss" : "{{theme_static}}css/editor.css",
+          "junkScoreThreshold" : "0",
           "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T22:03:47+09:00",
+          "createdDate" : "2014-12-28T23:09:45+09:00",
           "class" : "website",
-          "moderateComments" : 2,
+          "moderateComments" : "2",
           "allowCommentsDefault" : true,
           "includeCache" : false,
           "allowCommenterRegist" : true,
-          "maxRevisionsEntry" : 20,
+          "maxRevisionsEntry" : "20",
           "updatable" : true,
           "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
+          "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
           "allowComments" : true,
-          "allowPingsDefault" : true,
+          "allowPingsDefault" : false,
           "pingOthers" : [],
           "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T22:03:47+09:00",
+          "basenameLimit" : "100",
+          "modifiedDate" : "2015-03-12T12:16:24+09:00",
           "dynamicConditional" : false,
           "pageCustomPrefs" : [
             "title",
-            "body",
-            "category",
+            "text",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
             "assets"
           ],
-          "allowPings" : true,
+          "allowPings" : false,
           "commenterAuthenticators" : [
             "MovableType"
           ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
+          "host" : "localhost",
+          "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
           "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
+          "wordsInExcerpt" : "40",
           "sortOrderComments" : "ascend",
           "followAuthLinks" : true,
           "allowUnregComments" : false,
-          "maxRevisionsTemplate" : 20,
+          "maxRevisionsTemplate" : "20",
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
 
-## insertNewBlog [/sites/:site_id]
+## Create a new blog under the site [POST /sites/{site_id}]
+Create a new blog under the site.
 
-### New in v2.0: Create a new blog. [POST]
-
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -5548,12 +5563,11 @@ blog | Object | Yes | | Single Sites resource
 + Parameters
     + site_id (required, number) ... The site ID.
 
-+ Request Sites resource
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth accessToken=<Token>
+            X-MT-Authorization: MTAuth accessToken={Token}
 
     + Body
 
@@ -5562,90 +5576,13 @@ blog | Object | Yes | | Single Sites resource
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
-          "themeId" : "rainier",
-          "statusDefault" : "Publish",
-          "autodiscoverLinks" : false,
-          "useRevision" : true,
-          "relativeUrl" : "/blog/",
-          "entryCustomPrefs" : [
-          "title",
-          "body",
-          "category",
-          "tags",
-          "feedback",
-          "publishing",
-          "assets"
-          ],
-          "archivePath" : "/path/to/document_root/blog",
-          "useCommentConfirmation" : true,
-          "url" : "http://example.com/blog/",
-          "smartReplaceFields" : [
-            "title",
-            "text",
-            "text_more",
-            "keywords",
-            "excerpt",
-            "tags"
-          ],
-          "timezone" : "+09:00",
-          "daysOrPosts" : "posts",
-          "sortOrderPosts" : "descend",
-          "convertParas" : "richtext",
-          "name" : "New Blog",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/blog/",
-          "allowCommentHtml" : true,
-          "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
-          "publishEmptyArchive" : false,
-          "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
-          "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
-          "customFields" : [],
-          "emailNewPings" : 1,
-          "nofollowUrls" : true,
-          "createdBy" : {
-            "userpicUrl" : null,
-            "id" : "1",
-            "displayName" : "Yuji Takayama"
-          },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
-          "sitePath" : "/path/to/document_root/blog",
-          "id" : "9",
-          "parent" : {
-            "name" : "First Website",
-            "id" : "1"
-          },
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
-          "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T15:15:56+09:00",
-          "class" : "blog",
-          "moderateComments" : 2,
-          "allowCommentsDefault" : true,
-          "includeCache" : false,
-          "allowCommenterRegist" : true,
-          "maxRevisionsEntry" : "20",
-          "updatable" : true,
-          "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
-          "allowComments" : true,
-          "allowPingsDefault" : true,
-          "pingOthers" : [],
-          "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T15:15:56+09:00",
-          "dynamicConditional" : false,
-          "pageCustomPrefs" : [
+            "serverOffset" : "9",
+            "themeId" : "mt_community_forum",
+            "statusDefault" : "Publish",
+            "autodiscoverLinks" : false,
+            "useRevision" : true,
+            "relativeUrl" : "/communityforum/",
+            "entryCustomPrefs" : [
             "title",
             "body",
             "category",
@@ -5653,28 +5590,118 @@ blog | Object | Yes | | Single Sites resource
             "feedback",
             "publishing",
             "assets"
-          ],
-          "allowPings" : true,
-          "commenterAuthenticators" : [
+            ],
+            "archivePath" : "/path/to/archive_root",
+            "useCommentConfirmation" : true,
+            "url" : "https://example.com/",
+            "smartReplaceFields" : [
+            "title",
+            "text",
+            "text_more",
+            "keywords",
+            "excerpt",
+            "tags"
+            ],
+            "operationIfExists" : 1,
+            "timezone" : "+09:00",
+            "daysOrPosts" : "posts",
+            "sortOrderPosts" : "descend",
+            "name" : "CommunityForum",
+            "convertParas" : "richtext",
+            "description" : null,
+            "autoRenameNonAscii" : true,
+            "includeSystem" : null,
+            "archiveUrl" : "https://example.com/archives/",
+            "allowCommentHtml" : true,
+            "fileExtension" : "html",
+            "smartReplace" : 0,
+            "junkFolderExpiry" : "14",
+            "publishEmptyArchive" : false,
+            "dateLanguage" : "ja",
+            "listOnIndex" : "10",
+            "pingWeblogs" : false,
+            "extraPath" : "",
+            "normalizeOrientation" : true,
+            "emailNewComments" : "1",
+            "language" : "ja",
+            "autolinkUrls" : true,
+            "sanitizeSpec" : "0",
+            "customFields" : [],
+            "emailNewPings" : "1",
+            "nofollowUrls" : true,
+            "createdBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+            },
+            "pingGoogle" : false,
+            "convertParasComments" : "1",
+            "sitePath" : "/path/to/site_root",
+            "id" : "4",
+            "parent" : {
+            "name" : "First Website",
+            "id" : "1"
+            },
+            "archiveTypePreferred" : "Individual",
+            "contentCss" : null,
+            "junkScoreThreshold" : "0",
+            "internalAutodiscovery" : false,
+            "createdDate" : "2016-02-09T16:20:24+09:00",
+            "class" : "blog",
+            "moderateComments" : "2",
+            "allowCommentsDefault" : true,
+            "includeCache" : false,
+            "allowCommenterRegist" : true,
+            "allowToChangeAtUpload" : true,
+            "uploadDestination" : {
+            "path" : "/path/to/upload/destination",
+            "raw" : ""
+            },
+            "maxRevisionsEntry" : null,
+            "updatable" : true,
+            "requireCommentEmails" : false,
+            "ccLicenseImage" : "",
+            "allowComments" : true,
+            "allowPingsDefault" : true,
+            "pingOthers" : [],
+            "basenameLimit" : "100",
+            "dynamicCache" : false,
+            "modifiedDate" : "2016-02-09T16:20:24+09:00",
+            "allowPings" : false,
+            "pageCustomPrefs" : [
+            "title",
+            "body",
+            "category",
+            "tags",
+            "feedback",
+            "publishing",
+            "assets"
+            ],
+            "dynamicConditional" : false,
+            "commenterAuthenticators" : [
             "MovableType"
-          ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
-          "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
-          "sortOrderComments" : "ascend",
-          "followAuthLinks" : true,
-          "allowUnregComments" : false,
-          "maxRevisionsTemplate" : "20",
-          "moderatePings" : true,
-          "customDynamicTemplates" : "none"
+            ],
+            "host" : "example.com",
+            "ccLicenseUrl" : "",
+            "newCreatedUserRoles" : [],
+            "wordsInExcerpt" : "40",
+            "sortOrderComments" : "ascend",
+            "followAuthLinks" : true,
+            "allowUnregComments" : false,
+            "maxRevisionsTemplate" : null,
+            "moderatePings" : true,
+            "customDynamicTemplates" : "none"
         }
 
-## updateSite [/sites/:site_id]
-### New in v2.0: Update an existing blog or website. [PUT]
+## Update an existing blog or website [PUT]
+Update an existing blog or website.
 
-+ Authorization is required.
-+ This method accepts PUT and POST with __method=PUT.
+:::note
+Authentication required.
+:::
+:::note
+This method accepts PUT and POST with __method=PUT.
+:::
 
 **Status Code**
 
@@ -5696,11 +5723,10 @@ blog | Object | Yes | | Single Sites resource
 + Parameters
     + site_id (required, number) ... The site ID.
 
-+ Request Sites resource
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
@@ -5711,7 +5737,7 @@ blog | Object | Yes | | Single Sites resource
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
+          "serverOffset" : "9",
           "themeId" : "rainier",
           "statusDefault" : "Publish",
           "autodiscoverLinks" : false,
@@ -5719,12 +5745,15 @@ blog | Object | Yes | | Single Sites resource
           "relativeUrl" : "/",
           "entryCustomPrefs" : [
             "title",
-            "body",
+            "text",
             "category",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
-            "assets"
+            "assets",
+            "customfield_license_fee",
+            "customfield_foo"
           ],
           "archivePath" : "/path/to/document_root/",
           "useCommentConfirmation" : true,
@@ -5737,90 +5766,103 @@ blog | Object | Yes | | Single Sites resource
             "excerpt",
             "tags"
           ],
+          "modifiedBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
           "timezone" : "+09:00",
           "daysOrPosts" : "posts",
           "sortOrderPosts" : "descend",
+          "name" : "Six Apart Shop",
           "convertParas" : "richtext",
-          "name" : "Our new Website",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/",
+          "description" : "",
+          "includeSystem" : "",
+          "archiveUrl" : "http://example.com",
           "allowCommentHtml" : true,
           "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
+          "smartReplace" : "0",
+          "junkFolderExpiry" : "14",
           "publishEmptyArchive" : false,
           "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
+          "listOnIndex" : "10",
+          "pingWeblogs" : true,
+          "emailNewComments" : "1",
+          "language" : "ja",
           "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
+          "sanitizeSpec" : "0",
           "customFields" : [],
-          "emailNewPings" : 1,
+          "emailNewPings" : "1",
           "nofollowUrls" : true,
           "createdBy" : {
             "userpicUrl" : null,
             "id" : "1",
             "displayName" : "Yuji Takayama"
           },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
+          "pingGoogle" : true,
+          "convertParasComments" : "1",
           "sitePath" : "/path/to/document_root/",
-          "id" : "10",
-          "parent" : null,
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
+          "id" : "2",
+          "parent" : {
+            "id": "1",
+            "name": "Parent Website"
+          },
+          "archiveTypePreferred" : "Individual",
+          "contentCss" : "{{theme_static}}css/editor.css",
+          "junkScoreThreshold" : "0",
           "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T22:03:47+09:00",
+          "createdDate" : "2014-12-28T23:09:45+09:00",
           "class" : "website",
-          "moderateComments" : 2,
+          "moderateComments" : "2",
           "allowCommentsDefault" : true,
           "includeCache" : false,
           "allowCommenterRegist" : true,
-          "maxRevisionsEntry" : 20,
+          "maxRevisionsEntry" : "20",
           "updatable" : true,
           "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
+          "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
           "allowComments" : true,
-          "allowPingsDefault" : true,
+          "allowPingsDefault" : false,
           "pingOthers" : [],
           "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T22:03:47+09:00",
+          "basenameLimit" : "100",
+          "modifiedDate" : "2015-03-12T12:16:24+09:00",
           "dynamicConditional" : false,
           "pageCustomPrefs" : [
             "title",
-            "body",
-            "category",
+            "text",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
             "assets"
           ],
-          "allowPings" : true,
+          "allowPings" : false,
           "commenterAuthenticators" : [
             "MovableType"
           ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
+          "host" : "localhost",
+          "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
           "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
+          "wordsInExcerpt" : "40",
           "sortOrderComments" : "ascend",
           "followAuthLinks" : true,
           "allowUnregComments" : false,
-          "maxRevisionsTemplate" : 20,
+          "maxRevisionsTemplate" : "20",
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
 
-## deleteSite [/sites/:site_id]
-### New in v2.0: Delete an existing blog or website. [DELETE]
+## Delete an existing blog or website [DELETE]
+Delete an existing blog or website.
 
-+ Authorization is required.
-+ This method accepts DELETE and POST with __method=DELETE.
+:::note
+Authentication required.
+:::
+
+:::note
+This method accepts DELETE and POST with __method=DELETE.
+:::
 
 **Status Code**
 
@@ -5837,17 +5879,16 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
-            X-MT-Authorization: MTAuth accessToken=<Token>
+            X-MT-Authorization: MTAuth accessToken={Token}
 
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
+          "serverOffset" : "9",
           "themeId" : "rainier",
           "statusDefault" : "Publish",
           "autodiscoverLinks" : false,
@@ -5855,12 +5896,15 @@ Code | Status | Description
           "relativeUrl" : "/",
           "entryCustomPrefs" : [
             "title",
-            "body",
+            "text",
             "category",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
-            "assets"
+            "assets",
+            "customfield_license_fee",
+            "customfield_foo"
           ],
           "archivePath" : "/path/to/document_root/",
           "useCommentConfirmation" : true,
@@ -5873,88 +5917,96 @@ Code | Status | Description
             "excerpt",
             "tags"
           ],
+          "modifiedBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
           "timezone" : "+09:00",
           "daysOrPosts" : "posts",
           "sortOrderPosts" : "descend",
+          "name" : "Six Apart Shop",
           "convertParas" : "richtext",
-          "name" : "Our new Website",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/",
+          "description" : "",
+          "includeSystem" : "",
+          "archiveUrl" : "http://example.com",
           "allowCommentHtml" : true,
           "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
+          "smartReplace" : "0",
+          "junkFolderExpiry" : "14",
           "publishEmptyArchive" : false,
           "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
+          "listOnIndex" : "10",
+          "pingWeblogs" : true,
+          "emailNewComments" : "1",
+          "language" : "ja",
           "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
+          "sanitizeSpec" : "0",
           "customFields" : [],
-          "emailNewPings" : 1,
+          "emailNewPings" : "1",
           "nofollowUrls" : true,
           "createdBy" : {
             "userpicUrl" : null,
             "id" : "1",
             "displayName" : "Yuji Takayama"
           },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
+          "pingGoogle" : true,
+          "convertParasComments" : "1",
           "sitePath" : "/path/to/document_root/",
-          "id" : "10",
-          "parent" : null,
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
+          "id" : "2",
+          "parent" : {
+            "id": "1",
+            "name": "Parent Website"
+          },
+          "archiveTypePreferred" : "Individual",
+          "contentCss" : "{{theme_static}}css/editor.css",
+          "junkScoreThreshold" : "0",
           "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T22:03:47+09:00",
+          "createdDate" : "2014-12-28T23:09:45+09:00",
           "class" : "website",
-          "moderateComments" : 2,
+          "moderateComments" : "2",
           "allowCommentsDefault" : true,
           "includeCache" : false,
           "allowCommenterRegist" : true,
-          "maxRevisionsEntry" : 20,
+          "maxRevisionsEntry" : "20",
           "updatable" : true,
           "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
+          "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
           "allowComments" : true,
-          "allowPingsDefault" : true,
+          "allowPingsDefault" : false,
           "pingOthers" : [],
           "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T22:03:47+09:00",
+          "basenameLimit" : "100",
+          "modifiedDate" : "2015-03-12T12:16:24+09:00",
           "dynamicConditional" : false,
           "pageCustomPrefs" : [
             "title",
-            "body",
-            "category",
+            "text",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
             "assets"
           ],
-          "allowPings" : true,
+          "allowPings" : false,
           "commenterAuthenticators" : [
             "MovableType"
           ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
+          "host" : "localhost",
+          "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
           "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
+          "wordsInExcerpt" : "40",
           "sortOrderComments" : "ascend",
           "followAuthLinks" : true,
           "allowUnregComments" : false,
-          "maxRevisionsTemplate" : 20,
+          "maxRevisionsTemplate" : "20",
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
 
 
-## getBlog [/sites/:site_id(?fields)]
-### Retrieve a single website/blog by its ID. [GET]
+### Retrieve a single website/blog by its ID [GET /sites/{site_id}{?fields}]
+Retrieve a single website/blog by its ID.
 
 **Status Code**
 
@@ -5971,24 +6023,27 @@ Code | Status | Description
 + Response 200 (application/json)
 
         {
-          "serverOffset" : 9,
+          "serverOffset" : "9",
           "themeId" : "rainier",
           "statusDefault" : "Publish",
           "autodiscoverLinks" : false,
           "useRevision" : true,
-          "relativeUrl" : "/blog/",
+          "relativeUrl" : "/",
           "entryCustomPrefs" : [
-          "title",
-          "body",
-          "category",
-          "tags",
-          "feedback",
-          "publishing",
-          "assets"
+            "title",
+            "text",
+            "category",
+            "excerpt",
+            "keywords",
+            "tags",
+            "feedback",
+            "assets",
+            "customfield_license_fee",
+            "customfield_foo"
           ],
-          "archivePath" : "/path/to/document_root/blog",
+          "archivePath" : "/path/to/document_root/",
           "useCommentConfirmation" : true,
-          "url" : "http://example.com/blog/",
+          "url" : "http://example.com/",
           "smartReplaceFields" : [
             "title",
             "text",
@@ -5997,80 +6052,85 @@ Code | Status | Description
             "excerpt",
             "tags"
           ],
+          "modifiedBy" : {
+            "userpicUrl" : null,
+            "id" : "1",
+            "displayName" : "Yuji Takayama"
+          },
           "timezone" : "+09:00",
           "daysOrPosts" : "posts",
           "sortOrderPosts" : "descend",
+          "name" : "Six Apart Shop",
           "convertParas" : "richtext",
-          "name" : "New Blog",
-          "description" : null,
-          "includeSystem" : null,
-          "archiveUrl" : "http://example.com/blog/",
+          "description" : "",
+          "includeSystem" : "",
+          "archiveUrl" : "http://example.com",
           "allowCommentHtml" : true,
           "fileExtension" : "html",
-          "smartReplace" : 0,
-          "junkFolderExpiry" : 14,
+          "smartReplace" : "0",
+          "junkFolderExpiry" : "14",
           "publishEmptyArchive" : false,
           "dateLanguage" : "ja",
-          "listOnIndex" : 10,
-          "pingWeblogs" : false,
-          "emailNewComments" : 1,
-          "language" : "",
+          "listOnIndex" : "10",
+          "pingWeblogs" : true,
+          "emailNewComments" : "1",
+          "language" : "ja",
           "autolinkUrls" : true,
-          "sanitizeSpec" : 0,
+          "sanitizeSpec" : "0",
           "customFields" : [],
-          "emailNewPings" : 1,
+          "emailNewPings" : "1",
           "nofollowUrls" : true,
           "createdBy" : {
             "userpicUrl" : null,
             "id" : "1",
             "displayName" : "Yuji Takayama"
           },
-          "pingGoogle" : false,
-          "convertParasComments" : 1,
-          "sitePath" : "/path/to/document_root/blog",
-          "id" : "9",
+          "pingGoogle" : true,
+          "convertParasComments" : "1",
+          "sitePath" : "/path/to/document_root/",
+          "id" : "2",
           "parent" : {
-            "name" : "First Website",
-            "id" : "1"
+            "id": "1",
+            "name": "Parent Website"
           },
-          "archiveTypePreferred" : "",
-          "contentCss" : null,
-          "junkScoreThreshold" : 0,
+          "archiveTypePreferred" : "Individual",
+          "contentCss" : "{{theme_static}}css/editor.css",
+          "junkScoreThreshold" : "0",
           "internalAutodiscovery" : false,
-          "createdDate" : "2015-03-24T15:15:56+09:00",
-          "class" : "blog",
-          "moderateComments" : 2,
+          "createdDate" : "2014-12-28T23:09:45+09:00",
+          "class" : "website",
+          "moderateComments" : "2",
           "allowCommentsDefault" : true,
           "includeCache" : false,
           "allowCommenterRegist" : true,
           "maxRevisionsEntry" : "20",
           "updatable" : true,
           "requireCommentEmails" : false,
-          "ccLicenseImage" : "",
+          "ccLicenseImage" : "https://i.creativecommons.org/l/by/4.0/88x31.png",
           "allowComments" : true,
-          "allowPingsDefault" : true,
+          "allowPingsDefault" : false,
           "pingOthers" : [],
           "dynamicCache" : false,
-          "basenameLimit" : 100,
-          "modifiedDate" : "2015-03-24T15:15:56+09:00",
+          "basenameLimit" : "100",
+          "modifiedDate" : "2015-03-12T12:16:24+09:00",
           "dynamicConditional" : false,
           "pageCustomPrefs" : [
             "title",
-            "body",
-            "category",
+            "text",
+            "excerpt",
+            "keywords",
             "tags",
             "feedback",
-            "publishing",
             "assets"
           ],
-          "allowPings" : true,
+          "allowPings" : false,
           "commenterAuthenticators" : [
             "MovableType"
           ],
-          "host" : "example.com",
-          "ccLicenseUrl" : "",
+          "host" : "localhost",
+          "ccLicenseUrl" : "http://creativecommons.org/licenses/by/4.0/",
           "newCreatedUserRoles" : [],
-          "wordsInExcerpt" : 40,
+          "wordsInExcerpt" : "40",
           "sortOrderComments" : "ascend",
           "followAuthLinks" : true,
           "allowUnregComments" : false,
@@ -6078,7 +6138,6 @@ Code | Status | Description
           "moderatePings" : true,
           "customDynamicTemplates" : "none"
         }
-
 # Group Stats
 
 This is the PageStats(byPath) resource.
@@ -6169,11 +6228,15 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
             }
 
 
-## visitsForPath [/sites/:site_id/stats/path/visits(?startDate, endDate, limit, offset, path)]
+# PageStats [/sites/{site_id}/stats]
 
-+ Authorization is required.
+## Retrieve a list of visits data for each path [GET /sites/{site_id}/stats/path/visits{?startDate,endDate,limit,offset,path}]
+Retrieve a list of visits data for each path from the provider.
 
-### Retrieve visits count for each path from provider. [GET]
+:::note
+Authentication required.
+:::
+
 
 + Parameters
     + site_id (required, Number) ... The site ID.
@@ -6234,11 +6297,13 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## visitsForDate [/sites/:site_id/stats/date/visits(?startDate, endDate, limit, offset, path)]
+## Retrieve a list of visits data for each date [GET /sites/{site_id}/stats/date/visits{?startDate,endDate,limit,offset,path}]
 
-+ Authorization is required.
+Retrieve a list of visits data for each date from the provider.
 
-### Retrieve visits count for each date from provider. [GET]
+:::note
+Authentication required.
+:::
 
 + Parameters
     + site_id (required, Number) ... The site ID.
@@ -6301,11 +6366,12 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## pageviewsForPath [/sites/:site_id/stats/path/pageviews(?startDate, endDate, limit, offset, path, uniquePath)]
+## Retrieve a list of page view data for each path [GET /sites/{site_id}/stats/path/pageviews{?startDate,endDate,limit,offset,path,uniquePath}]
+Retrieve a list of page view data for each path from the provider.
 
-+ Authorization is required.
-
-### Retrieve pageviews count for each path from provider. [GET]
+:::note
+Authentication required.
+:::
 
 + Parameters
     + site_id (required, Number) ... The site ID.
@@ -6367,11 +6433,12 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## pageviewsForDate [/sites/:site_id/stats/date/pageviews(?startDate, endDate, limit, offset, path)]
+## Retrieve a list of page view data for each date [GET /sites/{site_id}/stats/date/pageviews{?startDate,endDate,limit,offset,path}]
+Retrieve a list of page view data for each date from the provider.
 
-+ Authorization is required.
-
-### Retrieve pageviews count for each date from provider. [GET]
+:::note
+Authentication required.
+:::
 
 + Parameters
     + site_id (required, Number) ... The site ID.
@@ -6435,11 +6502,12 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## getProvider [/sites/:site_id/stats/provider]
+# Provider [/sites/{site_id}/stats/provider]
+## Retrieve current provider [GET]
 
-+ Authorization is required.
-
-### Retrieve a current effective provider. [GET]
+:::note
+Authentication required.
+:::
 
 + Parameters
     + site_id (required, Number) ... The site ID.
@@ -6518,10 +6586,13 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
                 }
 
 
-## listTemplates [/sites/:site_id/templates(?site_id, limit ,offset, sortBy, sortOrder,fields, searchFields, search, includeIds, excludeIds, type)]
-### new in v2.0: Retrieve a list of templates in the specified site. [GET]
+# Templates [/sites/{site_id}/templates/{template_id}]
+## Retrieve a list of templates [GET /sites/{site_id}/templates{?site_id,limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,type}]
+Retrieve a list of templates.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -6625,10 +6696,12 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## getTemplate [/sites/:site_id/templates/:template_id(?fields)]
-### new in v2.0: Retrieve single template by its ID. [GET]
+## Retrieve a single template by its ID [GET /sites/{site_id}/templates/{template_id}{?fields}]
+Retrieve a single template by its ID.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -6697,10 +6770,12 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
                   }
                 }
 
-## createTemplate [/sites/:site_id/templates]
-### new in v2.0: Create a new template. [POST]
+## Create a new template [POST /sites/{site_id}/templates]
+Create a new template.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -6709,11 +6784,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
 + Parameters
     + site_id (required, number) ... The site ID. If 0 specified, will create into the global template in the system.
 
-+ Request Templates resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 
@@ -6777,11 +6848,15 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## updateTemplate [/sites/:site_id/templates/:template_id]
-### new in v2.0: Update a template. [PUT]
+## Update a template [PUT]
+Update a template.
 
-+ Authorization is required.
-+ This method accepts PUT or POST with __method=PUT.
+:::note
+Authentication required.
+:::
+:::note
+This method accepts PUT or POST with __method=PUT.
+:::
 
 **Permissions**
 
@@ -6791,11 +6866,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
     + site_id (required, number) ... The site ID. If 0 specified, will update a global template in the system.
     + template_id (required, number) ... The template ID.
 
-+ Request Templates resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 
@@ -6868,11 +6939,15 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## deleteTemplate [/sites/:site_id/templates/:template_id]
-### new in v2.0: Delete a template. [DELETE]
+## Delete a template [DELETE]
+Delete a template.
 
-+ Authorization is required.
-+ This method accepts DELETE or POST with __method=DELETE.
+:::note
+Authentication required.
+:::
+:::note
+This method accepts DELETE or POST with __method=DELETE.
+:::
 
 **Permissions**
 
@@ -6949,16 +7024,21 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## publishTemplate [/sites/:site_id/templates/:template_id/publish]
-### new in v2.0: Publish a template. [POST]
+# Utilities [/sites/{site_id}/templates/{template_id}]
+## Publish a template [POST /sites/{site_id}/templates/{template_id}/publish]
+Publish (in other words rebuild) a template.
 
-+ Authorization is required.
-+ Only available for following templates
-  + index
-  + archive
-  + individual
-  + page
-  + category
+:::note
+Authentication required.
+:::
+:::note
+Only available for following templates
++ index
++ archive
++ individual
++ page
++ category
+:::
 
 **Permissions**
 
@@ -7010,10 +7090,61 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## refreshTemplate [/sites/:site_id/templates/:template_id/refresh]
-### new in v2.0: Reset template text to theme default or tempalte_set default. [POST]
+## Make a clone [POST /sites/{site_id}/templates/{template_id}/clone]
+Make a clone of a template.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
+
+**Permissions**
+
++ edit_templates
+
++ Parameters
+    + site_id (required, number) ... The site ID. If 0 specified, refresh a global template in the system.
+    + template_id (required, number) ... The template ID.
+
++ Response 200 (application/json)
+
+        {
+          "status": "success"
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": {
+            "message": "Do not have permission to clone a template.",
+            "code": "403"
+          }
+        }
+
++ Response 404 (application/json)
+
+        {
+          "error": {
+            "message": "Site not found / Template not found",
+            "code": "404"
+          }
+        }
+
++ Response 500 (application/json)
+
+        {
+          "error": {
+            "message": "Some error message is here",
+            "code": "500"
+          }
+        }
+
+# Refresh [/sites/{site_id}/templates]
+## Reset template text [POST /sites/{site_id}/templates/{template_id}/refresh]
+Reset template text to theme default or tempalte_set default.
+
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -7059,10 +7190,12 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## refreshTemplateForSite [/sites/:site_id/refresh_templates(?refresh_type)]
-### new in v2.0: Reset all templates in the site. [POST]
+## Reset all template text [POST /sites/{site_id}/refresh_templates{?refresh_type}]
+Reset all templates to default.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -7105,58 +7238,16 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## cloneTemplate [/sites/:site_id/templates/:template_id/clone]
-### new in v2.0: Make a clone of a template. [POST]
+# Preview [/sites/{site_id}/templates/preview]
+## Make a preview [POST /sites/{site_id}/templates/preview{?raw}]
+Make a template preview by specified data.
 
-+ Authorization is required.
-
-**Permissions**
-
-+ edit_templates
-
-+ Parameters
-    + site_id (required, number) ... The site ID. If 0 specified, refresh a global template in the system.
-    + template_id (required, number) ... The template ID.
-
-+ Response 200 (application/json)
-
-        {
-          "status": "success"
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": {
-            "message": "Do not have permission to clone a template.",
-            "code": "403"
-          }
-        }
-
-+ Response 404 (application/json)
-
-        {
-          "error": {
-            "message": "Site not found / Template not found",
-            "code": "404"
-          }
-        }
-
-+ Response 500 (application/json)
-
-        {
-          "error": {
-            "message": "Some error message is here",
-            "code": "500"
-          }
-        }
-
-## previewTemplate [/sites/:site_id/templates/preview(?raw)]
-### new in v2.0: Make a preview for a template. [POST]
-
-+ Authorization is required.
-+ **This endpoint is available in Movable Type 6.1.2 or later.**
-+ `type` parameter in the Templates resource is required.
+:::note
+Authentication required.
+:::
+:::note
+`type` parameter in the Templates resource is required.
+:::
 
 **Permissions**
 
@@ -7166,11 +7257,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
     + site_id (required, number) ... The site ID.
     + raw (optional, number) ...  If specify “1”, will be returned preview contents.
 
-+ Request Templates resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 
@@ -7211,18 +7298,22 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## previewTemplateById [/sites/:site_id/templates/:template_id/preview(?raw)]
-### new in v2.0: Make a preview for a template with existing data. [POST]
+## Make a preview for an existing template [POST /sites/{site_id}/templates/{template_id}/preview{?raw}]
 
-+ Authorization is required.
-+ **This endpoint is available in Movable Type 6.1.2 or later.**
-+ Only available for following templates
-  + index
-  + archive
-  + individual
-  + page
-  + category
-  + ***template*** parameter is required. If you just want to get preview template from existing data, you should provide ***template*** parameter with empty json.
+:::note
+Authentication required.
+:::
+:::note
+Only available for following templates
++ index
++ archive
++ individual
++ page
++ category
+:::
+:::note
++ ***template*** parameter is required. If you just want to get preview template from existing data, you should provide ***template*** parameter with empty json.
+:::
 
 **Permissions**
 
@@ -7278,7 +7369,6 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-
 # Group Themes
 
 This is the Themes resource. The Themes resource is not stored in the database.
@@ -7306,11 +7396,14 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
           "label": "Rainier"
         }
 
-## listThemes [/themes]
+# Themes [/themes]
 
-### New in v2.0: Retrieve a list of themes. [GET]
+## Retrieve a list of themes [GET]
+Retrieve a list of all of the installed theme.
 
-+ Authentication is required
+:::note
+Authentication required
+:::
 
 **Permissions**
 
@@ -7420,11 +7513,12 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## getTheme [/themes/:theme_id]
+## Retrieve a single theme [GET /themes/{theme_id}]
+Retrieve a single theme by its ID.
 
-### New in v2.0: Retrieve a single theme by its ID. [GET]
-
-+ Authentication is required
+:::note
+Authentication required
+:::
 
 **Permissions**
 
@@ -7461,11 +7555,14 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## applyThemeToSite [/sites/:site_id/themes/:theme_id/apply]
+# Utilities [/sites/{site_id}/themes/{theme_id}]
 
-### New in v2.0: Apply a theme to site. [POST]
+## Apply theme [POST /sites/{site_id}/themes/{theme_id}/apply]
+Apply theme to site.
 
-+ Authentication is required
+:::note
+Authentication required
+:::
 
 **Permissions**
 
@@ -7495,13 +7592,14 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
           }
         }
 
+## Uninstall theme [DELETE /themes/{theme_id}]
+Uninstall theme from MT.  
+When successful, you can take Themes Resource that was deleted. However, this theme is already removed from the Movable Type. You cannot apply this theme to.
 
-## uninstall_theme [/themes/:theme_id]
 
-### Uninstall a specified theme from the MT.  [DELETE]
-
-+ Authentication is required
-+ When successful, you can take Themes Resource that was deleted. However, this theme is already removed from the Movable Type. You cannot apply this theme to.
+:::note
+Authentication required
+:::
 
 **Permissions**
 
@@ -7538,12 +7636,15 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## exportSiteTheme [/sites/:site_id/export_theme]
+## Export theme [POST /sites/{site_id}/export_theme]
+Exporting current theme element as a new theme.
 
-### New in v2.0: Export site's theme. [POST]
-
-+ Authentication is required
-+ This endpoint will export current theme elements of specified site into theme directory.
+:::note
+Authentication required
+:::
+:::note
+This endpoint will export current theme elements of specified site into theme directory.
+:::
 
 **Permissions**
 
@@ -7648,11 +7749,13 @@ textFormat | value | string | mt_author.author_text_format | Y | | The text form
           "customFields" : []
         }
 
-## listUsers [/users(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, lockout)]
+# Users [/users/{user_id}]
+## Retrieve a list of users [GET /users{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,lockout,dateField,dateFrom,dateTo}]
+Retrieve a list of users. This list does not include the commenter.
 
-### New in v2.0: Retrieve a list of users in the specified site. [GET]
-
-+ Authentication is required if want to include non-active users. Also, want to get private properties.
+:::note
+Authentication required if you want to include inactive users or to get the private properties.
+:::
 
 **Status Code**
 
@@ -7679,6 +7782,9 @@ Code | Status | Description
     + excludeIds (optional, string) ... The comma separated ID list of users to exclude from result.
     + status (optional, string) ... Filter by users's status. <dl><dt>active</dt><dd>status is Active</dd><dt>disabled</dt><dd>status is Disabled.</dd><dt>pending</dt><dd>status is Pending</dd></dl>
     + lockout ... Filter by user's lockout status. <dl><dt>locked_out</dt><dd>Locked out user only</dd><dt>not_locked_out</dt><dd>Not locked out user only</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -7725,11 +7831,12 @@ Code | Status | Description
           ]
         }
 
-## createUser [/users]
+## Create a new user [POST /users]
+Create a new user.
 
-### New in v2.0: Create a new user. [POST]
-
-+ Authentication is required.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -7751,11 +7858,10 @@ entry | Object | Yes | | Single Entries resource
 + Parameters
     + site_id (required, number) ... The site ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
@@ -7790,11 +7896,12 @@ entry | Object | Yes | | Single Entries resource
           "customFields" : []
         }
 
-## getUser [/users/:user_id(?fields)]
+### Retrieve a single user by ID [GET /users/{user_id}(?fields)]
+Retrieve a single user by ID.
 
-### Retrieve a single user by its own ID. [GET]
-
-+ Authentication is required if want to get non-active user or want to get private properties.
+:::note
+Authentication required if want to get inactive user or want to get the private properties.
+:::
 
 **Status Code**
 
@@ -7852,12 +7959,15 @@ Code | Status | Description
           "customFields" : []
         }
 
-## updateUser [/users/:user_id]
+### Update user [PUT]
+Update an existing user.
 
-### Update oneself or another one's user data. [PUT]
-
-+ Authentication is required.
+:::note
+Authentication required.
+:::
+:::note
 + This method accepts PUT and POST with __method=PUT.
+:::
 
 **Status Code**
 
@@ -7876,11 +7986,10 @@ Code | Status | Description
 + Parameters
     + user_id (required, number or the word 'me') ... The user ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
@@ -7915,12 +8024,18 @@ Code | Status | Description
           "customFields" : []
         }
 
-## deleteUser [/users/:user_id]
-### New in v2.0: Delete user. [DELETE]
+### Delete user. [DELETE]
+Delete an existing user.
 
-+ Authentication is required.
+:::note
+Authentication required.
+:::
+:::note
 + This method accepts DELETE and POST with __method=DELETE.
-+ Cannot delete oneself. Also, cannot delete system administrator user.
+:::
+:::warning
++ Cannot delete oneself. Also, cannot delete system administrator.
+:::
 
 **Status Code**
 
@@ -7973,11 +8088,14 @@ Code | Status | Description
           "customFields" : []
         }
 
-## unlockUser [/users/:user_id/unlock]
+# Utilities [/users/{user_id}]
 
-### Unlock user account. [POST]
+### Unlock user [POST /users/{user_id}/unlock]
+Unlock user account.
 
-+ Authentication is required.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -8007,11 +8125,13 @@ Code | Status | Description
           "status": "success"
         }
 
-## recoverPasswordForUser [/users/:user_id/recover_password]
 
-### Send the link for password recovery to specified user by email. [POST]
+## Send recover link by user ID [POST /users/{user_id}/recover_password]
+Send a email that contains the link for password recovery to user.
 
-+ Authentication is required.
+:::note
+Authentication required.
+:::
 
 **Status Code**
 
@@ -8042,12 +8162,16 @@ Code | Status | Description
           "message": <Result message>
         }
 
-## recoverPassword [/recover_password]
+## Send recover link by email address  [POST /recover_password]
+Send a email that contains the link for password recovery to user.  
+In this endpoint, to search for the user in an e-mail address but if more than one user has the same e-mail address, it will be judged by the username.
 
-### Send the link for password recovery to specified email. [POST]
-
-+ This method always returns successful code if it does not found a user, because security reason.
-+ Authentication is not required.
+:::note
+Authentication not required.
+:::
+:::warning
++ This method always returns successful by security reason.
+:::
 
 **Status Code**
 
@@ -8059,14 +8183,14 @@ Code | Status | Description
 
 + administer
 
-+ Parameters
-    + user_id (required, number) ... The user ID.
++ Message Body Parameters
+    + email (required, string) ... The e-mail address to search for.
+    + name (optional, string) ... The username for to decide user.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body

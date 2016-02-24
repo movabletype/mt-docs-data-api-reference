@@ -1,8 +1,10 @@
 # Group Search
 
-## Search [/search(?search, blog_id, IncludeBlogs, ExcludeBlogs, limit, offset, SearchSortBy, SearchResultDisplay, SearchMaxResults)]
+# Search [/search{?search,blog_id,IncludeBlogs,ExcludeBlogs,limit,offset,SearchSortBy,SearchResultDisplay,SearchMaxResults}]
 
-### New in v2.0: Searching entries. [GET]
+## Searching the entries. [GET]
+Searching the entries. This endpoint is like a mt-search.cgi, but more faster.
+
 
 + Parameters
 

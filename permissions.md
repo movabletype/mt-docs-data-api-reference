@@ -76,12 +76,18 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           "createdDate" : "2015-03-21T19:37:53+09:00"
         }
 
-## listPermissions [/permissions(?limit, offset, sortBy, sortOrder, fields, blogIds)]
+# List Permissions [/permissions]
+## Retrieve a list of permissions [GET /permissions{?limit,offset,sortBy,sortOrder,fields,blogIds,dateField,dateFrom,dateTo}]
+Retrieve a list of permissions. Only system administrator can call this endpoint.
 
-### New in v2.0: Retrieve a list of permissions. [GET]
+:::note
+Authentication required
+:::
 
-+ Authentication is required
-+ Need Administer privilege.
+**Permissions**
+
++ Administer
+
 
 + Parameters
     + limit = `25` (optional, number) ... Maximum number of permissions to retrieve.
@@ -90,6 +96,9 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + blogIds (optional, number) ... The comma-separated blog id list that to be included in the result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Request
 
@@ -159,12 +168,12 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## listPermissionsForUser [/users/:user_id/permissions(?limit, offset, sortBy, sortOrder, fields, blogIds)]
+## Retrieve a list of permissions by user [GET /users/{user_id}/permissions{?limit,offset,sortBy,sortOrder,fields,blogIds,dateField,dateFrom,dateTo}]
+Retrieve a list of permissions by user.
 
-### Retrieve a list of permissions for user. [GET]
-
-+ Authentication is required
-+ If you want to get others list, you should have Administer privilege.
+:::note
+Authentication required
+:::
 
 + Parameters
     + user_id (required, number or the word 'me') ... The user ID.
@@ -174,6 +183,9 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + blogIds (optional, number) ... The comma-separated blog id list that to be included in the result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Request
 
@@ -243,11 +255,13 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## listPermissionsForSite [/sites/:site_id/permissions(?limit, offset, sortBy, sortOrder, fields)]
+## Retrieve a list of permissions by site [GET /sites/{site_id}/permissions{?limit,offset,sortBy,sortOrder,fields,dateField,dateFrom,dateTo}]
+Retrieve a list of permissions by site.
 
-### New in v2.0: Retrieve a list of permissions for site. [GET]
+:::note
+Authentication required
+:::
 
-+ Authentication is required
 + Permissions
   + Administer
   + Website Administrator for websites
@@ -260,6 +274,9 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
     + sortBy = `bog_id` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>id</li><li>blog_id</li><li>author_id</li><li>created_by</li><li>created_on</li></ul>
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Request
 
@@ -329,11 +346,13 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## listPermissionsForRole [/roles/:role_id/permissions(?limit, offset, sortBy, sortOrder, fields, blogIds)]
+## Retrieve a list of permissions by role [GET /roles/{role_id}/permissions{?limit,offset,sortBy,sortOrder,fields,blogIds,dateField,dateFrom,dateTo}]
+Retrieve a list of permissions by role. Only system administrator can call this endpoint.
 
-### New in v2.0: Retrieve a list of permissions by role. [GET]
+:::note
+Authentication required
+:::
 
-+ Authentication is required
 + Permissions
   + Administer
 
@@ -345,6 +364,9 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + blogIds (optional, number) ... The comma-separated blog id list that to be included in the result.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Request
 
@@ -414,72 +436,87 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## grantPermissionToSite [/sites/:site_id/permissions/grant]
+# Grant permission [/sites/{site_id}/permissions/grant]
+## Grant permissions to site. [POST /sites/{site_id}/permissions/grant]
 
-### New in v2.0: Grant permissions to site. [POST]
+:::note
+Authentication required
+:::note
 
-+ Authentication is required
-+ You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog)
+:::note
+You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog).
+:::
 
 + Parameters
 
   + site_id (required, number) ... The site ID.
+
++ HTML Body Parameters
   + role_id (required, number) ... The role ID.
   + user_id (required, number) ... The user ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
 
-            role_id=1&user_id=4
+            role_id=<role_id>&user_id=<user_id>
 
 + Response 200 (application/json)
 
         {"status":"success"}
 
-## grantPermissionToUser [/users/:user_id/permissions/grant]
+## Grant permissions to user. [POST /users/{user_id}/permissions/grant]
 
-### New in v2.0: Grant permissions to user. [POST]
+:::note
+Authentication required
+:::
 
-+ Authentication is required
-+   You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog)
+:::note
+You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog).
+:::
 
 + Parameters
 
   + user_id (required, number) ... The user ID.
+
++ HTML Body Parameters
   + site_id (required, number) ... The site ID.
   + role_id (required, number) ... The role ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
 
-            role_id=1&site_id=1
+            role_id=<role_id>&site_id=<site_id>
 
 + Response 200 (application/json)
 
         {"status":"success"}
 
-## revokePermissionFromSite [/sites/:site_id/permissions/revoke]
+# Revoke permission [/sites/{site_id}/permissions/revoke]
 
-### New in v2.0: Revoke permissions from site. [POST]
+## Revoke permissions from site. [POST /sites/{site_id}/permissions/revoke]
 
-+ Authentication is required
-+ You should have revoke_role(Need revoke_administer_role when granting role having administer_blog )
+:::note
+Authentication required
+:::
+:::note
++ You should have revoke_role(Need revoke_administer_role when granting role having administer_blog ).
+:::
 
 + Parameters
 
   + site_id (required, number) ... The site ID.
+
++ HTML Body Parameters
   + user_id (required, number) ... The user ID.
   + role_id (required, number) ... The role ID.
 
@@ -492,35 +529,38 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
 
     + Body
 
-            role_id=1&user_id=1
+            role_id=<role_id>&user_id=<user_id>
 
 + Response 200 (application/json)
 
         {"status":"success"}
 
-## revokePermissionFromUser [/users/:user_id/permissions/revoke]
+### Revoke permissions from user. [POST /users/{user_id}/permissions/revoke]
 
-### New in v2.0: Revoke permissions from user. [POST]
-
-+ Authentication is required
-+ You should have revoke_role(Need revoke_administer_role when granting role having administer_blog )
+:::note
+Authentication required
+:::
+:::note
++ You should have revoke_role(Need revoke_administer_role when granting role having administer_blog ).
+:::
 
 + Parameters
 
   + user_id (required, number) ... The user ID.
+
++ HTML Body Parameters
   + site_id (required, number) ... The site ID.
   + role_id (required, number) ... The role ID.
 
-+ Request
++ Request (application/x-www-form-urlencoded)
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
             X-MT-Authorization: MTAuth accessToken=<Token>
 
     + Body
 
-            role_id=1&site_id=1
+            role_id=<role_id>&site_id=<site_id>
 
 + Response 200 (application/json)
 

@@ -57,10 +57,13 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
                 }
 
 
-## listTemplates [/sites/:site_id/templates(?site_id, limit ,offset, sortBy, sortOrder,fields, searchFields, search, includeIds, excludeIds, type)]
-### new in v2.0: Retrieve a list of templates in the specified site. [GET]
+# Templates [/sites/{site_id}/templates/{template_id}]
+## Retrieve a list of templates [GET /sites/{site_id}/templates{?site_id,limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,type}]
+Retrieve a list of templates.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -164,10 +167,12 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## getTemplate [/sites/:site_id/templates/:template_id(?fields)]
-### new in v2.0: Retrieve single template by its ID. [GET]
+## Retrieve a single template by its ID [GET /sites/{site_id}/templates/{template_id}{?fields}]
+Retrieve a single template by its ID.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -236,10 +241,12 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
                   }
                 }
 
-## createTemplate [/sites/:site_id/templates]
-### new in v2.0: Create a new template. [POST]
+## Create a new template [POST /sites/{site_id}/templates]
+Create a new template.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -248,11 +255,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
 + Parameters
     + site_id (required, number) ... The site ID. If 0 specified, will create into the global template in the system.
 
-+ Request Templates resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 
@@ -316,11 +319,15 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## updateTemplate [/sites/:site_id/templates/:template_id]
-### new in v2.0: Update a template. [PUT]
+## Update a template [PUT]
+Update a template.
 
-+ Authorization is required.
-+ This method accepts PUT or POST with __method=PUT.
+:::note
+Authentication required.
+:::
+:::note
+This method accepts PUT or POST with __method=PUT.
+:::
 
 **Permissions**
 
@@ -330,11 +337,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
     + site_id (required, number) ... The site ID. If 0 specified, will update a global template in the system.
     + template_id (required, number) ... The template ID.
 
-+ Request Templates resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 
@@ -407,11 +410,15 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## deleteTemplate [/sites/:site_id/templates/:template_id]
-### new in v2.0: Delete a template. [DELETE]
+## Delete a template [DELETE]
+Delete a template.
 
-+ Authorization is required.
-+ This method accepts DELETE or POST with __method=DELETE.
+:::note
+Authentication required.
+:::
+:::note
+This method accepts DELETE or POST with __method=DELETE.
+:::
 
 **Permissions**
 
@@ -488,16 +495,21 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## publishTemplate [/sites/:site_id/templates/:template_id/publish]
-### new in v2.0: Publish a template. [POST]
+# Utilities [/sites/{site_id}/templates/{template_id}]
+## Publish a template [POST /sites/{site_id}/templates/{template_id}/publish]
+Publish (in other words rebuild) a template.
 
-+ Authorization is required.
-+ Only available for following templates
-  + index
-  + archive
-  + individual
-  + page
-  + category
+:::note
+Authentication required.
+:::
+:::note
+Only available for following templates
++ index
++ archive
++ individual
++ page
++ category
+:::
 
 **Permissions**
 
@@ -549,10 +561,61 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## refreshTemplate [/sites/:site_id/templates/:template_id/refresh]
-### new in v2.0: Reset template text to theme default or tempalte_set default. [POST]
+## Make a clone [POST /sites/{site_id}/templates/{template_id}/clone]
+Make a clone of a template.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
+
+**Permissions**
+
++ edit_templates
+
++ Parameters
+    + site_id (required, number) ... The site ID. If 0 specified, refresh a global template in the system.
+    + template_id (required, number) ... The template ID.
+
++ Response 200 (application/json)
+
+        {
+          "status": "success"
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": {
+            "message": "Do not have permission to clone a template.",
+            "code": "403"
+          }
+        }
+
++ Response 404 (application/json)
+
+        {
+          "error": {
+            "message": "Site not found / Template not found",
+            "code": "404"
+          }
+        }
+
++ Response 500 (application/json)
+
+        {
+          "error": {
+            "message": "Some error message is here",
+            "code": "500"
+          }
+        }
+
+# Refresh [/sites/{site_id}/templates]
+## Reset template text [POST /sites/{site_id}/templates/{template_id}/refresh]
+Reset template text to theme default or tempalte_set default.
+
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -598,10 +661,12 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## refreshTemplateForSite [/sites/:site_id/refresh_templates(?refresh_type)]
-### new in v2.0: Reset all templates in the site. [POST]
+## Reset all template text [POST /sites/{site_id}/refresh_templates{?refresh_type}]
+Reset all templates to default.
 
-+ Authorization is required.
+:::note
+Authentication required.
+:::
 
 **Permissions**
 
@@ -644,58 +709,16 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## cloneTemplate [/sites/:site_id/templates/:template_id/clone]
-### new in v2.0: Make a clone of a template. [POST]
+# Preview [/sites/{site_id}/templates/preview]
+## Make a preview [POST /sites/{site_id}/templates/preview{?raw}]
+Make a template preview by specified data.
 
-+ Authorization is required.
-
-**Permissions**
-
-+ edit_templates
-
-+ Parameters
-    + site_id (required, number) ... The site ID. If 0 specified, refresh a global template in the system.
-    + template_id (required, number) ... The template ID.
-
-+ Response 200 (application/json)
-
-        {
-          "status": "success"
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": {
-            "message": "Do not have permission to clone a template.",
-            "code": "403"
-          }
-        }
-
-+ Response 404 (application/json)
-
-        {
-          "error": {
-            "message": "Site not found / Template not found",
-            "code": "404"
-          }
-        }
-
-+ Response 500 (application/json)
-
-        {
-          "error": {
-            "message": "Some error message is here",
-            "code": "500"
-          }
-        }
-
-## previewTemplate [/sites/:site_id/templates/preview(?raw)]
-### new in v2.0: Make a preview for a template. [POST]
-
-+ Authorization is required.
-+ **This endpoint is available in Movable Type 6.1.2 or later.**
-+ `type` parameter in the Templates resource is required.
+:::note
+Authentication required.
+:::
+:::note
+`type` parameter in the Templates resource is required.
+:::
 
 **Permissions**
 
@@ -705,11 +728,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
     + site_id (required, number) ... The site ID.
     + raw (optional, number) ...  If specify “1”, will be returned preview contents.
 
-+ Request Templates resource
-
-    + Headers
-
-            Content-Type: application/x-www-form-urlencoded
++ Request (application/x-www-form-urlencoded)
 
     + Body
 
@@ -750,18 +769,22 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## previewTemplateById [/sites/:site_id/templates/:template_id/preview(?raw)]
-### new in v2.0: Make a preview for a template with existing data. [POST]
+## Make a preview for an existing template [POST /sites/{site_id}/templates/{template_id}/preview{?raw}]
 
-+ Authorization is required.
-+ **This endpoint is available in Movable Type 6.1.2 or later.**
-+ Only available for following templates
-  + index
-  + archive
-  + individual
-  + page
-  + category
-  + ***template*** parameter is required. If you just want to get preview template from existing data, you should provide ***template*** parameter with empty json.
+:::note
+Authentication required.
+:::
+:::note
+Only available for following templates
++ index
++ archive
++ individual
++ page
++ category
+:::
+:::note
++ ***template*** parameter is required. If you just want to get preview template from existing data, you should provide ***template*** parameter with empty json.
+:::
 
 **Permissions**
 
@@ -816,5 +839,4 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
             "code": "500"
           }
         }
-
 

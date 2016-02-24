@@ -48,11 +48,10 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields": []
         },
 
-## listFolders [//sites/:site_id/folders(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+# Folders [/sites/:site_id/folders/:folder_id]
+## Retrieve a list of folders [GET //sites/:site_id/folders(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
 
-### New in v2.0: Retrieve a list of folders. [GET]
-
-+ Authentication required if you want to get private properties.
+Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID
@@ -66,6 +65,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + includeIds (optional, string) ... The comma separated ID list of folders to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of folders to exclude from result.
     + top = `0` (optional, number) ... If set to 1, retrieves only top level folders.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -95,17 +97,18 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listParentFolders [/sites/:site_id/folders/:folder_id/parents(?maxDepth, includeCurrent)]
+## Retrieve a list of parent folders [GET /sites/:site_id/folders/:folder_id/parents(?maxDepth, includeCurrent)]
 
-### New in v2.0: Retrieve a list of parent folders of the requested folder. [GET]
-
-+ Authentication required if you want to get private properties.
+Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID.
     + folder_id (required, number) ... The folder ID.
     + maxDepth (optional, numner) ... The depth of retrieving parent folders.
     + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The results includes current folder.</dd><dt>0</dt>The results do not include current folder.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -135,11 +138,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listSiblingFolders [/sites/:site_id/folders/:folder_id/siblings(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+## Retrieve a list of sibling folders [GET /sites/:site_id/folders/:folder_id/siblings(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
 
-### New in v2.0: Retrieve a list of sibling folders of the requested folder. [GET]
-
-+ Authentication required if you want to get private properties.
+Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID
@@ -154,6 +155,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + includeIds (optional, string) ... The comma separated ID list of folders to include to result.
     + excludeIds (optional, string) ... The comma separated ID list of folders to exclude from result.
     + top = `0` (optional, number) ... If set to 1, retrieves only top level folders.
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
@@ -183,9 +187,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listChildFolders [/sites/:site_id/folders/:folder_id/children(?maxDepth, includeCurrent)]
-
-### New in v2.0: Retrieve a list of child folders of the requested folder. [GET]
+## Retrieve a list of child folders [GET /sites/:site_id/folders/:folder_id/children(?maxDepth, includeCurrent)]
 
 
 + Authentication required if you want to get private properties.
@@ -195,6 +197,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
     + folder_id (required, number) ... The folder ID.
     + maxDepth (optional, numner) ... The depth of retrieving child folders.
     + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The results includes current folder.</dd><dt>0</dt>The results do not include current folder.</dd></dl>
+    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
