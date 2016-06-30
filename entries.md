@@ -37,6 +37,7 @@ tags | ARRAY | string | | | | The list of entry tags for this entry. | v1
 title | value | string | mt_entry.entry_title | | | The title of this entry. | v1
 trackbackCount | value | number | mt_entry.entry_comment_count | | | The number of received trackbacks for this entry. | v1
 trackbacks | ARRAY | Trackbacks | | | Y | The list of received trackbacks for this entry. The list is sorted by the ID of trackback. | v1
+unpublishedDate | value | iso 8601 datetime | mt_entry.entry_unpublished_on | | | The unpublished time for this entry. | v2
 updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed can update this entry.</dd><dt>false</dt><dd>The user who accessed cannot update this entry.</dd></dl> | v1
 
         {
@@ -70,6 +71,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "title" : "Six Apart Acquires Topics Server to Simplify Site Upgrades",
           "class" : "entry",
           "createdDate" : "2014-11-14T13:17:52¥u002b09:00",
+          "unpublishedDate" : "2014-11-14T13:17:52¥u002b09:00",
           "more" : "",
           "customFields" : [
             {
