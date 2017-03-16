@@ -2,7 +2,7 @@
 
 # Authentication [/authentication]
 ## User authentication by username and password [POST]
-Create a new session and access token. This is like sign-in.
+Create a new session and access token. This is like sign-in. 
 
 + Attributes
     + username (required, string) ... The username for authentication.
@@ -19,7 +19,7 @@ Create a new session and access token. This is like sign-in.
 
     + Body
 
-            username={Your Sign-in Name}&password={Your sign-in Password}&clientid={Your Client ID}
+            username={Your Sign-in Name}&password={Your Web Service Password}&clientid={Your Client ID}
 
 + Response 200 (application/json)
 
