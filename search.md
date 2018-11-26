@@ -17,6 +17,7 @@ Searching the entries. This endpoint is like a mt-search.cgi, but more faster.
     + SearchSortBy (optional, string) ... The sort column for the search results. Available value is follows. <dl><dt>created_on</dt><dd>Will sort the entries by the authored on date.</dd><dt>title</dt><dd>Will sort the entries by title.</dd></dl>
     + SearchResultDisplay = `ascend` (optional, string) ... Defines the sort order search results. Available value is follows. <dl><dt>ascend</dt><dd>will list the entries in chronological order (oldest entry at the top)</dd><dt>descend</dt><dd>will list the entries in reverse chronological order (newest entry at the top).</dd></dl>
     + SearchMaxResults = `20` (optional, number) ... Maximum number of entries to retrieve. <p>NOTE: By default, "SearchMaxResults" override is disabled.</p>
+    + class (optional, string) ... Class name of the object to be searched. Available value is follows. <dl><dt>entry</dt><dd>Search results will only contain entries.</dd><dt>page</dt><dd>Search results will only contain pages.</dd></dl>
 
 + Response 200 (application/json)
 
