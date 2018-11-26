@@ -462,6 +462,7 @@ Code | Status | Description
 Name | Type | Required | Default | Description
 ---- | ---- | -------- | ------- | -----------
 entry | Object | Yes | | Single Entries resource
+publish | Integer | No | 1 | If specify 0 this entry and related templates are not rebuild at save.
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -604,6 +605,13 @@ Code | Status | Description
 
 + edit_entry
     + for retrieve unpublished entry
+
+**Request Body Parameters**
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+entry | Object | Yes | | Single Entries resource
+publish | Integer | No | 1 | If specify 0 this entry and related templates are not rebuild at save.
 
 + Parameters
     + site_id (required, number) ... The site ID.

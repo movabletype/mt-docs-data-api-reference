@@ -1,11 +1,11 @@
 FORMAT: 1A
-HOST: http://your-host/path-to-mt/mt-data-api.cgi/v3
+HOST: http://your-host/path-to-mt/mt-data-api.cgi/v4
 
-# Movable Type Data API v3
+# Movable Type Data API v4
 The Movable Type Data API is a REST interface to the Movable Type Content Management System.
 The Data API is available for Movable Type Pro and Movable Type Advanced / Enterprise, Version 6.0 and higher.
 
-Movable Type Data API v3 was released in Movable Type 6.0
+Movable Type Data API v4 was released in Movable Type 7.0
 
 <p><a href="http://www.movabletype.jp/">Movable Type</a> &gt; <a href="http://www.movabletype.jp/developers/">開発者向け ドキュメント</a> &gt; <a href="http://www.movabletype.jp/developers/data-api/">Movable Type Data API ドキュメント</a></p>
 
@@ -2526,6 +2526,7 @@ Code | Status | Description
 Name | Type | Required | Default | Description
 ---- | ---- | -------- | ------- | -----------
 entry | Object | Yes | | Single Entries resource
+publish | Integer | No | 1 | If specify 0 this entry and related templates are not rebuild at save.
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -2668,6 +2669,13 @@ Code | Status | Description
 
 + edit_entry
     + for retrieve unpublished entry
+
+**Request Body Parameters**
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+entry | Object | Yes | | Single Entries resource
+publish | Integer | No | 1 | If specify 0 this entry and related templates are not rebuild at save.
 
 + Parameters
     + site_id (required, number) ... The site ID.
@@ -4656,6 +4664,7 @@ Searching the entries. This endpoint is like a mt-search.cgi, but more faster.
     + SearchSortBy (optional, string) ... The sort column for the search results. Available value is follows. <dl><dt>created_on</dt><dd>Will sort the entries by the authored on date.</dd><dt>title</dt><dd>Will sort the entries by title.</dd></dl>
     + SearchResultDisplay = `ascend` (optional, string) ... Defines the sort order search results. Available value is follows. <dl><dt>ascend</dt><dd>will list the entries in chronological order (oldest entry at the top)</dd><dt>descend</dt><dd>will list the entries in reverse chronological order (newest entry at the top).</dd></dl>
     + SearchMaxResults = `20` (optional, number) ... Maximum number of entries to retrieve. <p>NOTE: By default, "SearchMaxResults" override is disabled.</p>
+    + class (optional, string) ... Class name of the object to be searched. Available value is follows. <dl><dt>entry</dt><dd>Search results will only contain entries.</dd><dt>page</dt><dd>Search results will only contain pages.</dd></dl>
 
 + Response 200 (application/json)
 
@@ -7683,6 +7692,7 @@ This is the Users resource.
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
 ------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------ | ------------
+apiPassword | value | string | mt_author.author_api_password | Y | | The web services password of this user. | v3
 createdBy | Object | User | - | Y | Y | Created user of this user. | v2
 createdBy.displayName | value | string | mt_author.author_nickname | Y | Y | The display name of this user creator. | v2
 createdBy.id | value | number | mt_author.author_created_by | Y | Y | The ID of this user creator. | v2
