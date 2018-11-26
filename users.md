@@ -4,6 +4,7 @@ This is the Users resource.
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
 ------------ | ------------- | ------------ | ------------ | ------------- | ------------ | ------------ | ------------
+apiPassword | value | string | mt_author.author_api_password | Y | | The web services password of this user. | v3
 createdBy | Object | User | - | Y | Y | Created user of this user. | v2
 createdBy.displayName | value | string | mt_author.author_nickname | Y | Y | The display name of this user creator. | v2
 createdBy.id | value | number | mt_author.author_created_by | Y | Y | The ID of this user creator. | v2
