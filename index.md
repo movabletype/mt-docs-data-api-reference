@@ -10,5 +10,5 @@ Movable Type Data API v4 was released in Movable Type 7.0
 <p><a href="http://www.movabletype.jp/">Movable Type</a> &gt; <a href="http://www.movabletype.jp/developers/">開発者向け ドキュメント</a> &gt; <a href="http://www.movabletype.jp/developers/data-api/">Movable Type Data API ドキュメント</a></p>
 
 <!-- include(common.md) -->
-
 <!-- Include(authentication.md) -->
+<!-- Include(assets.md) -->
