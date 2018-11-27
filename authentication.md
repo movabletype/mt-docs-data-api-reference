@@ -5,18 +5,23 @@
 ### User authentication by username and password [POST]
 Create a new session and access token. This is like sign-in. 
 
+The post data is follows
+
++ username (required, string) - The username for authentication.
++ password (required, string) - The password for authentication. From version 3, it was changed to use web services password instead of the password. 
++ clientId (required, string) - If you want to create a new session or access token, you should specify the clientId. If you specify  session id via "X-MT-Authorization" in the request header, clientId is not required.
++ remember (optional, boolean) - If true (generally, "1" is specified.), a new session will be created as a persistent session. If you want to specify false, you can pass "" or "0" to this parameter.
++ mtDataApiLoginMagicToken (optional, string) - This is not required if you authenticate except via browser. If this parameter is passed and valid Movable Type will set cookie in order to start a session.
+
 + Request
 
     + Headers
 
             Content-Type: application/x-www-form-urlencoded
 
-    + Attributes
-        + username (required, string) - The username for authentication.
-        + password (required, string) - The password for authentication. From version 3, it was changed to use web services password instead of the password. 
-        + clientId (required, string) - If you want to create a new session or access token, you should specify the clientId. If you specify  session id via "X-MT-Authorization" in the request header, clientId is not required.
-        + remember (optional, boolean) - If true (generally, "1" is specified.), a new session will be created as a persistent session. If you want to specify false, you can pass "" or "0" to this parameter.
-        + mtDataApiLoginMagicToken (optional, string) - This is not required if you authenticate except via browser. If this parameter is passed and valid Movable Type will set cookie in order to start a session.
+    + Body
+
+            username={Your Sign-in Name}&password={Your sign-in Password}&clientid={Your Client ID}
 
 + Response 200 (application/json)
 
