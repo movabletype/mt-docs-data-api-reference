@@ -23,9 +23,9 @@
     + width (number) - The width of this asset. If this asset has no width meta information, will return null.
 + mimeType (string) - The MIME Type of this asset.
 + modifiedBy
-    + id (number) - The ID of user who created asset.
-    + displayName (string) - The display name of user who created asset.
-    + userpicUrl (string) - The URL of creating user’s userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, empty string will be returned.
+    + id (number) - The ID of user who modified asset.
+    + displayName (string) - The display name of user who modified asset.
+    + userpicUrl (string) - The URL of modifying user’s userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, empty string will be returned.
 + modifiedDate (string) - The last modified time for this asset.  (format: iso 8601 datetime)
 + parent
     + id (number) - The ID of parent asset.
