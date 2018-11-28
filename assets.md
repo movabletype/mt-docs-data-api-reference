@@ -44,7 +44,7 @@ This is the Assets resource.
 
 ## Upload [/assets/upload{?overwrite_once}]
 
-### Upload a single file. [POST]
+### Upload a single file [POST]
 Upload a single file. This endpoint needs following permissions.
 
 * upload
@@ -102,7 +102,7 @@ Post form data is following:
 + Parameters
     + site_id (required, number) - The site ID. If 0 specified, will retrieve system-level assets.
 
-### Retrieve a list of assets. [GET]
+### Assets Collection [GET]
 Retrieve list of assets in the specified site.
 
 + Parameters
@@ -155,7 +155,7 @@ Retrieve list of assets in the specified site.
     + site_id (required, number) - The site ID.
     + entry_id (required, number) - The entry ID.
 
-### Retrieve a list of assets that related with entry [GET]
+### Assets Collection by entry [GET]
 Retrieve assets that related with specified entry.
 
 + Parameters
@@ -204,7 +204,7 @@ Retrieve assets that related with specified entry.
     + site_id (required, number) - The site ID.
     + page_id (required, number) - The page ID.
 
-### Retrieve a list of assets that related with page [GET]
+### Assets Collection by page [GET]
 Retrieve assets that related with specified page.
 
 + Parameters
@@ -253,7 +253,7 @@ Retrieve assets that related with specified page.
     + site_id (required, number) - The site ID.
     + tag_id (required, number) - The page ID.
 
-### Retrieve a list of assets that related with tag. [GET]
+### Assets Collection by tag [GET]
 Retrieve assets that related with specified tag.
 
 + Parameters
@@ -301,7 +301,7 @@ Retrieve assets that related with specified tag.
     + site_id: 1 (number, required) - The site ID.
     + asset_id: 1 (number, required) - The asset ID.
 
-## Fetch single asset [GET]
+### Fetch single asset [GET]
 Retrieve a single asset by its ID.
 
 + Parameters
@@ -326,7 +326,7 @@ Retrieve a single asset by its ID.
     + body
 
 
-### Update an asset. [PUT]
+### Update asset. [PUT]
 **Authentication required.**
 
 Update an asset. This endpoint needs following permissions.
@@ -388,7 +388,7 @@ This method accepts PUT and POST with __method=PUT.
 
     + body
 
-## Delete an asset. [DELETE]
+## Delete asset. [DELETE]
 **Authentication required.**
 
 Delete an asset. This endpoint needs following permissions.
@@ -425,18 +425,13 @@ This method accepts DELETE and POST with __method=DELETE.
 
     + body
 
-
-## Thumbnail [/sites/{site_id}/assets/{asset_id}/thumbnail{?width,height,scale,square}]
-
-+ Parameters
-    + site_id: 1 (number, required) - The site ID.
-    + asset_id: 1 (number, required) - The asset ID.
-
-### Get thumbnail image for an asset. [GET]
+### Get thumbnail image [GET /sites/{site_id}/assets/{asset_id}/thumbnail{?width,height,scale,square}]
 
 This endpoint requires one of parameter 'width' or 'height' or 'scale' Also, cannot use these parameters at same time.
 
 + Parameters
+    + site_id: 1 (number, required) - The site ID.
+    + asset_id: 1 (number, required) - The asset ID.
     + width: 200 (optional, number) - The width of the thumbnail to generate. If this is the only parameter specified then the thumbnail’s width will be scaled proportionally to the height. When a value longer than the original image is specified, it will be ignored.
     + height: 200 (optional, number) - The height of the thumbnail to generate. If this is the only parameter specified then the thumbnail’s height will be scaled proportionally to the width. When both of height and width are specified, the longer side of the original image will be processed, and the lesser side will be scaled proportionally.
     + scale: 50 (optional, number) - The percentage by which to reduce or increase the size of the current asset.

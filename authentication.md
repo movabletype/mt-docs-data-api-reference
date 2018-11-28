@@ -2,7 +2,7 @@
 
 ## Authentication [/authentication]
 
-### User authentication by username and password [POST]
+### User authentication [POST]
 Create a new session and access token. This is like sign-in. 
 
 The post data is follows
@@ -112,7 +112,7 @@ Create a new access token that related to current session.
               }
             }
 
-### Invalidate current access token. This is not sign-out. [DELETE]
+### Invalidate current access token [DELETE]
 
 Invalidate current access token. This is not sign-out. If the browser has active session ID, new access token can be obtained easily.
 

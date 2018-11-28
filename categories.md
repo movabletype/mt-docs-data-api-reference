@@ -35,7 +35,7 @@
 + Parameters
     + site_id (required, number) - The site ID.
 
-### Create a new category. [POST]
+### Create a new category [POST]
 **Authentication required.**
 
 Create a new category. This endpoint needs following permissions.
@@ -115,9 +115,9 @@ Retrieve list of categories in the specified site.
     + body
 
 
-## Categories Collection by entry. [/sites/{site_id}/entries/{entry_id}/categories{?search,searchFields,limit,offset,sortBy,sortOrder,fields,type,includeIds,excludeIds,top,dateField,dateFrom,dateTo}]
+## Categories Collection by entry [/sites/{site_id}/entries/{entry_id}/categories{?search,searchFields,limit,offset,sortBy,sortOrder,fields,type,includeIds,excludeIds,top,dateField,dateFrom,dateTo}]
 
-### Retrieve a list of categories that related with entry [GET]
+### Categories Collection by entry [GET]
 Retrieve list of categories in the specified site. If you want to retrieve the non-published an entry's categories, needs authentication and user must have following permission.
 
 + edit_entry
@@ -171,7 +171,7 @@ Retrieve list of categories in the specified site. If you want to retrieve the n
     + site_id (required, number) - The site ID.
     + category_id (required, number) - The category ID.
 
-### Retrieve a list of parent categories. [GET]
+### Categories Collection for parent categories [GET]
 Retrieve list of parent categories of the specified category.
 
 + Parameters
@@ -207,7 +207,7 @@ Retrieve list of parent categories of the specified category.
     + site_id (required, number) - The site ID.
     + category_id (required, number) - The category ID.
 
-### Retrieve a list of siblings categories. [GET]
+### Categories Collection for siblings categories [GET]
 Retrieve list of siblings categories of the specified category.
 
 + Parameters
@@ -250,13 +250,13 @@ Retrieve list of siblings categories of the specified category.
     + body
 
 
-## Categoris Collection for child categories. [/sites/{site_id}/categories/{category_id}/children{?maxDepth,includeCurrent,dateField,dateFrom,dateTo}]
+## Categoris Collection for child categories [/sites/{site_id}/categories/{category_id}/children{?maxDepth,includeCurrent,dateField,dateFrom,dateTo}]
 
 + Parameters
     + site_id (required, number) - The site ID.
     + category_id (required, number) - The category ID.
 
-### Retrieve a list of child categories. [GET]
+### Categoris Collection for child categories [GET]
 Retrieve list of child categories of the specified category.
 
 + Parameters

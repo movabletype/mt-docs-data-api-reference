@@ -83,13 +83,13 @@ Authorization is required if you want to retrieve unpublished comments.
     + body
 
 
-## Comments Collection by entry. [/sites/{site_id}/entries/{entry_id}/comments{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,dateField,dateFrom,dateTo}]
+## Comments Collection by entry [/sites/{site_id}/entries/{entry_id}/comments{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,dateField,dateFrom,dateTo}]
 
 + Parameters
     + site_id (required, number) - The site ID.
     + entry_id (required, number) - The entry ID.
 
-### Create a new comment for entry. [POST]
+### Create a new comment for entry [POST]
 **Authentication required.**
 
 Create a new commet for an entry. This endpoint need following permissions. (Perhapse, MT user almost have comment permission.)
@@ -125,7 +125,7 @@ Post form data is following
 
     + body
 
-### Retrieve a list of comments that related with entry. [GET]
+### Comments Collection by entry [GET]
 Authorization is required if you want to retrieve unpublished comments.
 
 + Parameters
@@ -172,7 +172,7 @@ Authorization is required if you want to retrieve unpublished comments.
     + site_id (required, number) - The site ID.
     + page_id (required, number) - The page ID.
 
-### Create a new comment for page. [POST]
+### Create a new comment for page [POST]
 **Authentication required.**
 
 Create a new commet for an page. This endpoint need following permissions. (Perhapse, MT user almost have comment permission.)
@@ -208,7 +208,7 @@ Post form data is following
 
     + body
 
-### Retrieve a list of comments that related with page. [GET]
+### Comments Collection by page [GET]
 Authentication is required if want to include unpublished comments.
 
 + Parameters
@@ -276,7 +276,7 @@ Authorization is required if the comment status is "unpublished".
 
     + body
 
-### Update comment. [PUT]
+### Update single comment [PUT]
 **Authentication required.**
 Update comment. This endpoint need following permissions. (Perhapse, MT user almost have comment permission.)
 
@@ -313,7 +313,7 @@ Post form data is following
 
     + body
 
-### Delete comment. [DELETE]
+### Delete single comment [DELETE]
 **Authentication required.**
 
 Delete comment. This endpoint need following permissions. (Perhapse, MT user almost have comment permission.)
