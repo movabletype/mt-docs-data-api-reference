@@ -100,7 +100,7 @@ Retrieve list of categories in the specified site.
 + Response 200 (application/json)
     + Attributes
         + totalResults: 1 (number) - Total record count of this request.
-        + items (array[Category]) - The array of result content.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
@@ -150,7 +150,7 @@ Retrieve list of categories in the specified site. If you want to retrieve the n
 + Response 200 (application/json)
     + Attributes
         + totalResults: 1 (number) - Total record count of this request.
-        + items (array[Category]) - The array of result content.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
@@ -186,7 +186,7 @@ Retrieve list of parent categories of the specified category.
 + Response 200 (application/json)
     + Attributes
         + totalResults: 1 (number) - Total record count of this request.
-        + items (array[Category]) - The array of result content.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
@@ -235,7 +235,7 @@ Retrieve list of siblings categories of the specified category.
 + Response 200 (application/json)
     + Attributes
         + totalResults: 1 (number) - Total record count of this request.
-        + items (array[Category]) - The array of result content.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
@@ -271,7 +271,7 @@ Retrieve list of child categories of the specified category.
 + Response 200 (application/json)
     + Attributes
         + totalResults: 1 (number) - Total record count of this request.
-        + items (array[Category]) - The array of result content.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
@@ -409,4 +409,4 @@ Post form data is following:
 
 + Response 200 (application/json)
 
-    + Attributes (array[Category])
+    + Attributes (array[Category], fixed-type)

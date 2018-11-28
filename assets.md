@@ -132,7 +132,9 @@ Retrieve list of assets in the specified site.
 
     No Errors.
 
-    + Attributes (array[Asset], fixed-type)
+    + Attributes
+        + totalResults: 1 (number) - Total record count of this request.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
@@ -178,7 +180,9 @@ Retrieve assets that related with specified entry.
 
 + Response 200 (application/json)
 
-    + Attributes (array[Asset], fixed-type)
+    + Attributes
+        + totalResults: 1 (number) - Total record count of this request.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
@@ -225,7 +229,9 @@ Retrieve assets that related with specified page.
 
 + Response 200 (application/json)
 
-    + Attributes (array[Asset], fixed-type)
+    + Attributes
+        + totalResults: 1 (number) - Total record count of this request.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
@@ -272,7 +278,9 @@ Retrieve assets that related with specified tag.
 
 + Response 200 (application/json)
 
-    + Attributes (array[Asset], fixed-type)
+    + Attributes
+        + totalResults: 1 (number) - Total record count of this request.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
@@ -301,7 +309,9 @@ Retrieve a single asset by its ID.
 
 + Response 200 (application/json)
 
-    + Attributes (array[Asset], fixed-type)
+    + Attributes
+        + totalResults: 1 (number) - Total record count of this request.
+        + items (array[Category], fixed-type) - The array of result content.
 
 + Response 403 (application/json)
 
