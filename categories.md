@@ -1,33 +1,3 @@
-# Data Structures
-
-## Category
-+ archiveLink (string) - The category archive URL of this category. If “Category” archive mapping is not configured, this value will be null.
-+ basename (string) - The basename of this category.
-+ blog
-    + id (number) - The ID of the blog that contains this category.
-+ class (string) - The object class for this category.
-+ createdBy
-    + displayName (string) - The display name of the user who created this category.
-    + id (number) - The ID of the user who created this category.
-    + userpicUrl (string) - The URL of created user’s userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, empty string will be returned.
-+ createdDate (string) - he created time for this category. (format is iso 8601 datetime)
-+ customFields (array)
-    + basename (string) - The basename of this customfield.
-    + value (string) - The value of this customfield.
-+ description (string) - The description of this category.
-+ id (number) - The ID of this category.
-+ label (string) - The label of this category.
-+ modifiedBy
-    + displayName (string) - The display name of the user who modified this category.
-    + id (number) - The ID of the user who modified this category.
-    + userpicUrl (string) - The URL of modified user’s userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, empty string will be returned.
-+ modifiedDate (string) - The last modified time for this category. (format is iso 8601 datetime)
-+ parent (number) - The ID of the parent category for this category. This field can be updated from v2.
-+ updatable (boolean) - 
-    true: The user who accessed can update this category.
-    false: The user who accessed cannot update this category.
-
-
 # Group Categories
 
 ## Categories Collection [/sites/{site_id}/categories{?search,searchFields,limit,offset,sortBy,sortOrder,fields,top,includeIds,excludeIds,dateField,dateFrom,dateTo}]

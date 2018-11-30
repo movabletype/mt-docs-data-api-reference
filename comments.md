@@ -1,34 +1,3 @@
-# Data Structures
-## Comment
-+ author
-    +id (number) - The ID of this commenter. If commenter is not a registerd user, this field is empty.
-    + displayName (string) - The display name of this commenter.
-    + userpicUrl (string) - The URL of this commenter's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If a commenter is not a registered user or a commenter does not set own userpic, will be returned empty string.
-+ blog
-    + id (number) - The ID of the blog that contains this comment.
-+ body (string) - The contents of this comment.
-+ createdBy
-    + id (number) - The ID of created user.
-    + displayName (string) - The display name of created user.
-    + userpicUrl (string) - The URL of created user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
-+ createdDate (string) - The created time for this comment. (format is iso 8601 datetime)
-+ customFields (array)
-    + basename (string) - The basename of this customfield.
-    + value (string) - The value of this customfield.
-+ date (string) - The creation time for this comment. This property is marked as deprecated in v2.0. (format is iso 8601 datetime)
-+ entry
-    + id (number) - The ID of the entry that contains this comment.
-+ id (number) - The ID of this comment.
-+ link (string) - The permalink for this comment.
-+ modifiedBy
-    + displayName (string) - The display name of last modified user.
-    + id (number) - The ID of last modified user.
-    + userpicUrl (string) - The URL of last modified user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
-+ modifiedDate (string) - The last modified time for this comment. (format is iso 8601 datetime)
-+ parent (number) - The ID of the parent of this comment. If this comment is not a reply, will be returned as null.
-+ status (string) - The publishing status of this comment. Approved: This comment has been approved. In the database, comment_visible = 1 and comment_junk_status = 1. Pending: This comment has not been approved. In the database, comment_visible = 0 and comment_junk_status = 1. Spam: This comment has been marked as Spam. In the database, comment_visible = 0 and comment_junk_status = -1.
-+ updatable (boolean) - true: The user who accessed can update this comment. false: The user who accessed cannot update this comment.
-
 # Group Comments
 
 ## Comments Collection [/sites/{site_id}/comments{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,entryStatus,dateField,dateFrom,dateTo}]
