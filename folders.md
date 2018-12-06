@@ -1,232 +1,350 @@
-#Group Folders
+# Group Folders
 
-This is the Folders resource.
-
-Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
------------- | ------------- | ------------ | ------------ | ------------- | ------------ | ------------ | ------------
-basename | value | string | mt_category.category_basename | | | The basename for this folder. | v2
-blog | Object | Blog | | | Y | The blog for this folder. | v2
-blog.id | value | number | mt_category.category_blog_id | | Y | The ID of the blog that contains this folder. | v2
-class | value | string | mt_category.category_class | | Y | The class for this folder. Always "folder". | v2
-createdBy | Object | User | | | Y | Created user of this folder. | v2
-createdBy.displayName | value | string | mt_author.author_nickname | | Y | The display name of this folder creator. | v2
-createdBy.id | value | number | mt_category.category_created_by | Y | Y | The ID of this folder creator. | v2
-createdBy.userpicUrl | value | string | mt_author.author_userpic_url | | Y | The URL of this folder creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. | v2
-createdDate | value | iso 8601 datetime | mt_category.category_created_on | | Y | Created date of this folder. | v2
-customFields | ARRAY | Object | | | Y | The list of customfields data for this folder. | v2
-customField.basename | value | string | mt_field.field_basename | | Y | The basename for this customfield. | v2
-customField.value | value | string | mt_template_meta.* | | | The value of this customfield. | v2
-description | value | string | mt_category.category_description | | | The description for this folder. | v2
-id | value | number | mt_category.category_id | | Y | The ID for this folder. | v2
-label | value | string | mt_category.category_label | | | The label for this folder. | v2
-modifiedBy | Object | User | | | Y | Last modified user of this folder. | v2
-modifiedBy.displayName | value | string | mt_author.author_nickname | | Y | The display name of this folder modifier. | v2
-modifiedBy.id | value | number | mt_category.category_modified_by | Y | Y | The ID of this folder modifier. | v2
-modifiedBy.userpicUrl | value | string | mt_author.author_userpic_url | | Y | The URL of this folder modifier's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. | New in v2
-modifiedDate | value | iso 8601 datetime | mt_category.category_modified_on | | Y | Last modified date of this folder. | v2
-path | value | string | | | Y | The path for this folder. | v2
-updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed can update this folder.</dd><dt>false</dt><dd>The user who accessed cannot update this folder.</dd></dl> | v2
-
-        {
-          "parent": "0",
-          "createdBy": {
-            "userpicUrl": null,
-            "displayName": "Yuji Takayama"
-          },
-          "updatable": false,
-          "blog": {
-            "id": "2"
-          },
-          "path": "http://path/to/downloads/",
-          "description": null,
-          "basename": "downloads",
-          "label": "downloads",
-          "class": "folder",
-          "id": 12,
-          "createdDate": "2015-03-30T22:47:08+09:00",
-          "modifiedDate": "2015-03-30T22:47:08+09:00",
-          "customFields": []
-        },
-
-# Folders [/sites/:site_id/folders/:folder_id]
-## Retrieve a list of folders [GET //sites/:site_id/folders(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
-
-Authentication required if you want to get private properties.
+## Folder Collection [/sites/{site_id}/folders/{folder_id}]
 
 + Parameters
-    + site_id (required, number) ... The site ID
-    + limit = `10` (optional, number) ... Maximum number of folders to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
-    + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Folders screen.</dd><dt>created_by</dt><dd>Sort by the ID of creator. </dd><dt>id</dt><dd>Sort by its own ID.</dd><dt>basename</dt><dd>Sort by the basename of each folders.</dd><dt>label</dt><dd>Sort by the label of each folders.</dd></dl>
-    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return folders in descending  order.</dd><dt>ascend</dt><dd>Return folders in ascending order.</dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Folders resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
-    + searchFields = `label,basename` (optional, string) ... The comma separated field name list to search.
-    + search (optional, string) ... Search query.
-    + includeIds (optional, string) ... The comma separated ID list of folders to include to result.
-    + excludeIds (optional, string) ... The comma separated ID list of folders to exclude from result.
-    + top = `0` (optional, number) ... If set to 1, retrieves only top level folders.
-    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
-    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
-    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + site_id (required, number) - The site ID.
+
+### Create a new folder [POST]
+**Authentication required.**
+
+Create a new folder. This endpoint needs following permissions.
+
++ Manage Pages
+
+Post form data is following:
+
++ folder (Folder) - Folder resource
+
++ Request
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            folder={"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "category","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"}]}
 
 + Response 200 (application/json)
 
-        {
-          "totalResults" : "1",
-          "items" : [
-            {
-              "parent": "0",
-              "createdBy": {
-                "userpicUrl": null,
-                "displayName": "Yuji Takayama"
-              },
-              "updatable": false,
-              "blog": {
-                "id": "2"
-              },
-              "path": "http://path/to/downloads/",
-              "description": null,
-              "basename": "downloads",
-              "label": "downloads",
-              "class": "folder",
-              "id": 12,
-              "createdDate": "2015-03-30T22:47:08+09:00",
-              "modifiedDate": "2015-03-30T22:47:08+09:00",
-              "customFields": []
-            },
-          ]
-        }
+    + Attributes (Folder)
 
-## Retrieve a list of parent folders [GET /sites/:site_id/folders/:folder_id/parents(?maxDepth, includeCurrent)]
++ Response 403 (application/json)
 
-Authentication required if you want to get private properties.
+    Do not have permission to create a new folder.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site not found.
+
+    + body
+
+### Folder Collection [GET //sites/:site_id/folders{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,top,dateField,dateFrom,dateTo}]
+Retrieve a list of folders.
+
+Authentication required if you want to get private properties. Requires permission is follows.
+
+* Manage Pages
 
 + Parameters
-    + site_id (required, number) ... The site ID.
-    + folder_id (required, number) ... The folder ID.
-    + maxDepth (optional, numner) ... The depth of retrieving parent folders.
-    + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The results includes current folder.</dd><dt>0</dt>The results do not include current folder.</dd></dl>
-    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
-    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
-    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + limit: `10` (optional, number) - Maximum number of folders to retrieve.
+    + offset: `0` (optional, number) - 0-indexed offset.
+    + sortBy: `user_custom` (optional, string) - 
+        + user_custom: Sort order you specified on the Manage Folders screen.
+        + created_by: Sort by the ID of creator. 
+        + id: Sort by its own ID.
+        + basename: Sort by the basename of each folders.
+        + label: Sort by the label of each folders.
+    + sortOrder: `descend` (optional, string) - 
+        + descend (default): Return folders in descending  order.
+        + ascend: Return folders in ascending order.
+    + fields (optional, string) - The field list to retrieve as part of the Folders resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + searchFields: `label,basename` (optional, string) - The comma separated field name list to search.
+    + search (optional, string) - Search query.
+    + includeIds (optional, string) - The comma separated ID list of folders to include to result.
+    + excludeIds (optional, string) - The comma separated ID list of folders to exclude from result.
+    + top: `0` (optional, number) - If set to 1, retrieves only top level folders.
+    + dateField: `created_on` (optional, string) - Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) - The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) - The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
-        {
-          "totalResults" : "1",
-          "items" : [
-            {
-              "parent": "0",
-              "createdBy": {
-                "userpicUrl": null,
-                "displayName": "Yuji Takayama"
-              },
-              "updatable": false,
-              "blog": {
-                "id": "2"
-              },
-              "path": "http://path/to/downloads/",
-              "description": null,
-              "basename": "downloads",
-              "label": "downloads",
-              "class": "folder",
-              "id": 12,
-              "createdDate": "2015-03-30T22:47:08+09:00",
-              "modifiedDate": "2015-03-30T22:47:08+09:00",
-              "customFields": []
-            },
-          ]
-        }
+    + Attributes (Folder)
 
-## Retrieve a list of sibling folders [GET /sites/:site_id/folders/:folder_id/siblings(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
++ Response 403 (application/json)
 
-Authentication required if you want to get private properties.
+    Do not have permission to retrieve folders.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site not found.
+
+    + body
+
+
+## Folder Collection for parent folders [/sites/{site_id}/folders/{folder_id}/parents{?maxDepth,includeCurrent,dateField,dateFrom,dateTo}]
 
 + Parameters
-    + site_id (required, number) ... The site ID
-    + folder_id (required, number) ... The folder ID.
-    + limit = `10` (optional, number) ... Maximum number of folders to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
-    + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Folders screen.</dd><dt>created_by</dt><dd>Sort by the ID of creator. </dd><dt>id</dt><dd>Sort by its own ID.</dd><dt>basename</dt><dd>Sort by the basename of each folders.</dd><dt>label</dt><dd>Sort by the label of each folders.</dd></dl>
-    + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return folders in descending  order.</dd><dt>ascend</dt><dd>Return folders in ascending order.</dd></dl>
-    + fields (optional, string) ... The field list to retrieve as part of the Folders resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
-    + searchFields = `label,basename` (optional, string) ... The comma separated field name list to search.
-    + search (optional, string) ... Search query.
-    + includeIds (optional, string) ... The comma separated ID list of folders to include to result.
-    + excludeIds (optional, string) ... The comma separated ID list of folders to exclude from result.
-    + top = `0` (optional, number) ... If set to 1, retrieves only top level folders.
-    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
-    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
-    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + site_id (required, number) - The site ID.
+    + folder_id (required, number) - The folder ID.
+
+### Folder Collection for parent folders [GET]
+Retrieve a list of parent folders.
+
+Authentication required if you want to get private properties. Requires permission is follows.
+
+* Manage Pages
+
++ Parameters
+    + maxDepth (optional, numner) - The depth of retrieving parent folders.
+    + includeCurrent: `0` (optional, number) - 
+        + 1: The results includes current folder.
+        + 0: The results do not include current folder.
+    + dateField: `created_on` (optional, string) - Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) - The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) - The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
-        {
-          "totalResults" : "1",
-          "items" : [
-            {
-              "parent": "0",
-              "createdBy": {
-                "userpicUrl": null,
-                "displayName": "Yuji Takayama"
-              },
-              "updatable": false,
-              "blog": {
-                "id": "2"
-              },
-              "path": "http://path/to/downloads/",
-              "description": null,
-              "basename": "downloads",
-              "label": "downloads",
-              "class": "folder",
-              "id": 12,
-              "createdDate": "2015-03-30T22:47:08+09:00",
-              "modifiedDate": "2015-03-30T22:47:08+09:00",
-              "customFields": []
-            },
-          ]
-        }
+    + Attributes
+        + totalResults: 1 (number) - Total record count of this request.
+        + items (array[Folder], fixed-type) - The array of result content.
 
-## Retrieve a list of child folders [GET /sites/:site_id/folders/:folder_id/children(?maxDepth, includeCurrent)]
++ Response 403 (application/json)
+
+    Do not have permission to retrieve folders.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site or folder not found.
+
+    + body
 
 
-+ Authentication required if you want to get private properties.
+## Folders Collection for siblings folders [/sites/{site_id}/folders/{folder_id}/siblings{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,top,dateField,dateFrom,dateTo}]
 
 + Parameters
-    + site_id (required, number) ... The site ID.
-    + folder_id (required, number) ... The folder ID.
-    + maxDepth (optional, numner) ... The depth of retrieving child folders.
-    + includeCurrent = `0` (optional, number) ... <dl><dt>1</dt><dd>The results includes current folder.</dd><dt>0</dt>The results do not include current folder.</dd></dl>
-    + dateField = `created_on` (optional, string) ... Specifies the field name to be used as a date field for filtering. (new in v3)
-    + dateFrom (optional, string) ... The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
-    + dateTo (optional) ... The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + site_id (required, number) - The site ID
+    + folder_id (required, number) - The folder ID.
+
+## Folders Collection for siblings folders [GET]
+Retrieve a list of siblings folders.
+
+Authentication required if you want to get private properties. Requires permission is follows.
+
+* Manage Pages
+
++ Parameters
+    + limit: `10` (optional, number) - Maximum number of folders to retrieve.
+    + offset: `0` (optional, number) - 0-indexed offset.
+    + sortBy: `user_custom` (optional, string) - 
+        + user_custom: Sort order you specified on the Manage Folders screen.
+        + created_by: Sort by the ID of creator. 
+        + id: Sort by its own ID.
+        + basename: Sort by the basename of each folders.
+        + label: Sort by the label of each folders.
+    + sortOrder: `descend` (optional, string) - 
+        + descend (default): Return folders in descending  order.
+        + ascend: Return folders in ascending order.
+    + fields (optional, string) - The field list to retrieve as part of the Folders resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
+    + searchFields: `label,basename` (optional, string) - The comma separated field name list to search.
+    + search (optional, string) - Search query.
+    + includeIds (optional, string) - The comma separated ID list of folders to include to result.
+    + excludeIds (optional, string) - The comma separated ID list of folders to exclude from result.
+    + top: `0` (optional, number) - If set to 1, retrieves only top level folders.
+    + dateField: `created_on` (optional, string) - Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) - The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) - The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 
-        {
-          "totalResults" : "1",
-          "items" : [
-            {
-              "parent": "0",
-              "createdBy": {
-                "userpicUrl": null,
-                "displayName": "Yuji Takayama"
-              },
-              "updatable": false,
-              "blog": {
-                "id": "2"
-              },
-              "path": "http://path/to/downloads/",
-              "description": null,
-              "basename": "downloads",
-              "label": "downloads",
-              "class": "folder",
-              "id": 12,
-              "createdDate": "2015-03-30T22:47:08+09:00",
-              "modifiedDate": "2015-03-30T22:47:08+09:00",
-              "customFields": []
-            },
-          ]
-        }
+    + Attributes
+        + totalResults: 1 (number) - Total record count of this request.
+        + items (array[Folder], fixed-type) - The array of result content.
+
++ Response 403 (application/json)
+
+    Do not have permission to retrieve folders.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site or folder not found.
+
+    + body
 
 
+## Folders Collection for child filders [/sites/{site_id}/folders/{folder_id}/children{?maxDepth,includeCurrent,dateField,dateFrom,dateTo}]
+
++ Parameters
+    + site_id (required, number) - The site ID.
+    + folder_id (required, number) - The folder ID.
+
+### Folders Collection for child filders [GET]
+Retrieve a list of child folders.
+
+Authentication required if you want to get private properties. Requires permission is follows.
+
+* Manage Pages
+
++ Parameters
+    + maxDepth (optional, numner) - The depth of retrieving child folders.
+    + includeCurrent: `0` (optional, number) - 
+        + 1: The results includes current folder.
+        + 0: The results do not include current folder.
+    + dateField: `created_on` (optional, string) - Specifies the field name to be used as a date field for filtering. (new in v3)
+    + dateFrom (optional, string) - The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+    + dateTo (optional) - The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
+
++ Response 200 (application/json)
+
+    + Attributes
+        + totalResults: 1 (number) - Total record count of this request.
+        + items (array[Folder], fixed-type) - The array of result content.
+
++ Response 403 (application/json)
+
+    Do not have permission to retrieve folders.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site or folder not found.
+
+    + body
+
+
+## folder [/sites/{site_id}/folders/{folder_id}{?fields}]
+
++ Parameters
+    + site_id (required, number) - The site ID.
+    + folder_id (required, number) - The folder ID.
+
+### Fetch single folder [GET]
+Retrieve a single folder by its ID.
+
++ Parameters
+    + fields (optional, string) - The field list to retrieve as part of the folders resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
+
++ Response 200 (application/json)
+
+    + Attributes (Folder)
+
++ Response 403 (application/json)
+
+    Do not have permission to retrieve a folder.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site or folder not found.
+
+    + body
+
+### Update single folder [PUT]
+**Authentication required.**
+
+Update an existing folder. This endpoint need folllowing permissions.
+
++ Manage Pages
+
+This method accepts PUT and POST with __method=PUT.
+
+Post form data is following:
+
++ folder (Folder) - folder resource
+
++ Request
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            folder={"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "folder","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"}]}
+
++ Response 200 (application/json)
+
+    + Attributes (Folder)
+
++ Response 403 (application/json)
+
+    Do not have permission to update a folder.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site or folder not found.
+
+    + body
+
+### Delete single folder [DELETE]
+**Authentication required.**
+
+Update an existing folder. This endpoint need folllowing permissions.
+
++ Manage Pages
+
+This method accepts DELETE and POST with __method=DELETE.
+
++ Response 200 (application/json)
+
+    + Attributes (Folder)
+
++ Response 403 (application/json)
+
+    Do not have permission to update a folder.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site or folder not found.
+
+    + body
+
+
+## Save hierarchical folders order [/sites/{site_id}/folders/permutate]
+
++ Parameters
+    + site_id (required, number) - The site ID.
+
+### Save hierarchical folders order [POST]
+**Authentication required.**
+
+Save hierarchical folders order. This endpoint need folllowing permissions.
+
++ Manage Pages
+
+This method returns rearranged folders collection.
+
+Post form data is following:
+
++ folders (array[Folder]) - Array of folders resource that were rearranged.
+
++ Request
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            folders=[{"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "folder","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"},{"basename" : "pressreleases","parent" : "0","archiveLink" : "http://example.com/pressreleases/index.html","updatable" : false,"label" : "Press releases","class" : "folder","id" : "2","blog" : {"id" : "1"},"description" : null,}]
+
++ Response 200 (application/json)
+
+    + Attributes (array[Folder], fixed-type)
