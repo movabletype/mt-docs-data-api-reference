@@ -178,7 +178,7 @@ updatable (boolean) - true: The user who accessed can update this entry. false: 
 ## Page
 + allowComments (boolean) - false: This page does not accepts comments. In the database, this value is 0. true: This page accepts comments. In the database, this value is 1.
 + allowTrackbacks (boolean) - false: This page does not accepts trackbacks. In the database, this value is 0. true: This page accepts trackbacks. In the database, this value is 1.
-+ assets (array(Asset) - The list of related assets for this page.
++ assets (array[Asset]) - The list of related assets for this page.
 + author
     + displayName (string) - The display name of this page creator.
     + id (number) - The ID of this page creator.
@@ -190,10 +190,10 @@ updatable (boolean) - true: The user who accessed can update this entry. false: 
 + folder (Folder) - The container folder of this page.
 + class (string) - The object class for this page.
 + commentCount (number) - The number of comments for this page.
-+ comments (array(Comment) - The list of comments for this page. The list is sorted by ID of the comment and The parent ID of the comment.
-+ createdDate (srting) - The created time for this page. (format is iso 8601 datetime)
++ comments (array[Comment]) - The list of comments for this page. The list is sorted by ID of the comment and The parent ID of the comment.
++ createdDate (string) - The created time for this page. (format is iso 8601 datetime)
 + customFields (array[CustomFields]) - The list of customfields data for this page.
-+ date (sgring) - The published time for this page. (format is iso 8601 datetime)
++ date (string) - The published time for this page. (format is iso 8601 datetime)
 + excerpt (string) - The excerpt value of this page if one is specified or, if not, an auto-generated excerpt from the page Body field followed by an ellipsis (“…”). If an excerpt is auto-generated also note that any HTML is stripped. The length of the auto-generated output of this tag can be set in the blog’s page Settings.
 + format (string) - The text format of this page.
 + id (number) - The ID of this page.
@@ -206,5 +206,5 @@ updatable (boolean) - true: The user who accessed can update this entry. false: 
 + tags (array[string]) - The list of page tags for this page.
 + title (string) - The title of this page.
 + trackbackCount (number) - The number of received trackbacks for this page.
-+ trackbacks (array(object) - The list of received trackbacks for this page. The list is sorted by the ID of trackback.
++ trackbacks (array[object]) - The list of received trackbacks for this page. The list is sorted by the ID of trackback.
 + updatable (boolean) - true: The user who accessed can update this entry. / false: The user who accessed cannot update this page.
