@@ -448,7 +448,7 @@ Make a preview by specified data. This endpoint needs following permissions.
 **This endpoint is available in Movable Type 6.1.2 or later.**
 
 Post form data is follows
-* entry (Entry, required) - SHould be provide empty json. This parameter will be removed in the future.
+* entry (Entry, required) - Should be provide empty json. This parameter will be removed in the future.
 
 + Parameters
     + site_id (required, number) - The site ID.
