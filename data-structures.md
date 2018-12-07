@@ -5,6 +5,11 @@
 + value (string) - The value of this customfield.
 
 
+## Roles
++ id (number) - The ID of this role.
++ name (string) - The name of this role.
+
+
 ## Asset
 + blog
     + id (number) - The ID of the blog that contains this asset.
@@ -208,3 +213,20 @@ updatable (boolean) - true: The user who accessed can update this entry. false: 
 + trackbackCount (number) - The number of received trackbacks for this page.
 + trackbacks (array[object]) - The list of received trackbacks for this page. The list is sorted by the ID of trackback.
 + updatable (boolean) - true: The user who accessed can update this entry. / false: The user who accessed cannot update this page.
+
+
+## Permission
++ blog
+    + id (number) - The ID of the blog.
++ id (number) - The ID for this permission.
++ createdBy
+    + displayName (string) - The display name of this permission creator.
+    + id (number) - The ID of this permission creator.
+    + userpicUrl (string) - The URL of this permission creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
++ createdDate (string) - Created date of this permission. (format is iso 8601 datetime)
++ permissions (array[string]) - The list of granted permissions. The restricted permissions are excluded from this list.
++ roles (array[Roles]) - The list of roles.
++ user
+    + displayName (string) - The nickname for this permission user.
+    + id (number) - The ID for this permission user.
+    + userpicUrl (string) - The URL of this permission user's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
