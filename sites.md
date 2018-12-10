@@ -1,6 +1,6 @@
 # Group Sites
 
-## Site Collection [/sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIdsdateFirld,dateFrom,dateTo}]
+## Site Collection [/sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,dateField,dateFrom,dateTo}]
 
 ### Site Collection [GET]
 Retrieve a list of sites.
