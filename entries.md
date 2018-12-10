@@ -415,7 +415,7 @@ Post form data is follows
 + Response 200 (application/json)
 
     + Attributes
-        + status (string) - The resukt status of this call.
+        + status (string) - The result status of this call.
         + preview (string) - The url of preview file.
 
 + Response 403 (application/json)
@@ -441,7 +441,7 @@ Post form data is follows
 ### Make a preview by id [POST]
 **Authentication required.**
 
-Make a preview by specified data. This endpoint needs following permissions.
+Make a preview by ID. This endpoint needs following permissions.
 
 *+* create_post
 
@@ -469,7 +469,7 @@ Post form data is follows
 + Response 200 (application/json)
 
     + Attributes
-        + status (string) - The resukt status of this call.
+        + status (string) - The result status of this call.
         + preview (string) - The url of preview file.
 
 + Response 403 (application/json)
