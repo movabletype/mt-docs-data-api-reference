@@ -21,3 +21,4 @@ Movable Type Data API v4 was released in Movable Type 7.0
 <!-- Include(Permissions.md) -->
 <!-- Include(Search.md) -->
 <!-- Include(Sites.md) -->
+<!-- Include(Templates.md) -->

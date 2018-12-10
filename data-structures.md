@@ -11,7 +11,7 @@
 
 
 ## TemplateMaps
-+ id (Number) - The ID for this archive type.
++ id (number) - The ID for this archive type.
 + isPreferred (boolean) - `true`: This archive type is preferred in all archive types of the requested template. / `false`: This archive type not is preferred in all archive types of the requested template.
 + fileTemplate (string) - The file template for this archive type.
 + archiveType (string) - The archive type for this archive type.
