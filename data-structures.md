@@ -358,3 +358,18 @@ moderatePings (boolean) - `true`: Hold all TrackBacks for approval before they a
 + text (string) - The text for this template.
 + type (string) - The type for this template.
 + templateType (string) - The identifier for this template.
+
+
+## Theme
++ authorLink (string) - The author link of this theme.
++ authorName (string) - The author name of this theme.
++ current (boolean) - ***DEPRECATAD***
++ description (string) - The description for this theme.
++ id (string) - The ID for this theme.
++ inUse (boolean) - This property is displayed only in system scope.  `true`: This theme is in used by any site. / `false`: This theme is not in use.
++ label (string) - The label for this theme.
++  uninstallable (boolean) - `true`: This theme is able to uninstall. / `false`: This theme is not able to uninstall.
++ version (string) - The version number for this theme.
+
+
+
