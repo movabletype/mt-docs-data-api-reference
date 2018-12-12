@@ -372,4 +372,32 @@ moderatePings (boolean) - `true`: Hold all TrackBacks for approval before they a
 + version (string) - The version number for this theme.
 
 
-
+## User
++ apiPassword (string) - The web services password of this user.
+createdBy - Created user of this user.
+    + displayName (string) - The display name of this user creator.
+    + id (number) - The ID of this user creator.
+    + userpicUrl (string) - The URL of this user creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
++ createdDate (string) - Created date of this user. (format is iso 8601 datetime)
++ customFields (array[CustomFields]) - The list of customfields data of this user.
++ dateFormat (string) - The date formatting for this user.
++ displayName (string) - The public display name for this user.
++ email (string) - The email address for this user.
++ id (number) - The unique ID for this user.
++ isSuperuser (boolean) - `true`: This user have permission for system administration. / `false`: This user does not have permission for system administration.
++ language (string) - The preferred language for this user. Available values is follows. `de`, `en-us`, `es`, `fr`, `nl`, `ja`
++ lockedOut (boolean) - `true`: This user is currently locked out. / `false`: This user is not locked out.
++ modifiedBy - Last modified user of this user.
+    + displayName (string) - The display name of this user modifier.
+    + id (number) - The ID of this user modifier.
+    + userpicUrl - The URL of this user modifier's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
++ modifiedDate (string) - Last modified date of this user. (format is iso 8601 datetime)
++ name (string) - The account name for this user. [update in v2] This column was changed to updatable from v2.
++ password (string) - The password for this user. This property is write only.
++ updatable (boolean) - `true`: The user who accessed can update this user. / `false`: The user who accessed cannot update this user.
++ url (string) - The web site URL for this user.
++ userpicUrl (string) - The profile photo URL for this user. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
++ status (string) - The status for this user. Available value is follows. `Active`: The status is active. The user can do anything within his/her permissions. / `Disabled`: The status is disabled. The user cannot do anything. / `Pending`: The status is pending. The user is waiting for approval by the administrator. Therefore, this user cannot do anything.
++ systemPermissions (array[string]) - The list of system permissions which this user have. Only system administrator can get this property
++ tagDelimiter (string) - The tag delimiter character for this user. Available value is follow. `comma`: Separator character is single comma. / `space`: Separator character is single space.
++ textFormat (string) - The text formatting for this user.
