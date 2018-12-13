@@ -127,7 +127,7 @@ Update user. This endpoint requires following permissions if target user is not 
 * Manage User
 
 :::note
-+ This method accepts PUT and POST with __method=PUT.
+This method accepts PUT or POST with parameter '__method=PUT'.
 :::
 
 + Request (application/x-www-form-urlencoded)
