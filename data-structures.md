@@ -18,9 +18,16 @@
 + buildType (string) - The build type for this archive type.
 + updatable (boolean) - `true`: The user who accessed can update this archive type. / `false`: The user who accessed cannot update this archive type.
 
+
+## ContentFields
++ id (number) - The ID of this content field.
++ label (string) - The label of this content field.
++ type (string) - The content field type of this content field.
++ uniqueID (string) - The unique ID of this content field.
+
 ## Asset
 + blog
-    + id (number) - The ID of the blog that contains this asset.
+    + id (number) - The ID of the site that contains this asset.
 + class (string) - The type of this asset. This value is similar to 'type' attribute but this value is never localized.
 + createdBy
     + id (number) - The ID of user who created asset.
@@ -59,7 +66,7 @@
 + archiveLink (string) - The category archive URL of this category. If “Category” archive mapping is not configured, this value will be null.
 + basename (string) - The basename of this category.
 + blog
-    + id (number) - The ID of the blog that contains this category.
+    + id (number) - The ID of the site that contains this category.
 + class (string) - The object class for this category.
 + createdBy
     + displayName (string) - The display name of the user who created this category.
@@ -87,7 +94,7 @@
     + displayName (string) - The display name of this commenter.
     + userpicUrl (string) - The URL of this commenter's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If a commenter is not a registered user or a commenter does not set own userpic, will be returned empty string.
 + blog
-    + id (number) - The ID of the blog that contains this comment.
+    + id (number) - The ID of the site that contains this comment.
 + body (string) - The contents of this comment.
 + createdBy
     + id (number) - The ID of created user.
@@ -112,7 +119,7 @@
 ## Folder
 + basename (string) - The basename for this folder.
 + blog
-    + id (number) - The ID of the blog that contains this folder.
+    + id (number) - The ID of the site that contains this folder.
 + class (string) - The class for this folder. Always "folder".
 + createdBy
     + displayName (string) - The display name of this folder creator.
@@ -142,7 +149,7 @@
     + userpicUrl (string) - The URL of this entry creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
 + basename (string) - The basename for this entry.
 + blog
-    + id (number) - The ID of the blog that contains this entry.
+    + id (number) - The ID of the site that contains this entry.
 + body (string) - The contents of this entry that the text format is applied. [update in v2] if you want to get the raw contents, you should sent a "no_text_filter=1" parameter with authenticated request.
 + categories (array[Category]) - A list of categories associated with the entry. The first element of the array is the primary category. OTHER categories are sorted by label.
 + class (string) - The object class for this entry.
@@ -153,7 +160,7 @@
     + basename (string) - The basename of this customfield.
     + value (string) - The value of this customfield.
 + date (string) - The published time for this entry. (format is iso 8601 datetime)
-+ excerpt (string) - The excerpt value of this entry if one is specified or, if not, an auto-generated excerpt from the Entry Body field followed by an ellipsis (“…”). If an excerpt is auto-generated also note that any HTML is stripped. The length of the auto-generated output of this tag can be set in the blog’s Entry Settings.
++ excerpt (string) - The excerpt value of this entry if one is specified or, if not, an auto-generated excerpt from the Entry Body field followed by an ellipsis (“…”). If an excerpt is auto-generated also note that any HTML is stripped. The length of the auto-generated output of this tag can be set in the site’s Entry Settings.
 + format (string) - The text format of this entry.
 + id (number) - The ID of this entry.
 + keywords (string) - The keywords text for this entry.
@@ -172,7 +179,7 @@ updatable (boolean) - true: The user who accessed can update this entry. false: 
 
 ## Log
 + blog
-    + id (number) - The ID of the blog that contains this log.
+    + id (number) - The ID of the site that contains this log.
 + by
     + id (number) - The ID of this log creator.
     + displayName (string) - The display name of this log creator.
@@ -198,7 +205,7 @@ updatable (boolean) - true: The user who accessed can update this entry. false: 
     + userpicUrl (string) - The URL of this page creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string.
 + basename (string) - The basename for this page.
 + blog
-    + id (number) - The ID of the blog that contains this page.
+    + id (number) - The ID of the site that contains this page.
 + body (string) - The contents of this page that the text format is applied. [update in v2] if you want to get the raw contents, you should sent a "no_text_filter=1" parameter with authenticated request.
 + folder (Folder) - The container folder of this page.
 + class (string) - The object class for this page.
@@ -207,7 +214,7 @@ updatable (boolean) - true: The user who accessed can update this entry. false: 
 + createdDate (string) - The created time for this page. (format is iso 8601 datetime)
 + customFields (array[CustomFields]) - The list of customfields data for this page.
 + date (string) - The published time for this page. (format is iso 8601 datetime)
-+ excerpt (string) - The excerpt value of this page if one is specified or, if not, an auto-generated excerpt from the page Body field followed by an ellipsis (“…”). If an excerpt is auto-generated also note that any HTML is stripped. The length of the auto-generated output of this tag can be set in the blog’s page Settings.
++ excerpt (string) - The excerpt value of this page if one is specified or, if not, an auto-generated excerpt from the page Body field followed by an ellipsis (“…”). If an excerpt is auto-generated also note that any HTML is stripped. The length of the auto-generated output of this tag can be set in the site’s page Settings.
 + format (string) - The text format of this page.
 + id (number) - The ID of this page.
 + keywords (string) - The keywords text for this page.
@@ -225,7 +232,7 @@ updatable (boolean) - true: The user who accessed can update this entry. false: 
 
 ## Permission
 + blog
-    + id (number) - The ID of the blog.
+    + id (number) - The ID of the site.
 + id (number) - The ID for this permission.
 + createdBy
     + displayName (string) - The display name of this permission creator.
@@ -337,8 +344,8 @@ moderatePings (boolean) - `true`: Hold all TrackBacks for approval before they a
 ## Template
 + archiveTypes (array[TemplateMaps])- This archive types for this template.
 + updatable (boolean) - `true`: The user who accessed can update this template. / `false`: The user who accessed cannot update this template.
-+ blog - The blog of this template.
-    + id (number) - The ID of the blog that contains this template.
++ blog - The site of this template.
+    + id (number) - The ID of the site that contains this template.
 + buildType (string) - The build type for this template. Available value is follows. `0`: never publish this template. / `1`: publish this template whenever its contents are updated or affected by a change. / `2`: publish this template when a publish request received. / `3`: publish this template on demand, but do not publish a file to the file system. / `4`: publish this template in the background. / `5`: currently not in use.
 + createdBy - Created user of this template.
     + id (number) - The ID of this template creator.
@@ -401,3 +408,25 @@ createdBy - Created user of this user.
 + systemPermissions (array[string]) - The list of system permissions which this user have. Only system administrator can get this property
 + tagDelimiter (string) - The tag delimiter character for this user. Available value is follow. `comma`: Separator character is single comma. / `space`: Separator character is single space.
 + textFormat (string) - The text formatting for this user.
+
+## ContentType
++ blog - The site of this content type. Not writable.
+    + id (number) - The site ID. Not writable.
++ contentFields (array[ContentFields]) - The list of content fields.
+createdBy - Created user of this content type. Not writable.
+    + displayName (string) - The display name of this content type creator. Not writable.
+    + id (number) - The ID of this content type creator. Not writable.
+    + userpicUrl (string) - The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable.
++ createdDate (string) - Created date of this content type. (format is iso 8601 datetime) Not writable.
++ dataLabel (string) - The Unique ID of the content field that is data label. If not set will be NULL.
++ description (string) - The description of this content type.
++ id (number) - The ID of this content type. Not writable.
++ modifiedBy - Last modified user of this content type. Not writable.
+    + displayName (string) - The display name of this content type modifier. Not writable.
+    + id (number) - The ID of this content type modifier. Not writable.
+    + userpicUrl - The URL of this content type modifier's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable.
++ modifiedDate (string) - Last modified date of this content type. (format is iso 8601 datetime) Not writable.
++ name (string) - The name of this content type.
++ uniqueID (string) - The unique ID of this content type. Not writable.
++ updatable (boolean) - `true`: Current user can update this content type. / `false`: Current user cannot update this content type.  Not writable.
++ userDisplayOption (boolean) - `true`: Signed-in user can change display options for edit content data screen of this content type in the CMS admin screen. / `false`: Signed-in user cannot change display options for edit content data screen of this content type in the CMS admin screen.
