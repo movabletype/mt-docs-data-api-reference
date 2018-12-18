@@ -1,6 +1,6 @@
 # Group Content Types
 
-## Content Type Collection [/sites/{site_id}/contentTypes{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,dateField,dateFrom,dateTo}]
+## Content Type Collection [/sites/{site_id}/contentTypes{?limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,dateField,dateFrom,dateTo}]
 
 + Parameters
     + site_id: 1 (number, required) - The site ID.
@@ -13,16 +13,12 @@ Retrieve a list of Content Types. This endpoint requires following permission.
 * Manage Content Types
 
 + Parameters
-    + search (optional, string) - Search query.
-    + searchFields: `dataLabel,name,description` (optional, string) - The comma separated field name list to search.
-        + Default: `name,description`
     + limit: 10 (optional, number) - Maximum number of entries to retrieve.
     + offset: `0` (optional, number) - 0-indexed offset.
     + sortBy: `id` (optional, string) - The field name for sort. You can specify one of following values.
         * name
         * dataLabel
         * uniqueID
-        * created_on
         * modified_on
     + sortOrder: `descend` (optional, string) - 
         * descend (default): Return entries in descending order.
@@ -30,9 +26,6 @@ Retrieve a list of Content Types. This endpoint requires following permission.
     + fields (optional, string) - The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
     + includeIds (optional, string) - The comma separated ID list of entries to include to result.
     + excludeIds (optional, string) - The comma separated ID list of entries to exclude from result.
-    + dateField: `created_on` (optional, string) - Specifies the field name to be used as a date field for filtering. (new in v3)
-    + dateFrom (optional, string) - The start date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
-    + dateTo (optional) - The end date to filtering. Specify in "YYYY-MM-DD" format. (new in v3)
 
 + Response 200 (application/json)
 

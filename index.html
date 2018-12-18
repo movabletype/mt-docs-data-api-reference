@@ -4442,14 +4442,12 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>403</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>Do not have permission to reply comment.</p>
 </div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>404</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><div class="description"><p>Site or comment not found.</p>
-</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="content-types" class="resource-group"><h2 class="group-heading">Content Types <a href="#content-types" class="permalink">&para;</a></h2><div id="content-types-content-type-collection" class="resource"><h3 class="resource-heading">Content Type Collection <a href="#content-types-content-type-collection" class="permalink">&nbsp;&para;</a></h3><div id="content-types-content-type-collection-get" class="action get"><h4 class="action-heading"><div class="name">Content Type Collection</div><a href="#content-types-content-type-collection-get" class="method get">GET</a><code class="uri">/sites/{site_id}/contentTypes{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,dateField,dateFrom,dateTo}</code></h4><p><strong>Authentication required</strong></p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="content-types" class="resource-group"><h2 class="group-heading">Content Types <a href="#content-types" class="permalink">&para;</a></h2><div id="content-types-content-type-collection" class="resource"><h3 class="resource-heading">Content Type Collection <a href="#content-types-content-type-collection" class="permalink">&nbsp;&para;</a></h3><div id="content-types-content-type-collection-get" class="action get"><h4 class="action-heading"><div class="name">Content Type Collection</div><a href="#content-types-content-type-collection-get" class="method get">GET</a><code class="uri">/sites/{site_id}/contentTypes{?limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds}</code></h4><p><strong>Authentication required</strong></p>
 <p>Retrieve a list of Content Types. This endpoint requires following permission.</p>
 <ul>
 <li>Manage Content Types</li>
 </ul>
-<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://your-host/path-to-mt/mt-data-api.cgi/v4</span>/sites/<span class="hljs-attribute" title="site_id">1</span>/contentTypes?<span class="hljs-attribute">search=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">searchFields=</span><span class="hljs-literal">dataLabel,name,description</span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">10</span>&<span class="hljs-attribute">offset=</span><span class="hljs-literal">0</span>&<span class="hljs-attribute">sortBy=</span><span class="hljs-literal">id</span>&<span class="hljs-attribute">sortOrder=</span><span class="hljs-literal">descend</span>&<span class="hljs-attribute">fields=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">includeIds=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">excludeIds=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">dateField=</span><span class="hljs-literal">created_on</span>&<span class="hljs-attribute">dateFrom=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">dateTo=</span><span class="hljs-literal"></span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>site_id</dt><dd><code>number</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>The site ID.</p>
-</dd><dt>search</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>Search query.</p>
-</dd><dt>searchFields</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>name,description</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>dataLabel,name,description</span></span><p>The comma separated field name list to search.</p>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">http://your-host/path-to-mt/mt-data-api.cgi/v4</span>/sites/<span class="hljs-attribute" title="site_id">1</span>/contentTypes?<span class="hljs-attribute">limit=</span><span class="hljs-literal">10</span>&<span class="hljs-attribute">offset=</span><span class="hljs-literal">0</span>&<span class="hljs-attribute">sortBy=</span><span class="hljs-literal">id</span>&<span class="hljs-attribute">sortOrder=</span><span class="hljs-literal">descend</span>&<span class="hljs-attribute">fields=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">includeIds=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">excludeIds=</span><span class="hljs-literal"></span></span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>site_id</dt><dd><code>number</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>The site ID.</p>
 </dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>Maximum number of entries to retrieve.</p>
 </dd><dt>offset</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>0</span></span><p>0-indexed offset.</p>
 </dd><dt>sortBy</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>id</span></span><p>The field name for sort. You can specify one of following values.</p>
@@ -4462,9 +4460,6 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
 </li>
 <li>
 <p>uniqueID</p>
-</li>
-<li>
-<p>created_on</p>
 </li>
 <li>
 <p>modified_on</p>
@@ -4481,9 +4476,6 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
 </dd><dt>fields</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.</p>
 </dd><dt>includeIds</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>The comma separated ID list of entries to include to result.</p>
 </dd><dt>excludeIds</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>The comma separated ID list of entries to exclude from result.</p>
-</dd><dt>dateField</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>created_on</span></span><p>Specifies the field name to be used as a date field for filtering. (new in v3)</p>
-</dd><dt>dateFrom</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>The start date to filtering. Specify in “YYYY-MM-DD” format. (new in v3)</p>
-</dd><dt>dateTo</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<p>The end date to filtering. Specify in “YYYY-MM-DD” format. (new in v3)</p>
 </dd></dl></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">totalResults</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
   "<span class="hljs-attribute">items</span>": <span class="hljs-value">[
@@ -4499,6 +4491,11 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
           "<span class="hljs-attribute">uniqueID</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
         </span>}
       ]</span>,
+      "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">displayName</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
+      </span>}</span>,
       "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
       "<span class="hljs-attribute">dataLabel</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
@@ -4540,7 +4537,25 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
           </span>}</span>,
           "<span class="hljs-attribute">contentFields</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
-            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields.\n\ncreatedBy - Created user of this content type. Not writable.\n\n+ displayName (string) - The display name of this content type creator. Not writable.\n\n+ id (number) - The ID of this content type creator. Not writable.\n\n+ userpicUrl (string) - The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields."</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">displayName</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The display name of this content type creator. Not writable."</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The ID of this content type creator. Not writable."</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+              </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Created user of this content type. Not writable."</span>
           </span>}</span>,
           "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
@@ -4625,6 +4640,11 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
       "<span class="hljs-attribute">uniqueID</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
     </span>}
   ]</span>,
+  "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">displayName</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
+  </span>}</span>,
   "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
   "<span class="hljs-attribute">dataLabel</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
   "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
@@ -4655,7 +4675,25 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
     </span>}</span>,
     "<span class="hljs-attribute">contentFields</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields.\n\ncreatedBy - Created user of this content type. Not writable.\n\n+ displayName (string) - The display name of this content type creator. Not writable.\n\n+ id (number) - The ID of this content type creator. Not writable.\n\n+ userpicUrl (string) - The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">displayName</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The display name of this content type creator. Not writable."</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The ID of this content type creator. Not writable."</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Created user of this content type. Not writable."</span>
     </span>}</span>,
     "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
@@ -4733,6 +4771,11 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
       "<span class="hljs-attribute">uniqueID</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
     </span>}
   ]</span>,
+  "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">displayName</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
+  </span>}</span>,
   "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
   "<span class="hljs-attribute">dataLabel</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
   "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
@@ -4763,7 +4806,25 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
     </span>}</span>,
     "<span class="hljs-attribute">contentFields</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields.\n\ncreatedBy - Created user of this content type. Not writable.\n\n+ displayName (string) - The display name of this content type creator. Not writable.\n\n+ id (number) - The ID of this content type creator. Not writable.\n\n+ userpicUrl (string) - The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">displayName</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The display name of this content type creator. Not writable."</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The ID of this content type creator. Not writable."</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Created user of this content type. Not writable."</span>
     </span>}</span>,
     "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
@@ -4828,7 +4889,7 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
 <li>Manage Content Types</li>
 </ul>
 <div class="note">
-<p>cannot update/insert/delete content fields by this endpoint. If you want to manage content fields, please use ContentFields API.</p>
+<p>Cannot update/insert/delete content fields by this endpoint. If you want to manage content fields, please use ContentFields API.</p>
 </div>
 <div class="note">
 <p>This method accepts PUT or POST with parameter ‘__method=PUT’.</p>
@@ -4847,6 +4908,11 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
       "<span class="hljs-attribute">uniqueID</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
     </span>}
   ]</span>,
+  "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">displayName</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
+  </span>}</span>,
   "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
   "<span class="hljs-attribute">dataLabel</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
   "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
@@ -4877,7 +4943,25 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
     </span>}</span>,
     "<span class="hljs-attribute">contentFields</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields.\n\ncreatedBy - Created user of this content type. Not writable.\n\n+ displayName (string) - The display name of this content type creator. Not writable.\n\n+ id (number) - The ID of this content type creator. Not writable.\n\n+ userpicUrl (string) - The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">displayName</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The display name of this content type creator. Not writable."</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The ID of this content type creator. Not writable."</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Created user of this content type. Not writable."</span>
     </span>}</span>,
     "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
@@ -4958,6 +5042,11 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
       "<span class="hljs-attribute">uniqueID</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
     </span>}
   ]</span>,
+  "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">displayName</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
+  </span>}</span>,
   "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
   "<span class="hljs-attribute">dataLabel</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
   "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span></span>,
@@ -4988,7 +5077,25 @@ Update comment. This endpoint need following permissions. (Perhapse, MT user alm
     </span>}</span>,
     "<span class="hljs-attribute">contentFields</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields.\n\ncreatedBy - Created user of this content type. Not writable.\n\n+ displayName (string) - The display name of this content type creator. Not writable.\n\n+ id (number) - The ID of this content type creator. Not writable.\n\n+ userpicUrl (string) - The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The list of content fields."</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">createdBy</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">displayName</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The display name of this content type creator. Not writable."</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The ID of this content type creator. Not writable."</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">userpicUrl</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable."</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Created user of this content type. Not writable."</span>
     </span>}</span>,
     "<span class="hljs-attribute">createdDate</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
@@ -19591,7 +19698,7 @@ In this endpoint, to search for the user in an e-mail address but if more than o
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Result message"</span>
     </span>}
   </span>}
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 13 Dec 2018</p><script>/* eslint-env browser */
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 18 Dec 2018</p><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 
