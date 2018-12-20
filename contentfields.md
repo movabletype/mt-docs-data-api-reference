@@ -309,48 +309,6 @@ Retrieve a list of Content Fields of the specified Content Type. This endpoint r
 
     + body
 
-### Create Content Field [POST]
-**Authentication required**
-
-Create and add new Content Field for the specified content type. This endpoint requires following permission.
-
-* Manage Content Types
-
-Post form data is follows.
-
-+ content_field (required, ContentField) - Single Content Field resource
-
-:::note
-Still in development
-Delete from first v4.0.
-:::
-
-+ Request (application/x-www-form-urlencoded)
-
-    + Headers
-
-            X-MT-Authorization: MTAuth accessToken=<Token>
-
-    + Body
-
-            content_field={"description": "This is new content type.","name": "New Content Type","userDisplayOption": true}
-
-+ Response 200 (application/json)
-
-    + Attributes (ContentType)
-
-+ Response 403 (application/json)
-
-    Do not have permission to create a new content type.
-
-    + body
-
-+ Response 404 (application/json)
-
-    Site not found.
-
-    + body
-
 
 ## Content Field [/sites/{site_id}/contentTypes/{content_type_id}/fields/{content_field_id}{?fields}]
 
