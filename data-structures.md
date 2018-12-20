@@ -25,6 +25,38 @@
 + type (string) - The content field type of this content field.
 + uniqueID (string) - The unique ID of this content field.
 
+
+## FieldValues
++ checked: `checked` (string) - If this field value is checked, return `checked`. Otherwise, return null.
++ label (string) - The label of this field value.
++ value (string) - The value of this field value.
+
+
+## Options
++ description (string) - The descrption of this field.
++ display (string) - The display option that for the listing screen of this field .
++ initial_value - Initial value of this field. This means the initial display value rather than the default value at save.
++ label (string) - The label of this field.
++ max_length (number) - The maximum length of this field value.
++ min_length (number) - The minimum length of this field value.
++ required (number) - `0`: This field is not required. / `1`: This field is required.
++ input_format (string) - The name of input format of this field.
++ decimal_places (number) - The length of decimal places.
++ max_value (number) - The maximum value of this field.
++ min_value (number) - The minimum value of this field.
++ max (number) - The maximum number that can be selected for this field.
++ min (number) - The minimum number that should be selected for this field.
++ multiple (number) - `0`: This field cannot accept multiple selection. / `1`: This field accept multiple selection.
++ values (array[FieldValues]) - List of label-value pairs.
++ allow_upload (number): `0`: Users can upload new asset in this field. / `1`: Users cannot upload new asset in this field.
++ can_add (number) - `0`: Users can create a new categories in this field. / `1`: Users cannot create a new categories in this field.
++ increase_decrease_cols (number) - `0`: Users can increase/decrease columns. / `1`: Users cannot increase/decrease columns.
++ increase_decrease_rows (number) - `0`: Users can increase/decrease rows. / `1`: Users cannot increase/decrease rows.
++ initial_cols (number) - The number of initial columns.
++ initial_rows (number) - The number of initial rows.
++ source (number) - The ID of content type that linked with this field.
++ category_set (number) - The ID of category set that linked with this field.
+
 ## Asset
 + blog
     + id (number) - The ID of the site that contains this asset.
@@ -413,7 +445,7 @@ createdBy - Created user of this user.
 + blog - The site of this content type. Not writable.
     + id (number) - The site ID. Not writable.
 + contentFields (array[ContentFields]) - The list of content fields.
-createdBy - Created user of this content type. Not writable.
++ createdBy - Created user of this content type. Not writable.
     + displayName (string) - The display name of this content type creator. Not writable.
     + id (number) - The ID of this content type creator. Not writable.
     + userpicUrl (string) - The URL of this content type creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable.
@@ -430,3 +462,25 @@ createdBy - Created user of this content type. Not writable.
 + uniqueID (string) - The unique ID of this content type. Not writable.
 + updatable (boolean) - `true`: Current user can update this content type. / `false`: Current user cannot update this content type.  Not writable.
 + userDisplayOption (boolean) - `true`: Signed-in user can change display options for edit content data screen of this content type in the CMS admin screen. / `false`: Signed-in user cannot change display options for edit content data screen of this content type in the CMS admin screen.
+
+
+## ContentField
++ blog - The site of this content field. Not writable.
+    + id (number) - The site ID. Not writable.
+createdBy - Created user of this content field. Not writable.
+    + displayName (string) - The display name of this content field creator. Not writable.
+    + id (number) - The ID of this content field creator. Not writable.
+    + userpicUrl (string) - The URL of this content field creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable.
++ createdDate (string) - Created date of this content field. (format is iso 8601 datetime) Not writable.
++ description (string) - The description of this content field.
++ id (number) - The ID of this content field. Not writable.
++ label (string) - The labeel of this content field.
++ modifiedBy - Last modified user of this content field. Not writable.
+    + displayName (string) - The display name of this content field modifier. Not writable.
+    + id (number) - The ID of this content field modifier. Not writable.
+    + userpicUrl - The URL of this content field modifier's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable.
++ modifiedDate (string) - Last modified date of this content field. (format is iso 8601 datetime) Not writable.
++ options (Options) - The field option object. The members of this object are different depending on the type of field.
++ type (string) - The field type. This property can be set only when creating. Available values are follows. `single_line_text`: Single line text field. / `multi_line_text`: Multiple line text field. / `number` Number field. / `url`: URL field. / `date_and_time`: Date and time field. / `date_only`: Date only fiel. / `time_only`: Time only field. / `select_box`: Select box field. / `radio_button`: Radio button field. / `checkboxes`: Checkbox field. / `asset`: Asset (file) type field. / `asset_audio`: Audio asset field. / `asset_video`: Video asset field. / `asset_image`: Image asset field. / `embedded_text`: Embedded text field. / `tags`: Tag field. / `list`: List field. / `tables`: Table field. / `content_type` Content type field. / `categories`: Category set field.
++ uniqueID (string) - The unique ID of this content field. Not writable.
++ updatable (boolean) - `true`: Current user can update this content field. / `false`: Current user cannot update this content field.  Not writable.
