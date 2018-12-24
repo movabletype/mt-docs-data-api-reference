@@ -57,6 +57,13 @@
 + source (number) - The ID of content type that linked with this field.
 + category_set (number) - The ID of category set that linked with this field.
 
+
+## ContentFieldData
++ data () - The content of this content field data. This value is data itself or array data.
++ id (number) - The ID of this content field data. 
++ label (string) - The field label.
++ type (string) - The field type.
+
 ## Asset
 + blog
     + id (number) - The ID of the site that contains this asset.
@@ -484,3 +491,27 @@ createdBy - Created user of this content field. Not writable.
 + type (string) - The field type. This property can be set only when creating. Available values are follows. `single_line_text`: Single line text field. / `multi_line_text`: Multiple line text field. / `number` Number field. / `url`: URL field. / `date_and_time`: Date and time field. / `date_only`: Date only fiel. / `time_only`: Time only field. / `select_box`: Select box field. / `radio_button`: Radio button field. / `checkboxes`: Checkbox field. / `asset`: Asset (file) type field. / `asset_audio`: Audio asset field. / `asset_video`: Video asset field. / `asset_image`: Image asset field. / `embedded_text`: Embedded text field. / `tags`: Tag field. / `list`: List field. / `tables`: Table field. / `content_type` Content type field. / `categories`: Category set field.
 + uniqueID (string) - The unique ID of this content field. Not writable.
 + updatable (boolean) - `true`: Current user can update this content field. / `false`: Current user cannot update this content field.  Not writable.
+
+
+## ContentData
++ author
+    + displayName (string) -  The display name of this content data creator. Not writable
+    + id (number) - The ID of this content data creator. Not writable
+    + userpicUrl (string) - The URL of this content data creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable
++ basename (string) - The identifier for this content data.
++ blog
+    + id (number) - The ID of the site that contains this cotent data. Not writable
++ createdDate (string) - Created date of this content data. (format is iso 8601 datetime) Not writable.
++ data (array[ContentFieldData]) - List of data of this content data.
++ date (string) - The published time for this content data. (format is iso 8601 datetime)
++ id (number) - The ID of this content data.  Not writable.
++ label (string) - The label value of this data.
++ modifiedBy - Last modified user of this content data. Not writable.
+    + displayName (string) - The display name of this content data modifier. Not writable.
+    + id (number) - The ID of this content data modifier. Not writable.
+    + userpicUrl - The URL of this content data modifier's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable.
++ modifiedDate (string) - Last modified date of this content data. (format is iso 8601 datetime) Not writable.
++ status (string) - Draft: This content data is saved as draft. cd_status is 1. Publish: This content data is published. cd_status is 2. Review: This content data is waiting for approval. cd_status is 3. Future: This content data is scheduled for future publishing. cd_status is 4. Spam: This content data is marked as Spam. cd_status is 5.
++ unpublishedDate (string) - The unpublished time for this content data. (format is iso 8601 datetime)
+updatable (boolean) - true: The user who accessed can update this contnt data. false: The user who accessed cannot update this content data.
+
