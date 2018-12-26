@@ -1,9 +1,9 @@
 # Group Search
 
-## Search entries and pages [/search{?search,blog_id,IncludeBlogs,ExcludeBlogs,limit,offset,SearchSortBy,SearchResultDisplay,SearchMaxResults,class}]
+## Search entries and pages [/search{?search,blog_id,IncludeBlogs,ExcludeBlogs,limit,offset,SearchSortBy,SearchResultDisplay,SearchMaxResults,class,cdSearch}]
 
 ### Search entries and pages [GET]
-Searching the entries. This endpoint is like a mt-search.cgi, but more faster.
+Searching the entries and content data. This endpoint is like a mt-search.cgi, but more faster.
 
 + Parameters
     + search (required, string) - The search term. You can specify search term, like [foo], [foo AND bar], 'foo NOT bar'.      
@@ -25,6 +25,7 @@ Searching the entries. This endpoint is like a mt-search.cgi, but more faster.
     + class (optional, string) - Class name of the object to be searched. Available value is follows.
         * entry: Search results will only contain entries.
         * page: Search results will only contain pages.
+    + cdSearch (optional,number) - If `1` specified, searching content data only.
 
 + Response 200 (application/json)
 
