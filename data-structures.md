@@ -64,6 +64,14 @@
 + label (string) - The field label.
 + type (string) - The field type.
 
+
+## Categories
++ basename (string) - The basename of this category.
++ id (number) - The ID of this category.
++ label (string) - The label of this category.
++ parent (number) - Then parent category ID of this category. If this category is top level, will be `0`.
+
+
 ## Asset
 + blog
     + id (number) - The ID of the site that contains this asset.
@@ -513,5 +521,24 @@ createdBy - Created user of this content field. Not writable.
 + modifiedDate (string) - Last modified date of this content data. (format is iso 8601 datetime) Not writable.
 + status (string) - Draft: This content data is saved as draft. cd_status is 1. Publish: This content data is published. cd_status is 2. Review: This content data is waiting for approval. cd_status is 3. Future: This content data is scheduled for future publishing. cd_status is 4. Spam: This content data is marked as Spam. cd_status is 5.
 + unpublishedDate (string) - The unpublished time for this content data. (format is iso 8601 datetime)
-updatable (boolean) - true: The user who accessed can update this contnt data. false: The user who accessed cannot update this content data.
++ updatable (boolean) - true: The user who accessed can update this contnt data. false: The user who accessed cannot update this content data.
 
+
+## CategorySet
++ blog
+    + id (number) - The ID of the site that contains this category set. Not writable
++ categories (array[Categories]) - List of categories. Not writable.
++ content_type_count (number) - The number of content types using this category set. Not writable.
+createdBy - Created user of this category set. Not writable.
+    + displayName (string) - The display name of this category set creator. Not writable.
+    + id (number) - The ID of this category set creator. Not writable.
+    + userpicUrl (string) - The URL of this category set creator's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable.
++ createdDate (string) - Created date of this category set. (format is iso 8601 datetime) Not writable.
++ id (number) - The ID of this category set. Not writable.
++ modifiedBy - Last modified user of this category set. Not writable.
+    + displayName (string) - The display name of this category set modifier. Not writable.
+    + id (number) - The ID of this category set modifier. Not writable.
+    + userpicUrl - The URL of this category set modifier's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If user does not set own userpic, will be returned empty string. Not writable.
++ modifiedDate (string) - Last modified date of this category set. (format is iso 8601 datetime) Not writable.
++ name (string) - The name of this category set.
++ updatable (boolean) - true: The user who accessed can update this category set. false: The user who accessed cannot update this category set.
