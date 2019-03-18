@@ -1,6 +1,6 @@
 # Group Content Data
 
-## Content Data Collection [/sites/{site_id}/contenttypes/{content_type_id}/data{?limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,dateField,dateFrom,dateTo}]
+## Content Data Collection [/sites/{site_id}/contentTypes/{content_type_id}/data{?limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,dateField,dateFrom,dateTo}]
 
 + Parameters
     + site_id: 1 (number, required) - The site ID.
@@ -93,7 +93,7 @@ Known issues (these will be solved in future release)
 
     + body
 
-## Content Data [/sites/{site_id}/contenttypes/{content_type_id}/data/{content_data_id}{fields}]
+## Content Data [/sites/{site_id}/contentTypes/{content_type_id}/data/{content_data_id}{fields}]
 
 + Parameters
     + site_id: 1 (number, required) - The site ID.
