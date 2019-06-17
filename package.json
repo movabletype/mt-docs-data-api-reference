@@ -1,0 +1,23 @@
+{
+  "name": "mt-docs-data-api-reference",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "aglio -i index.md --theme-full-width --theme-variables flatly -o index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/movabletype/mt-docs-data-api-reference.git"
+  },
+  "author": "Six Apart, Ltd.",
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/movabletype/mt-docs-data-api-reference/issues"
+  },
+  "homepage": "https://github.com/movabletype/mt-docs-data-api-reference#readme",
+  "devDependencies": {
+    "aglio": "^2.3.0"
+  }
+}
