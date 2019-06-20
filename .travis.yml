@@ -4,4 +4,3 @@ node_js:
 cache: yarn
 script:
   - yarn build
-  - test $(git status -s | wc -l) = "0"
