@@ -2,7 +2,7 @@ const gulp    = require('gulp')
 const connect = require('gulp-connect')
 const exec    = require('child_process').exec
 
-const command = 'aglio -i index.md --theme-full-width --theme-variables flatly -o index.html'
+const command = 'aglio -i v4/index.md --theme-full-width --theme-variables flatly -o v4-reference.html'
 
 gulp.task('connect', function (done) {
   connect.server({
