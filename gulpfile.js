@@ -26,6 +26,15 @@ gulp.task('watch', function (done) {
   done()
 })
 
+gulp.task('build-v2', (done) => {
+  const command = getCommand('v2')
+  exec(command, (err, stdout, stderr) => {
+    if (stdout) console.log(stdout)
+    if (stderr) console.log(stderr)
+    done(err)
+  })
+})
+
 gulp.task('build-v3', (done) => {
   const command = getCommand('v3')
   exec(command, (err, stdout, stderr) => {
@@ -44,7 +53,7 @@ gulp.task('build-v4', (done) => {
   })
 })
 
-gulp.task('build', gulp.parallel('build-v3', 'build-v4'))
+gulp.task('build', gulp.parallel('build-v2', 'build-v3', 'build-v4'))
 
 gulp.task('default', gulp.parallel('connect', 'watch'))
 
