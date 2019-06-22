@@ -31,7 +31,7 @@ gulp.task('build-v2', (done) => {
   exec(command, (err, stdout, stderr) => {
     if (stdout) console.log(stdout)
     if (stderr) console.log(stderr)
-    done(err)
+    done()  // ignore errors now
   })
 })
 
