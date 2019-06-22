@@ -1,9 +1,0 @@
-#!/bin/sh
-echo
-if [ -a .commit ]
-    then
-    rm .commit
-    cat *.md > apiary.apib
-    git add apiary.apib
-fi
-exit
