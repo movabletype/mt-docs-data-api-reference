@@ -53,7 +53,7 @@ gulp.task('build-v4', (done) => {
   })
 })
 
-gulp.task('build', gulp.parallel('build-v2', 'build-v3', 'build-v4'))
+gulp.task('build', gulp.series('build-v4', 'build-v3', 'build-v2'))
 
 gulp.task('default', gulp.parallel('connect', 'watch'))
 
