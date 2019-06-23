@@ -76,7 +76,7 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           "createdDate" : "2015-03-21T19:37:53+09:00"
         }
 
-## listPermissions [/permissions(?limit, offset, sortBy, sortOrder, fields, blogIds)]
+## listPermissions [/permissions{?limit,offset,sortBy,sortOrder,fields,blogIds}]
 
 ### New in v2.0: Retrieve a list of permissions. [GET]
 
@@ -159,7 +159,7 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## listPermissionsForUser [/users/:user_id/permissions(?limit, offset, sortBy, sortOrder, fields, blogIds)]
+## listPermissionsForUser [/users/{user_id}/permissions{?limit,offset,sortBy,sortOrder,fields,blogIds}]
 
 ### Retrieve a list of permissions for user. [GET]
 
@@ -243,7 +243,7 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## listPermissionsForSite [/sites/:site_id/permissions(?limit, offset, sortBy, sortOrder, fields)]
+## listPermissionsForSite [/sites/{site_id}/permissions{?limit,offset,sortBy,sortOrder,fields}]
 
 ### New in v2.0: Retrieve a list of permissions for site. [GET]
 
@@ -329,7 +329,7 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## listPermissionsForRole [/roles/:role_id/permissions(?limit, offset, sortBy, sortOrder, fields, blogIds)]
+## listPermissionsForRole [/roles/{role_id}/permissions{?limit,offset,sortBy,sortOrder,fields,blogIds}]
 
 ### New in v2.0: Retrieve a list of permissions by role. [GET]
 
@@ -414,18 +414,20 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
           ]
         }
 
-## grantPermissionToSite [/sites/:site_id/permissions/grant]
+## grantPermissionToSite [/sites/{site_id}/permissions/grant]
 
 ### New in v2.0: Grant permissions to site. [POST]
 
 + Authentication is required
 + You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog)
 
+Post form data is follows
++ role_id (required, number) ... The role ID.
++ user_id (required, number) ... The user ID.
+
 + Parameters
 
   + site_id (required, number) ... The site ID.
-  + role_id (required, number) ... The role ID.
-  + user_id (required, number) ... The user ID.
 
 + Request
 
@@ -442,18 +444,20 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
 
         {"status":"success"}
 
-## grantPermissionToUser [/users/:user_id/permissions/grant]
+## grantPermissionToUser [/users/{user_id}/permissions/grant]
 
 ### New in v2.0: Grant permissions to user. [POST]
 
 + Authentication is required
 +   You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog)
 
+Post form data is follows
++ role_id (required, number) - The role ID.
++ site_id (required, number) - The site ID.
+
 + Parameters
 
   + user_id (required, number) ... The user ID.
-  + site_id (required, number) ... The site ID.
-  + role_id (required, number) ... The role ID.
 
 + Request
 
@@ -470,18 +474,20 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
 
         {"status":"success"}
 
-## revokePermissionFromSite [/sites/:site_id/permissions/revoke]
+## revokePermissionFromSite [/sites/{site_id}/permissions/revoke]
 
 ### New in v2.0: Revoke permissions from site. [POST]
 
 + Authentication is required
 + You should have revoke_role(Need revoke_administer_role when granting role having administer_blog )
 
+Post form data is follows
++ user_id (required, number) ... The user ID.
++ role_id (required, number) ... The role ID.
+
 + Parameters
 
   + site_id (required, number) ... The site ID.
-  + user_id (required, number) ... The user ID.
-  + role_id (required, number) ... The role ID.
 
 + Request
 
@@ -498,18 +504,20 @@ user.userpicUrl | value | string | mt_author.author_userpic_url |  | Y | The URL
 
         {"status":"success"}
 
-## revokePermissionFromUser [/users/:user_id/permissions/revoke]
+## revokePermissionFromUser [/users/{user_id}/permissions/revoke]
 
 ### New in v2.0: Revoke permissions from user. [POST]
 
 + Authentication is required
 + You should have revoke_role(Need revoke_administer_role when granting role having administer_blog )
 
+Post form data is follows
++ site_id (required, number) ... The site ID.
++ role_id (required, number) ... The role ID.
+
 + Parameters
 
   + user_id (required, number) ... The user ID.
-  + site_id (required, number) ... The site ID.
-  + role_id (required, number) ... The role ID.
 
 + Request
 

@@ -63,7 +63,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
                   "value" : ""
                 }
 
-## listCategories [/sites/:site_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
+## listCategories [/sites/{site_id}/categories{?search,searchFields,limit,offset,sortBy,sortOrder,fields,top,includeIds,excludeIds}]
 
 ### Retrieve categories in the specified site. [GET]
 
@@ -108,7 +108,7 @@ Code | Status | Description
           ]
         }
 
-## listCategoriesForEntry [/sites/:site_id/entries/:entry_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
+## listCategoriesForEntry [/sites/{site_id}/entries/{entry_id}/categories{?search,searchFields,limit,offset,sortBy,sortOrder,fields,type,includeIds,excludeIds,top}]
 
 ### New in v2.0: Retrieve categories in the specified entry. [GET]
 
@@ -160,7 +160,7 @@ Code | Status | Description
           ]
         }
 
-## listParentCategories [/sites/:site_id/categories/:category_id/parents(?maxDepth, includeCurrent)]
+## listParentCategories [/sites/{site_id}/categories/{category_id}/parents{?maxDepth,includeCurrent}]
 
 ### New in v2.0: Retrieve parent categories from the specified category. [GET]
 
@@ -198,7 +198,7 @@ Code | Status | Description
           ]
         }
 
-## listSiblingCategories [/sites/:site_id/categories/:category_id/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
+## listSiblingCategories [/sites/{site_id}/categories/{category_id}/siblings{?search,searchFields,limit,offset,sortBy,sortOrder,fields,top,includeIds,excludeIds}]
 
 ### New in v2.0: Retrieve siblings categories from the specified category. [GET]
 
@@ -244,7 +244,7 @@ Code | Status | Description
           ]
         }
 
-## listChildCategories [/sites/:site_id/categories/:category_id/children(?maxDepth, includeCurrent)]
+## listChildCategories [/sites/{site_id}/categories/{category_id}/children{?maxDepth,includeCurrent}]
 
 ### New in v2.0: Retrieve child categories from the specified category. [GET]
 
@@ -282,7 +282,7 @@ Code | Status | Description
           ]
         }
 
-## createCategory [/sites/:site_id/categories]
+## createCategory [/sites/{site_id}/categories]
 
 ### New in v2.0: Create a new category. [GET]
 + Authorization is required.
@@ -338,7 +338,7 @@ category | Object | Yes | | Single Categories resource
           ]
         }
 
-## getCategory [/sites/:site_id/categories/:category_id(?fields)]
+## getCategory [/sites/{site_id}/categories/{category_id}{?fields}]
 
 ### New in v2.0: Retrieve single category by its ID. [GET]
 
@@ -371,7 +371,7 @@ Code | Status | Description
           "description" : null
         }
 
-## updateCategory [/sites/:site_id/categories/:category_id]
+## updateCategory [/sites/{site_id}/categories/{category_id}]
 
 ### New in v2.0: Update an existing category. [PUT]
 + Authorization is required.
@@ -425,7 +425,7 @@ category | Object | Yes | | Single Categories resource
           "description" : null
         }
 
-## deleteCategory [/sites/:site_id/categories/:category_id]
+## deleteCategory [/sites/{site_id}/categories/{category_id}]
 ### New in v2.0: Delete an existing category. [DELETE]
 + Authorization is required.
 + This method accepts DELETE and POST with __method=DELETE.
@@ -463,7 +463,7 @@ Code | Status | Description
           "description" : null
         }
 
-## permutateCategories [/sites/:site_id/categories/permutate]
+## permutateCategories [/sites/{site_id}/categories/permutate]
 
 ### New in v2.0: Rearrange existing categories in a new order. [POST]
 + Authorization is required.

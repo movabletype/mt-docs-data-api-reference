@@ -1,6 +1,6 @@
 # Group Search
 
-## Search [/search(?search, blog_id, IncludeBlogs, ExcludeBlogs, limit, offset, SearchSortBy, SearchResultDisplay, SearchMaxResults)]
+## Search [/search{?search,blog_id,IncludeBlogs,ExcludeBlogs,limit,offset,SearchSortBy,SearchResultDisplay,SearchMaxResults}]
 
 ### New in v2.0: Searching entries. [GET]
 

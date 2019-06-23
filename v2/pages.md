@@ -87,7 +87,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listPages [/sites/{site_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## listPages [/sites/{site_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter}]
 
 ### New in v2.0: Retrieve a list of pages in the specified site. [GET]
 
@@ -177,7 +177,7 @@ Code | Status | Description
           ]
         }
 
-## listPagesForFolder [/sites/{site_id}/folders/{folder_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## listPagesForFolder [/sites/{site_id}/folders/{folder_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter}]
 
 ### New in v2.0: Retrieve a list of pages by specific folder. [GET]
 
@@ -268,7 +268,7 @@ Code | Status | Description
           ]
         }
 
-## listPagesForAsset [/sites/{site_id}/assets/{asset_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## listPagesForAsset [/sites/{site_id}/assets/{asset_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter}]
 
 ### New in v2.0: Retrieve a list of pages that related with specific asset. [GET]
 
@@ -359,7 +359,7 @@ Code | Status | Description
           ]
         }
 
-## listPagesForSiteAndTag [/sites/{site_id}/tags/{tag_id}/pages(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## listPagesForSiteAndTag [/sites/{site_id}/tags/{tag_id}/pages{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,status,maxComments,maxTrackbacks,no_text_filter}]
 
 ### New in v2.0: Retrieve a list of pages that related with specific tag. [GET]
 
@@ -539,7 +539,7 @@ page | Object | Yes | | Single Pages resource
           ]
         }
 
-## getPage [/sites/{site_id}/pages/{page_id}(?fields)]
+## getPage [/sites/{site_id}/pages/{page_id}{?fields}]
 
 ### Retrieve a single page by its ID. [GET]
 
@@ -768,7 +768,7 @@ Code | Status | Description
           ]
         }
 
-## previewPage [/sites/:site_id/pages/preview(?raw)]
+## previewPage [/sites/{site_id}/pages/preview{?raw}]
 ### new in v2.0: Make a preview for a page. [POST]
 
 + Authorization is required.
@@ -827,7 +827,7 @@ Code | Status | Description
           }
         }
 
-## previewPageById [/sites/:site_id/pages/:page_id/preview(?raw)]
+## previewPageById [/sites/{site_id}/pages/{page_id}/preview{?raw}]
 ### new in v2.0: Make a preview for a page with existing data. [POST]
 
 + Authorization is required.

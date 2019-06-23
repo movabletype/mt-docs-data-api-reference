@@ -1,3 +1,4 @@
+# Group Logs
 This is the Logs resource.
 
 Property Name | Type | Data Type | Database Column | Private | Read Only | Description | Version
@@ -38,7 +39,7 @@ upatable | value | boolean | |  | Y | <dl><dt>true</dt><dd>The user who accessed
                   "id": "370"
                 }
 
-## listLogs [/sites/:site_id/logs(?site_id, limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, level)]
+## listLogs [/sites/:site_id/logs{?site_id,limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,level}]
 ### New in v2.0: Retrieve a list of logs in the specified site. [GET]
 
 + Authorization is required.

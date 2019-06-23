@@ -1,6 +1,6 @@
 # Group Authentication
 
-## authorization [/authorization?(redirectUrl,clientId)]
+## authorization [/authorization{?redirectUrl,clientId}]
 
 ### Show sign in screen, then redirect to application screen. [GET]
 

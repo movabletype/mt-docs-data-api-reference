@@ -77,7 +77,7 @@ url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asse
               "fileExtension" : "jpg"
             },
 
-## uploadAssetForSite [/sites/:site_id/assets/upload]
+## uploadAssetForSite [/sites/{site_id}/assets/upload]
 ### Upload a file to specific site. [POST]
 
 + This endpoint is marked as deprecated in v2.0.
@@ -161,7 +161,7 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-## uploadAsset [/assets/upload(?overwrite_once)]
+## uploadAsset [/assets/upload{?overwrite_once}]
 ### New in v2.0: Upload a file. [POST]
 
 **Status Code**
@@ -245,7 +245,7 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-## listAssets [/sites/:site_id/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields, relatedAssets)]
+## listAssets [/sites/{site_id}/assets{?search,searchFields,limit,offset,class,sortBy,sortOrder,fields,relatedAssets}]
 
 ### New in v2.0: Retrieve assets in the specified site. [GET]
 
@@ -316,7 +316,7 @@ Code | Status | Description
           ]
         }
 
-## listAssetsForEntry [/sites/:site_id/entries/:entry_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+## listAssetsForEntry [/sites/{site_id}/entries/{entry_id}/assets{?limit,offset,class,sortBy,sortOrder,fields}]
 ### New in v2.0: Retrieve assets that related with specified entry. [GET]
 
 **Status Code**
@@ -384,7 +384,7 @@ Code | Status | Description
           ]
         }
 
-## listAssetsForPage [/sites/:site_id/pages/:page_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+## listAssetsForPage [/sites/{site_id}/pages/{page_id}/assets{?limit,offset,class,sortBy,sortOrder,fields}]
 ### New in v2.0: Retrieve assets that related with specified page. [GET]
 
 **Status Code**
@@ -452,7 +452,7 @@ Code | Status | Description
           ]
         }
 
-## listAssetsForSiteAndTag [/sites/:site_id/tags/:tag_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+## listAssetsForSiteAndTag [/sites/{site_id}/tags/{tag_id}/assets{?limit,offset,class,sortBy,sortOrder,fields}]
 ### New in v2.0: Retrieve assets that related with specified tag. [GET]
 
 **Status Code**
@@ -521,7 +521,7 @@ Code | Status | Description
           ]
         }
 
-## getAsset [/sites/:site_id/assets/:asset_id(?fields)]
+## getAsset [/sites/{site_id}/assets/{asset_id}{?fields}]
 ### New in v2.0: Retrieve single asset by its ID. [GET]
 
 **Status Code**
@@ -580,7 +580,7 @@ Code | Status | Description
           }
         }
 
-## updateAsset [/sites/:site_id/assets/:asset_id]
+## updateAsset [/sites/{site_id}/assets/{asset_id}]
 ### New in v2.0: Update an asset. [PUT]
 
 * Authorization is required.
@@ -675,7 +675,7 @@ Code | Status | Description
           }
         }
 
-## deleteAsset [/sites/:site_id/assets/:asset_id]
+## deleteAsset [/sites/{site_id}/assets/{asset_id}]
 ### New in v2.0: Delete an asset. [DELETE]
 
 * Authorization is required.
@@ -742,7 +742,7 @@ Code | Status | Description
           }
         }
 
-## getThubmbnail [/sites/:site_id/assets/:asset_id/thumbnail(?width, height, scale, square)]
+## getThubmbnail [/sites/{site_id}/assets/{asset_id}/thumbnail{?width,height,scale,square}]
 ### New in v2.0: Get thumbnail of an asset. [GET]
 
 This endpoint requires one of parameter 'width' or 'height' or 'scale' Also, cannot use these parameters at same time.

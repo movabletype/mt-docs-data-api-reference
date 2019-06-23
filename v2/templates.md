@@ -57,7 +57,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
                 }
 
 
-## listTemplates [/sites/:site_id/templates(?site_id, limit ,offset, sortBy, sortOrder,fields, searchFields, search, includeIds, excludeIds, type)]
+## listTemplates [/sites/{site_id}/templates{?site_id,limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,type}]
 ### new in v2.0: Retrieve a list of templates in the specified site. [GET]
 
 + Authorization is required.
@@ -164,7 +164,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## getTemplate [/sites/:site_id/templates/:template_id(?fields)]
+## getTemplate [/sites/{site_id}/templates/{template_id}{?fields}]
 ### new in v2.0: Retrieve single template by its ID. [GET]
 
 + Authorization is required.
@@ -236,7 +236,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
                   }
                 }
 
-## createTemplate [/sites/:site_id/templates]
+## createTemplate [/sites/{site_id}/templates]
 ### new in v2.0: Create a new template. [POST]
 
 + Authorization is required.
@@ -316,7 +316,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## updateTemplate [/sites/:site_id/templates/:template_id]
+## updateTemplate [/sites/{site_id}/templates/{template_id}]
 ### new in v2.0: Update a template. [PUT]
 
 + Authorization is required.
@@ -407,7 +407,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## deleteTemplate [/sites/:site_id/templates/:template_id]
+## deleteTemplate [/sites/{site_id}/templates/{template_id}]
 ### new in v2.0: Delete a template. [DELETE]
 
 + Authorization is required.
@@ -488,7 +488,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## publishTemplate [/sites/:site_id/templates/:template_id/publish]
+## publishTemplate [/sites/{site_id}/templates/{template_id}/publish]
 ### new in v2.0: Publish a template. [POST]
 
 + Authorization is required.
@@ -549,7 +549,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## refreshTemplate [/sites/:site_id/templates/:template_id/refresh]
+## refreshTemplate [/sites/{site_id}/templates/{template_id}/refresh]
 ### new in v2.0: Reset template text to theme default or tempalte_set default. [POST]
 
 + Authorization is required.
@@ -598,7 +598,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## refreshTemplateForSite [/sites/:site_id/refresh_templates(?refresh_type)]
+## refreshTemplateForSite [/sites/{site_id}/refresh_templates{?refresh_type}]
 ### new in v2.0: Reset all templates in the site. [POST]
 
 + Authorization is required.
@@ -644,7 +644,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## cloneTemplate [/sites/:site_id/templates/:template_id/clone]
+## cloneTemplate [/sites/{site_id}/templates/{template_id}/clone]
 ### new in v2.0: Make a clone of a template. [POST]
 
 + Authorization is required.
@@ -690,7 +690,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## previewTemplate [/sites/:site_id/templates/preview(?raw)]
+## previewTemplate [/sites/{site_id}/templates/preview{?raw}]
 ### new in v2.0: Make a preview for a template. [POST]
 
 + Authorization is required.
@@ -750,7 +750,7 @@ templateType | value | String | mt_template.template_identifier | Y | | The iden
           }
         }
 
-## previewTemplateById [/sites/:site_id/templates/:template_id/preview(?raw)]
+## previewTemplateById [/sites/{site_id}/templates/{template_id}/preview{?raw}]
 ### new in v2.0: Make a preview for a template with existing data. [POST]
 
 + Authorization is required.

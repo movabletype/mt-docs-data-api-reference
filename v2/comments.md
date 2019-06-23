@@ -62,7 +62,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields" : []
         }
 
-## listComments [/sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
+## listComments [/sites/{site_id}/comments{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,entryStatus}]
 
 ### Retrieve a list of comments in the specified site. [GET]
 
@@ -127,7 +127,7 @@ Code | Status | Description
           ]
         }
 
-## listCommentsForEntry [/sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## listCommentsForEntry [/sites/{site_id}/entries/{entry_id}/comments{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status}]
 
 ### Retrieve a list of comments for the specified entry. [GET]
 
@@ -191,7 +191,7 @@ Code | Status | Description
           ]
         }
 
-## listCommentsForPage [/sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## listCommentsForPage [/sites/{site_id}/pages/{page_id}/comments{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status}]
 
 ### Retrieve a list of comments for the specified page. [GET]
 
@@ -462,7 +462,7 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## getComment [/sites/{site_id}/comments/{comment_id}(?fields)]
+## getComment [/sites/{site_id}/comments/{comment_id}{?fields}]
 
 ### Retrieve a single comment by its ID. [GET]
 

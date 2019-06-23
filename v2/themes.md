@@ -139,7 +139,7 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## getTheme [/themes/:theme_id]
+## getTheme [/themes/{theme_id}]
 
 ### New in v2.0: Retrieve a single theme by its ID. [GET]
 
@@ -180,7 +180,7 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## applyThemeToSite [/sites/:site_id/themes/:theme_id/apply]
+## applyThemeToSite [/sites/{site_id}/themes/{theme_id}/apply]
 
 ### New in v2.0: Apply a theme to site. [POST]
 
@@ -215,7 +215,7 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## uninstall_theme [/themes/:theme_id]
+## uninstall_theme [/themes/{theme_id}]
 
 ### Uninstall a specified theme from the MT.  [DELETE]
 
@@ -257,7 +257,7 @@ version | value | string | - | Y | Y | The version number for this theme. | v2
         }
 
 
-## exportSiteTheme [/sites/:site_id/export_theme]
+## exportSiteTheme [/sites/{site_id}/export_theme]
 
 ### New in v2.0: Export site's theme. [POST]
 

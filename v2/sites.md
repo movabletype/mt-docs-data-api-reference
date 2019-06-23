@@ -204,7 +204,7 @@ wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The defa
               "customDynamicTemplates" : "none"
             }
 
-## listByUser [/users/:user_id/sites(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds)]
+## listByUser [/users/{user_id}/sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds}]
 
 + Authorization is required.
 
@@ -352,7 +352,7 @@ Code | Status | Description
         }
 
 
-## listSites [/sites(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds)]
+## listSites [/sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds}]
 
 ### New in v2.0: Retrieve sites [GET]
 
@@ -495,7 +495,7 @@ Code | Status | Description
           ]
         }
 
-## listSitesByParent [/sites/:site_id/children(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds,)]
+## listSitesByParent [/sites/{site_id}/children{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds}]
 
 ### New in v2.0: Retrieve sites by parent ID [GET]
 
@@ -787,7 +787,7 @@ blog | Object | Yes | | Single Sites resource
           "customDynamicTemplates" : "none"
         }
 
-## insertNewBlog [/sites/:site_id]
+## insertNewBlog [/sites/{site_id}]
 
 ### New in v2.0: Create a new blog. [POST]
 
@@ -935,7 +935,7 @@ blog | Object | Yes | | Single Sites resource
           "customDynamicTemplates" : "none"
         }
 
-## updateSite [/sites/:site_id]
+## updateSite [/sites/{site_id}]
 ### New in v2.0: Update an existing blog or website. [PUT]
 
 + Authorization is required.
@@ -1081,7 +1081,7 @@ blog | Object | Yes | | Single Sites resource
           "customDynamicTemplates" : "none"
         }
 
-## deleteSite [/sites/:site_id]
+## deleteSite [/sites/{site_id}]
 ### New in v2.0: Delete an existing blog or website. [DELETE]
 
 + Authorization is required.
@@ -1218,7 +1218,7 @@ Code | Status | Description
         }
 
 
-## getBlog [/sites/:site_id(?fields)]
+## getBlog [/sites/{site_id}{?fields}]
 ### Retrieve a single website/blog by its ID. [GET]
 
 **Status Code**

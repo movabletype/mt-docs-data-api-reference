@@ -72,7 +72,7 @@ textFormat | value | string | mt_author.author_text_format | Y | | The text form
           "customFields" : []
         }
 
-## listUsers [/users(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, lockout)]
+## listUsers [/users{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,lockout}]
 
 ### New in v2.0: Retrieve a list of users in the specified site. [GET]
 
@@ -172,9 +172,6 @@ Name | Type | Required | Default | Description
 ---- | ---- | -------- | ------- | -----------
 entry | Object | Yes | | Single Entries resource
 
-+ Parameters
-    + site_id (required, number) ... The site ID.
-
 + Request
 
     + Headers
@@ -214,7 +211,7 @@ entry | Object | Yes | | Single Entries resource
           "customFields" : []
         }
 
-## getUser [/users/:user_id(?fields)]
+## getUser [/users/{user_id}{?fields}]
 
 ### Retrieve a single user by its own ID. [GET]
 
@@ -276,7 +273,7 @@ Code | Status | Description
           "customFields" : []
         }
 
-## updateUser [/users/:user_id]
+## updateUser [/users/{user_id}]
 
 ### Update oneself or another one's user data. [PUT]
 
@@ -339,7 +336,7 @@ Code | Status | Description
           "customFields" : []
         }
 
-## deleteUser [/users/:user_id]
+## deleteUser [DELETE /users/{user_id}]
 ### New in v2.0: Delete user. [DELETE]
 
 + Authentication is required.
@@ -397,7 +394,7 @@ Code | Status | Description
           "customFields" : []
         }
 
-## unlockUser [/users/:user_id/unlock]
+## unlockUser [/users/{user_id}/unlock]
 
 ### Unlock user account. [POST]
 
@@ -431,7 +428,7 @@ Code | Status | Description
           "status": "success"
         }
 
-## recoverPasswordForUser [/users/:user_id/recover_password]
+## recoverPasswordForUser [/users/{user_id}/recover_password]
 
 ### Send the link for password recovery to specified user by email. [POST]
 
@@ -482,9 +479,6 @@ Code | Status | Description
 **Permissions**
 
 + administer
-
-+ Parameters
-    + user_id (required, number) ... The user ID.
 
 + Request
 

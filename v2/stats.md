@@ -88,7 +88,7 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
             }
 
 
-## visitsForPath [/sites/:site_id/stats/path/visits(?startDate, endDate, limit, offset, path)]
+## visitsForPath [/sites/{site_id}/stats/path/visits{?startDate,endDate,limit,offset,path}]
 
 + Authorization is required.
 
@@ -153,7 +153,7 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## visitsForDate [/sites/:site_id/stats/date/visits(?startDate, endDate, limit, offset, path)]
+## visitsForDate [/sites/{site_id}/stats/date/visits{?startDate,endDate,limit,offset,path}]
 
 + Authorization is required.
 
@@ -220,7 +220,7 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## pageviewsForPath [/sites/:site_id/stats/path/pageviews(?startDate, endDate, limit, offset, path, uniquePath)]
+## pageviewsForPath [/sites/{site_id}/stats/path/pageviews{?startDate,endDate,limit,offset,path,uniquePath}]
 
 + Authorization is required.
 
@@ -286,7 +286,7 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## pageviewsForDate [/sites/:site_id/stats/date/pageviews(?startDate, endDate, limit, offset, path)]
+## pageviewsForDate [/sites/{site_id}/stats/date/pageviews{?startDate,endDate,limit,offset,path,uniquePath}]
 
 + Authorization is required.
 
@@ -354,7 +354,7 @@ visits | value | Number | | | Y | The visits for the path. This property exists 
           }
         }
 
-## getProvider [/sites/:site_id/stats/provider]
+## getProvider [/sites/{site_id}/stats/provider]
 
 + Authorization is required.
 

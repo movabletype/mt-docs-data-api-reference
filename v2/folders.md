@@ -48,7 +48,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields": []
         },
 
-## listFolders [//sites/:site_id/folders(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+## listFolders [//sites/{site_id}/folders{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,top}]
 
 ### New in v2.0: Retrieve a list of folders. [GET]
 
@@ -95,7 +95,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listParentFolders [/sites/:site_id/folders/:folder_id/parents(?maxDepth, includeCurrent)]
+## listParentFolders [/sites/{site_id}/folders/{folder_id}/parents{?maxDepth,includeCurrent}]
 
 ### New in v2.0: Retrieve a list of parent folders of the requested folder. [GET]
 
@@ -135,7 +135,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listSiblingFolders [/sites/:site_id/folders/:folder_id/siblings(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+## listSiblingFolders [/sites/{site_id}/folders/{folder_id}/siblings{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,top}]
 
 ### New in v2.0: Retrieve a list of sibling folders of the requested folder. [GET]
 
@@ -183,7 +183,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-## listChildFolders [/sites/:site_id/folders/:folder_id/children(?maxDepth, includeCurrent)]
+## listChildFolders [/sites/{site_id}/folders/{folder_id}/children{?maxDepth,includeCurrent}]
 
 ### New in v2.0: Retrieve a list of child folders of the requested folder. [GET]
 
