@@ -176,10 +176,7 @@ Code | Status | Description
 
 Name | Type | Required | Default | Description
 ---- | ---- | -------- | ------- | -----------
-entry | Object | Yes | | Single Entries resource
-
-+ Parameters
-    + site_id (required, number) ... The site ID.
+user | Object | Yes | | Single Users resource
 
 + Request (application/x-www-form-urlencoded)
 
@@ -219,7 +216,7 @@ entry | Object | Yes | | Single Entries resource
           "customFields" : []
         }
 
-### Retrieve a single user by ID [GET /users/{user_id}(?fields)]
+### Retrieve a single user by ID [GET /users/{user_id}{?fields}]
 Retrieve a single user by ID.
 
 :::note
@@ -410,8 +407,6 @@ Code | Status | Description
           "createdDate" : "2015-03-27T10:45:43+09:00",
           "customFields" : []
         }
-
-# Utilities [/users/{user_id}]
 
 ### Unlock user [POST /users/{user_id}/unlock]
 Unlock user account.

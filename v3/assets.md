@@ -78,7 +78,7 @@ url | value | string | mt_asset.asset_url | | Y | The permalink URL of this asse
               "fileExtension" : "jpg"
             },
 
-# Upload [/assets/upload(?overwrite_once)]
+# Upload [/assets/upload{?overwrite_once}]
 ## Upload a single file. [POST]
 Upload a single file.
 
@@ -159,7 +159,7 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-## DEPRECATED - Upload a single file. [POST /sites/:site_id/assets/upload]
+## DEPRECATED - Upload a single file. [POST /sites/{site_id}/assets/upload]
 ***This endpoint is marked as deprecated in v2.0.***
 
 Upload single file to specific site.
@@ -239,8 +239,8 @@ normalizeOrientation | boolean | | true | If this value is true and the uploaded
           }
         }
 
-# Assets [/sites/:site_id/assets/:asset_id]
-## Retrieve a list of assets. [GET /sites/:site_id/assets(?search, searchFields, limit, offset, class, sortBy, sortOrder, fields, relatedAssets)]
+# Assets [/sites/{site_id}/assets/{asset_id}]
+## Retrieve a list of assets. [GET /sites/{site_id}/assets{?search,searchFields,limit,offset,class,sortBy,sortOrder,fields,relatedAssets,dateField,dateFrom,dateTo}]
 Retrieve list of assets in the specified site.
 
 **Status Code**
@@ -313,7 +313,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of assets that related with entry [GET /sites/:site_id/entries/:entry_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+## Retrieve a list of assets that related with entry [GET /sites/{site_id}/entries/{entry_id}/assets{?limit,offset,class,sortBy,sortOrder,fields,dateField,dateFrom,dateTo}]
 
 **Status Code**
 
@@ -383,7 +383,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of assets that related with page [GET /sites/:site_id/pages/:page_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+## Retrieve a list of assets that related with page [GET /sites/{site_id}/pages/{page_id}/assets{?limit,offset,class,sortBy,sortOrder,fields,dateField,dateFrom,dateTo}]
 Retrieve assets that related with specified page.
 
 **Status Code**
@@ -454,7 +454,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of assets that related with tag. [GET /sites/:site_id/tags/:tag_id/assets(?limit, offset, class, sortBy, sortOrder, fields)]
+## Retrieve a list of assets that related with tag. [GET /sites/{site_id}/tags/{tag_id}/assets{?limit,offset,class,sortBy,sortOrder,fields,dateField,dateFrom,dateTo}]
 
 **Status Code**
 
@@ -525,7 +525,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a single asset by its ID. [GET /sites/:site_id/assets/:asset_id(?fields)]
+## Retrieve a single asset by its ID. [GET /sites/{site_id}/assets/{asset_id}{?fields}]
 
 **Status Code**
 
@@ -745,7 +745,7 @@ Code | Status | Description
           }
         }
 
-# Thumbnail [/sites/:site_id/assets/:asset_id/thumbnail(?width, height, scale, square)]
+# Thumbnail [/sites/{site_id}/assets/{asset_id}/thumbnail{?width,height,scale,square}]
 ## Get thumbnail image for an asset. [GET]
 
 This endpoint requires one of parameter 'width' or 'height' or 'scale' Also, cannot use these parameters at same time.

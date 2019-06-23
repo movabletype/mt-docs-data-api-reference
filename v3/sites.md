@@ -378,7 +378,7 @@ Code | Status | Description
         }
 
 
-## Retrieve a list of sites [GET /sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIdsdateFirld,dateFrom,dateTo}]
+## Retrieve a list of sites [GET /sites{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,dateField,dateFrom,dateTo}]
 Retrieve a list of sites.
 
 **Status Code**

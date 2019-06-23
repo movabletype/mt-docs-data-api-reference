@@ -293,7 +293,7 @@ Authentication required.
           }
         }
 
-## Retrieve a list of page view data for each date [GET /sites/{site_id}/stats/date/pageviews{?startDate,endDate,limit,offset,path}]
+## Retrieve a list of page view data for each date [GET /sites/{site_id}/stats/date/pageviews{?startDate,endDate,limit,offset,path,uniquePath}]
 Retrieve a list of page view data for each date from the provider.
 
 :::note

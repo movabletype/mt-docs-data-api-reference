@@ -495,7 +495,6 @@ This method accepts DELETE or POST with __method=DELETE.
           }
         }
 
-# Utilities [/sites/{site_id}/templates/{template_id}]
 ## Publish a template [POST /sites/{site_id}/templates/{template_id}/publish]
 Publish (in other words rebuild) a template.
 

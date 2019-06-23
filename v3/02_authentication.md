@@ -60,7 +60,7 @@ This method accepts DELETE or POST with __method=DELETE.
               "status" : "success"
             }
 
-## User authentication via sing-in Screen [GET /authorization?(redirectUrl,clientId)]
+## User authentication via sing-in Screen [GET /authorization?{redirectUrl,clientId}]
 When this endpoint called from application, user will move to sign-in screen of Movable Type.  
 And then user will move to new location that specified in the redirectUrl parameter when user has been authenticated.
 
@@ -71,6 +71,7 @@ If your application is running on web browser, you should use this endpoint inst
     + redirectUrl (required, string) ... Specify the redirect location where the user moves after sign in.
     + clientId (required, string) ... The client identifier. 
 
++ Response 200 (text/html)
 
 # Token [/token]
 ## Create a new access token [POST]

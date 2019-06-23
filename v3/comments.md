@@ -62,9 +62,9 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           "customFields" : []
         }
 
-# Comments [/sites/{site_id}/comments/:comment_id]
+# Comments [/sites/{site_id}/comments/{comment_id}]
 
-## Retrieve a list of comments. [GET /sites/{site_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, entryStatus)]
+## Retrieve a list of comments. [GET /sites/{site_id}/comments{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,entryStatus,dateField,dateFrom,dateTo}]
 
 Authorization is required if want to include unpublished comments.
 
@@ -130,7 +130,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of comments that related with entry. [GET /sites/{site_id}/entries/{entry_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## Retrieve a list of comments that related with entry. [GET /sites/{site_id}/entries/{entry_id}/comments{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,dateField,dateFrom,dateTo}]
 
 Authorization is required if want to include unpublished comments.
 
@@ -195,7 +195,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of comments that related with page. [GET /sites/{site_id}/pages/{page_id}/comments(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status)]
+## Retrieve a list of comments that related with page. [GET /sites/{site_id}/pages/{page_id}/comments{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,dateField,dateFrom,dateTo}]
 
 Authentication is required if want to include unpublished comments.
 
@@ -461,7 +461,7 @@ comment | Object | Yes | | Single Comments resource
           "customFields" : []
         }
 
-## Retrieve a single comment by its ID. [GET /sites/{site_id}/comments/{comment_id}(?fields)]
+## Retrieve a single comment by its ID. [GET /sites/{site_id}/comments/{comment_id}{?fields}]
 
 Authorization is required if the comment status is "unpublished".  
 

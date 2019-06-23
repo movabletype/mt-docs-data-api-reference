@@ -63,8 +63,8 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
                   "value" : ""
                 }
 
-# Categories [/sites/:site_id/categories/:category_id]
-## Retrieve a list of categories [GET /sites/:site_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
+# Categories [/sites/{site_id}/categories/{category_id}]
+## Retrieve a list of categories [GET /sites/{site_id}/categories{?search,searchFields,limit,offset,sortBy,sortOrder,fields,top,includeIds,excludeIds,dateField,dateFrom,dateTo}]
 
 **Status Code**
 
@@ -110,7 +110,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of categories that related with entry. [GET /sites/:site_id/entries/:entry_id/categories(?search, searchFields, limit, offset, sortBy, sortOrder, fields, type, includeIds, excludeIds, top)]
+## Retrieve a list of categories that related with entry. [GET /sites/{site_id}/entries/{entry_id}/categories{?search,searchFields,limit,offset,sortBy,sortOrder,fields,type,includeIds,excludeIds,top,dateField,dateFrom,dateTo}]
 
 **Status Code**
 
@@ -163,7 +163,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of parent categories. [GET /sites/:site_id/categories/:category_id/parents(?maxDepth, includeCurrent)]
+## Retrieve a list of parent categories. [GET /sites/{site_id}/categories/{category_id}/parents{?maxDepth,includeCurrent,dateField,dateFrom,dateTo}]
 
 **Status Code**
 
@@ -202,7 +202,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of siblings categories. [GET /sites/:site_id/categories/:category_id/siblings(?search, searchFields, limit, offset, sortBy, sortOrder, fields, top, includeIds, excludeIds)]
+## Retrieve a list of siblings categories. [GET /sites/{site_id}/categories/{category_id}/siblings{?search,searchFields,limit,offset,sortBy,sortOrder,fields,top,includeIds,excludeIds,dateField,dateFrom,dateTo}]
 
 **Status Code**
 
@@ -249,7 +249,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of child categories. [GET /sites/:site_id/categories/:category_id/children(?maxDepth, includeCurrent)]
+## Retrieve a list of child categories. [GET /sites/{site_id}/categories/{category_id}/children{?maxDepth,includeCurrent,dateField,dateFrom,dateTo}]
 
 **Status Code**
 
@@ -288,7 +288,7 @@ Code | Status | Description
           ]
         }
 
-## Create a new category. [GET /sites/:site_id/categories]
+## Create a new category. [GET /sites/{site_id}/categories]
 Authentication required.
 
 **Status Code**
@@ -342,7 +342,7 @@ category | Object | Yes | | Single Categories resource
           ]
         }
 
-## Retrieve a single category by its ID. [GET /sites/:site_id/categories/:category_id(?fields)]
+## Retrieve a single category by its ID. [GET /sites/{site_id}/categories/{category_id}{?fields}]
 
 **Status Code**
 
@@ -465,7 +465,7 @@ Code | Status | Description
           "description" : null
         }
 
-## Rearrange existing categories in a new order. [POST /sites/:site_id/categories/permutate]
+## Rearrange existing categories in a new order. [POST /sites/{site_id}/categories/permutate]
 Authentication required.
 
 This method returns rearranged Categories resource.

@@ -85,8 +85,8 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
           ]
         }
 
-# Entries [/sites/:site_id/entries/:entry_id]
-## Retrieve a list of entries in the specified site. [GET /sites/:site_id/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+# Entries [/sites/{site_id}/entries/{entry_id}]
+## Retrieve a list of entries in the specified site. [GET /sites/{site_id}/entries{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
 
 Authentication required if want to include unpublished entries.
 
@@ -173,7 +173,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of entries by category. [GET /sites/{site_id}/categories/{category_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of entries by category. [GET /sites/{site_id}/categories/{category_id}/entries{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
 
 Authentication required. if want to include unpublished entries.
 
@@ -261,7 +261,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of entries that related with asset. [GET /sites/{site_id}/assets/{asset_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of entries that related with asset. [GET /sites/{site_id}/assets/{asset_id}/entries{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
 
 Authentication required. if want to include unpublished entries.
 
@@ -349,7 +349,7 @@ Code | Status | Description
           ]
         }
 
-## Retrieve a list of entries that related with tag. [GET /sites/{site_id}/tags/{tag_id}/entries(?search, searchFields, limit, offset, sortBy, sortOrder, fields, includeIds, excludeIds, status, status, maxComments, maxTrackbacks, no_text_filter)]
+## Retrieve a list of entries that related with tag. [GET /sites/{site_id}/tags/{tag_id}/entries{?search,searchFields,limit,offset,sortBy,sortOrder,fields,includeIds,excludeIds,status,status,maxComments,maxTrackbacks,no_text_filter,dateField,dateFrom,dateTo}]
 
 + Authentication required. if want to include unpublished entries.
 
@@ -522,7 +522,7 @@ entry | Object | Yes | | Single Entries resource
           ]
         }
 
-## Retrieve a single entry by its ID. [GET /sites/{site_id}/entries/:entry_id(?fields)]
+## Retrieve a single entry by its ID. [GET /sites/{site_id}/entries/{entry_id}{?fields}]
 
 Authentication required if the entry status is "unpublished".
 
@@ -734,7 +734,7 @@ Code | Status | Description
           ]
         }
 
-# Preview [/sites/:site_id/entries/preview(?raw)]
+# Preview [/sites/{site_id}/entries/preview{?raw}]
 ## Make a preview by specified data. [POST]
 
 Authentication required.
@@ -790,7 +790,7 @@ Authentication required.
           }
         }
 
-## Make a preview for existing data. [POST /sites/:site_id/entries/:entry_id/preview(?raw)]
+## Make a preview for existing data. [POST /sites/{site_id}/entries/{entry_id}/preview{?raw}]
 
 Authentication required.
 

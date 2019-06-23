@@ -441,19 +441,19 @@ Authentication required
 
 :::note
 Authentication required
-:::note
+:::
 
 :::note
 You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog).
+
+Post form data is follows
++ role_id (required, number) - The role ID.
++ user_id (required, number) - The user ID.
 :::
 
 + Parameters
 
   + site_id (required, number) ... The site ID.
-
-+ HTML Body Parameters
-  + role_id (required, number) ... The role ID.
-  + user_id (required, number) ... The user ID.
 
 + Request (application/x-www-form-urlencoded)
 
@@ -477,15 +477,15 @@ Authentication required
 
 :::note
 You should have grant_administer_role or grant_role_for_blog (Need grant_administer_role when granting role having administer_blog).
+
+Post form data is follows
++ site_id (required, number) - The site ID.
++ role_id (required, number) - The role ID.
 :::
 
 + Parameters
 
   + user_id (required, number) ... The user ID.
-
-+ HTML Body Parameters
-  + site_id (required, number) ... The site ID.
-  + role_id (required, number) ... The role ID.
 
 + Request (application/x-www-form-urlencoded)
 
@@ -508,17 +508,18 @@ You should have grant_administer_role or grant_role_for_blog (Need grant_adminis
 :::note
 Authentication required
 :::
+
 :::note
 + You should have revoke_role(Need revoke_administer_role when granting role having administer_blog ).
+
+Post form data is follows
++ user_id (required, number) - The user ID.
++ role_id (required, number) - The role ID.
 :::
 
 + Parameters
 
   + site_id (required, number) ... The site ID.
-
-+ HTML Body Parameters
-  + user_id (required, number) ... The user ID.
-  + role_id (required, number) ... The role ID.
 
 + Request
 
@@ -542,15 +543,15 @@ Authentication required
 :::
 :::note
 + You should have revoke_role(Need revoke_administer_role when granting role having administer_blog ).
+
+Post form data is follows
++ site_id (required, number) - The site ID.
++ role_id (required, number) - The role ID.
 :::
 
 + Parameters
 
   + user_id (required, number) ... The user ID.
-
-+ HTML Body Parameters
-  + site_id (required, number) ... The site ID.
-  + role_id (required, number) ... The role ID.
 
 + Request (application/x-www-form-urlencoded)
 

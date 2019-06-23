@@ -49,7 +49,7 @@ updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>The user who accessed
         },
 
 # Folders [/sites/:site_id/folders/:folder_id]
-## Retrieve a list of folders [GET //sites/:site_id/folders(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+## Retrieve a list of folders [GET /sites/{site_id}/folders{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,top,dateField,dateFrom,dateTo}]
 
 Authentication required if you want to get private properties.
 
@@ -97,7 +97,7 @@ Authentication required if you want to get private properties.
           ]
         }
 
-## Retrieve a list of parent folders [GET /sites/:site_id/folders/:folder_id/parents(?maxDepth, includeCurrent)]
+## Retrieve a list of parent folders [GET /sites/{site_id}/folders/{folder_id}/parents{?maxDepth,includeCurrent,dateField,dateFrom,dateTo}]
 
 Authentication required if you want to get private properties.
 
@@ -138,7 +138,7 @@ Authentication required if you want to get private properties.
           ]
         }
 
-## Retrieve a list of sibling folders [GET /sites/:site_id/folders/:folder_id/siblings(?limit, offset, sortBy, sortOrder, fields, searchFields, search, includeIds, excludeIds, top)]
+## Retrieve a list of sibling folders [GET /sites/{site_id}/folders/{folder_id}/siblings{?limit,offset,sortBy,sortOrder,fields,searchFields,search,includeIds,excludeIds,top,dateField,dateFrom,dateTo}]
 
 Authentication required if you want to get private properties.
 
@@ -187,7 +187,7 @@ Authentication required if you want to get private properties.
           ]
         }
 
-## Retrieve a list of child folders [GET /sites/:site_id/folders/:folder_id/children(?maxDepth, includeCurrent)]
+## Retrieve a list of child folders [GET /sites/{site_id}/folders/{folder_id}/children{?maxDepth,includeCurrent,dateField,dateFrom,dateTo}]
 
 
 + Authentication required if you want to get private properties.
