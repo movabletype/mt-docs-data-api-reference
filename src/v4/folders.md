@@ -24,7 +24,7 @@ Post form data is following:
 
     + Body
 
-            folder={"basename" : "news","parent" : "0","archiveLink" : "http://example.com/news/index.html","updatable" : false,"label" : "News","class" : "category","id" : "1","blog" : {"id" : "1"},"description" : null,"customFields" : [{"basename" : "bannerImage","value" : "http://example.com/images/banner.jpg"}]}
+            folder={"basename" : "news","parent" : "0","label" : "News","description" : null}
 
 + Response 200 (application/json)
 
