@@ -8,8 +8,8 @@ const getCommand = (version) => {
 
 gulp.task('connect', function (done) {
   connect.server({
-    root: '.',
-     livereload: true
+    root: './docs/',
+    livereload: true
   })
   done()
 })
