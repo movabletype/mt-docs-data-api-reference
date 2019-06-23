@@ -9,8 +9,8 @@ Movable Type Data API v3 was released in Movable Type 6.0
 
 <p><a href="http://www.movabletype.jp/">Movable Type</a> &gt; <a href="http://www.movabletype.jp/developers/">開発者向け ドキュメント</a> &gt; <a href="http://www.movabletype.jp/developers/data-api/">Movable Type Data API ドキュメント</a></p>
 
-<!-- include(01_common.md) -->
-<!-- include(02_authentication.md) -->
+<!-- include(common.md) -->
+<!-- include(authentication.md) -->
 <!-- include(assets.md) -->
 <!-- include(categories.md) -->
 <!-- include(comments.md) -->
