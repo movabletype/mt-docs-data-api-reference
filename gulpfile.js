@@ -21,6 +21,7 @@ gulp.task('reload', function (done) {
 })
 
 gulp.task('watch', function (done) {
+  gulp.watch('v2/*.md', gulp.series('build-v2', 'reload'))
   gulp.watch('v3/*.md', gulp.series('build-v3', 'reload'))
   gulp.watch('v4/*.md', gulp.series('build-v4', 'reload'))
   done()
