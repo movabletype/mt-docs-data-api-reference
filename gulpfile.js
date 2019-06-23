@@ -3,7 +3,7 @@ const connect = require('gulp-connect')
 const exec    = require('child_process').exec
 
 const getCommand = (version) => {
-  return `aglio -i ${version}/index.md --theme-full-width --theme-variables flatly -o ${version}-reference.html`
+  return `aglio -i src/${version}/index.md --theme-full-width --theme-variables flatly -o dist/${version}-reference.html`
 }
 
 gulp.task('connect', function (done) {
@@ -21,9 +21,9 @@ gulp.task('reload', function (done) {
 })
 
 gulp.task('watch', function (done) {
-  gulp.watch('v2/*.md', gulp.series('build-v2', 'reload'))
-  gulp.watch('v3/*.md', gulp.series('build-v3', 'reload'))
-  gulp.watch('v4/*.md', gulp.series('build-v4', 'reload'))
+  gulp.watch('src/v2/*.md', gulp.series('build-v2', 'reload'))
+  gulp.watch('src/v3/*.md', gulp.series('build-v3', 'reload'))
+  gulp.watch('src/v4/*.md', gulp.series('build-v4', 'reload'))
   done()
 })
 
