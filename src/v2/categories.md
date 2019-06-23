@@ -316,7 +316,7 @@ category | Object | Yes | | Single Categories resource
 
     + Body
 
-            category={"basename" : "news","parent" : "0","label" : "News","description" : null,}
+            category={"basename" : "news","parent" : "0","label" : "News","description" : null}
 
 + Response 200 (application/json)
 
