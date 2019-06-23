@@ -1,18 +1,12 @@
 install:
-	yarn install
-
-build:
-	yarn build
-
-dev-server:
-	yarn dev-server
-
-docker-install:
 	docker-compose build
 
-docker-build:
+build:
 	docker-compose run docs
 
-docker-dev-server:
+start-dev-server:
 	docker-compose run docs yarn dev-server
+
+clean:
+	docker-compose rm -f -v
 

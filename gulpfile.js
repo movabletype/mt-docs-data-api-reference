@@ -54,7 +54,7 @@ gulp.task('build-v4', (done) => {
   })
 })
 
-gulp.task('dev-server', gulp.parallel('connect', 'watch'))
+gulp.task('start-dev-server', gulp.parallel('connect', 'watch'))
 gulp.task('build', gulp.series('build-v4', 'build-v3', 'build-v2'))
 
 gulp.task('default', gulp.parallel('build'))
