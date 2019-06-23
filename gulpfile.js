@@ -3,7 +3,7 @@ const connect = require('gulp-connect')
 const exec    = require('child_process').exec
 
 const getCommand = (version) => {
-  return `aglio -i src/${version}/index.md --theme-full-width --theme-variables flatly -o dist/${version}-reference.html`
+  return `aglio -i src/${version}/index.md --theme-full-width --theme-variables flatly -o docs/${version}-reference.html`
 }
 
 gulp.task('connect', function (done) {
