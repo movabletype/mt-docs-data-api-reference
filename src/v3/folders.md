@@ -266,28 +266,24 @@ folder | Object | Yes | | Single Folders resource
 + Response 200 (application/json)
 
         {
-          "totalResults" : "1",
-          "items" : [
-            {
-            "basename" : "news",
-            "blog" : {
-              "id" : "1"
-            },
-            "class" : "folder",
-            "createdBy" : {
-              "displayName" : "Masahiro IUCHI"
-              "userpicUrl" : null,
-            },
-            "createdDate" : "2019-07-03T18:19:40+09:00",
-            "customFields" : [],
-            "description" : null,
-            "id" : 2,
-            "label" : "News",
-            "modifiedDate" : "2019-07-03T18:19:40+09:00",
-            "parent" : "0",
-            "path" : "https://example.com/site/news",
-            "updatable" : true
-          ]
+          "basename" : "news",
+          "blog" : {
+            "id" : "1"
+          },
+          "class" : "folder",
+          "createdBy" : {
+            "displayName" : "Masahiro IUCHI"
+            "userpicUrl" : null,
+          },
+          "createdDate" : "2019-07-03T18:19:40+09:00",
+          "customFields" : [],
+          "description" : null,
+          "id" : 2,
+          "label" : "News",
+          "modifiedDate" : "2019-07-03T18:19:40+09:00",
+          "parent" : "0",
+          "path" : "https://example.com/site/news",
+          "updatable" : true
         }
 
 ## Retrieve a single folder by its ID. [GET /sites/{site_id}/folders/{folder_id}{?fields}]
