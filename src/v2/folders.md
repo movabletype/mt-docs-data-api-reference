@@ -322,3 +322,64 @@ Code | Status | Description
           "path" : "https://example.com/site/news",
           "updatable" : false
         }
+
+## updateFolder [/sites/{site_id}/Folders/{folder_id}]
+
+### New in v2.0: Update an existing folder. [PUT]
++ Authorization is required.
++ This method accepts PUT and POST with __method=PUT.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to update a folder.
+404 | Not Found | Site or Folder not found.
+
+**Permission**
+
++ Manage Pages
+
+**Request Body Parameters**
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+folder | Object | Yes | | Single Folders resource
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + folder_id (required, number) ... The folder ID.
+
++ Request Categories resource
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            folder={"basename" : "news","parent" : "0","label" : "News","description" : null}
+
++ Response 200 (application/json)
+
+        {
+          "basename" : "news",
+          "blog" : {
+            "id" : "1"
+          },
+          "class" : "folder",
+          "createdBy" : {
+            "displayName" : "Masahiro IUCHI"
+            "userpicUrl" : null,
+          },
+          "createdDate" : "2019-07-03T18:19:40+09:00",
+          "customFields" : [],
+          "description" : null,
+          "id" : 2,
+          "label" : "News",
+          "modifiedDate" : "2019-07-03T18:19:40+09:00",
+          "parent" : "0",
+          "path" : "https://example.com/site/news",
+          "updatable" : true
+        }
