@@ -229,4 +229,64 @@ Authentication required if you want to get private properties.
           ]
         }
 
+## Create a new folder. [POST /sites/{site_id}/folders]
+Authentication required.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to create a new folder.
+404 | Not Found | Site not found.
+
+**Permission**
+
++ Manage Pages
+
+**Request Body Parameters**
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+folder | Object | Yes | | Single Folders resource
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+
++ Request Folders resource
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            folder={"basename" : "news","parent" : "0","label" : "News","description" : null}
+
++ Response 200 (application/json)
+
+        {
+          "totalResults" : "1",
+          "items" : [
+            {
+            "basename" : "news",
+            "blog" : {
+              "id" : "1"
+            },
+            "class" : "folder",
+            "createdBy" : {
+              "displayName" : "Masahiro IUCHI"
+              "userpicUrl" : null,
+            },
+            "createdDate" : "2019-07-03T18:19:40+09:00",
+            "customFields" : [],
+            "description" : null,
+            "id" : 2,
+            "label" : "News",
+            "modifiedDate" : "2019-07-03T18:19:40+09:00",
+            "parent" : "0",
+            "path" : "https://example.com/site/news",
+            "updatable" : false
+          ]
+        }
 
