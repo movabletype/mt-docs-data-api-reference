@@ -1,6 +1,6 @@
 # Group Folders
 
-## Folder Collection [/sites/{site_id}/folders/{folder_id}]
+## Folder Collection [/sites/{site_id}/folders]
 
 + Parameters
     + site_id (required, number) - The site ID.
