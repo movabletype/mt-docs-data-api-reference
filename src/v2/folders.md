@@ -383,3 +383,48 @@ folder | Object | Yes | | Single Folders resource
           "path" : "https://example.com/site/news",
           "updatable" : true
         }
+
+## deleteFolder [/sites/{site_id}/folders/{folder_id}]
+### New in v2.0: Delete an existing folder. [DELETE]
++ Authorization is required.
++ This method accepts DELETE and POST with __method=DELETE.
++ This method returns deleted Folder resource.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to delete a folder.
+404 | Not Found | Site or Folder not found.
+
+**Permission**
+
++ Manage Pages
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + folder_id (required, number) ... The folder ID.
+
++ Response 200 (application/json)
+
+        {
+          "basename" : "news",
+          "blog" : {
+            "id" : "1"
+          },
+          "class" : "folder",
+          "createdBy" : {
+            "displayName" : "Masahiro IUCHI"
+            "userpicUrl" : null,
+          },
+          "createdDate" : "2019-07-03T18:19:40+09:00",
+          "customFields" : [],
+          "description" : null,
+          "id" : 2,
+          "label" : "News",
+          "modifiedDate" : "2019-07-03T18:19:40+09:00",
+          "parent" : "0",
+          "path" : "https://example.com/site/news",
+          "updatable" : true
+        }
