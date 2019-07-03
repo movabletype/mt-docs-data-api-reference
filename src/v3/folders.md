@@ -286,7 +286,45 @@ folder | Object | Yes | | Single Folders resource
             "modifiedDate" : "2019-07-03T18:19:40+09:00",
             "parent" : "0",
             "path" : "https://example.com/site/news",
-            "updatable" : false
+            "updatable" : true
           ]
+        }
+
+## Retrieve a single folder by its ID. [GET /sites/{site_id}/folders/{folder_id}{?fields}]
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to retrieve a folder.
+404 | Not Found | Folder or site not found.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+    + folder_id (required, number) ... The folder ID.
+    + fields (optional, string) ... The field list to retrieve as part of the Folders resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
+
++ Response 200 (application/json)
+
+        {
+          "basename" : "news",
+          "blog" : {
+            "id" : "1"
+          },
+          "class" : "folder",
+          "createdBy" : {
+            "displayName" : "Masahiro IUCHI"
+            "userpicUrl" : null,
+          },
+          "createdDate" : "2019-07-03T18:19:40+09:00",
+          "customFields" : [],
+          "description" : null,
+          "id" : 2,
+          "label" : "News",
+          "modifiedDate" : "2019-07-03T18:19:40+09:00",
+          "parent" : "0",
+          "path" : "https://example.com/site/news",
+          "updatable" : false,
         }
 
