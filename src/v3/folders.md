@@ -433,3 +433,84 @@ Code | Status | Description
           "path" : "https://example.com/site/news",
           "updatable" : false,
         }
+
+## Rearrange existing folders in a new order. [POST /sites/{site_id}/folders/permutate]
+Authentication required.
+
+This method returns rearranged Folders resource.
+
+**Status Code**
+
+Code | Status | Description
+---- | ------ | -----------
+200 | OK | No Errors.
+403 | Forbidden | Do not have permission to rearrange folders.
+404 | Not Found | Site not found.
+
+**Permission**
+
++ Manage Pages
+
+**Request Body Parameters**
+
+Name | Type | Required | Default | Description
+---- | ---- | -------- | ------- | -----------
+folders | ARRAY | Yes | | Array of Folders resource that will be rearranged.
+
++ Parameters
+    + site_id (required, number) ... The site ID.
+
++ Request Assets resource
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            folders=[{"id" : "2"},{"id" : "2"}]
+
++ Response 200 (application/json)
+
+        [
+          {
+            "basename" : "news",
+            "blog" : {
+              "id" : "1"
+            },
+            "class" : "folder",
+            "createdBy" : {
+              "displayName" : "Masahiro IUCHI"
+              "userpicUrl" : null,
+            },
+            "createdDate" : "2019-07-03T18:19:40+09:00",
+            "customFields" : [],
+            "description" : null,
+            "id" : 2,
+            "label" : "News",
+            "modifiedDate" : "2019-07-03T18:19:40+09:00",
+            "parent" : "0",
+            "path" : "https://example.com/site/news",
+            "updatable" : true,
+          },
+          {
+            "basename" : "events",
+            "blog" : {
+              "id" : "1"
+            },
+            "class" : "folder",
+            "createdBy" : {
+              "displayName" : "Masahiro IUCHI"
+              "userpicUrl" : null,
+            },
+            "createdDate" : "2019-07-03T18:19:40+09:00",
+            "customFields" : [],
+            "description" : null,
+            "id" : 1,
+            "label" : "Events",
+            "modifiedDate" : "2019-07-03T18:19:40+09:00",
+            "parent" : "0",
+            "path" : "https://example.com/site/events",
+            "updatable" : true,
+          }
+        ]
