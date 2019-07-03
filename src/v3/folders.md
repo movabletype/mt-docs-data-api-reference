@@ -363,7 +363,7 @@ folder | Object | Yes | | Single Folders resource
 
     + Body
 
-            category={"basename" : "news","parent" : "0","label" : "News","description" : null}
+            folder={"basename" : "news","parent" : "0","label" : "News","description" : null}
 
 + Response 200 (application/json)
 
