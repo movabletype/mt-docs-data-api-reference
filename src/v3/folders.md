@@ -385,7 +385,7 @@ folder | Object | Yes | | Single Folders resource
           "modifiedDate" : "2019-07-03T18:19:40+09:00",
           "parent" : "0",
           "path" : "https://example.com/site/news",
-          "updatable" : false,
+          "updatable" : true,
         }
 
 ## Delete an existing fodler. [DELETE]
@@ -431,7 +431,7 @@ Code | Status | Description
           "modifiedDate" : "2019-07-03T18:19:40+09:00",
           "parent" : "0",
           "path" : "https://example.com/site/news",
-          "updatable" : false,
+          "updatable" : true,
         }
 
 ## Rearrange existing folders in a new order. [POST /sites/{site_id}/folders/permutate]
