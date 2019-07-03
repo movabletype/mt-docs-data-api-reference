@@ -288,7 +288,7 @@ Code | Status | Description
           ]
         }
 
-## Create a new category. [GET /sites/{site_id}/categories]
+## Create a new category. [POST /sites/{site_id}/categories]
 Authentication required.
 
 **Status Code**

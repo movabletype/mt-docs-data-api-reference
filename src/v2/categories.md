@@ -284,7 +284,7 @@ Code | Status | Description
 
 ## createCategory [/sites/{site_id}/categories]
 
-### New in v2.0: Create a new category. [GET]
+### New in v2.0: Create a new category. [POST]
 + Authorization is required.
 
 **Status Code**
