@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/movabletype/mt-docs-data-api-reference.git"
   },
-  "author": "Six Apart, Ltd.",
+  "author": "Six Apart Ltd.",
   "license": "UNLICENSED",
   "private": true,
   "bugs": {

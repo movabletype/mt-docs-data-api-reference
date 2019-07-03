@@ -15,7 +15,7 @@ uninstallable | value | boolean | - | Y | Y | <dl><dt>true</dt><dd>This theme is
 version | value | string | - | Y | Y | The version number for this theme. | v2
 
         {
-          "authorName": "Six Apart, Ltd.",
+          "authorName": "Six Apart Ltd.",
           "authorLink": "http://www.movabletype.org/",
           "version": "1.14",
           "description": "\"Rainier\" is a customizable Responsive Web Design theme, designed for blogs. In addition to multi-device viewing support, provided by Media Query (CSS), Movable Type functions make customizing navigational contents as well as image elements, such as logos, headers, very simple.",
@@ -49,7 +49,7 @@ Authentication required
           "totalResults": 9,
           "items": [
             {
-              "authorName": "Six Apart, Ltd.",
+              "authorName": "Six Apart Ltd.",
               "authorLink": "http://www.movabletype.org/",
               "version": "1.14",
               "description": "\"Rainier\" is a customizable Responsive Web Design theme, designed for blogs. In addition to multi-device viewing support, provided by Media Query (CSS), Movable Type functions make customizing navigational contents as well as image elements, such as logos, headers, very simple.",
@@ -59,7 +59,7 @@ Authentication required
               "label": "Rainier"
             },
             {
-              "authorName": "Six Apart, Ltd.",
+              "authorName": "Six Apart Ltd.",
               "authorLink": "http://www.movabletype.org/",
               "version": "1.3",
               "description": "Create a blog portal that aggregates contents from several blogs in one website.",
@@ -69,7 +69,7 @@ Authentication required
               "id": "classic_website"
             },
             {
-              "authorName": "Six Apart, Ltd.",
+              "authorName": "Six Apart Ltd.",
               "authorLink": "http://www.sixapart.com/",
               "version": "1.11",
               "description": "Professional designed, well structured and easily adaptable web site. You can customize default pages, footer and top navigation easily.",
@@ -79,7 +79,7 @@ Authentication required
               "id": "professional_website"
             },
             {
-              "authorName": "Six Apart, Ltd",
+              "authorName": "Six Apart Ltd",
               "authorLink": "http://www.sixapart.com/",
               "version": "1.44",
               "description": "Eiger is a customizable Responsive Web Design theme, designed for blogs and corporate websites. In addition to multi-device viewing support, provided via Media Query (CSS), Movable Type functions make customizing navigational contents as well as image elements, such as logos, headers or banners, very simple.",
@@ -89,7 +89,7 @@ Authentication required
               "id": "eiger"
             },
             {
-              "authorName": "Six Apart, Ltd.",
+              "authorName": "Six Apart Ltd.",
               "authorLink": "http://www.movabletype.org/",
               "version": "1.3",
               "description": "Pico is a microblogging theme, designed for keeping things simple to handle frequent updates. To put the focus on content we've moved the sidebars below the list of posts.",
@@ -99,7 +99,7 @@ Authentication required
               "id": "pico"
             },
             {
-              "authorName": "Six Apart, Ltd.",
+              "authorName": "Six Apart Ltd.",
               "authorLink": "http://www.movabletype.org/",
               "version": "1.3",
               "description": "A traditional blogging design that comes with plenty of styles and a selection of 2 column / 3 column layouts. Best for use in standard blog publishing applications.",
@@ -109,7 +109,7 @@ Authentication required
               "id": "classic_blog"
             },
             {
-              "authorName": "Six Apart, Ltd.",
+              "authorName": "Six Apart Ltd.",
               "authorLink": "http://www.sixapart.com/",
               "version": "1.01",
               "description": "Increase reader engagement - deploy features to your website that make it easier for your readers to engage with your content and your company.",
@@ -119,7 +119,7 @@ Authentication required
               "id": "mt_community_blog"
             },
             {
-              "authorName": "Six Apart, Ltd.",
+              "authorName": "Six Apart Ltd.",
               "authorLink": "http://www.sixapart.com/",
               "version": "1.01",
               "description": "Create forums where users can post topics and responses to topics.",
@@ -129,7 +129,7 @@ Authentication required
               "id": "mt_community_forum"
             },
             {
-              "authorName": "Six Apart, Ltd.",
+              "authorName": "Six Apart Ltd.",
               "authorLink": "http://www.sixapart.com/",
               "version": "1.11",
               "description": "Create a blog as a part of structured website. This works best with Professional Website theme.",
@@ -164,7 +164,7 @@ Authentication required
 + Response 200 (application/json)
 
         {
-          "authorName": "Six Apart, Ltd.",
+          "authorName": "Six Apart Ltd.",
           "authorLink": "http://www.movabletype.org/",
           "version": "1.14",
           "description": "\"Rainier\" is a customizable Responsive Web Design theme, designed for blogs. In addition to multi-device viewing support, provided by Media Query (CSS), Movable Type functions make customizing navigational contents as well as image elements, such as logos, headers, very simple.",
