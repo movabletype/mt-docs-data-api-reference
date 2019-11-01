@@ -90,8 +90,8 @@ Authentication required
 
 
 + Parameters
-    + limit = `25` (optional, number) ... Maximum number of permissions to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of permissions to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `bog_id` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>id</li><li>blog_id</li><li>author_id</li><li>created_by</li><li>created_on</li></ul>
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
@@ -177,8 +177,8 @@ Authentication required
 
 + Parameters
     + user_id (required, number or the word 'me') ... The user ID.
-    + limit = `25` (optional, number) ... Maximum number of permissions to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of permissions to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `bog_id` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>id</li><li>blog_id</li><li>author_id</li><li>created_by</li><li>created_on</li></ul>
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
@@ -269,8 +269,8 @@ Authentication required
 
 + Parameters
     + site_id (required, number) ... The site ID.
-    + limit = `25` (optional, number) ... Maximum number of permissions to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of permissions to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `bog_id` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>id</li><li>blog_id</li><li>author_id</li><li>created_by</li><li>created_on</li></ul>
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
@@ -358,8 +358,8 @@ Authentication required
 
 + Parameters
     + role_id (required, number) ... The role ID.
-    + limit = `25` (optional, number) ... Maximum number of permissions to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of permissions to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `bog_id` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>id</li><li>blog_id</li><li>author_id</li><li>created_by</li><li>created_on</li></ul>
     + sortOrder = `ascend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return permissions in descending order.</dd><dt>ascend</dt><dd>Return permissions in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Permissions resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.

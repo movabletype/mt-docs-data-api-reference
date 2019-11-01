@@ -73,8 +73,8 @@ Authentication required.
     + site_id (required, number) ... The site ID. If 0 specified, will load from global template in the system.
     + search (optional, string) ... Search query.
     + searchFields = `label` (optional, string) ... The comma separated list of field names to search.
-    + limit = `10` (optional, number) ... Maximum number of templates to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of templates to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `name` (optional, string) ... <dl><dt>id</dt><dd>Sort by the ID of each template.</dd><dt>name</dt><dd>Sort by the name of each template.</dd><dt>created_on</dt><dd>Sort by the created time of each template.</dd><dt>modified_on</dt><dd>Sort by the modified time of each template.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each template.</dd><dt>modified_by</dt><dd>Sort by the ID of user who modified each template.</dd><dt>type</dt><dd>Sort by the type of each template.</dd></dt>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>Return templates in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return templates in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Templates resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.

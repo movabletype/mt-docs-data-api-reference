@@ -94,8 +94,8 @@ Code | Status | Description
 + Parameters
     + search (optional, string) ... Search query.
     + searchFields = `name,displayName,email,url` (optional, string) ... The comma separated field name list to search.
-    + limit = `10` (optional, number) ... Maximum number of users to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of users to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `name` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>id</li><li>name</li></ul>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return users in descending order.</dd><dt>ascend</dt><dd>Return users in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Users resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.

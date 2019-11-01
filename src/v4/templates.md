@@ -15,8 +15,8 @@ Retrieve a list of templates. This endpoint requires following permissions.
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `label` (optional, string) - The comma separated list of field names to search.
-    + limit: `10` (optional, number) - Maximum number of templates to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of templates to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `name` (optional, string) - 
         * id: Sort by the ID of each template.
         * name: Sort by the name of each template.
