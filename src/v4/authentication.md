@@ -21,7 +21,7 @@ The post data is follows
 
     + Body
 
-            username={Your Sign-in Name}&password={Your sign-in Password}&clientid={Your Client ID}
+            username={Your Sign-in Name}&password={Your sign-in Password}&clientId={Your Client ID}
 
 + Response 200 (application/json)
 

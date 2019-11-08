@@ -19,7 +19,7 @@ Create a new session and access token. This is like sign-in.
 
     + Body
 
-            username={Your Sign-in Name}&password={Your Web Service Password}&clientid={Your Client ID}
+            username={Your Sign-in Name}&password={Your Web Service Password}&clientId={Your Client ID}
 
 + Response 200 (application/json)
 
