@@ -16,8 +16,8 @@ Authentication required if you want to retrieve unpublished content data. Requir
 * Edit All Content Data (each content type)
 
 + Parameters
-    + limit: 10 (optional, number) - Maximum number of content data to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: 50 (optional, number) - Maximum number of content data to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `id` (optional, string) - The field name for sort. You can specify one of following values.
         * id
         * uniqueID

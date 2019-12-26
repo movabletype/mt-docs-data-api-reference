@@ -107,8 +107,8 @@ Code | Status | Description
     + site_id (required, number) ... The site ID.
     + search (optional, string) ... Search query.
     + searchFields = `title,body,more,keywords,excerpt,basename` (optional, string) ... The comma separated field name list to search.
-    + limit = `10` (optional, number) ... Maximum number of entries to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of entries to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `authored_on` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>authored_on</li><li>title</li><li>created_on</li><li>modified_on</li></ul>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return entries in descending order.</dd><dt>ascend</dt><dd>Return entries in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
@@ -195,8 +195,8 @@ Code | Status | Description
     + category_id (required, number) ... The category ID.
     + search (optional, string) ... Search query.
     + searchFields = `title,body,more,keywords,excerpt,basename` (optional, string) ... The comma separated field name list to search.
-    + limit = `10` (optional, number) ... Maximum number of entries to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of entries to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `authored_on` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>authored_on</li><li>title</li><li>created_on</li><li>modified_on</li></ul>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return entries in descending order.</dd><dt>ascend</dt><dd>Return entries in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
@@ -283,8 +283,8 @@ Code | Status | Description
     + asset_id (required, number) ... The asset ID.
     + search (optional, string) ... Search query.
     + searchFields = `title,body,more,keywords,excerpt,basename` (optional, string) ... The comma separated field name list to search.
-    + limit = `10` (optional, number) ... Maximum number of entries to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of entries to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `authored_on` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>authored_on</li><li>title</li><li>created_on</li><li>modified_on</li></ul>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return entries in descending order.</dd><dt>ascend</dt><dd>Return entries in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
@@ -371,8 +371,8 @@ Code | Status | Description
     + tag_id (required, number) ... The tag ID.
     + search (optional, string) ... Search query.
     + searchFields = `title,body,more,keywords,excerpt,basename` (optional, string) ... The comma separated field name list to search.
-    + limit = `10` (optional, number) ... Maximum number of entries to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of entries to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `authored_on` (optional, string) ... The field name for sort. You can specify one of following values<ul><li>authored_on</li><li>title</li><li>created_on</li><li>modified_on</li></ul>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return entries in descending order.</dd><dt>ascend</dt><dd>Return entries in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.

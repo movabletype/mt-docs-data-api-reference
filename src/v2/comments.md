@@ -80,8 +80,8 @@ Code | Status | Description
     + site_id (required, number) ... The site ID.
     + search (optional, string) ... Search query.
     + searchFields = `body` (optional, string) ... The comma separated field name list to search.
-    + limit = `10` (optional, number) ... Maximum number of comments to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of comments to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `id` (optional, string) ... The field name for sort.
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return comments in descending order.</dd><dt>ascend</dt><dd>Return comments in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Comments resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
@@ -146,8 +146,8 @@ Code | Status | Description
     + entry_id (required, number) ... The entry ID.
     + search (optional, string) ... Search query.
     + searchFields = `body` (optional, string) ... The comma separated field name list to search.
-    + limit = `10` (optional, number) ... Maximum number of comments to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of comments to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `id` (optional, string) ... The field name for sort.
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return comments in descending order.</dd><dt>ascend</dt><dd>Return comments in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Comments resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
@@ -210,8 +210,8 @@ Code | Status | Description
     + page_id (required, number) ... The page ID.
     + search (optional, string) ... Search query.
     + searchFields = `body` (optional, string) ... The comma separated field name list to search.
-    + limit = `10` (optional, number) ... Maximum number of comments to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of comments to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `id` (optional, string) ... The field name for sort.
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return comments in descending order.</dd><dt>ascend</dt><dd>Return comments in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Comments resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.

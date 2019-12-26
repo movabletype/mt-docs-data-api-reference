@@ -79,8 +79,8 @@ Code | Status | Description
     + site_id (required, number) ... The site ID.
     + search (optional, string) ... Search query.
     + searchFields = `label,basename` (optional, string) ... The comma separated list of field names to search.
-    + limit = `10` (optional, number) ... Maximum number of categories to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of categories to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each category.</dd><dt>id</dt><dd>Sort by the ID of each category.</dd><dt>basename</dt><dd>Sort by the basename of each category.</dd><dt>label</dt><dd>Sort by the label of each category.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return categories in descending order.</dd><dt>ascend</dt><dd>Return categories in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Categories resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
@@ -130,8 +130,8 @@ Code | Status | Description
     + entry_id (required, number) ... The entry ID.
     + search (optional, string) ... Search query.
     + searchFields = `label,basename` (optional, string) ... The comma separated list of field names to search.
-    + limit = `10` (optional, number) ... Maximum number of categories to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of categories to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each category.</dd><dt>id</dt><dd>Sort by the ID of each category.</dd><dt>basename</dt><dd>Sort by the basename of each category.</dd><dt>label</dt><dd>Sort by the label of each category.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return categories in descending order.</dd><dt>ascend</dt><dd>Return categories in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Categories resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.
@@ -215,8 +215,8 @@ Code | Status | Description
     + category_id (required, number) ... The category ID.
     + search (optional, string) ... Search query.
     + searchFields = `label,basename` (optional, string) ... The comma separated list of field names to search.
-    + limit = `10` (optional, number) ... Maximum number of categories to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of categories to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Categories screen.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each category.</dd><dt>id</dt><dd>Sort by the ID of each category.</dd><dt>basename</dt><dd>Sort by the basename of each category.</dd><dt>label</dt><dd>Sort by the label of each category.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return categories in descending order.</dd><dt>ascend</dt><dd>Return categories in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Categories resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.

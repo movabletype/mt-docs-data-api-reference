@@ -261,8 +261,8 @@ Code | Status | Description
     + site_id (required, number) ... The site ID. If 0 specified, will retrieve system-level assets.
     + search (optional, string) ... Search query.
     + searchFields = `label` (optional, string) ... The comma separated list of field names to search.
-    + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of assets to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + class (optional, string) ... The target asset class to retrieve. Supported values are 'image’, 'audio’, 'video’, 'file’, and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
     + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset. </dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
@@ -330,8 +330,8 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID.
     + entry_id (required, number) ... The entry ID.
-    + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of assets to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + class (optional, string) ... The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
     + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset.</dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
@@ -398,8 +398,8 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID.
     + page_id (required, number) ... The page ID.
-    + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of assets to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + class (optional, string) ... The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
     + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset.</dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
@@ -467,8 +467,8 @@ Code | Status | Description
 + Parameters
     + site_id (required, number) ... The site ID.
     + tag_id (required, number) ... The tag ID.
-    + limit = `10` (optional, number) ... Maximum number of assets to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of assets to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + class (optional, string) ... The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
     + sortBy = `created_on` (optional, string) ... <dl><dt>file_name</dt><dd>Sort by the filename of each asset.</dd><dt>created_by</dt><dd>Sort by the ID of user who created each asset.</dd><dt>created_on</dt><dd>(default) Sort by the created time of each asset.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return assets in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return assets in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>

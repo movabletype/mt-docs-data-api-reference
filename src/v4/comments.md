@@ -11,8 +11,8 @@ Authorization is required if you want to retrieve unpublished comments.
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `body` (optional, string) - The comma separated field name list to search.
-    + limit: 10 (optional, number) - Maximum number of comments to retrieve.
-    + offset: 0 (optional, number) - 0-indexed offset.
+    + limit: 50 (optional, number) - Maximum number of comments to retrieve. An integer value between 1 and 2147483647.
+    + offset: 0 (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: id (optional, string) - The field name for sort.
     + sortOrder: `descend` (optional, string) - 
         * descend (default): Return comments in descending order.
@@ -100,8 +100,8 @@ Authorization is required if you want to retrieve unpublished comments.
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `body` (optional, string) - The comma separated field name list to search.
-    + limit: `10` (optional, number) - Maximum number of comments to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of comments to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `id` (optional, string) - The field name for sort.
     + sortOrder: `descend` (optional, string) - 
         + descend (default): Return comments in descending order.
@@ -183,8 +183,8 @@ Authentication is required if want to include unpublished comments.
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `body` (optional, string) - The comma separated field name list to search.
-    + limit: `10` (optional, number) - Maximum number of comments to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of comments to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `id` (optional, string) - The field name for sort.
     + sortOrder: `descend` (optional, string) - 
         + descend (default): Return comments in descending order.

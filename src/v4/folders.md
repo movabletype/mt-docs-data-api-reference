@@ -50,8 +50,8 @@ Authentication required if you want to get private properties. Requires permissi
 * Manage Pages
 
 + Parameters
-    + limit: `10` (optional, number) - Maximum number of folders to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of folders to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `user_custom` (optional, string) - 
         + user_custom: Sort order you specified on the Manage Folders screen.
         + created_by: Sort by the ID of creator. 
@@ -143,8 +143,8 @@ Authentication required if you want to get private properties. Requires permissi
 * Manage Pages
 
 + Parameters
-    + limit: `10` (optional, number) - Maximum number of folders to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of folders to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `user_custom` (optional, string) - 
         + user_custom: Sort order you specified on the Manage Folders screen.
         + created_by: Sort by the ID of creator. 

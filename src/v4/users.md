@@ -16,8 +16,8 @@ Authentication required if you want to include inactive users or to get the priv
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `name,displayName,email,url` (optional, string) - The comma separated field name list to search.
-    + limit: `10` (optional, number) - Maximum number of users to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of users to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `name` (optional, string) - The field name for sort. You can specify one of following values
         * id
         * name

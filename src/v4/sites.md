@@ -8,8 +8,8 @@ Retrieve a list of sites.
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `name` (optional, string) - Only 'name' is available.
-    + limit: `25` (optional, number) - Maximum number of sites to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of sites to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `name` (optional, string) - Only 'name' is available
     + sortOrder: `descend` (optional, string) - 
         * descend (default): Return sites in descending order.
@@ -80,8 +80,8 @@ Retrieve a list of sites by user. The list includes only the site for which the 
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `name` (optional, string) - Only 'name' is available.
-    + limit: `25` (optional, number) - Maximum number of sites to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of sites to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `name` (optional, string) - Only 'name' is available
     + sortOrder: `descend` (optional, string) - 
         * descend (default): Return sites in descending order.
@@ -122,8 +122,8 @@ Retrieve a list of sites by parent site.
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `name` (optional, string) - Only 'name' is available.
-    + limit: `25` (optional, number) - Maximum number of sites to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of sites to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `name` (optional, string) - Only 'name' is available
     + sortOrder: `descend` (optional, string) - 
         * descend (default): Return sites in descending order.

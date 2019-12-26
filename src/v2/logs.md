@@ -52,8 +52,8 @@ upatable | value | boolean | |  | Y | <dl><dt>true</dt><dd>The user who accessed
     + site_id (required, number) ... The site ID. If 0 specified, will load from global template in the system.
     + search (optional, string) ... Search query.
     + searchFields = `message,ip` (optional, string) ... The comma separated list of field names to search. Available value is 'message' and 'ip'.
-    + limit = `25` (optional, number) ... Maximum number of logs to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of logs to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `created_on` (optional, string) ... <ul><li>id</li><li>created_on</li><li>blog_id</li><li>author_id</li><li>level</li><li>class</li></ul>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>Return templates in descending order. For sorting by date, it means from newest to oldest.</dd><dt>ascend</dt><dd>Return templates in ascending order. For sorting by date, it means from oldest to newest.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Logs resource. The list of field names should be separated by commas. If this parameter is not specified, all fields will be returned.

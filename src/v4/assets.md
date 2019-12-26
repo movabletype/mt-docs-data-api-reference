@@ -67,8 +67,8 @@ Retrieve list of assets in the specified site.
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `label` (optional, string) - The comma separated list of field names to search.
-    + limit: 10 (optional, number) - Maximum number of assets to retrieve.
-    + offset: 0 (optional, number) - 0-indexed offset.
+    + limit: 50 (optional, number) - Maximum number of assets to retrieve. An integer value between 1 and 2147483647.
+    + offset: 0 (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + class (optional, string) - The target asset class to retrieve. Supported values are 'image’, 'audio’, 'video’, 'file’, and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
     + sortBy: `created_on` (optional, string) - 
     
@@ -118,8 +118,8 @@ Retrieve list of assets in the specified site.
 Retrieve assets that related with specified entry.
 
 + Parameters
-    + limit: 10 (optional, number) - Maximum number of assets to retrieve.
-    + offset: 0 (optional, number) - 0-indexed offset.
+    + limit: 50 (optional, number) - Maximum number of assets to retrieve. An integer value between 1 and 2147483647.
+    + offset: 0 (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + class (optional, string) - The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
     + sortBy: `created_on` (optional, string) - 
     
@@ -167,8 +167,8 @@ Retrieve assets that related with specified entry.
 Retrieve assets that related with specified page.
 
 + Parameters
-    + limit: 10 (optional, number) - Maximum number of assets to retrieve.
-    + offset: 0 (optional, number) - 0-indexed offset.
+    + limit: 50 (optional, number) - Maximum number of assets to retrieve. An integer value between 1 and 2147483647.
+    + offset: 0 (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + class (optional, string) - The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
     + sortBy: `created_on` (optional, string) - 
     
@@ -216,8 +216,8 @@ Retrieve assets that related with specified page.
 Retrieve assets that related with specified tag.
 
 + Parameters
-    + limit: 10 (optional, number) - Maximum number of assets to retrieve.
-    + offset: 0 (optional, number) - 0-indexed offset.
+    + limit: 50 (optional, number) - Maximum number of assets to retrieve. An integer value between 1 and 2147483647.
+    + offset: 0 (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + class (optional, string) - The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.
     + sortBy: `created_on` (optional, string) - 
     

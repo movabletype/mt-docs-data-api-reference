@@ -48,8 +48,8 @@ Retrieve list of categories in the specified site.
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `label,basename` (optional, string) - The comma separated list of field names to search.
-    + limit: 10 (optional, number) - Maximum number of categories to retrieve.
-    + offset: 0 (optional, number) - 0-indexed offset.
+    + limit: 50 (optional, number) - Maximum number of categories to retrieve. An integer value between 1 and 2147483647.
+    + offset: 0 (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `user_custom` (optional, string) -
         * user_custom: Sort order you specified on the Manage Categories screen.
         * created_by: Sort by the ID of user who created each category.
@@ -95,8 +95,8 @@ Retrieve list of categories in the specified site. If you want to retrieve the n
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `label,basename` (optional, string) - The comma separated list of field names to search.
-    + limit: 10 (optional, number) - Maximum number of categories to retrieve.
-    + offset: 0 (optional, number) - 0-indexed offset.
+    + limit: 50 (optional, number) - Maximum number of categories to retrieve. An integer value between 1 and 2147483647.
+    + offset: 0 (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `user_custom` (optional, string) -
         * user_custom: Sort order you specified on the Manage Categories screen.
         * created_by: Sort by the ID of user who created each category.
@@ -183,8 +183,8 @@ Retrieve list of siblings categories of the specified category.
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `label,basename` (optional, string) - The comma separated list of field names to search.
-    + limit: 10 (optional, number) - Maximum number of categories to retrieve.
-    + offset: 0 (optional, number) - 0-indexed offset.
+    + limit: 50 (optional, number) - Maximum number of categories to retrieve. An integer value between 1 and 2147483647.
+    + offset: 0 (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `user_custom` (optional, string) - 
         + user_custom: Sort order you specified on the Manage Categories screen.
         * created_by: Sort by the ID of user who created each category.

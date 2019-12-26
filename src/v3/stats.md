@@ -102,8 +102,8 @@ Authentication required.
     + site_id (required, Number) ... The site ID.
     + startDate (required, String) ... This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
     + endDate (required, String) ... This is an required parameter. End date of data. The format is "YYYY-MM-DD".
-    + limit (optional, Number) ... This is an optional parameter. Maximum number of paths to retrieve. Default is 10.
-    + offset (optional, Number) ... This is an optional parameter. 0-indexed offset. Default is 0.
+    + limit (optional, Number) ... This is an optional parameter. Maximum number of paths to retrieve. An integer value between 1 and 2147483647. Default is 50.
+    + offset (optional, Number) ... This is an optional parameter. 0-indexed offset. An integer value between 0 and 2147483647. Default is 0.
     + path (optional, String) ... This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
 
 + Response 200 (application/json)
@@ -169,8 +169,8 @@ Authentication required.
     + site_id (required, Number) ... The site ID.
     + startDate (required, String) ... This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
     + endDate (required, String) ... This is an required parameter. End date of data. The format is "YYYY-MM-DD".
-    + limit (optional, Number) ... This is an optional parameter. Maximum number of paths to retrieve. Default is 10.
-    + offset (optional, Number) ... This is an optional parameter. 0-indexed offset. Default is 0.
+    + limit (optional, Number) ... This is an optional parameter. Maximum number of paths to retrieve. An integer value between 1 and 2147483647. Default is 50.
+    + offset (optional, Number) ... This is an optional parameter. 0-indexed offset. An integer value between 0 and 2147483647. Default is 0.
     + path (optional, String) ... This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
 
 + Response 200 (application/json)
@@ -237,8 +237,8 @@ Authentication required.
     + site_id (required, Number) ... The site ID.
     + startDate (required, String) ... This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
     + endDate (required, String) ... This is an required parameter. End date of data. The format is "YYYY-MM-DD".
-    + limit (optional, Number) ... This is an optional parameter. Maximum number of paths to retrieve. Default is 10.
-    + offset (optional, Number) ... This is an optional parameter. 0-indexed offset. Default is 0.
+    + limit (optional, Number) ... This is an optional parameter. Maximum number of paths to retrieve. An integer value between 1 and 2147483647. Default is 50.
+    + offset (optional, Number) ... This is an optional parameter. 0-indexed offset. An integer value between 0 and 2147483647. Default is 0.
     + path (optional, String) ... This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
     + uniquePath (optional, Boolean) ... This is an optional parameter. If true is given, the MT can return total pageviews for each uniqueness paths. However, that data does not contains page title because its spec. (Sometimes, Google Analytics will return another pageviews by same path.)
 
@@ -304,8 +304,8 @@ Authentication required.
     + site_id (required, Number) ... The site ID.
     + startDate (required, String) ... This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
     + endDate (required, String) ... This is an required parameter. End date of data. The format is "YYYY-MM-DD".
-    + limit (optional, Number) ... This is an optional parameter. Maximum number of paths to retrieve. Default is 10.
-    + offset (optional, Number) ... This is an optional parameter. 0-indexed offset. Default is 0.
+    + limit (optional, Number) ... This is an optional parameter. Maximum number of paths to retrieve. An integer value between 1 and 2147483647. Default is 50.
+    + offset (optional, Number) ... This is an optional parameter. 0-indexed offset. An integer value between 0 and 2147483647. Default is 0.
     + path (optional, String) ... This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
     + uniquePath (optional, Boolean) ... This is an optional parameter. If true is given, the MT can return total pageviews for each uniqueness paths. However, that data does not contains page title because its spec. (Sometimes, Google Analytics will return another pageviews by same path.)
 

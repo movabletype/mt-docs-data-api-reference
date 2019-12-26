@@ -7,8 +7,8 @@
 Retrieve a list of permissions. Only system administrator can call this endpoint.
 
 + Parameters
-    + limit: `25` (optional, number) - Maximum number of permissions to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of permissions to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `bog_id` (optional, string) - The field name for sort. You can specify one of following values
         * id
         * blog_id
@@ -55,8 +55,8 @@ Retrieve a list of permissions by user.
 System administrator can retrieve all user's permission list. Other users, can retrieve their own permission list.
 
 + Parameters
-    + limit: `25` (optional, number) - Maximum number of permissions to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of permissions to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `bog_id` (optional, string) - The field name for sort. You can specify one of following values
         * id
         * blog_id
@@ -103,8 +103,8 @@ Retrieve a list of permissions by site.
 System administrator can retrieve permission list for every site. Site Administrator can retrieve their own site permission list.
 
 + Parameters
-    + limit: `25` (optional, number) - Maximum number of permissions to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of permissions to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `bog_id` (optional, string) - The field name for sort. You can specify one of following values
         * id
         * blog_id
@@ -148,8 +148,8 @@ System administrator can retrieve permission list for every site. Site Administr
 Retrieve a list of permissions by role. Only system administrator can call this endpoint.
 
 + Parameters
-    + limit: `25` (optional, number) - Maximum number of permissions to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of permissions to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `bog_id` (optional, string) - The field name for sort. You can specify one of following values
         * id
         * blog_id

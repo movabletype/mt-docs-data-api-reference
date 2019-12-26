@@ -55,8 +55,8 @@ Authentication required if you want to get private properties.
 
 + Parameters
     + site_id (required, number) ... The site ID
-    + limit = `10` (optional, number) ... Maximum number of folders to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of folders to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Folders screen.</dd><dt>created_by</dt><dd>Sort by the ID of creator. </dd><dt>id</dt><dd>Sort by its own ID.</dd><dt>basename</dt><dd>Sort by the basename of each folders.</dd><dt>label</dt><dd>Sort by the label of each folders.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return folders in descending  order.</dd><dt>ascend</dt><dd>Return folders in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Folders resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.
@@ -145,8 +145,8 @@ Authentication required if you want to get private properties.
 + Parameters
     + site_id (required, number) ... The site ID
     + folder_id (required, number) ... The folder ID.
-    + limit = `10` (optional, number) ... Maximum number of folders to retrieve.
-    + offset = `0` (optional, number) ... 0-indexed offset.
+    + limit = `50` (optional, number) ... Maximum number of folders to retrieve. An integer value between 1 and 2147483647.
+    + offset = `0` (optional, number) ... 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy = `user_custom` (optional, string) ... <dl><dt>user_custom</dt><dd>Sort order you specified on the Manage Folders screen.</dd><dt>created_by</dt><dd>Sort by the ID of creator. </dd><dt>id</dt><dd>Sort by its own ID.</dd><dt>basename</dt><dd>Sort by the basename of each folders.</dd><dt>label</dt><dd>Sort by the label of each folders.</dd></dl>
     + sortOrder = `descend` (optional, string) ... <dl><dt>descend</dt><dd>(default) Return folders in descending  order.</dd><dt>ascend</dt><dd>Return folders in ascending order.</dd></dl>
     + fields (optional, string) ... The field list to retrieve as part of the Folders resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.

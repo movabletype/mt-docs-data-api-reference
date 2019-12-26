@@ -47,8 +47,8 @@ Retrieve a list of pages. Authentication required if you want to retrieve unpubl
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `title,body,more,keywords,excerpt,basename` (optional, string) - The comma separated field name list to search.
-    + limit: `10` (optional, number) - Maximum number of pages to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of pages to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `modified_on` (optional, string) - The field name for sort. You can specify one of following values.
         * authored_on
         * title
@@ -108,8 +108,8 @@ Authentication required if want to include unpublished pages. Requires permissio
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `title,body,more,keywords,excerpt,basename` (optional, string) - The comma separated field name list to search.
-    + limit: `10` (optional, number) - Maximum number of pages to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of pages to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `modified_on` (optional, string) - The field name for sort. You can specify one of following values.
         * authored_on
         * title
@@ -169,8 +169,8 @@ Authentication required if want to include unpublished pages. Requires permissio
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `title,body,more,keywords,excerpt,basename` (optional, string) - The comma separated field name list to search.
-    + limit: `10` (optional, number) - Maximum number of pages to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of pages to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `modified_on` (optional, string) - The field name for sort. You can specify one of following values.
         * authored_on
         * title
@@ -230,8 +230,8 @@ Authentication required if want to include unpublished pages. Requires permissio
 + Parameters
     + search (optional, string) - Search query.
     + searchFields: `title,body,more,keywords,excerpt,basename` (optional, string) - The comma separated field name list to search.
-    + limit: `10` (optional, number) - Maximum number of pages to retrieve.
-    + offset: `0` (optional, number) - 0-indexed offset.
+    + limit: `50` (optional, number) - Maximum number of pages to retrieve. An integer value between 1 and 2147483647.
+    + offset: `0` (optional, number) - 0-indexed offset. An integer value between 0 and 2147483647.
     + sortBy: `modified_on` (optional, string) - The field name for sort. You can specify one of following values.
         * authored_on
         * title
