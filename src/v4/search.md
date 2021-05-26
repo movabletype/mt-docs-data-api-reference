@@ -6,8 +6,8 @@
 Searching the entries and content data. This endpoint is like a mt-search.cgi, but more faster.
 
 + Parameters
-    + search (required, string) - The search term. You can specify search term, like [foo], [foo AND bar], 'foo NOT bar'.      
-        Also, you can specify category filter, like [category:foo], [category:"hoge OR 'foo bar'"]. Also, you can specify author filter, like [author:Melody]  
+    + search (required, string) - The search term. You can specify search term, like [foo], [foo AND bar], [foo NOT bar].
+        Also, you can specify category filter, like [category:foo], [category:(hoge OR "foo bar")]. Also, you can specify author filter, like [author:Melody]
         Also, you can specify Custom Fields filter, like [field:address:akasaka] in this case, `address` is basename of Custom Fields. `akasaka` is filter value.
     + blog_id (optional, number) - The site ID for search. If you want to specify multiple site ID, you must use IncludeBlogs.
     + IncludeBlogs (optional, string) - The list of the site ID that will be included in the search it should be separated by comma.
