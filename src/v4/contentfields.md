@@ -305,7 +305,44 @@ Retrieve a list of Content Fields of the specified Content Type. This endpoint r
 
 + Response 404 (application/json)
 
-    Site or content type not found.
+    Site, content type or content field not found
+
+    + body
+
+### Create Content Field [POST]
+**Authentication required**
+
+Create a new Content Field. This endpoint requires following permission.
+
+* Manage Content Types
+
+Post form data is follows.
+
++ content_field (required, ContentField) - Single Content Field resource
+
++ Request (application/x-www-form-urlencoded)
+
+    + Headers
+
+            X-MT-Authorization: MTAuth accessToken=<Token>
+
+    + Body
+
+            content_field={"type": "single_line_text","label": "New Content Field","options": {"description": "This is new single line field.","required": "1","initial_value":"","max_length":"100","min_length":"0"}}
+
++ Response 200 (application/json)
+
+    + Attributes (ContentField)
+
++ Response 403 (application/json)
+
+    Do not have permission to create a new content field.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site or content type not found
 
     + body
 
@@ -336,14 +373,14 @@ Fetch single content field. This endpoint requires following permission.
 
 + Response 404 (application/json)
 
-    Site, content type or content field not found.
+    Site, content field or content field not found.
 
     + body
 
-### Update Content Type [PUT]
+### Update Content Field [PUT]
 **Authentication required**
 
-Update content type. This endpoint requires following permission.
+Update content field. This endpoint requires following permission.
 
 * Manage Content Types
 
@@ -371,17 +408,17 @@ This method accepts PUT or POST with parameter '__method=PUT'.
 
 + Response 403 (application/json)
 
-    Do not have permission to update a content type.
+    Do not have permission to update a content field.
 
     + body
 
 + Response 404 (application/json)
 
-    Site or content type not found.
+    Site, content type or content field not found
 
     + body
 
-### Delete Content Type [DELETE]
+### Delete Content Field [DELETE]
 **Authentication required**
 
 Delete content field from specified content type. This endpoint requires following permission.
