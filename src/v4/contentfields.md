@@ -309,6 +309,43 @@ Retrieve a list of Content Fields of the specified Content Type. This endpoint r
 
     + body
 
+### Create Content Field [POST]
+**Authentication required**
+
+Create a new Content Field. This endpoint requires following permission.
+
+* Manage Content Types
+
+Post form data is follows.
+
++ content_field (required, ContentField) - Single Content Field resource
+
++ Request (application/x-www-form-urlencoded)
+
+    + Headers
+
+            X-MT-Authorization: MTAuth accessToken=<Token>
+
+    + Body
+
+            content_field={"type": "single_line_text","label": "New Content Field","options": {"description": "This is new single line field.","required": "1","initial_value":"","max_length":"100","min_length":"0"}}
+
++ Response 200 (application/json)
+
+    + Attributes (ContentField)
+
++ Response 403 (application/json)
+
+    Do not have permission to create a new content field.
+
+    + body
+
++ Response 404 (application/json)
+
+    Site or content type not found
+
+    + body
+
 
 ## Content Field [/sites/{site_id}/contentTypes/{content_type_id}/fields/{content_field_id}{?fields}]
 
