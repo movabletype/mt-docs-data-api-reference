@@ -305,7 +305,7 @@ Retrieve a list of Content Fields of the specified Content Type. This endpoint r
 
 + Response 404 (application/json)
 
-    Site or content type not found.
+    Site, content type or content field not found
 
     + body
 
@@ -373,14 +373,14 @@ Fetch single content field. This endpoint requires following permission.
 
 + Response 404 (application/json)
 
-    Site, content type or content field not found.
+    Site, content field or content field not found.
 
     + body
 
-### Update Content Type [PUT]
+### Update Content Field [PUT]
 **Authentication required**
 
-Update content type. This endpoint requires following permission.
+Update content field. This endpoint requires following permission.
 
 * Manage Content Types
 
@@ -408,17 +408,17 @@ This method accepts PUT or POST with parameter '__method=PUT'.
 
 + Response 403 (application/json)
 
-    Do not have permission to update a content type.
+    Do not have permission to update a content field.
 
     + body
 
 + Response 404 (application/json)
 
-    Site or content type not found.
+    Site, content type or content field not found
 
     + body
 
-### Delete Content Type [DELETE]
+### Delete Content Field [DELETE]
 **Authentication required**
 
 Delete content field from specified content type. This endpoint requires following permission.
