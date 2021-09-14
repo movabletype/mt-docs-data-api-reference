@@ -327,7 +327,7 @@ Known issues (these will be solved in future release)
 
 ## Publish Content Data [/publish/contentData{blogId,blogIds,ids,startTime}]
 
-### Publish COntent Data [GET]
+### Publish Content Data [GET]
 **Authentication Requuired**
 Publish content data. This endpoint requires following permissions.
 
