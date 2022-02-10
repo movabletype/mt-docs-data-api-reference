@@ -86,7 +86,7 @@ themeId | value | string | mt_blog.blog_theme_id | Y | | The theme ID for this s
 timezone | value | number | mt_blog.mt_server_offset | - | Y | The timezone of this site. | v2
 updatable | value | boolean | | | Y | <dl><dt>true</dt><dd>Current user can update this website.</dd><dt>false</dt><dd>Current user cannot update this website.</dd> | v2
 url | value | string | mt_blog.blog_site_url | | | The site url of this site.  [Update in v2] This property was changed to updatable. | v1
-useCommentComfirmation | value | boolean | mt_blog.blog_use_comment_confirmation | Y | | <dl><dt>true</dt><dd>Each commenter's browser will be redirected to a comment confirmation page after their comment is accepted.</dd><dt>false</dt><dd>Will not.</dd></dl> | v2
+useCommentConfirmation | value | boolean | mt_blog.blog_use_comment_confirmation | Y | | <dl><dt>true</dt><dd>Each commenter's browser will be redirected to a comment confirmation page after their comment is accepted.</dd><dt>false</dt><dd>Will not.</dd></dl> | v2
 useRevision | value | boolean | mt_blog.blog_use_revision | Y | | <dl><dt>true</dt><dd>Revision history is enabled.</dd><dt>false</dt><dd>Revision history is disabled.</dd></dl> | v2
 wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The default length for excerpt. | v2
 
