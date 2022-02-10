@@ -370,7 +370,6 @@ moderatePings (boolean) - `true`: Hold all TrackBacks for approval before they a
 + sanitizeSpec (string) - The limit html tags of this site's comment. "0" is default.
 + serverOffset (number) - The server offset for this site.
 + sitePath (string) - The site path for this site. This property only accepts absolute path.
-+ siteSubdomain (string) - The subdomain for this site. This is write-only property.
 + smartReplace (number) - The punctuation replacement of this site. `0`: No substitution.  / `1`: Character entities. / `2`: ASCII equivalents.
 + sortOrderPosts (string) - The default sorting direction for the entry listing. Available value is follows. `ascend`: Ascengin order. / `descend`: Descending order.
 + sortOrderComments (string) - The comment order of this site. Available value is follows. `ascend`: Ascending order. / `descend`: Descending order
