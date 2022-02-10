@@ -383,7 +383,7 @@ moderatePings (boolean) - `true`: Hold all TrackBacks for approval before they a
     path (string) - The full path for default upload destination. The value begin with site path and contains extra path if extra_path configured. If default upload destination is not configured, this value is just a same as site_path.
     raw (string) - The raw data of default upload destination. If default upload destination is not configured, this value is a blank string.
 + url (string) - The site url of this site.  [Update in v2] This property was changed to updatable.
-+ useCommentComfirmation (boolean) - `true`: Each commenter's browser will be redirected to a comment confirmation page after their comment is accepted. / `false`: Will not.
++ useCommentConfirmation (boolean) - `true`: Each commenter's browser will be redirected to a comment confirmation page after their comment is accepted. / `false`: Will not.
 + useRevision (boolean) - `true`: Revision history is enabled. / `false`: Revision history is disabled.
 + wordsInExcerpt (number) - The default length for excerpt.
 

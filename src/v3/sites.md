@@ -94,7 +94,7 @@ uploadDestination | Object | - | - | - | Y | The default configuration for uploa
 uploadDestination.path | value | string | mt_blog_meta.blog_upload_destination | Y | | The full path for default upload destination. The value begin with site path and contains extra path if extra_path configured. If default upload destination is not configured, this value is just a same as site_path.| v3.01
 uploadDestination.raw | value | string | mt_blog_meta.blog_upload_destination | Y | | The raw data of default upload destination. If default upload destination is not configured, this value is a blank string.| v3.01
 url | value | string | mt_blog.blog_site_url | | | The site url of this site.  [Update in v2] This property was changed to updatable. | v1
-useCommentComfirmation | value | boolean | mt_blog.blog_use_comment_confirmation | Y | | <dl><dt>true</dt><dd>Each commenter's browser will be redirected to a comment confirmation page after their comment is accepted.</dd><dt>false</dt><dd>Will not.</dd></dl> | v2
+useCommentConfirmation | value | boolean | mt_blog.blog_use_comment_confirmation | Y | | <dl><dt>true</dt><dd>Each commenter's browser will be redirected to a comment confirmation page after their comment is accepted.</dd><dt>false</dt><dd>Will not.</dd></dl> | v2
 useRevision | value | boolean | mt_blog.blog_use_revision | Y | | <dl><dt>true</dt><dd>Revision history is enabled.</dd><dt>false</dt><dd>Revision history is disabled.</dd></dl> | v2
 wordsInExcerpt | value | number | mt_blog.blog_words_in_excerpt | Y | | The default length for excerpt. | v2
 
