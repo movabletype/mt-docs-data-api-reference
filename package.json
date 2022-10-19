@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
+    "redoc": "sh redoc-build.sh",
     "start-dev-server": "gulp start-dev-server"
   },
   "repository": {
@@ -22,6 +23,7 @@
     "aglio": "^2.3.0",
     "child_process": "^1.0.2",
     "gulp": "^4.0.2",
-    "gulp-connect": "^5.7.0"
+    "gulp-connect": "^5.7.0",
+    "redoc-cli": "^0.13.20"
   }
 }
