@@ -4929,7 +4929,7 @@
   },
   "servers": [
     {
-      "url": "https://192.168.56.2/mt/mt-data-api.cgi/v1"
+      "url": "http://192.168.58.25/cgi-bin/mt/mt-data-api.cgi/v1"
     }
   ],
   "tags": [
