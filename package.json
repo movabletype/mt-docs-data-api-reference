@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
+    "index": "sh build-index.sh",
     "redoc": "sh redoc-build.sh",
     "start-dev-server": "gulp start-dev-server",
     "webpack": "webpack"
