@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gulp build",
     "redoc": "sh redoc-build.sh",
-    "start-dev-server": "gulp start-dev-server"
+    "start-dev-server": "gulp start-dev-server",
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",
