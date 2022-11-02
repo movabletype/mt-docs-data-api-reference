@@ -878,7 +878,7 @@
         }
       },
       "entry_status": {
-        "description": "Filter by container entry's status.\n\n#### Draft\n\nentry_status is 1.\n\n#### Publish\n\nentry_status is 2.\n\n#### Review\n\nentry_status is 3.\n\n#### Future\n\nentry_status is 4.\n\n#### Spam\n\nentry_status is 5.\n",
+        "description": "Filter by container entry's status.\n\n#### Draft\n\nentry_status is 1.\n\n#### Publish\n\nentry_status is 2.\n\n#### Review\n\nentry_status is 3.\n\n#### Future\n\nentry_status is 4.\n\n#### Spam\n\nentry_status is 5.\n\n#### Unpublish\n\nentry_status is 6.\n",
         "in": "query",
         "name": "status",
         "schema": {
@@ -887,7 +887,8 @@
             "Publish",
             "Review",
             "Future",
-            "Spam"
+            "Spam",
+            "Unpublish"
           ],
           "type": "string"
         }
@@ -1563,7 +1564,7 @@
         }
       },
       "page_status": {
-        "description": "Filter by container page's status.\n\n#### Draft\n\nentry_status is 1.\n\n#### Publish\n\nentry_status is 2.\n\n#### Review\n\nentry_status is 3.\n\n#### Future\n\nentry_status is 4.\n\n#### Spam\n\nentry_status is 5.\n",
+        "description": "Filter by container page's status.\n\n#### Draft\n\nentry_status is 1.\n\n#### Publish\n\nentry_status is 2.\n\n#### Review\n\nentry_status is 3.\n\n#### Future\n\nentry_status is 4.\n\n#### Spam\n\nentry_status is 5.\n\n#### Unpublish\n\nentry_status is 6.\n",
         "in": "query",
         "name": "status",
         "schema": {
@@ -1572,7 +1573,8 @@
             "Publish",
             "Review",
             "Future",
-            "Spam"
+            "Spam",
+            "Unpublish"
           ],
           "type": "string"
         }
@@ -14678,6 +14680,22 @@
             }
           },
           {
+            "description": "This is an optional parameter. Filter by status.\n\n#### Draft\n\ncontent_status is 1.\n\n#### Publish\n\ncontent_status is 2.\n\n#### Review\n\ncontent_status is 3.\n\n#### Future\n\ncontent_status is 4.\n\n#### Spam\n\ncontent_status is 5.\n\n#### Unpublish\n\ncontent_status is 6.\n",
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "enum": [
+                "Draft",
+                "Publish",
+                "Review",
+                "Future",
+                "Spam",
+                "Unpublish"
+              ],
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/content_data_limit"
           },
           {
@@ -16047,7 +16065,7 @@
             }
           },
           {
-            "description": "This is an optional parameter. Filter by status.\n\n#### Draft\n\nentry_status is 1.\n\n#### Publish\n\nentry_status is 2.\n\n#### Review\n\nentry_status is 3.\n\n#### Future\n\nentry_status is 4.\n\n#### Spam\n\nentry_status is 5.\n",
+            "description": "This is an optional parameter. Filter by status.\n\n#### Draft\n\nentry_status is 1.\n\n#### Publish\n\nentry_status is 2.\n\n#### Review\n\nentry_status is 3.\n\n#### Future\n\nentry_status is 4.\n\n#### Spam\n\nentry_status is 5.\n\n#### Unpublish\n\nentry_status is 6.\n",
             "in": "query",
             "name": "status",
             "schema": {
@@ -16056,7 +16074,8 @@
                 "Publish",
                 "Review",
                 "Future",
-                "Spam"
+                "Spam",
+                "Unpublish"
               ],
               "type": "string"
             }
