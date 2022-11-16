@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for v in v1 v2 v3 v4; do \
+for v in v1 v2 v3 v4 v5; do \
   npx redoc-cli build src/openapi/${v}.json \
     --template src/openapi/data-api-redoc.hbs \
     --disableGoogleFont \
