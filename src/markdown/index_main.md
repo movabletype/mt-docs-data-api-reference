@@ -11,6 +11,7 @@
 - [API リファレンス (v2)](v2.html)
 - [API リファレンス (v3)](v3.html)
 - [API リファレンス (v4)](v4.html)
+- [API リファレンス (v5)](v5.html)
 
 
 ## SDK
