@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
+    "download": "sh download-openapi.sh",
     "redoc": "sh redoc-build.sh",
     "start-dev-server": "gulp start-dev-server"
   },
