@@ -1125,7 +1125,7 @@
   },
   "info": {
     "title": "Movable Type Data API",
-    "version": "r.5301"
+    "version": "r.5401"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -4931,7 +4931,7 @@
   },
   "servers": [
     {
-      "url": "https://192.168.56.2/mt/mt-data-api.cgi/v1"
+      "url": "https://example.com/mt/mt-data-api.cgi/v1"
     }
   ],
   "tags": [
