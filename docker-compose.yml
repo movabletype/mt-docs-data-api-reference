@@ -2,7 +2,7 @@ version: '3'
 services:
   docs:
     build: .
-    command: yarn redoc
+    command: sh -c "yarn index && yarn redoc"
     volumes:
       - .:/root/docs
       - /root/docs/node_modules

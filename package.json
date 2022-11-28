@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
+    "index": "sh build-index.sh",
     "download": "sh download-openapi.sh",
     "redoc": "sh redoc-build.sh",
-    "start-dev-server": "gulp start-dev-server"
+    "start-dev-server": "gulp start-dev-server",
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",
@@ -22,8 +24,16 @@
   "homepage": "https://github.com/movabletype/mt-docs-data-api-reference#readme",
   "devDependencies": {
     "child_process": "^1.0.2",
+    "css-loader": "^6.7.1",
     "gulp": "^4.0.2",
     "gulp-connect": "^5.7.0",
-    "redoc-cli": "^0.13.20"
+    "marked": "^4.1.1",
+    "redoc-cli": "^0.13.20",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.2"
   }
 }
