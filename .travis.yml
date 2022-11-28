@@ -3,4 +3,4 @@ node_js:
   - "16"
 cache: yarn
 script:
-  - sh -c "yarn build && yarn redoc"
+  - yarn redoc
