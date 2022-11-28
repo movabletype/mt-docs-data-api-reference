@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/movabletype/mt-docs-data-api-reference#readme",
   "devDependencies": {
-    "aglio": "^2.3.0",
     "child_process": "^1.0.2",
     "gulp": "^4.0.2",
     "gulp-connect": "^5.7.0",

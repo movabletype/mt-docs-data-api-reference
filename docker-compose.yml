@@ -2,7 +2,7 @@ version: '3'
 services:
   docs:
     build: .
-    command: sh -c "yarn build && yarn redoc"
+    command: yarn redoc
     volumes:
       - .:/root/docs
       - /root/docs/node_modules
