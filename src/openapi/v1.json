@@ -1125,7 +1125,7 @@
   },
   "info": {
     "title": "Movable Type Data API",
-    "version": "r.5402"
+    "version": "r.5404"
   },
   "openapi": "3.0.0",
   "paths": {
