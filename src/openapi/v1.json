@@ -295,87 +295,6 @@
           ],
           "type": "string"
         }
-      },
-      "trackback_excludeIds": {
-        "description": "The comma separated ID list of trackbacks to exclude from result.",
-        "in": "query",
-        "name": "excludeIds",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "trackback_fields": {
-        "description": "The field list to retrieve as part of the trackback resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.",
-        "in": "query",
-        "name": "fields",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "trackback_includeIds": {
-        "description": "The comma separated ID list of trackbacks to include to result.",
-        "in": "query",
-        "name": "includeIds",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "trackback_limit": {
-        "description": "Maximum number of trackbacks to retrieve.\n\n**Default**: 10",
-        "in": "query",
-        "name": "limit",
-        "schema": {
-          "default": "10",
-          "type": "integer"
-        }
-      },
-      "trackback_offset": {
-        "description": "0-indexed offset.\n\n**Default**: 0",
-        "in": "query",
-        "name": "offset",
-        "schema": {
-          "default": "0",
-          "type": "integer"
-        }
-      },
-      "trackback_search": {
-        "description": "Search query.",
-        "in": "query",
-        "name": "search",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "trackback_searchFields": {
-        "description": "The comma separated field name list to search.\n\n**Default**: title,excerpt,blogName",
-        "in": "query",
-        "name": "searchFields",
-        "schema": {
-          "default": "title,excerpt,blogName",
-          "type": "string"
-        }
-      },
-      "trackback_sortBy": {
-        "description": "\n\n**Default**: id",
-        "in": "query",
-        "name": "sortBy",
-        "schema": {
-          "default": "id",
-          "type": "string"
-        }
-      },
-      "trackback_sortOrder": {
-        "description": "#### descend\n\nReturn trackbacks in descending order.\n\n#### ascend\n\nReturn trackbacks in ascending order.\n\n\n\n**Default**: descend",
-        "in": "query",
-        "name": "sortOrder",
-        "schema": {
-          "default": "descend",
-          "enum": [
-            "descend",
-            "ascend"
-          ],
-          "type": "string"
-        }
       }
     },
     "schemas": {
@@ -683,12 +602,9 @@
         "type": "object"
       },
       "entry": {
-        "description": "Updatable fields are status, title, body, more, excerpt, keywords, tags, date, basename, customFields, allowComments, allowTrackbacks",
+        "description": "Updatable fields are status, title, body, more, excerpt, keywords, tags, date, basename, customFields, allowComments",
         "properties": {
           "allowComments": {
-            "type": "boolean"
-          },
-          "allowTrackbacks": {
             "type": "boolean"
           },
           "assets": {
@@ -784,12 +700,6 @@
           "permalink": {
             "type": "string"
           },
-          "pingsSentUrl": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          },
           "status": {
             "type": "string"
           },
@@ -802,15 +712,6 @@
           "title": {
             "type": "string"
           },
-          "trackbackCount": {
-            "type": "integer"
-          },
-          "trackbacks": {
-            "items": {
-              "$ref": "#/components/schemas/trackback"
-            },
-            "type": "array"
-          },
           "updatable": {
             "type": "boolean"
           }
@@ -820,9 +721,6 @@
       "entry_updatable": {
         "properties": {
           "allowComments": {
-            "type": "boolean"
-          },
-          "allowTrackbacks": {
             "type": "boolean"
           },
           "basename": {
@@ -962,19 +860,8 @@
         "type": "object"
       },
       "trackback": {
-        "description": "Updatable fields are customFields, status",
+        "description": "Updatable fields are customFields",
         "properties": {
-          "blog": {
-            "properties": {
-              "id": {
-                "type": "integer"
-              }
-            },
-            "type": "object"
-          },
-          "blogName": {
-            "type": "string"
-          },
           "customFields": {
             "items": {
               "properties": {
@@ -988,34 +875,6 @@
               "type": "object"
             },
             "type": "array"
-          },
-          "date": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "entry": {
-            "type": "string"
-          },
-          "excerpt": {
-            "type": "string"
-          },
-          "id": {
-            "type": "integer"
-          },
-          "ip": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "updatable": {
-            "type": "boolean"
-          },
-          "url": {
-            "type": "string"
           }
         },
         "type": "object"
@@ -1035,9 +894,6 @@
               "type": "object"
             },
             "type": "array"
-          },
-          "status": {
-            "type": "string"
           }
         },
         "type": "object"
@@ -1125,7 +981,7 @@
   },
   "info": {
     "title": "Movable Type Data API",
-    "version": "r.5404"
+    "version": "r.5405"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -3172,116 +3028,6 @@
         ]
       }
     },
-    "/sites/{site_id}/entries/{entry_id}/trackbacks": {
-      "get": {
-        "description": "Retrieve a list of trackbacks for an entry.\n\nAuthorization is required to include unpublished trackbacks\n",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "site_id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "entry_id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Input `MTAuth accessToken={accessToken}`",
-            "in": "header",
-            "name": "X-MT-Authorization",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "This is an optional parameter. Maximum number of trackbacks to retrieve. Default is 10.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "This is an optional parameter. 0-indexed offset. Default is 0.",
-            "in": "query",
-            "name": "offset",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "items": {
-                      "description": "An array of trakcbacks resource. The list will sorted from oldest to newest by received date.",
-                      "items": {
-                        "$ref": "#/components/schemas/trackback"
-                      },
-                      "type": "array"
-                    },
-                    "totalResults": {
-                      "description": "The total number of trackbacks found.",
-                      "type": "integer"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "OK"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Bad request"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Invalid login"
-          },
-          "403": {
-            "description": "Do not have permission to retrieve the list of trackbacks."
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Not Found"
-          }
-        },
-        "summary": "Retrieve a list of trackbacks for an entry",
-        "tags": [
-          "Trackbacks",
-          "Entries"
-        ]
-      }
-    },
     "/sites/{site_id}/stats/date/pageviews": {
       "get": {
         "description": "Retrieve pageviews count for each date from provider (e.g. Google Analytics).\n\nAuthorization is required.\n",
@@ -3902,387 +3648,6 @@
         "summary": "Retrieve a current effective provider",
         "tags": [
           "Statistics"
-        ]
-      }
-    },
-    "/sites/{site_id}/trackbacks": {
-      "get": {
-        "description": "Retrieve a list of trackbacks.\n\nAuthorization is required to include unpublished trackbacks\n",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "site_id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Input `MTAuth accessToken={accessToken}`",
-            "in": "header",
-            "name": "X-MT-Authorization",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "This is an optional parameter. Maximum number of trackbacks to retrieve. Default is 10.",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "This is an optional parameter. 0-indexed offset. Default is 0.",
-            "in": "query",
-            "name": "offset",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "This is an optional parameter. The comma separated ID list of trackbacks to include to result.",
-            "in": "query",
-            "name": "includeIds",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "This is an optional parameter. The comma separated ID list of trackbacks to exclude from result.",
-            "in": "query",
-            "name": "excludeIds",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "items": {
-                      "description": "An array of trakcbacks resource. The list will sorted from oldest to newest by received date.",
-                      "items": {
-                        "$ref": "#/components/schemas/trackback"
-                      },
-                      "type": "array"
-                    },
-                    "totalResults": {
-                      "description": "The total number of trackbacks found.",
-                      "type": "integer"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "OK"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Bad request"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Invalid login"
-          },
-          "403": {
-            "description": "Do not have permission to retrieve the list of trackbacks."
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Not Found"
-          }
-        },
-        "summary": "Retrieve a list of trackbacks",
-        "tags": [
-          "Trackbacks"
-        ]
-      }
-    },
-    "/sites/{site_id}/trackbacks/{ping_id}": {
-      "delete": {
-        "description": "Delete a trackbacks.\n\nAuthorization is required.\n\n#### Notes\n- This method accepts DELETE and POST with __method=DELETE.\n",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "site_id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "ping_id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/trackback"
-                }
-              }
-            },
-            "description": "OK"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Bad request"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Invalid login"
-          },
-          "403": {
-            "description": "Do not have permission to delete a trackback."
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Not Found"
-          },
-          "405": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Request method is not DELETE or POST with __method=DELETE"
-          }
-        },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
-        "summary": "Delete a trackbacks",
-        "tags": [
-          "Trackbacks"
-        ]
-      },
-      "get": {
-        "description": "Retrieve a single trackback by its ID.\n\nAuthorization is required if the trackback status is \"unpublished\". If the trackback status is \"published\", then this method can be called without authorization.\n",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "site_id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "ping_id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Input `MTAuth accessToken={accessToken}`",
-            "in": "header",
-            "name": "X-MT-Authorization",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/trackback"
-                }
-              }
-            },
-            "description": "OK"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Bad request"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Invalid login"
-          },
-          "403": {
-            "description": "Do not have permission to retrieve the requested trackback."
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Not Found"
-          }
-        },
-        "summary": "Retrieve a single trackback by its ID",
-        "tags": [
-          "Trackbacks"
-        ]
-      },
-      "put": {
-        "description": "Update a trackbacks.\n\nAuthorization is required.\n\n#### Notes\n- This method accepts PUT and POST with __method=PUT.\n",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "site_id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "in": "path",
-            "name": "ping_id",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "properties": {
-                  "trackback": {
-                    "$ref": "#/components/schemas/trackback_updatable"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/trackback"
-                }
-              }
-            },
-            "description": "OK"
-          },
-          "400": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Bad request"
-          },
-          "401": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Invalid login"
-          },
-          "403": {
-            "description": "Do not have permission to update a trackback."
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Not Found"
-          },
-          "405": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorContent"
-                }
-              }
-            },
-            "description": "Request method is not PUT or POST with __method=PUT"
-          }
-        },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
-        "summary": "Update a trackbacks",
-        "tags": [
-          "Trackbacks"
         ]
       }
     },
