@@ -5136,13 +5136,13 @@
             "format": "date",
             "type": "string"
           },
-          "pageviews": {
+          "screenPageViews": {
             "description": "The pageviews for the path. This property exists only if the metrics to retrieve is \"pageviews\"",
-            "type": "string"
+            "type": "integer"
           },
-          "visits": {
-            "description": "The visits for the path. This property exists only if the metrics to retrieve is \"visits\"",
-            "type": "string"
+          "sessions": {
+            "description": "The number of sessions for the path. This property exists only if the metrics to retrieve is \"visits\"",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -5183,17 +5183,21 @@
             },
             "type": "object"
           },
-          "pageviews": {
-            "description": "The pageviews for the path. This property exists only if the metrics to retrieve is \"pageviews\"",
-            "type": "string"
-          },
-          "path": {
+          "pagePath": {
             "description": "The relative path of the target.",
             "type": "string"
           },
-          "visits": {
-            "description": "The visits for the path. This property exists only if the metrics to retrieve is \"visits\"",
+          "pageTitle": {
+            "description": "The title for the path.",
             "type": "string"
+          },
+          "screenPageViews": {
+            "description": "The pageviews for the path. This property exists only if the metrics to retrieve is \"pageviews\"",
+            "type": "integer"
+          },
+          "sessions": {
+            "description": "The number of sessions for the path. This property exists only if the metrics to retrieve is \"visits\"",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -21612,9 +21616,9 @@
                     },
                     "totals": {
                       "properties": {
-                        "pageviews": {
+                        "screenPageViews": {
                           "description": "The sum total of the pageviews in the specified period.",
-                          "type": "string"
+                          "type": "integer"
                         }
                       },
                       "type": "object"
@@ -21745,9 +21749,9 @@
                     },
                     "totals": {
                       "properties": {
-                        "visits": {
-                          "description": "The sum total of the pageviews in the specified period.",
-                          "type": "string"
+                        "sessions": {
+                          "description": "The sum total of the sessions in the specified period.",
+                          "type": "integer"
                         }
                       },
                       "type": "object"
@@ -21890,9 +21894,9 @@
                     },
                     "totals": {
                       "properties": {
-                        "pageviews": {
+                        "screenPageViews": {
                           "description": "The sum total of the pageviews in the specified period.",
-                          "type": "string"
+                          "type": "integer"
                         }
                       },
                       "type": "object"
@@ -22023,9 +22027,9 @@
                     },
                     "totals": {
                       "properties": {
-                        "visits": {
-                          "description": "The sum total of the pageviews in the specified period.",
-                          "type": "string"
+                        "sessions": {
+                          "description": "The sum total of the sessions in the specified period.",
+                          "type": "integer"
                         }
                       },
                       "type": "object"
