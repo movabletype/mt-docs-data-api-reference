@@ -1,0 +1,32 @@
+name: movabletype/mt-docs-data-api-reference
+on:
+  push:
+    branches:
+    - "**/*"
+  pull_request:
+  schedule:
+  - cron: 0 8 * * *
+concurrency:
+#   # This item has no matching transformer
+#   maximum_number_of_builds: 0
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4.1.0
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo 'dir=$(yarn cache dir)' >> $GITHUB_OUTPUT
+    - name: Set up yarn cache
+      uses: actions/cache@v3.3.2
+      with:
+        path: "${{ steps.yarn-cache-dir-path.outputs.dir }}"
+        key: "${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}"
+        restore-keys: "${{ runner.os }}-yarn-"
+    - uses: actions/setup-node@v4.0.0
+      with:
+        cache: npm
+        node-version: '16'
+    - run: npm install
+    - run: yarn redoc
