@@ -1,0 +1,3512 @@
+---
+components:
+  parameters:
+    comment_excludeIds:
+      description: The comma separated ID list of comments to exclude from result.
+      in: query
+      name: excludeIds
+      schema:
+        type: string
+    comment_fields:
+      description: 'The field list to retrieve as part of the comment resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
+      in: query
+      name: fields
+      schema:
+        type: string
+    comment_includeIds:
+      description: The comma separated ID list of comments to include to result.
+      in: query
+      name: includeIds
+      schema:
+        type: string
+    comment_limit:
+      description: |-
+        Maximum number of comments to retrieve.
+        
+        **Default**: 10
+      in: query
+      name: limit
+      schema:
+        default: 10
+        type: integer
+    comment_offset:
+      description: |-
+        0-indexed offset.
+        
+        **Default**: 0
+      in: query
+      name: offset
+      schema:
+        default: 0
+        type: integer
+    comment_search:
+      description: Search query.
+      in: query
+      name: search
+      schema:
+        type: string
+    comment_searchFields:
+      description: |-
+        The comma separated field name list to search.
+        
+        **Default**: body
+      in: query
+      name: searchFields
+      schema:
+        default: body
+        type: string
+    comment_sortBy:
+      description: "\n\n**Default**: id"
+      in: query
+      name: sortBy
+      schema:
+        default: id
+        type: string
+    comment_sortOrder:
+      description: |-
+        #### descend
+        
+        Return comments in descending order.
+        
+        #### ascend
+        
+        Return comments in ascending order.
+        
+        
+        
+        **Default**: descend
+      in: query
+      name: sortOrder
+      schema:
+        default: descend
+        enum:
+          - descend
+          - ascend
+        type: string
+    entry_excludeIds:
+      description: The comma separated ID list of entries to exclude from result.
+      in: query
+      name: excludeIds
+      schema:
+        type: string
+    entry_fields:
+      description: 'The field list to retrieve as part of the entry resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
+      in: query
+      name: fields
+      schema:
+        type: string
+    entry_includeIds:
+      description: The comma separated ID list of entries to include to result.
+      in: query
+      name: includeIds
+      schema:
+        type: string
+    entry_limit:
+      description: |-
+        Maximum number of entries to retrieve.
+        
+        **Default**: 10
+      in: query
+      name: limit
+      schema:
+        default: 10
+        type: integer
+    entry_maxComments:
+      description: 'This is an optional parameter. Maximum number of comments to retrieve as part of the entries resource. If this parameter is not supplied, no comments will be returned.'
+      in: query
+      name: maxComments
+      schema:
+        type: integer
+    entry_maxTrackbacks:
+      description: 'This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the entries resource. If this parameter is not supplied, no trackbacks will be returned.'
+      in: query
+      name: maxTrackbacks
+      schema:
+        type: integer
+    entry_no_text_filter:
+      description: "If you want to fetch the raw text, set to '1'. New in v2\n"
+      in: query
+      name: no_text_filter
+      schema:
+        enum:
+          - 0
+          - 1
+        type: integer
+    entry_offset:
+      description: |-
+        0-indexed offset.
+        
+        **Default**: 0
+      in: query
+      name: offset
+      schema:
+        default: 0
+        type: integer
+    entry_search:
+      description: Search query.
+      in: query
+      name: search
+      schema:
+        type: string
+    entry_searchFields:
+      description: |-
+        The comma separated field name list to search.
+        
+        **Default**: title,body,more,keywords,excerpt,basename
+      in: query
+      name: searchFields
+      schema:
+        default: 'title,body,more,keywords,excerpt,basename'
+        type: string
+    entry_sortBy:
+      description: |-
+        The field name for sort. You can specify one of following values
+        - authored_on
+        - title
+        - created_on
+        - modified_on
+        
+        
+        **Default**: authored_on
+      in: query
+      name: sortBy
+      schema:
+        default: authored_on
+        enum:
+          - authored_on
+          - title
+          - created_on
+          - modified_on
+        type: string
+    entry_sortOrder:
+      description: |-
+        #### descend
+        
+        Return entries in descending order.
+        
+        #### ascend
+        
+        Return entries in ascending order.
+        
+        
+        
+        **Default**: descend
+      in: query
+      name: sortOrder
+      schema:
+        default: descend
+        enum:
+          - descend
+          - ascend
+        type: string
+    entry_status:
+      description: |
+        Filter by container entry's status.
+        
+        #### Draft
+        
+        entry_status is 1.
+        
+        #### Publish
+        
+        entry_status is 2.
+        
+        #### Review
+        
+        entry_status is 3.
+        
+        #### Future
+        
+        entry_status is 4.
+        
+        #### Spam
+        
+        entry_status is 5.
+        
+        #### Unpublish
+        
+        entry_status is 6.
+      in: query
+      name: status
+      schema:
+        enum:
+          - Draft
+          - Publish
+          - Review
+          - Future
+          - Spam
+          - Unpublish
+        type: string
+    site_excludeIds:
+      description: The comma separated ID list of sites to exclude from result.
+      in: query
+      name: excludeIds
+      schema:
+        type: string
+    site_fields:
+      description: 'The field list to retrieve as part of the site resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
+      in: query
+      name: fields
+      schema:
+        type: string
+    site_includeIds:
+      description: The comma separated ID list of sites to include to result.
+      in: query
+      name: includeIds
+      schema:
+        type: string
+    site_limit:
+      description: |-
+        Maximum number of sites to retrieve.
+        
+        **Default**: 25
+      in: query
+      name: limit
+      schema:
+        default: 25
+        type: integer
+    site_offset:
+      description: |-
+        0-indexed offset.
+        
+        **Default**: 0
+      in: query
+      name: offset
+      schema:
+        default: 0
+        type: integer
+    site_search:
+      description: Search query.
+      in: query
+      name: search
+      schema:
+        type: string
+    site_searchFields:
+      description: The comma separated field name list to search.
+      in: query
+      name: searchFields
+      schema:
+        type: string
+    site_sortBy:
+      description: |-
+        Only 'name' is available
+        
+        
+        **Default**: name
+      in: query
+      name: sortBy
+      schema:
+        default: name
+        enum:
+          - name
+        type: string
+    site_sortOrder:
+      description: |-
+        #### descend
+        
+        Return sites in descending order.
+        
+        #### ascend
+        
+        Return sites in ascending order.
+        
+        
+        
+        **Default**: ascend
+      in: query
+      name: sortOrder
+      schema:
+        default: ascend
+        enum:
+          - descend
+          - ascend
+        type: string
+    trackback_excludeIds:
+      description: The comma separated ID list of trackbacks to exclude from result.
+      in: query
+      name: excludeIds
+      schema:
+        type: string
+    trackback_fields:
+      description: 'The field list to retrieve as part of the trackback resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
+      in: query
+      name: fields
+      schema:
+        type: string
+    trackback_includeIds:
+      description: The comma separated ID list of trackbacks to include to result.
+      in: query
+      name: includeIds
+      schema:
+        type: string
+    trackback_limit:
+      description: |-
+        Maximum number of trackbacks to retrieve.
+        
+        **Default**: 10
+      in: query
+      name: limit
+      schema:
+        default: 10
+        type: integer
+    trackback_offset:
+      description: |-
+        0-indexed offset.
+        
+        **Default**: 0
+      in: query
+      name: offset
+      schema:
+        default: 0
+        type: integer
+    trackback_search:
+      description: Search query.
+      in: query
+      name: search
+      schema:
+        type: string
+    trackback_searchFields:
+      description: |-
+        The comma separated field name list to search.
+        
+        **Default**: title,excerpt,blogName
+      in: query
+      name: searchFields
+      schema:
+        default: 'title,excerpt,blogName'
+        type: string
+    trackback_sortBy:
+      description: "\n\n**Default**: id"
+      in: query
+      name: sortBy
+      schema:
+        default: id
+        type: string
+    trackback_sortOrder:
+      description: |-
+        #### descend
+        
+        Return trackbacks in descending order.
+        
+        #### ascend
+        
+        Return trackbacks in ascending order.
+        
+        
+        
+        **Default**: descend
+      in: query
+      name: sortOrder
+      schema:
+        default: descend
+        enum:
+          - descend
+          - ascend
+        type: string
+  schemas:
+    ErrorContent:
+      properties:
+        error:
+          properties:
+            code:
+              type: number
+            message:
+              type: string
+          type: object
+      type: object
+    asset:
+      description: 'Updatable fields are label, description, tags'
+      properties:
+        description:
+          type: string
+        filename:
+          type: string
+        id:
+          type: string
+        label:
+          type: string
+        mimeType:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        url:
+          type: string
+      type: object
+    asset_updatable:
+      properties:
+        description:
+          type: string
+        label:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+      type: object
+    blog:
+      properties:
+        archiveUrl:
+          type: string
+        class:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+      type: object
+    category:
+      description: 'Updatable fields are label, description, basename, customFields'
+      properties:
+        basename:
+          type: string
+        blog:
+          properties:
+            id:
+              type: integer
+          type: object
+        class:
+          type: string
+        customFields:
+          items:
+            properties:
+              basename:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        description:
+          type: string
+        id:
+          type: integer
+        label:
+          type: string
+        parent:
+          type: string
+      type: object
+    category_updatable:
+      properties:
+        basename:
+          type: string
+        customFields:
+          items:
+            properties:
+              basename:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        description:
+          type: string
+        label:
+          type: string
+      type: object
+    comment:
+      description: 'Updatable fields are customFields, body, parent, status'
+      properties:
+        author:
+          description: The commenter of this comment.
+          properties:
+            displayName:
+              description: The display name of this commenter.
+              type: string
+            id:
+              description: 'The ID of this commenter. If commenter is not a registerd user, this field is empty.'
+              type: integer
+            userpicUrl:
+              description: "The URL of this commenter's userpic. The userpic will be made by UserpicThumbnailSize and UserpicAllowRect settings. If a commenter is not a registered user or a commenter does not set own userpic, will be returned empty string."
+              type: string
+          type: object
+        blog:
+          properties:
+            id:
+              type: integer
+          type: object
+        body:
+          type: string
+        customFields:
+          items:
+            properties:
+              basename:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        date:
+          format: date-time
+          type: string
+        entry:
+          description: The container entry of this comment.
+          properties:
+            id:
+              description: The ID of the entry that contains this comment.
+              type: integer
+          type: object
+        id:
+          type: integer
+        link:
+          type: string
+        parent:
+          type: integer
+        status:
+          type: string
+        updatable:
+          type: boolean
+      type: object
+    comment_updatable:
+      properties:
+        body:
+          type: string
+        customFields:
+          items:
+            properties:
+              basename:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        parent:
+          type: integer
+        status:
+          type: string
+      type: object
+    endpoint:
+      properties:
+        component:
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+          type: object
+        format:
+          type: string
+        id:
+          type: string
+        resources:
+          items:
+            type: string
+          type: array
+        route:
+          type: string
+        verb:
+          type: string
+        version:
+          type: string
+      type: object
+    entry:
+      description: 'Updatable fields are status, title, body, more, excerpt, keywords, tags, date, basename, customFields, allowComments, allowTrackbacks'
+      properties:
+        allowComments:
+          type: boolean
+        allowTrackbacks:
+          type: boolean
+        assets:
+          items:
+            $ref: '#/components/schemas/asset'
+          type: array
+        author:
+          properties:
+            displayName:
+              type: string
+            id:
+              type: string
+            userpicUrl:
+              type: string
+          type: object
+        basename:
+          type: string
+        blog:
+          properties:
+            id:
+              type: integer
+          type: object
+        body:
+          type: string
+        categories:
+          items:
+            type: string
+          type: array
+        class:
+          type: string
+        commentCount:
+          type: integer
+        comments:
+          items:
+            $ref: '#/components/schemas/comment'
+          type: array
+        createdDate:
+          format: date-time
+          type: string
+        customFields:
+          items:
+            properties:
+              basename:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        date:
+          format: date-time
+          type: string
+        excerpt:
+          type: string
+        id:
+          type: integer
+        keywords:
+          type: string
+        modifiedDate:
+          format: date-time
+          type: string
+        more:
+          type: string
+        permalink:
+          type: string
+        pingsSentUrl:
+          items:
+            type: string
+          type: array
+        status:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        title:
+          type: string
+        trackbackCount:
+          type: integer
+        trackbacks:
+          items:
+            $ref: '#/components/schemas/trackback'
+          type: array
+        updatable:
+          type: boolean
+      type: object
+    entry_updatable:
+      properties:
+        allowComments:
+          type: boolean
+        allowTrackbacks:
+          type: boolean
+        basename:
+          type: string
+        body:
+          type: string
+        customFields:
+          items:
+            properties:
+              basename:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        date:
+          format: date-time
+          type: string
+        excerpt:
+          type: string
+        keywords:
+          type: string
+        more:
+          type: string
+        status:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        title:
+          type: string
+      type: object
+    permission:
+      properties:
+        blog:
+          properties:
+            id:
+              type: integer
+          type: object
+        permissions:
+          items:
+            type: string
+          type: array
+      type: object
+    statisticsdate:
+      properties:
+        date:
+          description: The date of the target. The format is "YYYY-MM-DD".
+          format: date
+          type: string
+        pageviews:
+          description: The pageviews for the path. This property exists only if the metrics to retrieve is "pageviews"
+          type: string
+        visits:
+          description: The visits for the path. This property exists only if the metrics to retrieve is "visits"
+          type: string
+      type: object
+    statisticspath:
+      properties:
+        archiveType:
+          description: The archive type of the path. This property is null if the path is not managed by MT.
+          type: string
+        author:
+          description: This property is null if "archiveType" is neither "Author" nor "Author-∗".
+          properties:
+            id:
+              description: The ID of author.
+              type: integer
+          type: object
+        category:
+          description: This property is null if "archiveType" is neither "Category" nor "Category-∗".
+          properties:
+            id:
+              description: The ID of category.
+              type: integer
+          type: object
+        entry:
+          description: This property is null if "archiveType" is not "Individual".
+          properties:
+            id:
+              description: The ID of entry.
+              type: integer
+          type: object
+        pageviews:
+          description: The pageviews for the path. This property exists only if the metrics to retrieve is "pageviews"
+          type: string
+        path:
+          description: The relative path of the target.
+          type: string
+        visits:
+          description: The visits for the path. This property exists only if the metrics to retrieve is "visits"
+          type: string
+      type: object
+    trackback:
+      description: 'Updatable fields are customFields, status'
+      properties:
+        blog:
+          properties:
+            id:
+              type: integer
+          type: object
+        blogName:
+          type: string
+        customFields:
+          items:
+            properties:
+              basename:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        date:
+          format: date-time
+          type: string
+        entry:
+          type: string
+        excerpt:
+          type: string
+        id:
+          type: integer
+        ip:
+          type: string
+        status:
+          type: string
+        title:
+          type: string
+        updatable:
+          type: boolean
+        url:
+          type: string
+      type: object
+    trackback_updatable:
+      properties:
+        customFields:
+          items:
+            properties:
+              basename:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        status:
+          type: string
+      type: object
+    user:
+      description: 'Updatable fields are displayName, email, url'
+      properties:
+        displayName:
+          type: string
+        email:
+          type: string
+        id:
+          type: string
+        language:
+          type: string
+        name:
+          type: string
+        updatable:
+          type: boolean
+        url:
+          type: string
+        userpicUrl:
+          type: string
+      type: object
+    user_updatable:
+      properties:
+        displayName:
+          type: string
+        email:
+          type: string
+        url:
+          type: string
+      type: object
+    website:
+      properties:
+        archiveUrl:
+          type: string
+        class:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+      type: object
+  securitySchemes:
+    mtauth:
+      description: 'MTAuth accessToken={accessToken}'
+      in: header
+      name: X-MT-Authorization
+      type: apiKey
+externalDocs:
+  description: Find out more about Movable Type Data API
+  url: https://www.movabletype.jp/developers/data-api/
+info:
+  title: Movable Type Data API
+  version: r.5404
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+      summary: Retrieve OpenAPI schema
+      tags:
+        - Common API
+  /authentication:
+    delete:
+      description: |
+        Invalidate current session. This is like logout. All access tokens related to that session are invalidated too.
+        
+        Authorization is required. but if there is an effective session, user can revoke by the following methods.
+        
+        In the case of a web browser, can be authorized by httponly-cookie.
+        
+        In the case of other than a browser, can be authorized by sending a sessionId that is retrieved via authentication endpoints in MTAuth request header.
+        
+        `MTAuth sessionId={retrieved sessionId}`
+        
+        #### Notes
+        - This method accepts DELETE and POST with __method=DELETE.
+      parameters:
+        - description: 'Input `MTAuth sessionId={sessionId}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                clientId:
+                  description: 'This is not required if you specify session id via "X-MT-Authorization" request header. You can create new access token if you have a session id related to this clientId, although you do not have an access token. '
+                  type: string
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    description: The value of this parameter is always "success".
+                    type: string
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        405:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Request method is not DELETE or POST with __method=DELETE
+      summary: Invalidate current access token. This is not logout
+      tags:
+        - Authentication
+    post:
+      description: Create new session and access token. This is like login.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                clientId:
+                  description: 'This is not required if you specify session id via "X-MT-Authorization" request header. You can create new access token if you have a session id related to this clientId, although you do not have an access token. '
+                  type: string
+                mtDataApiLoginMagicToken:
+                  description: 'This is not required if you authenticate except via browser. If this parameter is passed and valid the MT will set cookie in order to start a session. '
+                  type: string
+                password:
+                  description: The password of the user.
+                  format: password
+                  type: string
+                remember:
+                  description: 'If true (generally, "1" is specified.), a new session will be created as a persistent session. If you want to specify false, you can pass "" or "0" to this parameter.'
+                  enum:
+                    - 0
+                    - 1
+                  type: integer
+                username:
+                  description: The username to authenticate.
+                  type: string
+              type: object
+        required: 1
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  accessToken:
+                    description: Access token
+                    type: string
+                  expiresIn:
+                    description: This access token will be invalidated automatically after the number of seconds specified here.
+                    type: integer
+                  remember:
+                    description: 'If true, a new session has been created as a persistent session.'
+                    type: boolean
+                  sessionId:
+                    description: 'Session ID. This value is included only when mtDataApiLoginMagicToken is not passed. If mtDataApiLoginMagicToken is passed (and is valid value), sessionId is stored in httponly-cookie.'
+                    type: string
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+      summary: Create new session and access token. This is like login
+      tags:
+        - Authentication
+  /authorization:
+    get:
+      description: Return authorization(login) form as HTML.
+      parameters:
+        - description: 'This is required. When you succeed in login, you are redirected to the redirectUrl with "#_login". '
+          in: query
+          name: redirectUrl
+          required: 1
+          schema:
+            type: string
+        - description: This is required. the client ID of the application.
+          in: query
+          name: clientId
+          required: 1
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            text/html:
+              schema:
+                type: string
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+      summary: Return authorization(login) form as HTML
+      tags:
+        - Authentication
+  /endpoints:
+    get:
+      description: Retrieve a list of endpoints.
+      parameters:
+        - description: 'This is an optional parameter. The comma separated ID list of components (a.k.a plugin) to include to result. '
+          in: query
+          name: includeComponents
+          schema:
+            type: string
+        - description: 'This is an optional parameter. The comma separated ID list of components (a.k.a plugin) to exclude from result. '
+          in: query
+          name: excludeComponents
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Endpoints resource.
+                    items:
+                      $ref: '#/components/schemas/endpoint'
+                    type: array
+                  totalResults:
+                    description: The total number of endpoints found.
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+      summary: Retrieve a list of endpoints
+      tags:
+        - Endpoints
+  /publish/entries:
+    get:
+      description: |
+        Rebuild the static archives in relation to specified entries.
+        
+        Authorization is required.
+      parameters:
+        - description: This is an required parameter. The comma separated ID list of entries to rebuild.
+          in: query
+          name: ids
+          schema:
+            type: string
+        - description: This is an optional parameter.
+          in: query
+          name: blogId
+          schema:
+            type: integer
+        - description: This is an optional parameter.
+          in: query
+          name: startTime
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  restIds:
+                    description: The comma separated ID list of entries which has not been rebuilt
+                    type: string
+                  startTime:
+                    description: The time which started rebuilding.
+                    format: date-time
+                    type: string
+                  status:
+                    description: |
+                      The status text of this rebuild.
+                      
+                      #### Rebuilding
+                      
+                      Not yet completed.
+                      User should start next phase that implies by X-MT-Next-Phase-URL response header.
+                      (In JavaScript library, a next phase is started automatically.)
+                      
+                      #### Complete
+                      
+                      All the static archives were rebuilded.
+                    enum:
+                      - Rebuilding
+                      - Complete
+                    type: string
+                type: object
+          description: OK
+          headers:
+            X-MT-Next-Phase-URL:
+              description: 'If status is "Rebuilding", user should start next phase that implies by this header, manually.(In JavaScript library, a next phase is started automatically.) '
+              schema:
+                type: string
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to publish.
+      security:
+        - mtauth: []
+      summary: Rebuild the static archives in relation to specified entries
+      tags:
+        - Entries
+        - Publish
+  '/sites/{site_id}':
+    get:
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: 'This is an optional parameter. The field list to retrieve as part of the Entries resource. If this parameter is not specified, All fields will be returned.'
+          in: query
+          name: fields
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/blog'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the requested blog.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a single blog by its ID
+      tags:
+        - Sites
+  '/sites/{site_id}/assets/upload':
+    post:
+      description: |
+        Upload a file.
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                autoRenameIfExists:
+                  description: 'If this value is "1" and the file with the same filename exists, the uploaded file is automatically renamed to the random generated name. Default is "0".'
+                  enum:
+                    - 0
+                    - 1
+                  type: integer
+                file:
+                  description: The actual file data
+                  format: binary
+                  type: string
+                normalizeOrientation:
+                  description: "If this value is \"1\" and the uploaded file has a orientation information in Exif, this file's orientation is automatically normalized. Default is \"1\"."
+                  enum:
+                    - 0
+                    - 1
+                  type: integer
+                path:
+                  description: The upload destination. You can specify the path to the under the site path.
+                  type: string
+              type: object
+        required: 1
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/asset'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to upload.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+        409:
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    properties:
+                      code:
+                        type: integer
+                      data:
+                        properties:
+                          fileName:
+                            type: string
+                          path:
+                            type: string
+                          temp:
+                            type: string
+                        type: object
+                      message:
+                        type: string
+                    type: object
+                type: object
+          description: Conflict
+      security:
+        - mtauth: []
+      summary: Upload a file
+      tags:
+        - Assets
+  '/sites/{site_id}/categories':
+    get:
+      description: Retrieve a list of categories.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: |
+            This is an optional parameter.
+            
+            #### user_custom
+            
+            (default) Sort order you specified on the Manage Categories screen.
+            
+            #### label
+            
+            Sort by the label of each categories.
+          in: query
+          name: sortBy
+          schema:
+            enum:
+              - user_custom
+              - label
+            type: string
+        - description: |
+            This is an optional parameter.
+            
+            #### ascend
+            
+            (default) Return categories in ascending order.
+            
+            #### descend
+            
+            Return categories in descending order.
+          in: query
+          name: sortOrder
+          schema:
+            enum:
+              - ascend
+              - descend
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    items:
+                      $ref: '#/components/schemas/category'
+                    type: array
+                  totalResults:
+                    description: The total number of categories found.
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the list of categories.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a list of categories
+      tags:
+        - Categories
+  '/sites/{site_id}/comments':
+    get:
+      description: |
+        Retrieve a list of comments.
+        
+        Authorization is required to include unpublished comments
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: 'Input `MTAuth accessToken={accessToken}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+        - description: This is an optional parameter. Maximum number of comments to retrieve. Default is 10.
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: integer
+        - description: This is an optional parameter. The comma separated ID list of comments to include to result.
+          in: query
+          name: includeIds
+          schema:
+            type: string
+        - description: This is an optional parameter. The comma separated ID list of comments to exclude from result.
+          in: query
+          name: excludeIds
+          schema:
+            type: string
+        - description: |
+            This is an optional parameter. Filter by status.
+            #### Approved
+            comment_visible is 1 and comment_junk_status is 1.
+            #### Pending
+            comment_visible is 0 and comment_junk_status is 1.
+            #### Spam
+            comment_junk_status is -1.
+          in: query
+          name: status
+          schema:
+            enum:
+              - Approved
+              - Pending
+              - Spam
+            type: string
+        - description: |
+            This is an optional parameter. Filter by parent entry's status.
+            #### Draft
+            entry_status is 1.
+            #### Publish
+            entry_status is 2.
+            #### Review
+            entry_status is 3.
+            #### Future
+            entry_status is 4.
+            #### Spam
+            entry_status is 5.
+          in: query
+          name: entryStatus
+          schema:
+            enum:
+              - Draft
+              - Publish
+              - Review
+              - Future
+              - Spam
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Comments resource. The list will sorted from oldest to newest by comment_id and comment_parent_id.
+                    items:
+                      $ref: '#/components/schemas/comment'
+                    type: array
+                  totalResults:
+                    description: The total number of comments found.
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the list of comments.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a list of comments
+      tags:
+        - Comments
+  '/sites/{site_id}/comments/{comment_id}':
+    delete:
+      description: |
+        Delete a comment.
+        
+        Authorization is required.
+        
+        #### Notes
+        - This method accepts DELETE and POST with __method=DELETE.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: comment_id
+          required: 1
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to delete a comment.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+        405:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Request method is not DELETE or POST with __method=DELETE
+      security:
+        - mtauth: []
+      summary: Delete a comment
+      tags:
+        - Comments
+    get:
+      description: |
+        Retrieve a single comment by its ID.
+        
+        Authorization is required if the comment status is "unpublished". If the comment status is "published", then this method can be called without authorization.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: comment_id
+          required: 1
+          schema:
+            type: integer
+        - description: 'Input `MTAuth accessToken={accessToken}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the requested comment.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a single comment by its ID
+      tags:
+        - Comments
+    put:
+      description: |
+        Update a comment.
+        
+        Authorization is required.
+        
+        #### Notes
+        - This method accepts PUT and POST with __method=PUT.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: comment_id
+          required: 1
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                comment:
+                  $ref: '#/components/schemas/comment_updatable'
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to update a comment.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+        405:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Request method is not PUT or POST with __method=PUT
+      security:
+        - mtauth: []
+      summary: Update a comment
+      tags:
+        - Comments
+  '/sites/{site_id}/entries':
+    get:
+      description: |
+        Retrieve a list of entries.
+        
+        Authorization is required to include unpublished entries.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: 'Input `MTAuth accessToken={accessToken}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+        - description: This is an optional parameter. Search query.
+          in: query
+          name: search
+          schema:
+            type: string
+        - description: "This is an optional parameter. The comma separated field name list to search. Default is 'title,body,more,keywords,excerpt,basename'"
+          in: query
+          name: searchFields
+          schema:
+            type: string
+        - description: |
+            This is an optional parameter. Filter by status.
+            
+            #### Draft
+            
+            entry_status is 1.
+            
+            #### Publish
+            
+            entry_status is 2.
+            
+            #### Review
+            
+            entry_status is 3.
+            
+            #### Future
+            
+            entry_status is 4.
+            
+            #### Spam
+            
+            entry_status is 5.
+            
+            #### Unpublish
+            
+            entry_status is 6.
+          in: query
+          name: status
+          schema:
+            enum:
+              - Draft
+              - Publish
+              - Review
+              - Future
+              - Spam
+              - Unpublish
+            type: string
+        - description: 'This is an optional parameter. Maximum number of entries to retrieve. Default is 10. '
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: integer
+        - description: 'This is an optional parameter. The comma separated ID list of entries to include to result. '
+          in: query
+          name: includeIds
+          schema:
+            type: string
+        - description: 'This is an optional parameter. The comma separated ID list of entries to exclude from result. '
+          in: query
+          name: excludeIds
+          schema:
+            type: string
+        - description: |
+            This is an optional parameter.
+            
+            #### authored_on
+            
+            (default) Sort by the Published time of each entries.
+            
+            #### title
+            
+            Sort by the title of each entries.
+            
+            #### created_on
+            
+            Sort by the created time of each entries.
+            
+            #### modified_on
+            
+            Sort by the modified time of each entries.
+          in: query
+          name: sortBy
+          schema:
+            enum:
+              - authored_on
+              - title
+              - created_on
+              - modified_on
+            type: string
+        - description: |
+            This is an optional parameter.
+            
+            #### descend
+            
+            (default) Return entries in descending order. For the date, it means from newest to oldest.
+            
+            #### ascend
+            
+            Return entries in ascending order. For the date, it means from oldest to newset.
+          in: query
+          name: sortOrder
+          schema:
+            enum:
+              - descend
+              - ascend
+            type: string
+        - description: 'This is an optional parameter. Maximum number of comments to retrieve as part of the Entries resource. If this parameter is not supplied, no comments will be returned.'
+          in: query
+          name: maxComments
+          schema:
+            type: integer
+        - description: 'This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned. '
+          in: query
+          name: maxTrackbacks
+          schema:
+            type: integer
+        - description: 'The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned. '
+          in: query
+          name: fields
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: 'An array of Entries resource. '
+                    items:
+                      $ref: '#/components/schemas/entry'
+                    type: array
+                  totalResults:
+                    description: ' The total number of entries.'
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the requested entries.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a list of entries
+      tags:
+        - Entries
+    post:
+      description: |
+        Create a new entry.
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                entry:
+                  $ref: '#/components/schemas/entry_updatable'
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entry'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to create an entry.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      security:
+        - mtauth: []
+      summary: Create a new entry
+      tags:
+        - Entries
+  '/sites/{site_id}/entries/{entry_id}':
+    delete:
+      description: |
+        Delete an entry.
+        
+        Authorization is required.
+        
+        
+        #### Notes
+        - This method accepts DELETE and POST with __method=DELETE.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: entry_id
+          required: 1
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entry'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to delete an entry.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+        405:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Request method is not DELETE or POST with __method=DELETE
+      security:
+        - mtauth: []
+      summary: Delete an entry
+      tags:
+        - Entries
+    get:
+      description: |
+        Retrieve a single entry by its ID.
+        
+        Authorization is required if the entry status is "unpublished". If the entry status is "published", then this method can be called without authorization.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: entry_id
+          required: 1
+          schema:
+            type: integer
+        - description: 'Input `MTAuth accessToken={accessToken}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+        - description: 'This is an optional parameter. Maximum number of comments to retrieve as part of the Entries resource. If this parameter is not supplied, no comments will be returned.'
+          in: query
+          name: maxComments
+          schema:
+            type: integer
+        - description: 'This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned. '
+          in: query
+          name: maxTrackbacks
+          schema:
+            type: integer
+        - description: 'This is an optional parameter. The field list to retrieve as part of the Entries resource. That list should be separated by commma. If this parameter is not specified, All fields will be returned. '
+          in: query
+          name: fields
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entry'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the requested entry.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a single entry by its ID
+      tags:
+        - Entries
+    put:
+      description: |
+        Update an entry.
+        
+        Authorization is required.
+        
+        
+        #### Notes
+        - This method accepts PUT and POST with __method=PUT.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: entry_id
+          required: 1
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                entry:
+                  $ref: '#/components/schemas/entry_updatable'
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entry'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to update an entry.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+        405:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Request method is not PUT or POST with __method=PUT
+      security:
+        - mtauth: []
+      summary: Update an entry
+      tags:
+        - Entries
+  '/sites/{site_id}/entries/{entry_id}/comments':
+    get:
+      description: |
+        Retrieve a list of comments for an entry.
+        
+        Authorization is required to include unpublished comments
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: entry_id
+          required: 1
+          schema:
+            type: integer
+        - description: 'Input `MTAuth accessToken={accessToken}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+        - description: This is an optional parameter. Maximum number of comments to retrieve. Default is 10.
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Comments resource. The list will sorted from oldest to newest by comment_id and comment_parent_id.
+                    items:
+                      $ref: '#/components/schemas/comment'
+                    type: array
+                  totalResults:
+                    description: The total number of comments found.
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the list of comments.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a list of comments for an entry
+      tags:
+        - Comments
+        - Entries
+    post:
+      description: |
+        Create a new comment on an entry.
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: entry_id
+          required: 1
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                comment:
+                  $ref: '#/components/schemas/comment_updatable'
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to create a comment.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      security:
+        - mtauth: []
+      summary: Create a new comment on an entry
+      tags:
+        - Comments
+        - Entries
+  '/sites/{site_id}/entries/{entry_id}/comments/{comment_id}/replies':
+    post:
+      description: |
+        Reply to specified comment.
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: entry_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: comment_id
+          required: 1
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                comment:
+                  $ref: '#/components/schemas/comment_updatable'
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/comment'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to create a reply to the requested comment.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      security:
+        - mtauth: []
+      summary: Reply to specified comment
+      tags:
+        - Comments
+        - Entries
+  '/sites/{site_id}/entries/{entry_id}/trackbacks':
+    get:
+      description: |
+        Retrieve a list of trackbacks for an entry.
+        
+        Authorization is required to include unpublished trackbacks
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: entry_id
+          required: 1
+          schema:
+            type: integer
+        - description: 'Input `MTAuth accessToken={accessToken}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+        - description: This is an optional parameter. Maximum number of trackbacks to retrieve. Default is 10.
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of trakcbacks resource. The list will sorted from oldest to newest by received date.
+                    items:
+                      $ref: '#/components/schemas/trackback'
+                    type: array
+                  totalResults:
+                    description: The total number of trackbacks found.
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the list of trackbacks.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a list of trackbacks for an entry
+      tags:
+        - Trackbacks
+        - Entries
+  '/sites/{site_id}/stats/date/pageviews':
+    get:
+      description: |
+        Retrieve pageviews count for each date from provider (e.g. Google Analytics).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 10.
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: path
+          schema:
+            type: string
+        - description: 'This is an optional parameter. If true is given, the MT can return total pageviews for each uniqueness paths. However, that data does not contain page title because its spec. (Sometimes, Google Analytics will return another pageviews by same path.)'
+          in: query
+          name: uniquePath
+          schema:
+            enum:
+              - 0
+              - 1
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsdate'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      pageviews:
+                        description: The sum total of the pageviews in the specified period.
+                        type: string
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      security:
+        - mtauth: []
+      summary: Retrieve pageviews count for each date from provider (e.g. Google Analytics)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/date/visits':
+    get:
+      description: |
+        Retrieve visits count for each date from provider (e.g. Google Analytics).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 10.
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: path
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsdate'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      visits:
+                        description: The sum total of the pageviews in the specified period.
+                        type: string
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      security:
+        - mtauth: []
+      summary: Retrieve visits count for each date from provider (e.g. Google Analytics)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/path/pageviews':
+    get:
+      description: |
+        Retrieve pageviews count for each path from provider (e.g. Google Analytics).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 10.
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: path
+          schema:
+            type: string
+        - description: 'This is an optional parameter. If true is given, the MT can return total pageviews for each uniqueness paths. However, that data does not contain page title because its spec. (Sometimes, Google Analytics will return another pageviews by same path.)'
+          in: query
+          name: uniquePath
+          schema:
+            enum:
+              - 0
+              - 1
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for path resource.
+                    items:
+                      $ref: '#/components/schemas/statisticspath'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      pageviews:
+                        description: The sum total of the pageviews in the specified period.
+                        type: string
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      security:
+        - mtauth: []
+      summary: Retrieve pageviews count for each path from provider (e.g. Google Analytics)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/path/visits':
+    get:
+      description: |
+        Retrieve visits count for each date from provider (e.g. Google Analytics).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 10.
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: path
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for path resource.
+                    items:
+                      $ref: '#/components/schemas/statisticspath'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      visits:
+                        description: The sum total of the pageviews in the specified period.
+                        type: string
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      security:
+        - mtauth: []
+      summary: Retrieve visits count for each path from provider (e.g. Google Analytics)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/provider':
+    get:
+      description: |
+        Retrieve a current effective provider.
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      security:
+        - mtauth: []
+      summary: Retrieve a current effective provider
+      tags:
+        - Statistics
+  '/sites/{site_id}/trackbacks':
+    get:
+      description: |
+        Retrieve a list of trackbacks.
+        
+        Authorization is required to include unpublished trackbacks
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: 'Input `MTAuth accessToken={accessToken}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+        - description: This is an optional parameter. Maximum number of trackbacks to retrieve. Default is 10.
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: integer
+        - description: This is an optional parameter. The comma separated ID list of trackbacks to include to result.
+          in: query
+          name: includeIds
+          schema:
+            type: string
+        - description: This is an optional parameter. The comma separated ID list of trackbacks to exclude from result.
+          in: query
+          name: excludeIds
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of trakcbacks resource. The list will sorted from oldest to newest by received date.
+                    items:
+                      $ref: '#/components/schemas/trackback'
+                    type: array
+                  totalResults:
+                    description: The total number of trackbacks found.
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the list of trackbacks.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a list of trackbacks
+      tags:
+        - Trackbacks
+  '/sites/{site_id}/trackbacks/{ping_id}':
+    delete:
+      description: |
+        Delete a trackbacks.
+        
+        Authorization is required.
+        
+        #### Notes
+        - This method accepts DELETE and POST with __method=DELETE.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: ping_id
+          required: 1
+          schema:
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/trackback'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to delete a trackback.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+        405:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Request method is not DELETE or POST with __method=DELETE
+      security:
+        - mtauth: []
+      summary: Delete a trackbacks
+      tags:
+        - Trackbacks
+    get:
+      description: |
+        Retrieve a single trackback by its ID.
+        
+        Authorization is required if the trackback status is "unpublished". If the trackback status is "published", then this method can be called without authorization.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: ping_id
+          required: 1
+          schema:
+            type: integer
+        - description: 'Input `MTAuth accessToken={accessToken}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/trackback'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the requested trackback.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a single trackback by its ID
+      tags:
+        - Trackbacks
+    put:
+      description: |
+        Update a trackbacks.
+        
+        Authorization is required.
+        
+        #### Notes
+        - This method accepts PUT and POST with __method=PUT.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - in: path
+          name: ping_id
+          required: 1
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                trackback:
+                  $ref: '#/components/schemas/trackback_updatable'
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/trackback'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to update a trackback.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+        405:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Request method is not PUT or POST with __method=PUT
+      security:
+        - mtauth: []
+      summary: Update a trackbacks
+      tags:
+        - Trackbacks
+  /token:
+    delete:
+      description: |
+        Invalidate current access token. This is not logout. If the browser has active session id, new access token can be obtained easily.
+        
+        Authorization is required.
+        
+        #### Notes
+        - This method accepts DELETE and POST with __method=DELETE.
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    description: The value of this parameter is always "success".
+                    type: string
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        405:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Request method is not DELETE or POST with __method=DELETE
+      security:
+        - mtauth: []
+      summary: Invalidate current session. This is like logout
+      tags:
+        - Authentication
+    post:
+      description: |
+        Create new access token related to current session.
+        
+        In order to create new access token, in the case of a web browser, it is necessary to create session via authentication endpoints beforehand.
+        
+        In the case of other than a browser, it is necessary to send a sessionId that is retrieved via authentication endpoints in MTAuth request header.
+        
+        `MTAuth sessionId={retrieved sessionId}`
+      parameters:
+        - description: 'Input `MTAuth sessionId={sessionId}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                clientId:
+                  description: 'This is not required if you specify session id via "X-MT-Authorization" request header. You can create new access token if you have a session id related to this clientId, although you do not have an access token. '
+                  type: string
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  accessToken:
+                    description: Access token
+                    type: string
+                  expiresIn:
+                    description: This access token will be invalidated automatically after the number of seconds specified here.
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+      summary: Create new access token related to current session
+      tags:
+        - Authentication
+  /users/synchronize:
+    post:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    type: string
+                type: object
+          description: No Errors.
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to synchronize users.
+      security:
+        - mtauth: []
+      summary: Synchronize users
+      tags:
+        - Users
+  '/users/{user_id}':
+    get:
+      description: |
+        Retrieve a single user by its ID.
+        
+        Authorization is required if you want to retrieve private properties.
+      parameters:
+        - in: path
+          name: user_id
+          required: 1
+          schema:
+            type: string
+        - description: 'Input `MTAuth accessToken={accessToken}`'
+          in: header
+          name: X-MT-Authorization
+          schema:
+            type: string
+        - description: 'This is an optional parameter. The field list to retrieve as part of the Users resource. This list should be separated by comma. If this parameter is not specified, All fields will be returned.'
+          in: query
+          name: fields
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the requested user.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a single user by its ID
+      tags:
+        - Users
+    put:
+      description: |
+        Update user data.
+        
+        Authorization is required.
+        
+        #### Notes
+        - This method accepts PUT and POST with __method=PUT.
+      parameters:
+        - in: path
+          name: user_id
+          required: 1
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              properties:
+                user:
+                  $ref: '#/components/schemas/user_updatable'
+              type: object
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to update the requested user.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+        405:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Request method is not PUT or POST with __method=PUT
+      security:
+        - mtauth: []
+      summary: Update user data
+      tags:
+        - Users
+  '/users/{user_id}/permissions':
+    get:
+      description: |
+        Retrieve a list of permissions for a user.
+        
+        Authorization is required and can specify only 'me' (or user's own user ID) except for a super user.
+      parameters:
+        - in: path
+          name: user_id
+          required: 1
+          schema:
+            type: string
+        - description: This is an optional parameter. The comma separated ID list of blogs to retrieve.
+          in: query
+          name: blogIds
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    items:
+                      $ref: '#/components/schemas/permission'
+                    type: array
+                  totalResults:
+                    description: The total number of permissions found.
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the requested user's permissions.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      security:
+        - mtauth: []
+      summary: Retrieve a list of permissions for a user
+      tags:
+        - Users
+        - Permissions
+  '/users/{user_id}/sites':
+    get:
+      description: Retrieve a list of blogs by user.
+      parameters:
+        - in: path
+          name: user_id
+          required: 1
+          schema:
+            type: string
+        - description: 'This is an optional parameter. Maximum number of blogs to retrieve. Default is 25. '
+          in: query
+          name: limit
+          schema:
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: integer
+        - description: |
+            This is an optional parameter.
+            
+            #### name
+            
+            (default) Sort by the name of each blogs.
+            
+            #### created_on
+            
+            Sort by the created time of each blogs.
+          in: query
+          name: sortBy
+          schema:
+            enum:
+              - name
+              - created_on
+            type: string
+        - description: |
+            This is an optional parameter.
+            
+            #### ascend
+            
+            (default) Return blogs in ascending order. For the date, it means from oldest to newset.
+            
+            #### descend
+            
+            Return blogs in descending order. For the date, it means from newest to oldest.
+          in: query
+          name: sortOrder
+          schema:
+            enum:
+              - ascend
+              - descend
+            type: string
+        - description: 'This is an optional parameter. The comma separated ID list of blogs to include to result. '
+          in: query
+          name: includeIds
+          schema:
+            type: string
+        - description: 'This is an optional parameter. The comma separated ID list of blogs to exclude from result. '
+          in: query
+          name: excludeIds
+          schema:
+            type: string
+        - description: 'This is an optional parameter. the field list to retrieve as part of the Blogs resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
+          in: query
+          name: fields
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: 'An array of Blogs resource. The list will sorted descending by blog name. '
+                    items:
+                      $ref: '#/components/schemas/blog'
+                    type: array
+                  totalResults:
+                    description: 'The total number of blogs found. '
+                    type: integer
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        403:
+          description: Do not have permission to retrieve the list of blogs.
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve a list of blogs by user
+      tags:
+        - Users
+        - Sites
+  /version:
+    get:
+      description: |
+        Retrieves Data API version of the server.
+        
+        **This endpoint has been available since Movable Type 6.2.4.**
+        
+        This endpoint does not need /v3 or something API endpoint version identifier.
+        You can call like: `https://host/path/your-mt-data-api.cgi/version`
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  apiVersion:
+                    format: float
+                    type: number
+                  endpointVersion:
+                    type: string
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+      summary: Get server API version
+      tags:
+        - Common API
+servers:
+  - url: https://example.com/mt/mt-data-api.cgi/v1
+tags:
+  - name: Authentication
+  - name: Common API
+  - name: Endpoints
+
