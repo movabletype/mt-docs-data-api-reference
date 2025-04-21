@@ -2,8 +2,9 @@ version: '3'
 services:
   docs:
     build: .
-    command: sh -c "yarn index && yarn redoc"
+    command: sh -c 'npm run webpack serve'
     volumes:
       - .:/root/docs
       - /root/docs/node_modules
-
+    ports:
+      - 8080:8080
