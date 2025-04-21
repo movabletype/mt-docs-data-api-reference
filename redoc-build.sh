@@ -1,11 +1,11 @@
 #!/bin/sh
 
 for v in v1 v2 v3 v4 v5 v6; do \
-  npx redoc-cli build src/openapi/${v}.json \
+  npx @redocly/cli build-docs src/openapi/${v}.yaml \
     --template src/openapi/data-api-redoc.hbs \
     --disableGoogleFont \
     --title "Movable Type Data API ${v}" \
     --templateOptions.metaDescription "Movable Type Data API ${v}" \
-    --options.sortTagsAlphabetically=true \
+    --config redoc.config.yaml \
     --output docs/${v}.html; \
 done
