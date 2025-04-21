@@ -17,4 +17,4 @@ jobs:
         cache: npm
         node-version: '16'
     - run: npm install
-    - run: yarn redoc
+    - run: npm run redoc
