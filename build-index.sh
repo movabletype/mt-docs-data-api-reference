@@ -31,7 +31,6 @@ $(npx marked -i src/markdown/index_sidebar.md)
     </div>
   </div>
 </div>
-</main>
 <footer class="footer">
   <span>© Six Apart Ltd.</span>
 </footer>

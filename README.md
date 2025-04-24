@@ -1,7 +1,5 @@
 # mt-docs-data-api-reference
 
-[![Build Status](https://travis-ci.org/movabletype/mt-docs-data-api-reference.svg?branch=master)](https://travis-ci.org/movabletype/mt-docs-data-api-reference)
-
 ## Usage
 
 ### Install
@@ -13,8 +11,6 @@ $ make install
 ```
 
 ### Build HTML files
-
-* Run aglio command
 
 ```sh
 $ make build

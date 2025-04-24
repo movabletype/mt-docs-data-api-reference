@@ -9,3 +9,5 @@ for v in v1 v2 v3 v4 v5 v6; do \
     --config redoc.config.yaml \
     --output docs/${v}.html; \
 done
+
+npm run format

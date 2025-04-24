@@ -1,7 +1,7 @@
 ### カテゴリ 
 - [Movable Type Data API](https://www.movabletype.jp/developers/data-api/)
 - [Movable Type Data API SDK ガイド](https://github.com/movabletype/mt-data-api-sdk-js/wiki/DataAPI-SDK-japanese-MT.DataAPI)
-- [プラグイン開発](https://github.com/movabletype/Documentation/wiki/Japanese-developer-guide)</a></li>
+- [プラグイン開発](https://github.com/movabletype/Documentation/wiki/Japanese-developer-guide)
 - [テーマ開発](https://www.movabletype.jp/documentation/mt6/developer/theme/)
 -   [Movable Type Chart API](https://github.com/movabletype/Documentation/wiki/Movable-Type-Chart-API)
 

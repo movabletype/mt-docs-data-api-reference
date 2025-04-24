@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   entry: ['./src/assets/main.js'],
   output: {
     filename: 'main.js',
@@ -13,5 +14,11 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
     ]
+  },
+  devServer: {
+    allowedHosts: 'all',
+    static: {
+      directory: path.join(__dirname, 'docs')
+    }
   }
 };
