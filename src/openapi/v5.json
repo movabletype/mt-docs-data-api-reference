@@ -6178,7 +6178,7 @@
   },
   "info": {
     "title": "Movable Type Data API",
-    "version": "8.0.3"
+    "version": "8.5.1"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -27762,7 +27762,7 @@
   },
   "servers": [
     {
-      "url": "https://example.com/mt/mt-data-api.cgi/v1"
+      "url": "https://example.com/mt/mt-data-api.cgi/v5"
     }
   ],
   "tags": [
