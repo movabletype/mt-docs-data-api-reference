@@ -191,6 +191,112 @@
           "type": "string"
         }
       },
+      "category_set_dateField": {
+        "description": "Specifies the field name to be used as a date field for filtering. (new in v3)",
+        "in": "query",
+        "name": "dateField",
+        "schema": {
+          "default": "created_on",
+          "type": "string"
+        }
+      },
+      "category_set_dateFrom": {
+        "description": "The start date to filtering. Specify in \"YYYY-MM-DD\" format. (new in v3)",
+        "in": "query",
+        "name": "dateFrom",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_set_dateTo": {
+        "description": "The end date to filtering. Specify in \"YYYY-MM-DD\" format. (new in v3)",
+        "in": "query",
+        "name": "dateTo",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_set_excludeIds": {
+        "description": "The comma separated ID list of category_sets to exclude from result.",
+        "in": "query",
+        "name": "excludeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_set_fields": {
+        "description": "The field list to retrieve as part of the category_set resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.",
+        "in": "query",
+        "name": "fields",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_set_includeIds": {
+        "description": "The comma separated ID list of category_sets to include to result.",
+        "in": "query",
+        "name": "includeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_set_limit": {
+        "description": "Maximum number of category_sets to retrieve.\n\n**Default**: 25",
+        "in": "query",
+        "name": "limit",
+        "schema": {
+          "default": "25",
+          "type": "integer"
+        }
+      },
+      "category_set_offset": {
+        "description": "0-indexed offset.\n\n**Default**: 0",
+        "in": "query",
+        "name": "offset",
+        "schema": {
+          "default": "0",
+          "type": "integer"
+        }
+      },
+      "category_set_search": {
+        "description": "Search query.",
+        "in": "query",
+        "name": "search",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_set_searchFields": {
+        "description": "The comma separated field name list to search.\n\n**Default**: name",
+        "in": "query",
+        "name": "searchFields",
+        "schema": {
+          "default": "name",
+          "type": "string"
+        }
+      },
+      "category_set_sortBy": {
+        "description": "\n\n**Default**: name",
+        "in": "query",
+        "name": "sortBy",
+        "schema": {
+          "default": "name",
+          "type": "string"
+        }
+      },
+      "category_set_sortOrder": {
+        "description": "#### descend\n\nReturn category_sets in descending order.\n\n#### ascend\n\nReturn category_sets in ascending order.\n\n\n\n**Default**: ascend",
+        "in": "query",
+        "name": "sortOrder",
+        "schema": {
+          "default": "ascend",
+          "enum": [
+            "descend",
+            "ascend"
+          ],
+          "type": "string"
+        }
+      },
       "category_sortBy": {
         "description": "\n\n**Default**: user_custom",
         "in": "query",
@@ -319,6 +425,324 @@
           "type": "string"
         }
       },
+      "content_data_dateField": {
+        "description": "Specifies the field name to be used as a date field for filtering. (new in v3)",
+        "in": "query",
+        "name": "dateField",
+        "schema": {
+          "default": "created_on",
+          "type": "string"
+        }
+      },
+      "content_data_dateFrom": {
+        "description": "The start date to filtering. Specify in \"YYYY-MM-DD\" format. (new in v3)",
+        "in": "query",
+        "name": "dateFrom",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_data_dateTo": {
+        "description": "The end date to filtering. Specify in \"YYYY-MM-DD\" format. (new in v3)",
+        "in": "query",
+        "name": "dateTo",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_data_excludeIds": {
+        "description": "The comma separated ID list of content_data to exclude from result.",
+        "in": "query",
+        "name": "excludeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_data_fields": {
+        "description": "The field list to retrieve as part of the content_data resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.",
+        "in": "query",
+        "name": "fields",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_data_includeIds": {
+        "description": "The comma separated ID list of content_data to include to result.",
+        "in": "query",
+        "name": "includeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_data_limit": {
+        "description": "Maximum number of content_data to retrieve.\n\n**Default**: 10",
+        "in": "query",
+        "name": "limit",
+        "schema": {
+          "default": "10",
+          "type": "integer"
+        }
+      },
+      "content_data_offset": {
+        "description": "0-indexed offset.\n\n**Default**: 0",
+        "in": "query",
+        "name": "offset",
+        "schema": {
+          "default": "0",
+          "type": "integer"
+        }
+      },
+      "content_data_search": {
+        "description": "Search query.",
+        "in": "query",
+        "name": "search",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_data_searchFields": {
+        "description": "The comma separated field name list to search.\n\n**Default**: identifier",
+        "in": "query",
+        "name": "searchFields",
+        "schema": {
+          "default": "identifier",
+          "type": "string"
+        }
+      },
+      "content_data_sortBy": {
+        "description": "\n\n**Default**: modified_on",
+        "in": "query",
+        "name": "sortBy",
+        "schema": {
+          "default": "modified_on",
+          "type": "string"
+        }
+      },
+      "content_data_sortOrder": {
+        "description": "#### descend\n\nReturn content_data in descending order.\n\n#### ascend\n\nReturn content_data in ascending order.\n\n\n\n**Default**: descend",
+        "in": "query",
+        "name": "sortOrder",
+        "schema": {
+          "default": "descend",
+          "enum": [
+            "descend",
+            "ascend"
+          ],
+          "type": "string"
+        }
+      },
+      "content_field_dateField": {
+        "description": "Specifies the field name to be used as a date field for filtering. (new in v3)",
+        "in": "query",
+        "name": "dateField",
+        "schema": {
+          "default": "created_on",
+          "type": "string"
+        }
+      },
+      "content_field_dateFrom": {
+        "description": "The start date to filtering. Specify in \"YYYY-MM-DD\" format. (new in v3)",
+        "in": "query",
+        "name": "dateFrom",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_field_dateTo": {
+        "description": "The end date to filtering. Specify in \"YYYY-MM-DD\" format. (new in v3)",
+        "in": "query",
+        "name": "dateTo",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_field_excludeIds": {
+        "description": "The comma separated ID list of content_fields to exclude from result.",
+        "in": "query",
+        "name": "excludeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_field_fields": {
+        "description": "The field list to retrieve as part of the content_field resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.",
+        "in": "query",
+        "name": "fields",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_field_includeIds": {
+        "description": "The comma separated ID list of content_fields to include to result.",
+        "in": "query",
+        "name": "includeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_field_limit": {
+        "description": "Maximum number of content_fields to retrieve.\n\n**Default**: 10",
+        "in": "query",
+        "name": "limit",
+        "schema": {
+          "default": "10",
+          "type": "integer"
+        }
+      },
+      "content_field_offset": {
+        "description": "0-indexed offset.\n\n**Default**: 0",
+        "in": "query",
+        "name": "offset",
+        "schema": {
+          "default": "0",
+          "type": "integer"
+        }
+      },
+      "content_field_search": {
+        "description": "Search query.",
+        "in": "query",
+        "name": "search",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_field_searchFields": {
+        "description": "The comma separated field name list to search.\n\n**Default**: label,description",
+        "in": "query",
+        "name": "searchFields",
+        "schema": {
+          "default": "label,description",
+          "type": "string"
+        }
+      },
+      "content_field_sortBy": {
+        "description": "\n\n**Default**: user_custom",
+        "in": "query",
+        "name": "sortBy",
+        "schema": {
+          "default": "user_custom",
+          "type": "string"
+        }
+      },
+      "content_field_sortOrder": {
+        "description": "#### descend\n\nReturn content_fields in descending order.\n\n#### ascend\n\nReturn content_fields in ascending order.\n\n\n\n**Default**: ascend",
+        "in": "query",
+        "name": "sortOrder",
+        "schema": {
+          "default": "ascend",
+          "enum": [
+            "descend",
+            "ascend"
+          ],
+          "type": "string"
+        }
+      },
+      "content_type_dateField": {
+        "description": "Specifies the field name to be used as a date field for filtering. (new in v3)",
+        "in": "query",
+        "name": "dateField",
+        "schema": {
+          "default": "created_on",
+          "type": "string"
+        }
+      },
+      "content_type_dateFrom": {
+        "description": "The start date to filtering. Specify in \"YYYY-MM-DD\" format. (new in v3)",
+        "in": "query",
+        "name": "dateFrom",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_type_dateTo": {
+        "description": "The end date to filtering. Specify in \"YYYY-MM-DD\" format. (new in v3)",
+        "in": "query",
+        "name": "dateTo",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_type_excludeIds": {
+        "description": "The comma separated ID list of content_types to exclude from result.",
+        "in": "query",
+        "name": "excludeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_type_fields": {
+        "description": "The field list to retrieve as part of the content_type resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.",
+        "in": "query",
+        "name": "fields",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_type_includeIds": {
+        "description": "The comma separated ID list of content_types to include to result.",
+        "in": "query",
+        "name": "includeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_type_limit": {
+        "description": "Maximum number of content_types to retrieve.\n\n**Default**: 10",
+        "in": "query",
+        "name": "limit",
+        "schema": {
+          "default": "10",
+          "type": "integer"
+        }
+      },
+      "content_type_offset": {
+        "description": "0-indexed offset.\n\n**Default**: 0",
+        "in": "query",
+        "name": "offset",
+        "schema": {
+          "default": "0",
+          "type": "integer"
+        }
+      },
+      "content_type_search": {
+        "description": "Search query.",
+        "in": "query",
+        "name": "search",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "content_type_searchFields": {
+        "description": "The comma separated field name list to search.\n\n**Default**: name,description",
+        "in": "query",
+        "name": "searchFields",
+        "schema": {
+          "default": "name,description",
+          "type": "string"
+        }
+      },
+      "content_type_sortBy": {
+        "description": "\n\n**Default**: id",
+        "in": "query",
+        "name": "sortBy",
+        "schema": {
+          "default": "id",
+          "type": "string"
+        }
+      },
+      "content_type_sortOrder": {
+        "description": "#### descend\n\nReturn content_types in descending order.\n\n#### ascend\n\nReturn content_types in ascending order.\n\n\n\n**Default**: ascend",
+        "in": "query",
+        "name": "sortOrder",
+        "schema": {
+          "default": "ascend",
+          "enum": [
+            "descend",
+            "ascend"
+          ],
+          "type": "string"
+        }
+      },
       "entry_dateField": {
         "description": "Specifies the field name to be used as a date field for filtering. (new in v3)",
         "in": "query",
@@ -396,7 +820,7 @@
       "entry_no_text_filter": {
         "description": "If you want to fetch the raw text, set to '1'. New in v2\n",
         "in": "query",
-        "name": "no_text_filter",
+        "name": "noTextFilter",
         "schema": {
           "enum": [
             0,
@@ -1082,7 +1506,7 @@
       "page_no_text_filter": {
         "description": "If you want to fetch the raw text, set to '1'. New in v2\n",
         "in": "query",
-        "name": "no_text_filter",
+        "name": "noTextFilter",
         "schema": {
           "enum": [
             0,
@@ -2215,7 +2639,7 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "label": {
             "type": "string"
@@ -2256,7 +2680,12 @@
             "type": "string"
           },
           "parent": {
-            "type": "string"
+            "properties": {
+              "id": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
           },
           "tags": {
             "items": {
@@ -2344,7 +2773,7 @@
           "role": {
             "properties": {
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "name": {
                 "type": "string"
@@ -2358,7 +2787,7 @@
                 "type": "string"
               },
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "userpicUrl": {
                 "type": "string"
@@ -2370,7 +2799,7 @@
         "type": "object"
       },
       "blog": {
-        "description": "Updatable fields are name, description, url, archiveUrl, themeId, serverOffset, language, sitePath, archivePath, fileExtension, archiveTypePreferred, publishEmptyArchive, includeSystem, includeCache, useRevision, maxRevisionsEntry, maxRevisionsTemplate, listOnIndex, daysOrPosts, sortOrderPosts, wordsInExcerpt, basenameLimit, statusDefault, convertParas, contentCss, smartReplace, smartReplaceFields, junkFolderExpiry, junkScoreThreshold, nofollowUrls, followAuthLinks, sanitizeSpec, autolinkUrls, autodiscoverLinks, internalAutodiscovery, newCreatedUserRole, dateLanguage, customDynamicTemplates, customFields, allowCommentsDefault, allowComments, moderateComments, allowCommentHtml, emailNewComments, sortOrderComments, convertParasComments, useCommentConfirmation, allowCommenterRegist, allowUnregComments, requireCommentEmails, commenterAuthenticators",
+        "description": "Updatable fields are name, description, url, archiveUrl, themeId, serverOffset, language, sitePath, archivePath, fileExtension, archiveTypePreferred, publishEmptyArchive, includeSystem, includeCache, useRevision, maxRevisionsEntry, maxRevisionsTemplate, listOnIndex, daysOrPosts, sortOrderPosts, wordsInExcerpt, basenameLimit, statusDefault, convertParas, contentCss, smartReplace, smartReplaceFields, junkFolderExpiry, junkScoreThreshold, nofollowUrls, followAuthLinks, sanitizeSpec, autolinkUrls, autodiscoverLinks, internalAutodiscovery, newCreatedUserRole, dateLanguage, customDynamicTemplates, customFields, allowCommentsDefault, allowComments, moderateComments, allowCommentHtml, emailNewComments, sortOrderComments, convertParasComments, useCommentConfirmation, allowCommenterRegist, allowUnregComments, requireCommentEmails, commenterAuthenticators, maxRevisionsContentData",
         "properties": {
           "allowCommentHtml": {
             "type": "boolean"
@@ -2409,7 +2838,7 @@
             "type": "boolean"
           },
           "basenameLimit": {
-            "type": "string"
+            "type": "integer"
           },
           "ccLicenseImage": {
             "type": "string"
@@ -2507,7 +2936,7 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "includeCache": {
             "type": "boolean"
@@ -2519,25 +2948,29 @@
             "type": "boolean"
           },
           "junkFolderExpiry": {
-            "type": "string"
+            "type": "integer"
           },
           "junkScoreThreshold": {
-            "type": "string"
+            "format": "float",
+            "type": "number"
           },
           "language": {
             "type": "string"
           },
           "listOnIndex": {
-            "type": "string"
+            "type": "integer"
+          },
+          "maxRevisionsContentData": {
+            "type": "integer"
           },
           "maxRevisionsEntry": {
-            "type": "string"
+            "type": "integer"
           },
           "maxRevisionsTemplate": {
-            "type": "string"
+            "type": "integer"
           },
           "moderateComments": {
-            "type": "string"
+            "type": "integer"
           },
           "modifiedBy": {
             "properties": {
@@ -2592,7 +3025,7 @@
           "parent": {
             "properties": {
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "name": {
                 "type": "string"
@@ -2619,7 +3052,7 @@
             "type": "string"
           },
           "smartReplace": {
-            "type": "string"
+            "type": "integer"
           },
           "smartReplaceFields": {
             "items": {
@@ -2666,7 +3099,7 @@
             "type": "boolean"
           },
           "wordsInExcerpt": {
-            "type": "string"
+            "type": "integer"
           }
         },
         "type": "object"
@@ -2704,7 +3137,7 @@
             "type": "boolean"
           },
           "basenameLimit": {
-            "type": "string"
+            "type": "integer"
           },
           "commenterAuthenticators": {
             "items": {
@@ -2766,25 +3199,29 @@
             "type": "boolean"
           },
           "junkFolderExpiry": {
-            "type": "string"
+            "type": "integer"
           },
           "junkScoreThreshold": {
-            "type": "string"
+            "format": "float",
+            "type": "number"
           },
           "language": {
             "type": "string"
           },
           "listOnIndex": {
-            "type": "string"
+            "type": "integer"
+          },
+          "maxRevisionsContentData": {
+            "type": "integer"
           },
           "maxRevisionsEntry": {
-            "type": "string"
+            "type": "integer"
           },
           "maxRevisionsTemplate": {
-            "type": "string"
+            "type": "integer"
           },
           "moderateComments": {
-            "type": "string"
+            "type": "integer"
           },
           "name": {
             "type": "string"
@@ -2808,7 +3245,7 @@
             "type": "string"
           },
           "smartReplace": {
-            "type": "string"
+            "type": "integer"
           },
           "smartReplaceFields": {
             "items": {
@@ -2838,7 +3275,7 @@
             "type": "boolean"
           },
           "wordsInExcerpt": {
-            "type": "string"
+            "type": "integer"
           }
         },
         "type": "object"
@@ -2923,10 +3360,100 @@
             "type": "string"
           },
           "parent": {
+            "type": "integer"
+          },
+          "updatable": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "category_set": {
+        "description": "Updatable fields are name",
+        "properties": {
+          "blog": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "categories": {
+            "items": {
+              "properties": {
+                "basename": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "parent": {
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "contentTypeCount": {
+            "type": "string"
+          },
+          "createdBy": {
+            "properties": {
+              "displayName": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "userpicUrl": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "createdDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "modifiedBy": {
+            "properties": {
+              "displayName": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "userpicUrl": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "modifiedDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
             "type": "string"
           },
           "updatable": {
             "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "category_set_updatable": {
+        "properties": {
+          "name": {
+            "type": "string"
           }
         },
         "type": "object"
@@ -2957,6 +3484,268 @@
             "type": "string"
           },
           "parent": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "cd": {
+        "description": "Updatable fields are basename, data, date, status, unpublishedDate, label",
+        "properties": {
+          "author": {
+            "properties": {
+              "displayName": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "userpicUrl": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "basename": {
+            "type": "string"
+          },
+          "blog": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "createdDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "data": {
+            "items": {
+              "properties": {
+                "data": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  ]
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "date": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "modifiedDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "permalink": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "unpublishedDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatable": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "cd_updatable": {
+        "properties": {
+          "basename": {
+            "type": "string"
+          },
+          "data": {
+            "items": {
+              "properties": {
+                "data": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  ]
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "date": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "unpublishedDate": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "cf": {
+        "description": "Updatable fields are type, label, description, options",
+        "properties": {
+          "blog": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "createdBy": {
+            "properties": {
+              "displayName": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "userpicUrl": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "createdDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "modifiedBy": {
+            "properties": {
+              "displayName": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "userpicUrl": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "modifiedDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "options": {
+            "description": "This schema shows only common options",
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "display": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "required": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "type": "string"
+          },
+          "uniqueID": {
+            "type": "string"
+          },
+          "updatable": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "cf_updatable": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "options": {
+            "description": "This schema shows only common options",
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "display": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "required": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
             "type": "string"
           }
         },
@@ -3104,6 +3893,114 @@
         },
         "type": "object"
       },
+      "content_type": {
+        "description": "Updatable fields are name, description, userDisplayOption, dataLabel",
+        "properties": {
+          "blog": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "contentFields": {
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "uniqueID": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "createdBy": {
+            "properties": {
+              "displayName": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "userpicUrl": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "createdDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dataLabel": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "modifiedBy": {
+            "properties": {
+              "displayName": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "userpicUrl": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "modifiedDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "uniqueID": {
+            "type": "string"
+          },
+          "updatable": {
+            "type": "boolean"
+          },
+          "userDisplayOption": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "content_type_updatable": {
+        "properties": {
+          "dataLabel": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "userDisplayOption": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "endpoint": {
         "properties": {
           "component": {
@@ -3142,7 +4039,7 @@
         "type": "object"
       },
       "entry": {
-        "description": "Updatable fields are status, title, body, more, excerpt, keywords, tags, date, basename, customFields, allowComments, format, unpublishedDate",
+        "description": "Updatable fields are status, title, body, more, excerpt, keywords, tags, date, basename, customFields, allowComments, format, unpublishedDate, categories, assets",
         "properties": {
           "allowComments": {
             "type": "boolean"
@@ -3159,7 +4056,7 @@
                 "type": "string"
               },
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "userpicUrl": {
                 "type": "string"
@@ -3281,11 +4178,33 @@
           "allowComments": {
             "type": "boolean"
           },
+          "assets": {
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
           "basename": {
             "type": "string"
           },
           "body": {
             "type": "string"
+          },
+          "categories": {
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
           },
           "customFields": {
             "items": {
@@ -3357,7 +4276,7 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "name": {
             "type": "string"
@@ -3509,7 +4428,7 @@
             "type": "string"
           },
           "parent": {
-            "type": "string"
+            "type": "integer"
           },
           "path": {
             "type": "string"
@@ -3546,7 +4465,7 @@
             "type": "string"
           },
           "parent": {
-            "type": "string"
+            "type": "integer"
           }
         },
         "type": "object"
@@ -3584,7 +4503,7 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "label": {
             "type": "string"
@@ -3661,10 +4580,10 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "memberCount": {
-            "type": "string"
+            "type": "integer"
           },
           "modifiedBy": {
             "properties": {
@@ -3688,7 +4607,7 @@
             "type": "string"
           },
           "permissionCount": {
-            "type": "string"
+            "type": "integer"
           },
           "status": {
             "type": "string"
@@ -3733,7 +4652,7 @@
                 "type": "string"
               },
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "userpicUrl": {
                 "type": "string"
@@ -3752,7 +4671,7 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "ip": {
             "type": "string"
@@ -3780,7 +4699,7 @@
                 "type": "string"
               },
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "userpicUrl": {
                 "type": "string"
@@ -3821,7 +4740,7 @@
                 "type": "string"
               },
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "userpicUrl": {
                 "type": "string"
@@ -4029,7 +4948,7 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "permissions": {
             "items": {
@@ -4040,7 +4959,7 @@
           "roles": {
             "properties": {
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "name": {
                 "type": "string"
@@ -4054,7 +4973,7 @@
                 "type": "string"
               },
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "userpicUrl": {
                 "type": "string"
@@ -4217,13 +5136,13 @@
             "format": "date",
             "type": "string"
           },
-          "pageviews": {
+          "screenPageViews": {
             "description": "The pageviews for the path. This property exists only if the metrics to retrieve is \"pageviews\"",
-            "type": "string"
+            "type": "integer"
           },
-          "visits": {
-            "description": "The visits for the path. This property exists only if the metrics to retrieve is \"visits\"",
-            "type": "string"
+          "sessions": {
+            "description": "The number of sessions for the path. This property exists only if the metrics to retrieve is \"visits\"",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -4264,17 +5183,21 @@
             },
             "type": "object"
           },
-          "pageviews": {
-            "description": "The pageviews for the path. This property exists only if the metrics to retrieve is \"pageviews\"",
-            "type": "string"
-          },
-          "path": {
+          "pagePath": {
             "description": "The relative path of the target.",
             "type": "string"
           },
-          "visits": {
-            "description": "The visits for the path. This property exists only if the metrics to retrieve is \"visits\"",
+          "pageTitle": {
+            "description": "The title for the path.",
             "type": "string"
+          },
+          "screenPageViews": {
+            "description": "The pageviews for the path. This property exists only if the metrics to retrieve is \"pageviews\"",
+            "type": "integer"
+          },
+          "sessions": {
+            "description": "The number of sessions for the path. This property exists only if the metrics to retrieve is \"visits\"",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -4283,13 +5206,13 @@
         "description": "Updatable fields are name",
         "properties": {
           "assetCount": {
-            "type": "string"
+            "type": "integer"
           },
           "entryCount": {
-            "type": "string"
+            "type": "integer"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "isPrivate": {
             "type": "boolean"
@@ -4301,7 +5224,7 @@
             "type": "string"
           },
           "pageCount": {
-            "type": "string"
+            "type": "integer"
           },
           "updatable": {
             "type": "boolean"
@@ -4318,7 +5241,7 @@
         "type": "object"
       },
       "template": {
-        "description": "Updatable fields are name, type, text, outputFile, templateType, linkToFile, buildType, customFields",
+        "description": "Updatable fields are name, type, text, outputFile, templateType, linkToFile, buildType, customFields, contentType",
         "properties": {
           "archiveTypes": {
             "items": {
@@ -4336,6 +5259,14 @@
           },
           "buildType": {
             "type": "string"
+          },
+          "contentType": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
           },
           "createdBy": {
             "properties": {
@@ -4370,7 +5301,7 @@
             "type": "array"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "linkToFile": {
             "type": "string"
@@ -4433,6 +5364,14 @@
           "buildType": {
             "type": "string"
           },
+          "contentType": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
           "customFields": {
             "items": {
               "properties": {
@@ -4481,7 +5420,7 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "isPreferred": {
             "type": "boolean"
@@ -4625,7 +5564,7 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "isSuperuser": {
             "type": "boolean"
@@ -4746,7 +5685,7 @@
         "type": "object"
       },
       "website": {
-        "description": "Updatable fields are name, description, url, archiveUrl, themeId, serverOffset, language, sitePath, archivePath, fileExtension, archiveTypePreferred, publishEmptyArchive, includeSystem, includeCache, useRevision, maxRevisionsEntry, maxRevisionsTemplate, listOnIndex, daysOrPosts, sortOrderPosts, wordsInExcerpt, basenameLimit, statusDefault, convertParas, contentCss, smartReplace, smartReplaceFields, junkFolderExpiry, junkScoreThreshold, nofollowUrls, followAuthLinks, sanitizeSpec, autolinkUrls, autodiscoverLinks, internalAutodiscovery, newCreatedUserRole, dateLanguage, customDynamicTemplates, customFields, allowCommentsDefault, allowComments, moderateComments, allowCommentHtml, emailNewComments, sortOrderComments, convertParasComments, useCommentConfirmation, allowCommenterRegist, allowUnregComments, requireCommentEmails, commenterAuthenticators",
+        "description": "Updatable fields are name, description, url, archiveUrl, themeId, serverOffset, language, sitePath, archivePath, fileExtension, archiveTypePreferred, publishEmptyArchive, includeSystem, includeCache, useRevision, maxRevisionsEntry, maxRevisionsTemplate, listOnIndex, daysOrPosts, sortOrderPosts, wordsInExcerpt, basenameLimit, statusDefault, convertParas, contentCss, smartReplace, smartReplaceFields, junkFolderExpiry, junkScoreThreshold, nofollowUrls, followAuthLinks, sanitizeSpec, autolinkUrls, autodiscoverLinks, internalAutodiscovery, newCreatedUserRole, dateLanguage, customDynamicTemplates, customFields, allowCommentsDefault, allowComments, moderateComments, allowCommentHtml, emailNewComments, sortOrderComments, convertParasComments, useCommentConfirmation, allowCommenterRegist, allowUnregComments, requireCommentEmails, commenterAuthenticators, maxRevisionsContentData",
         "properties": {
           "allowCommentHtml": {
             "type": "boolean"
@@ -4785,7 +5724,7 @@
             "type": "boolean"
           },
           "basenameLimit": {
-            "type": "string"
+            "type": "integer"
           },
           "ccLicenseImage": {
             "type": "string"
@@ -4883,7 +5822,7 @@
             "type": "string"
           },
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "includeCache": {
             "type": "boolean"
@@ -4895,25 +5834,29 @@
             "type": "boolean"
           },
           "junkFolderExpiry": {
-            "type": "string"
+            "type": "integer"
           },
           "junkScoreThreshold": {
-            "type": "string"
+            "format": "float",
+            "type": "number"
           },
           "language": {
             "type": "string"
           },
           "listOnIndex": {
-            "type": "string"
+            "type": "integer"
+          },
+          "maxRevisionsContentData": {
+            "type": "integer"
           },
           "maxRevisionsEntry": {
-            "type": "string"
+            "type": "integer"
           },
           "maxRevisionsTemplate": {
-            "type": "string"
+            "type": "integer"
           },
           "moderateComments": {
-            "type": "string"
+            "type": "integer"
           },
           "modifiedBy": {
             "properties": {
@@ -4968,7 +5911,7 @@
           "parent": {
             "properties": {
               "id": {
-                "type": "string"
+                "type": "integer"
               },
               "name": {
                 "type": "string"
@@ -4995,7 +5938,7 @@
             "type": "string"
           },
           "smartReplace": {
-            "type": "string"
+            "type": "integer"
           },
           "smartReplaceFields": {
             "items": {
@@ -5042,7 +5985,7 @@
             "type": "boolean"
           },
           "wordsInExcerpt": {
-            "type": "string"
+            "type": "integer"
           }
         },
         "type": "object"
@@ -5080,7 +6023,7 @@
             "type": "boolean"
           },
           "basenameLimit": {
-            "type": "string"
+            "type": "integer"
           },
           "commenterAuthenticators": {
             "items": {
@@ -5142,25 +6085,29 @@
             "type": "boolean"
           },
           "junkFolderExpiry": {
-            "type": "string"
+            "type": "integer"
           },
           "junkScoreThreshold": {
-            "type": "string"
+            "format": "float",
+            "type": "number"
           },
           "language": {
             "type": "string"
           },
           "listOnIndex": {
-            "type": "string"
+            "type": "integer"
+          },
+          "maxRevisionsContentData": {
+            "type": "integer"
           },
           "maxRevisionsEntry": {
-            "type": "string"
+            "type": "integer"
           },
           "maxRevisionsTemplate": {
-            "type": "string"
+            "type": "integer"
           },
           "moderateComments": {
-            "type": "string"
+            "type": "integer"
           },
           "name": {
             "type": "string"
@@ -5184,7 +6131,7 @@
             "type": "string"
           },
           "smartReplace": {
-            "type": "string"
+            "type": "integer"
           },
           "smartReplaceFields": {
             "items": {
@@ -5214,7 +6161,7 @@
             "type": "boolean"
           },
           "wordsInExcerpt": {
-            "type": "string"
+            "type": "integer"
           }
         },
         "type": "object"
@@ -7372,6 +8319,104 @@
         ]
       }
     },
+    "/publish/contentData": {
+      "get": {
+        "description": "**Authentication Required** Publish content data. This endpoint requires following permissions.\n\n- Manage Content Data (site, sistem, each content type)\n- Edit All Content Data (each content type)\n",
+        "parameters": [
+          {
+            "description": "Target site ID. Either blogID or blogIds must be specified.",
+            "in": "query",
+            "name": "blogId",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The comma separated site ID list. Either blogID or blogIds must be specified.",
+            "in": "query",
+            "name": "blogIds",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The comma separated content data ID list. You should specifiy this parameter to next call if this endpoint returns âRebuildingâ status and you want to continue to publish.",
+            "in": "query",
+            "name": "ids",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The string of build start time. You should specifiy this parameter to next call if this endpoint returns âRebuildingâ status and you want to continue to publish.",
+            "in": "query",
+            "name": "startTime",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "restIds": {
+                      "description": "The comma separated content data ID list. You should specifiy this parameter to next call if this endpoint returns 'Rebuilding' status and you want to continue to publish.",
+                      "type": "string"
+                    },
+                    "startTime": {
+                      "description": "The string of build start time. You should specifiy this parameter to next call if this endpoint returns 'Rebuilding' status and you want to continue to publish.",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "\"The result status of this call. `Rebuilding`: It means that there is still content that needs to be rebuilt. / `Complete`: Publishing process has been finished.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to publish content_data."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Publish Content Data",
+        "tags": [
+          "Content Data",
+          "Publish"
+        ]
+      }
+    },
     "/publish/entries": {
       "get": {
         "description": "Rebuild the static archives in relation to specified entries.\n\nAuthorization is required.\n",
@@ -8154,6 +9199,22 @@
             "description": "Maximum number of entries to retrieve.\n\nNOTE: By default, \"SearchMaxResults\" override is disabled.\n\n**Default**: 20\n",
             "in": "query",
             "name": "SearchMaxResults",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Class name of the object to be searched. Available values are as follows.\n\n- entry: Search results will only contain entries.\n- page: Search results will only contain pages.\n",
+            "in": "query",
+            "name": "class",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "If 1 specified, searching content data only.",
+            "in": "query",
+            "name": "cdSearch",
             "schema": {
               "type": "integer"
             }
@@ -10845,6 +11906,1493 @@
         ]
       }
     },
+    "/sites/{site_id}/categorySets": {
+      "get": {
+        "description": "Retrieve list of category set in the specified site. Authentication required if you want retrieve private field in categorySet resource. Required permissions are as follows.\n\n- Manage Category Set\n- If you use search parameter, you must specify search parameter with searchFields parameter. (This will be fixed in a future release.)\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Input `MTAuth accessToken={accessToken}`",
+            "in": "header",
+            "name": "X-MT-Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/category_set_search"
+          },
+          {
+            "$ref": "#/components/parameters/category_set_searchFields"
+          },
+          {
+            "$ref": "#/components/parameters/category_set_limit"
+          },
+          {
+            "$ref": "#/components/parameters/category_set_offset"
+          },
+          {
+            "description": "The field name for sort. You can specify one of following values.\n\n- id\n- name\n- created_on\n- modified_on\n- content_type_count\n",
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "default": "name",
+              "enum": [
+                "id",
+                "name",
+                "created_on",
+                "modified_on",
+                "content_type_count"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/category_set_sortOrder"
+          },
+          {
+            "$ref": "#/components/parameters/category_set_fields"
+          },
+          {
+            "$ref": "#/components/parameters/category_set_includeIds"
+          },
+          {
+            "$ref": "#/components/parameters/category_set_excludeIds"
+          },
+          {
+            "$ref": "#/components/parameters/category_set_dateField"
+          },
+          {
+            "$ref": "#/components/parameters/category_set_dateFrom"
+          },
+          {
+            "$ref": "#/components/parameters/category_set_dateTo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "$ref": "#/components/schemas/category_set"
+                      },
+                      "type": "array"
+                    },
+                    "totalResults": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the list of category sets."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site not found."
+          }
+        },
+        "summary": "Category Set Collection",
+        "tags": [
+          "Category Sets"
+        ]
+      },
+      "post": {
+        "description": "**Authentication Required**\n\nCreate a new category set. This endpoint requires following permissions.\n\n- Manage Category Set\n\nPost form data is following\n\n- category_set (CategorySet) - Single CategorySet resource\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "category_set": {
+                    "$ref": "#/components/schemas/category_set_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/category_set"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to create a category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Create a new category set",
+        "tags": [
+          "Category Sets"
+        ]
+      }
+    },
+    "/sites/{site_id}/categorySets/{category_set_id}": {
+      "delete": {
+        "description": "**Authentication required** Delete a single category set. This endpoint requires following permissions.\n\n- Manage Category Set\n\n#### Notes\n- This method accepts DELETE and POST with __method=DELETE.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/category_set"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to delete a category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not DELETE or POST with __method=DELETE"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Delete category set",
+        "tags": [
+          "Category Sets"
+        ]
+      },
+      "get": {
+        "description": "Fetch a single category set. Authentication required if you want retrieve private field in categorySet resource. Required permissions are as follows.\n\n- Manage Category Set\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Input `MTAuth accessToken={accessToken}`",
+            "in": "header",
+            "name": "X-MT-Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/category_set_fields"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/category_set"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the requested category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set not found."
+          }
+        },
+        "summary": "Fetch single category set",
+        "tags": [
+          "Category Sets"
+        ]
+      },
+      "put": {
+        "description": "**Authentication required** Update single category set. This endpoint requires following permissions.\n\n- Manage Category Set\n\nCannot update/insert/delete categories by this endpoint. If you want to manage categories in category set, please use Categories API.\n\n#### Notes\n- This method accepts PUT and POST with __method=PUT.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "category_set": {
+                    "$ref": "#/components/schemas/category_set_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/category_set"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to update a category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not PUT or POST with __method=PUT"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Update category set",
+        "tags": [
+          "Category Sets"
+        ]
+      }
+    },
+    "/sites/{site_id}/categorySets/{category_set_id}/categories": {
+      "get": {
+        "description": "Retrieve list of categories of the specified category set.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Input `MTAuth accessToken={accessToken}`",
+            "in": "header",
+            "name": "X-MT-Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The depth of retrieving parent categories.",
+            "in": "query",
+            "name": "maxDepth",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "- 1: The list does not include current category.\n- 0: The list includes current category.\n",
+            "in": "query",
+            "name": "includeCurrent",
+            "schema": {
+              "default": 0,
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/category_dateField"
+          },
+          {
+            "$ref": "#/components/parameters/category_dateFrom"
+          },
+          {
+            "$ref": "#/components/parameters/category_dateTo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "$ref": "#/components/schemas/category"
+                      },
+                      "type": "array"
+                    },
+                    "totalResults": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the requested categories for category set. "
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set not found."
+          }
+        },
+        "summary": "Category Collection for category set",
+        "tags": [
+          "Categories",
+          "Category Sets"
+        ]
+      },
+      "post": {
+        "description": "**Authentication required.**\n\nCreate a new category in category set. This endpoint needs following permissions.\n\n- Manage Category Set\n\nPost form data is following:\n\n- category (Category) - Category resource\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "category": {
+                    "$ref": "#/components/schemas/category_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/category"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to create a category for category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site pr Category_set not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Create a new category for category set",
+        "tags": [
+          "Categories",
+          "Category Sets"
+        ]
+      }
+    },
+    "/sites/{site_id}/categorySets/{category_set_id}/categories/permutate": {
+      "post": {
+        "description": "**Authentication required.**\n\nSave hierarchical categories order. This endpoint need folllowing permissions.\n\n- Manage Category Set\n\nThis method returns rearranged Categories collection.\n\nPost form data is following:\n\n- categories (array[Category]) - Array of Categories resource that were rearranged.\n\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "categories": {
+                    "description": "Array of category resource that were rearranged.",
+                    "example": "[\n  { \"id\": 0 },\n  { \"id\": 1 } \n]\n",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/category"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to permutate categories for category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Save hierarchical categories order in category set",
+        "tags": [
+          "Categories",
+          "Category Sets"
+        ]
+      }
+    },
+    "/sites/{site_id}/categorySets/{category_set_id}/categories/{category_id}": {
+      "delete": {
+        "description": "**Authentication required.**\n\nUpdate an existing category. This endpoint need folllowing permissions.\n\n- Manage Category Set\n\n#### Notes\n- This method accepts DELETE and POST with __method=DELETE.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/category"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to delete a category for category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set or Category not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not DELETE or POST with __method=DELETE"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Delete single category in category set",
+        "tags": [
+          "Categories",
+          "Category Sets"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single category by its ID.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Input `MTAuth accessToken={accessToken}`",
+            "in": "header",
+            "name": "X-MT-Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/category_fields"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/category"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the requested category for category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Category or site not found."
+          }
+        },
+        "summary": "Fetch single category in category set",
+        "tags": [
+          "Categories",
+          "Category Sets"
+        ]
+      },
+      "put": {
+        "description": "**Authentication required.**\n\nUpdate an existing category. This endpoint need folllowing permissions.\n\n- Manage Categoy Set\n\nPost form data is following:\n\n- category (Category) - Category resource\n\n#### Notes\n- This method accepts PUT and POST with __method=PUT.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "category": {
+                    "$ref": "#/components/schemas/category_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/category"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to update a category for category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set or Category not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not PUT or POST with __method=PUT"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Update single category in category set",
+        "tags": [
+          "Categories",
+          "Category Sets"
+        ]
+      }
+    },
+    "/sites/{site_id}/categorySets/{category_set_id}/categories/{category_id}/children": {
+      "get": {
+        "description": "Retrieve list of child categories of the specified category set.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Input `MTAuth accessToken={accessToken}`",
+            "in": "header",
+            "name": "X-MT-Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The depth of retrieving parent categories.",
+            "in": "query",
+            "name": "maxDepth",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "- 1: The list does not include current category.\n- 0: The list includes current category.\n",
+            "in": "query",
+            "name": "includeCurrent",
+            "schema": {
+              "default": 0,
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "$ref": "#/components/schemas/category"
+                      },
+                      "type": "array"
+                    },
+                    "totalResults": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the requested categories for category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set not found."
+          }
+        },
+        "summary": "Category Collection of child categories for category set",
+        "tags": [
+          "Categories",
+          "Category Sets"
+        ]
+      }
+    },
+    "/sites/{site_id}/categorySets/{category_set_id}/categories/{category_id}/parents": {
+      "get": {
+        "description": "Retrieve list of parent categories of the specified category set.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Input `MTAuth accessToken={accessToken}`",
+            "in": "header",
+            "name": "X-MT-Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The depth of retrieving parent categories.",
+            "in": "query",
+            "name": "maxDepth",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "- 1: The list does not include current category.\n- 0: The list includes current category.\n",
+            "in": "query",
+            "name": "includeCurrent",
+            "schema": {
+              "default": 0,
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "$ref": "#/components/schemas/category"
+                      },
+                      "type": "array"
+                    },
+                    "totalResults": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the requested categories for category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set or Category not found."
+          }
+        },
+        "summary": "Category Collection of parent categories for category set",
+        "tags": [
+          "Categories",
+          "Category Sets"
+        ]
+      }
+    },
+    "/sites/{site_id}/categorySets/{category_set_id}/categories/{category_id}/siblings": {
+      "get": {
+        "description": "Retrieve list of sibling categories of the specified category set.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_set_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "category_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Input `MTAuth accessToken={accessToken}`",
+            "in": "header",
+            "name": "X-MT-Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/category_search"
+          },
+          {
+            "$ref": "#/components/parameters/category_searchFields"
+          },
+          {
+            "$ref": "#/components/parameters/category_limit"
+          },
+          {
+            "$ref": "#/components/parameters/category_offset"
+          },
+          {
+            "description": "- user_custom: Sort order you specified on the Manage Categories screen.\n- created_by: Sort by the ID of user who created each category.\n- id: Sort by the ID of each category.\n- basename: Sort by the basename of each category.\n- label: Sort by the label of each category.\n",
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "default": "user_custom",
+              "enum": [
+                "user_custom",
+                "created_by",
+                "id",
+                "basename",
+                "label"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/category_sortOrder"
+          },
+          {
+            "$ref": "#/components/parameters/category_fields"
+          },
+          {
+            "description": "If set to 1, retrieves only top level categories. New in v2",
+            "in": "query",
+            "name": "top",
+            "schema": {
+              "default": 0,
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/category_includeIds"
+          },
+          {
+            "$ref": "#/components/parameters/category_excludeIds"
+          },
+          {
+            "$ref": "#/components/parameters/category_dateField"
+          },
+          {
+            "$ref": "#/components/parameters/category_dateFrom"
+          },
+          {
+            "$ref": "#/components/parameters/category_dateTo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "$ref": "#/components/schemas/category"
+                      },
+                      "type": "array"
+                    },
+                    "totalResults": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the requested categories for category set."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Category_set or Category not found."
+          }
+        },
+        "summary": "Category Collection of sibling categories for category set",
+        "tags": [
+          "Categories",
+          "Category Sets"
+        ]
+      }
+    },
     "/sites/{site_id}/children": {
       "get": {
         "parameters": [
@@ -11383,6 +13931,1836 @@
         ]
       }
     },
+    "/sites/{site_id}/contentTypes": {
+      "get": {
+        "description": "Authentication required\n\nRetrieve a list of Content Types. This endpoint requires following permission.\n\n- Manage Content Types\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/content_type_limit"
+          },
+          {
+            "$ref": "#/components/parameters/content_type_offset"
+          },
+          {
+            "description": "The field name for sort. You can specify one of following values.\n- name\n- dataLabel\n- uniqueID\n- modified_on\n",
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "enum": [
+                "name",
+                "dataLabel",
+                "uniqueID",
+                "modified_on"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/content_type_sortOrder"
+          },
+          {
+            "$ref": "#/components/parameters/content_type_fields"
+          },
+          {
+            "$ref": "#/components/parameters/content_type_includeIds"
+          },
+          {
+            "$ref": "#/components/parameters/content_type_excludeIds"
+          },
+          {
+            "$ref": "#/components/parameters/content_type_dateField"
+          },
+          {
+            "$ref": "#/components/parameters/content_type_dateFrom"
+          },
+          {
+            "$ref": "#/components/parameters/content_type_dateTo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "$ref": "#/components/schemas/content_type"
+                      },
+                      "type": "array"
+                    },
+                    "totalResults": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the list of content types."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Content Type Collection",
+        "tags": [
+          "Content Types"
+        ]
+      },
+      "post": {
+        "description": "**Authentication required**\n\nCreate a new Content Type. This endpoint requires following permission.\n\n- Manage Content Types\n\nPost form data is as follows.\n\n- content_type (required, ContentType) - Single Content Type resource\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "content_type": {
+                    "$ref": "#/components/schemas/content_type_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/content_type"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to create a content type."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Create Content Type",
+        "tags": [
+          "Content Types"
+        ]
+      }
+    },
+    "/sites/{site_id}/contentTypes/{content_type_id}": {
+      "delete": {
+        "description": "**Authentication required**\n\nDelete content type. This endpoint requires following permission.\n\n- Manage Content Types\n\n#### Notes\n- This method accepts DELETE and POST with __method=DELETE.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/content_type"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to delete a content type."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not DELETE or POST with __method=DELETE"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Delete Content Type",
+        "tags": [
+          "Content Types"
+        ]
+      },
+      "get": {
+        "description": "**Authentication required**\n\nFetch single content type. This endpoint requires following permission.\n\n- Manage Content Types\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/content_type_fields"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/content_type"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the requested content type."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Fetch single Content Type",
+        "tags": [
+          "Content Types"
+        ]
+      },
+      "put": {
+        "description": "**Authentication required**\n\nUpdate content type. This endpoint requires following permission.\n\n- Manage Content Types\n\n#### Notes\n- This method accepts PUT and POST with __method=PUT.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "content_type": {
+                    "$ref": "#/components/schemas/content_type_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/content_type"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to update a content type."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not PUT or POST with __method=PUT"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Update Content Type",
+        "tags": [
+          "Content Types"
+        ]
+      }
+    },
+    "/sites/{site_id}/contentTypes/{content_type_id}/data": {
+      "get": {
+        "description": "Retrieve list of content data of specified content type in the specified site.\n\nAuthentication required if you want to retrieve unpublished content data. Required pemissions are as follows.\n\n- Manage Content Data (site, system, each content type)\n- Publish Content Data (each content type)\n- Edit All Content Data (each content type)\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Input `MTAuth accessToken={accessToken}`",
+            "in": "header",
+            "name": "X-MT-Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/content_data_limit"
+          },
+          {
+            "$ref": "#/components/parameters/content_data_offset"
+          },
+          {
+            "description": "The field name for sort. You can specify one of following values.\n- id\n- uniqueID\n- authored_on\n- created_on\n- modified_on\n",
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "default": "id",
+              "enum": [
+                "id",
+                "uniqueID",
+                "authored_on",
+                "created_on",
+                "modified_on"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/content_data_sortOrder"
+          },
+          {
+            "$ref": "#/components/parameters/content_data_fields"
+          },
+          {
+            "$ref": "#/components/parameters/content_data_includeIds"
+          },
+          {
+            "$ref": "#/components/parameters/content_data_excludeIds"
+          },
+          {
+            "$ref": "#/components/parameters/entry_no_text_filter"
+          },
+          {
+            "$ref": "#/components/parameters/content_data_dateField"
+          },
+          {
+            "$ref": "#/components/parameters/content_data_dateFrom"
+          },
+          {
+            "$ref": "#/components/parameters/content_data_dateTo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "$ref": "#/components/schemas/cd"
+                      },
+                      "type": "array"
+                    },
+                    "totalResults": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the list of content data."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type not found."
+          }
+        },
+        "summary": "Content Data Collection",
+        "tags": [
+          "Content Types",
+          "Content Data"
+        ]
+      },
+      "post": {
+        "description": "**Authentication Required** Create a new content data. This endpoint requires following permissions.\n\n- Manage Content Data (site, system, each content type)\n- Create Content Data (each content type)\n\nPost form data is following\n\n- content_data (ContentData) - Single ContentData resource\n\nKnown issues (these will be solved in future release)\n\n- If content type contains non required Content Type field, request will failed when post data does not contain its data.\n- If content type contains non required Date and Time field, request will failed when post data does not contain its data.\n- Date and Time field must be specified by YYYYMMDDHHmmSS format.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "content_data": {
+                    "$ref": "#/components/schemas/cd_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cd"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to create a content data."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Create Content Data",
+        "tags": [
+          "Content Types",
+          "Content Data"
+        ]
+      }
+    },
+    "/sites/{site_id}/contentTypes/{content_type_id}/data/preview": {
+      "post": {
+        "description": "**Authentication required.**\n\nMake a preview by specified data. This endpoint requires following permissions.\n\n- Manage Content Data (site, system, each content type)\n- Create Content Data (each content type)\n\nPost form data is following\n\n- content_data (ContentData) - Single ContentData resource\n\nKnown issues (these will be solved in future release)\n\n- If content type contains non required Content Type field, request will failed when post data does not contain its data.\n- If content type contains non required Date and Time field, request will failed when post data does not contain its data.\n- Date and Time field must be specified by YYYYMMDDHHmmSS format.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "If specify \"1\", will be returned preview contents.",
+            "in": "query",
+            "name": "raw",
+            "schema": {
+              "default": 0,
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "content_data": {
+                    "$ref": "#/components/schemas/cd"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "preview": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to preview content data."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type not found"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Make a preview by data",
+        "tags": [
+          "Content Types",
+          "Content Data"
+        ]
+      }
+    },
+    "/sites/{site_id}/contentTypes/{content_type_id}/data/{content_data_id}": {
+      "delete": {
+        "description": "**Authentication required.**\n\nDelete a single content data. This endpoint requires folllowing permissions.\n\n- Manage Content Data (site, system, each content type)\n- Edit All Content Data (each content type)\n- Publish Content Data (each content type)\n\n#### Notes\n- This method accepts DELETE and POST with __method=DELETE.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_data_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cd"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to delete a content data."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type or Content_data not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not DELETE or POST with __method=DELETE"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Delete single content data",
+        "tags": [
+          "Content Types",
+          "Content Data"
+        ]
+      },
+      "get": {
+        "description": "Fetch single content data.\n\nAuthentication required if you want fetch unpublished content data. Required permissions are as follows.\n\n- Manage Content Data (site, system, each content type)\n- Edit All Content Data (each content type)\n- Publish Content Data (each content type)\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_data_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Input `MTAuth accessToken={accessToken}`",
+            "in": "header",
+            "name": "X-MT-Authorization",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/content_data_fields"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cd"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the requested content data."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type or Content_data not found."
+          }
+        },
+        "summary": "Fetch single Content Data",
+        "tags": [
+          "Content Types",
+          "Content Data"
+        ]
+      },
+      "put": {
+        "description": "Authentication Required Update a single content data. This endpoint requires folllowing permissions.\n\n- Manage Content Data (site, system, each content type)\n- Edit All Content Data (each content type)\n- Publish Content Data (each content type)\n\nPost form data is following:\n\n- content_data (ContentData, required) -Single ContentData resource.\n\n#### Notes\n- This method accepts PUT and POST with __method=PUT.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_data_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "content_data": {
+                    "$ref": "#/components/schemas/cd_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cd"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to update a content data."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type or Content_data not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not PUT or POST with __method=PUT"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Update Content Data",
+        "tags": [
+          "Content Types",
+          "Content Data"
+        ]
+      }
+    },
+    "/sites/{site_id}/contentTypes/{content_type_id}/data/{content_data_id}/preview": {
+      "post": {
+        "description": "**Authentication required.**\n\nMake a preview by ID. This endpoint requires following permissions.\n\n- Content Data (site, system, each content type)\n- Create Content Data (each content type)\n\nPost form data is as follows\n\n- entry (Entry, required) - Should be provide empty json. This parameter will be removed in the future.\n\nKnown issues (these will be solved in future release)\n\n- If content type contains non required Content Type field, request will failed when post data does not contain its data.\n- If content type contains non required Date and Time field, request will failed when post data does not contain its data.\n- Date and Time field must be specified by YYYYMMDDHHmmSS format.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_data_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "If specify \"1\", will be returned preview contents.",
+            "in": "query",
+            "name": "raw",
+            "schema": {
+              "default": 0,
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "content_data": {
+                    "$ref": "#/components/schemas/cd"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "preview": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to preview content data."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type or Content_data not found"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Make a preview by id",
+        "tags": [
+          "Content Types",
+          "Content Data"
+        ]
+      }
+    },
+    "/sites/{site_id}/contentTypes/{content_type_id}/fields": {
+      "get": {
+        "description": "**Authentication required**\n\nRetrieve a list of Content Fields of the specified Content Type. This endpoint requires following permission.\n\n- Manage Content Types\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/content_field_limit"
+          },
+          {
+            "$ref": "#/components/parameters/content_field_offset"
+          },
+          {
+            "description": "The field name for sort. You can specify one of following values.\n- name\n- dataLabel\n- uniqueID\n- modified_on\n",
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "enum": [
+                "name",
+                "dataLabel",
+                "uniqueID",
+                "modified_on"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/content_field_sortOrder"
+          },
+          {
+            "$ref": "#/components/parameters/content_field_fields"
+          },
+          {
+            "$ref": "#/components/parameters/content_field_includeIds"
+          },
+          {
+            "$ref": "#/components/parameters/content_field_excludeIds"
+          },
+          {
+            "$ref": "#/components/parameters/content_field_dateField"
+          },
+          {
+            "$ref": "#/components/parameters/content_field_dateFrom"
+          },
+          {
+            "$ref": "#/components/parameters/content_field_dateTo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "$ref": "#/components/schemas/cf"
+                      },
+                      "type": "array"
+                    },
+                    "totalResults": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the list of content fields."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Content Field Collection",
+        "tags": [
+          "Content Fields",
+          "Content Types"
+        ]
+      },
+      "post": {
+        "description": "**Authentication required**\n\nCreate a new Content Field. This endpoint requires following permission.\n\n- Manage Content Types\n\nPost form data is as follows.\n\n- content_field (required, ContentField) - Single Content Field resource\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "content_field": {
+                    "$ref": "#/components/schemas/cf_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cf"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to create a content type."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Create Content Field",
+        "tags": [
+          "Content Types",
+          "Content Fields"
+        ]
+      }
+    },
+    "/sites/{site_id}/contentTypes/{content_type_id}/fields/permutate": {
+      "post": {
+        "description": "**Authentication required.**\n\nRearranges content field order in specified content type. This endpoint need folllowing permissions.\n\n- Manage Content Types\n\nThis method returns rearranged ContentField collection.\n\nPost form data is following:\n\n- content_fields (array[ContentField]) - Array of content fields resource that were rearranged.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "content_fields": {
+                    "description": "Array of content fields resource that were rearranged.",
+                    "example": "[\n  { \"id\": 0 },\n  { \"id\": 1 } \n]\n",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/cf"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to permutate content fields."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Save hierarchical content field order",
+        "tags": [
+          "Content Types",
+          "Content Fields"
+        ]
+      }
+    },
+    "/sites/{site_id}/contentTypes/{content_type_id}/fields/{content_field_id}": {
+      "delete": {
+        "description": "**Authentication required**\n\nDelete content field from specified content type. This endpoint requires following permission.\n\n- Manage Content Types\n\n#### Notes\n- This method accepts DELETE and POST with __method=DELETE.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_field_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cf"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to delete a content field."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type or Content_field not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not DELETE or POST with __method=DELETE"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Delete Content Field",
+        "tags": [
+          "Content Types",
+          "Content Fields"
+        ]
+      },
+      "get": {
+        "description": "**Authentication required**\n\nFetch single content field. This endpoint requires following permission.\n\n- Manage Content Types\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_field_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/content_field_fields"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cf"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to retrieve the requested content field."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type or Content_field not found."
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Fetch single Content Field",
+        "tags": [
+          "Content Types",
+          "Content Fields"
+        ]
+      },
+      "put": {
+        "description": "**Authentication required**\n\nUpdate content field. This endpoint requires following permission.\n\n- Manage Content Types\n\nIf you want to update label, description and required, should be use options field. (e.g, {âoptionsâ:{âlabelâ:âfooâ}})\n\n#### Notes\n- This method accepts PUT and POST with __method=PUT.\n",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "site_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_type_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "content_field_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "content_field": {
+                    "$ref": "#/components/schemas/cf_updatable"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cf"
+                }
+              }
+            },
+            "description": "No Errors."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          },
+          "403": {
+            "description": "Do not have permission to update a content field."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Site or Content_type or Content_field not found."
+          },
+          "405": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Request method is not PUT or POST with __method=PUT"
+          }
+        },
+        "security": [
+          {
+            "mtauth": []
+          }
+        ],
+        "summary": "Update Content Field",
+        "tags": [
+          "Content Types",
+          "Content Fields"
+        ]
+      }
+    },
     "/sites/{site_id}/entries": {
       "get": {
         "description": "Retrieve a list of entries.\n\nAuthorization is required to include unpublished entries.\n",
@@ -11404,118 +15782,43 @@
             }
           },
           {
-            "description": "This is an optional parameter. Search query.",
-            "in": "query",
-            "name": "search",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/entry_search"
           },
           {
-            "description": "This is an optional parameter. The comma separated field name list to search. Default is 'title,body,more,keywords,excerpt,basename'",
-            "in": "query",
-            "name": "searchFields",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/entry_searchFields"
           },
           {
-            "description": "This is an optional parameter. Filter by status.\n\n#### Draft\n\nentry_status is 1.\n\n#### Publish\n\nentry_status is 2.\n\n#### Review\n\nentry_status is 3.\n\n#### Future\n\nentry_status is 4.\n\n#### Spam\n\nentry_status is 5.\n\n#### Unpublish\n\nentry_status is 6.\n",
-            "in": "query",
-            "name": "status",
-            "schema": {
-              "enum": [
-                "Draft",
-                "Publish",
-                "Review",
-                "Future",
-                "Spam",
-                "Unpublish"
-              ],
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/entry_status"
           },
           {
-            "description": "This is an optional parameter. Maximum number of entries to retrieve. Default is 10. ",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/entry_limit"
           },
           {
-            "description": "This is an optional parameter. 0-indexed offset. Default is 0.",
-            "in": "query",
-            "name": "offset",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/entry_offset"
           },
           {
-            "description": "This is an optional parameter. The comma separated ID list of entries to include to result. ",
-            "in": "query",
-            "name": "includeIds",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/entry_includeIds"
           },
           {
-            "description": "This is an optional parameter. The comma separated ID list of entries to exclude from result. ",
-            "in": "query",
-            "name": "excludeIds",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/entry_excludeIds"
           },
           {
-            "description": "This is an optional parameter.\n\n#### authored_on\n\n(default) Sort by the Published time of each entries.\n\n#### title\n\nSort by the title of each entries.\n\n#### created_on\n\nSort by the created time of each entries.\n\n#### modified_on\n\nSort by the modified time of each entries.\n",
-            "in": "query",
-            "name": "sortBy",
-            "schema": {
-              "enum": [
-                "authored_on",
-                "title",
-                "created_on",
-                "modified_on"
-              ],
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/entry_sortBy"
           },
           {
-            "description": "This is an optional parameter.\n\n#### descend\n\n(default) Return entries in descending order. For the date, it means from newest to oldest.\n\n#### ascend\n\nReturn entries in ascending order. For the date, it means from oldest to newset.\n",
-            "in": "query",
-            "name": "sortOrder",
-            "schema": {
-              "enum": [
-                "descend",
-                "ascend"
-              ],
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/entry_sortOrder"
           },
           {
-            "description": "This is an optional parameter. Maximum number of comments to retrieve as part of the Entries resource. If this parameter is not supplied, no comments will be returned.",
-            "in": "query",
-            "name": "maxComments",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/entry_maxComments"
           },
           {
-            "description": "This is an optional parameter. Maximum number of received trackbacks to retrieve as part of the Entries resource. If this parameter is not supplied, no trackbacks will be returned. ",
-            "in": "query",
-            "name": "maxTrackbacks",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/entry_maxTrackbacks"
           },
           {
-            "description": "The field list to retrieve as part of the Entries resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned. ",
-            "in": "query",
-            "name": "fields",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/entry_fields"
+          },
+          {
+            "$ref": "#/components/parameters/entry_no_text_filter"
           },
           {
             "$ref": "#/components/parameters/entry_dateField"
@@ -11534,7 +15837,7 @@
                 "schema": {
                   "properties": {
                     "items": {
-                      "description": "An array of Entries resource. ",
+                      "description": "An array of Entries resource.",
                       "items": {
                         "$ref": "#/components/schemas/entry"
                       },
@@ -13001,6 +17304,81 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "include": {
+                    "items": {
+                      "enum": [
+                        "be_block",
+                        "be_config",
+                        "be_pref",
+                        "blog_static_files",
+                        "custom_fields",
+                        "default_categories",
+                        "default_category_sets",
+                        "default_content_types",
+                        "default_folders",
+                        "template_set"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "include_all": {
+                    "description": "If '1' is specified, all options will be included in the export target.",
+                    "enum": [
+                      0,
+                      1
+                    ],
+                    "type": "integer"
+                  },
+                  "output": {
+                    "default": "themedir",
+                    "description": "If 'themedir' is specified, the theme will be installed in the theme directory. If 'download.zip' is specified, the theme will be downloaded as a ZIP archive.",
+                    "enum": [
+                      "themedir",
+                      "download.zip"
+                    ],
+                    "type": "string"
+                  },
+                  "overwrite_yes": {
+                    "description": "If '1' is specified, an existing theme can be overwritten, or the Basename can be changed. This is valid only when 'themedir' is selected as the output format.",
+                    "enum": [
+                      0,
+                      1
+                    ],
+                    "type": "integer"
+                  },
+                  "theme_author_link": {
+                    "type": "string"
+                  },
+                  "theme_author_name": {
+                    "type": "string"
+                  },
+                  "theme_id": {
+                    "description": "Can only contain letters (a-z, A-Z), numbers (0-9), dashes (-), and underscores (_). Must start with a letter.",
+                    "type": "string"
+                  },
+                  "theme_name": {
+                    "description": "If not specified, the default value is dynamically generated as 'Theme from <SiteName>', where <SiteName> represents the name of the site.",
+                    "type": "string"
+                  },
+                  "theme_version": {
+                    "default": "1.0",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "content": {
@@ -17257,10 +21635,11 @@
             }
           },
           {
-            "description": "This is an optional parameter. Maximum number of paths to retrieve. Default is 10.",
+            "description": "This is an optional parameter. Maximum number of paths to retrieve. Default is 50.",
             "in": "query",
             "name": "limit",
             "schema": {
+              "default": 50,
               "type": "integer"
             }
           },
@@ -17312,9 +21691,9 @@
                     },
                     "totals": {
                       "properties": {
-                        "pageviews": {
+                        "screenPageViews": {
                           "description": "The sum total of the pageviews in the specified period.",
-                          "type": "string"
+                          "type": "integer"
                         }
                       },
                       "type": "object"
@@ -17401,10 +21780,11 @@
             }
           },
           {
-            "description": "This is an optional parameter. Maximum number of paths to retrieve. Default is 10.",
+            "description": "This is an optional parameter. Maximum number of paths to retrieve. Default is 50.",
             "in": "query",
             "name": "limit",
             "schema": {
+              "default": 50,
               "type": "integer"
             }
           },
@@ -17444,9 +21824,9 @@
                     },
                     "totals": {
                       "properties": {
-                        "visits": {
-                          "description": "The sum total of the pageviews in the specified period.",
-                          "type": "string"
+                        "sessions": {
+                          "description": "The sum total of the sessions in the specified period.",
+                          "type": "integer"
                         }
                       },
                       "type": "object"
@@ -17533,10 +21913,11 @@
             }
           },
           {
-            "description": "This is an optional parameter. Maximum number of paths to retrieve. Default is 10.",
+            "description": "This is an optional parameter. Maximum number of paths to retrieve. Default is 50.",
             "in": "query",
             "name": "limit",
             "schema": {
+              "default": 50,
               "type": "integer"
             }
           },
@@ -17588,9 +21969,9 @@
                     },
                     "totals": {
                       "properties": {
-                        "pageviews": {
+                        "screenPageViews": {
                           "description": "The sum total of the pageviews in the specified period.",
-                          "type": "string"
+                          "type": "integer"
                         }
                       },
                       "type": "object"
@@ -17677,10 +22058,11 @@
             }
           },
           {
-            "description": "This is an optional parameter. Maximum number of paths to retrieve. Default is 10.",
+            "description": "This is an optional parameter. Maximum number of paths to retrieve. Default is 50.",
             "in": "query",
             "name": "limit",
             "schema": {
+              "default": 50,
               "type": "integer"
             }
           },
@@ -17720,9 +22102,9 @@
                     },
                     "totals": {
                       "properties": {
-                        "visits": {
-                          "description": "The sum total of the pageviews in the specified period.",
-                          "type": "string"
+                        "sessions": {
+                          "description": "The sum total of the sessions in the specified period.",
+                          "type": "integer"
                         }
                       },
                       "type": "object"
@@ -21625,6 +26007,69 @@
         "tags": [
           "Widgets",
           "WidgetSets"
+        ]
+      }
+    },
+    "/textFilters": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "description": "An array of text filters.",
+                      "items": {
+                        "properties": {
+                          "key": {
+                            "description": "The key name of the text filter",
+                            "type": "string"
+                          },
+                          "label": {
+                            "description": "The display name of the text filter",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "totalResults": {
+                      "description": " The total number of text filters.",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorContent"
+                }
+              }
+            },
+            "description": "Invalid login"
+          }
+        },
+        "summary": "Retrieve a list of text filters",
+        "tags": [
+          "System"
         ]
       }
     },
