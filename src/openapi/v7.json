@@ -17366,7 +17366,7 @@
                     "type": "string"
                   },
                   "theme_name": {
-                    "description": "If not specified, the default value is dynamically generated as 'Theme from <SiteName>', where <SiteName> represents the name of the site.",
+                    "description": "If not specified, the default value is dynamically generated as 'Theme from (SiteName)', where (SiteName) represents the name of the site.",
                     "type": "string"
                   },
                   "theme_version": {

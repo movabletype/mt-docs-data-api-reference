@@ -12252,7 +12252,7 @@ paths:
                   description: 'Can only contain letters (a-z, A-Z), numbers (0-9), dashes (-), and underscores (_). Must start with a letter.'
                   type: string
                 theme_name:
-                  description: "If not specified, the default value is dynamically generated as 'Theme from <SiteName>', where <SiteName> represents the name of the site."
+                  description: "If not specified, the default value is dynamically generated as 'Theme from (SiteName)', where (SiteName) represents the name of the site."
                   type: string
                 theme_version:
                   default: 1.0
