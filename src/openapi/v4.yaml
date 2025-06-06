@@ -4845,7 +4845,7 @@ externalDocs:
   url: https://www.movabletype.jp/developers/data-api/
 info:
   title: Movable Type Data API
-  version: 8.5.1
+  version: 8.6.0
 openapi: 3.0.0
 paths:
   /:
@@ -18981,3 +18981,4 @@ tags:
   - name: Authentication
   - name: Common API
   - name: Endpoints
+
