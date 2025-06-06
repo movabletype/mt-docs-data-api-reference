@@ -15904,7 +15904,7 @@ paths:
       tags:
         - Common API
 servers:
-  - url: https://example.com/mt/mt-data-api.cgi/v1
+  - url: https://example.com/mt/mt-data-api.cgi/v3
 tags:
   - name: Authentication
   - name: Common API

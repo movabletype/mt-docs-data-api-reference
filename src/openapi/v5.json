@@ -27762,7 +27762,7 @@
   },
   "servers": [
     {
-      "url": "https://example.com/mt/mt-data-api.cgi/v1"
+      "url": "https://example.com/mt/mt-data-api.cgi/v5"
     }
   ],
   "tags": [
