@@ -32,6 +32,16 @@ components:
       name: fields
       schema:
         type: string
+    asset_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: class
+      in: query
+      name: filterKeys
+      schema:
+        default: class
+        type: string
     asset_includeIds:
       description: The comma separated ID list of assets to include to result.
       in: query
@@ -133,6 +143,12 @@ components:
       name: fields
       schema:
         type: string
+    category_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
+      schema:
+        type: string
     category_includeIds:
       description: The comma separated ID list of categories to include to result.
       in: query
@@ -204,6 +220,12 @@ components:
       description: 'The field list to retrieve as part of the category_set resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
       in: query
       name: fields
+      schema:
+        type: string
+    category_set_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
       schema:
         type: string
     category_set_includeIds:
@@ -335,6 +357,16 @@ components:
       name: fields
       schema:
         type: string
+    comment_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: status
+      in: query
+      name: filterKeys
+      schema:
+        default: status
+        type: string
     comment_includeIds:
       description: The comma separated ID list of comments to include to result.
       in: query
@@ -436,6 +468,16 @@ components:
       name: fields
       schema:
         type: string
+    content_data_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: status
+      in: query
+      name: filterKeys
+      schema:
+        default: status
+        type: string
     content_data_includeIds:
       description: The comma separated ID list of content_data to include to result.
       in: query
@@ -461,6 +503,15 @@ components:
       name: offset
       schema:
         default: 0
+        type: integer
+    content_data_saveRevision:
+      description: Save a revision or not
+      in: query
+      name: saveRevision
+      schema:
+        enum:
+          - 0
+          - 1
         type: integer
     content_data_search:
       description: Search query.
@@ -535,6 +586,12 @@ components:
       description: 'The field list to retrieve as part of the content_field resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
       in: query
       name: fields
+      schema:
+        type: string
+    content_field_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
       schema:
         type: string
     content_field_includeIds:
@@ -638,6 +695,12 @@ components:
       name: fields
       schema:
         type: string
+    content_type_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
+      schema:
+        type: string
     content_type_includeIds:
       description: The comma separated ID list of content_types to include to result.
       in: query
@@ -739,6 +802,16 @@ components:
       name: fields
       schema:
         type: string
+    entry_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: status
+      in: query
+      name: filterKeys
+      schema:
+        default: status
+        type: string
     entry_includeIds:
       description: The comma separated ID list of entries to include to result.
       in: query
@@ -785,6 +858,15 @@ components:
       name: offset
       schema:
         default: 0
+        type: integer
+    entry_saveRevision:
+      description: Save a revision or not
+      in: query
+      name: saveRevision
+      schema:
+        enum:
+          - 0
+          - 1
         type: integer
     entry_search:
       description: Search query.
@@ -912,6 +994,16 @@ components:
       name: fields
       schema:
         type: string
+    field_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: systemObject,type
+      in: query
+      name: filterKeys
+      schema:
+        default: 'systemObject,type'
+        type: string
     field_includeIds:
       description: The comma separated ID list of fields to include to result.
       in: query
@@ -1011,6 +1103,12 @@ components:
       description: 'The field list to retrieve as part of the folder resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
       in: query
       name: fields
+      schema:
+        type: string
+    folder_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
       schema:
         type: string
     folder_includeIds:
@@ -1114,6 +1212,12 @@ components:
       name: fields
       schema:
         type: string
+    formatted_text_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
+      schema:
+        type: string
     formatted_text_includeIds:
       description: The comma separated ID list of formatted_texts to include to result.
       in: query
@@ -1214,6 +1318,16 @@ components:
       in: query
       name: fields
       schema:
+        type: string
+    group_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: status
+      in: query
+      name: filterKeys
+      schema:
+        default: status
         type: string
     group_includeIds:
       description: The comma separated ID list of groups to include to result.
@@ -1316,6 +1430,16 @@ components:
       name: fields
       schema:
         type: string
+    log_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: level
+      in: query
+      name: filterKeys
+      schema:
+        default: level
+        type: string
     log_includeIds:
       description: The comma separated ID list of logs to include to result.
       in: query
@@ -1417,6 +1541,16 @@ components:
       name: fields
       schema:
         type: string
+    page_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: status
+      in: query
+      name: filterKeys
+      schema:
+        default: status
+        type: string
     page_includeIds:
       description: The comma separated ID list of pages to include to result.
       in: query
@@ -1463,6 +1597,15 @@ components:
       name: offset
       schema:
         default: 0
+        type: integer
+    page_saveRevision:
+      description: Save a revision or not
+      in: query
+      name: saveRevision
+      schema:
+        enum:
+          - 0
+          - 1
         type: integer
     page_search:
       description: Search query.
@@ -1596,6 +1739,16 @@ components:
       name: fields
       schema:
         type: string
+    permission_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: blogIds
+      in: query
+      name: filterKeys
+      schema:
+        default: blogIds
+        type: string
     permission_includeIds:
       description: The comma separated ID list of permissions to include to result.
       in: query
@@ -1707,6 +1860,12 @@ components:
       description: 'The field list to retrieve as part of the role resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
       in: query
       name: fields
+      schema:
+        type: string
+    role_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
       schema:
         type: string
     role_includeIds:
@@ -1825,6 +1984,12 @@ components:
       name: fields
       schema:
         type: string
+    site_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
+      schema:
+        type: string
     site_includeIds:
       description: The comma separated ID list of sites to include to result.
       in: query
@@ -1932,6 +2097,12 @@ components:
       name: fields
       schema:
         type: string
+    tag_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
+      schema:
+        type: string
     tag_includeIds:
       description: The comma separated ID list of tags to include to result.
       in: query
@@ -2033,6 +2204,16 @@ components:
       name: fields
       schema:
         type: string
+    template_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: type
+      in: query
+      name: filterKeys
+      schema:
+        default: type
+        type: string
     template_includeIds:
       description: The comma separated ID list of templates to include to result.
       in: query
@@ -2058,6 +2239,15 @@ components:
       name: offset
       schema:
         default: 0
+        type: integer
+    template_saveRevision:
+      description: Save a revision or not
+      in: query
+      name: saveRevision
+      schema:
+        enum:
+          - 0
+          - 1
         type: integer
     template_search:
       description: Search query.
@@ -2133,6 +2323,16 @@ components:
       in: query
       name: fields
       schema:
+        type: string
+    templatemap_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: archiveType,buildType,isPreferred
+      in: query
+      name: filterKeys
+      schema:
+        default: 'archiveType,buildType,isPreferred'
         type: string
     templatemap_includeIds:
       description: The comma separated ID list of templatemaps to include to result.
@@ -2230,6 +2430,16 @@ components:
       in: query
       name: fields
       schema:
+        type: string
+    user_filterKeys:
+      description: |-
+        The comma separated field name list to filter.
+        
+        **Default**: status,lockout
+      in: query
+      name: filterKeys
+      schema:
+        default: 'status,lockout'
         type: string
     user_includeIds:
       description: The comma separated ID list of users to include to result.
@@ -2332,6 +2542,12 @@ components:
       name: fields
       schema:
         type: string
+    widget_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
+      schema:
+        type: string
     widget_includeIds:
       description: The comma separated ID list of widgets to include to result.
       in: query
@@ -2431,6 +2647,12 @@ components:
       description: 'The field list to retrieve as part of the widgetset resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.'
       in: query
       name: fields
+      schema:
+        type: string
+    widgetset_filterKeys:
+      description: The comma separated field name list to filter.
+      in: query
+      name: filterKeys
       schema:
         type: string
     widgetset_includeIds:
@@ -4199,10 +4421,10 @@ components:
           format: date
           type: string
         screenPageViews:
-          description: The pageviews for the path. This property exists only if the metrics to retrieve is "pageviews"
+          description: The number of screenPageViews for the path. This property exists only if the metrics to retrieve is "screenPageViews"
           type: integer
         sessions:
-          description: The number of sessions for the path. This property exists only if the metrics to retrieve is "visits"
+          description: The number of sessions for the path. This property exists only if the metrics to retrieve is "sessions"
           type: integer
       type: object
     statisticspath:
@@ -4238,11 +4460,47 @@ components:
           description: The title for the path.
           type: string
         screenPageViews:
-          description: The pageviews for the path. This property exists only if the metrics to retrieve is "pageviews"
+          description: The pageviews for the path. This property exists only if the metrics to retrieve is "screenPageViews"
           type: integer
         sessions:
-          description: The number of sessions for the path. This property exists only if the metrics to retrieve is "visits"
+          description: The number of sessions for the path. This property exists only if the metrics to retrieve is "sessions"
           type: integer
+      type: object
+    statisticsyear:
+      properties:
+        screenPageViews:
+          description: The number of screenPageViews for the path. This property exists only if the metrics to retrieve is "screenPageViews"
+          type: integer
+        sessions:
+          description: The number of sessions for the path. This property exists only if the metrics to retrieve is "sessions"
+          type: integer
+        year:
+          description: The year of the target. The format is "YYYY".
+          type: string
+      type: object
+    statisticsyearmonth:
+      properties:
+        screenPageViews:
+          description: The number of screenPageViews for the path. This property exists only if the metrics to retrieve is "screenPageViews"
+          type: integer
+        sessions:
+          description: The number of sessions for the path. This property exists only if the metrics to retrieve is "sessions"
+          type: integer
+        yearMonth:
+          description: The year and month of the target. The format is "YYYY-MM".
+          type: string
+      type: object
+    statisticsyearweek:
+      properties:
+        screenPageViews:
+          description: The number of screenPageViews for the path. This property exists only if the metrics to retrieve is "screenPageViews"
+          type: integer
+        sessions:
+          description: The number of sessions for the path. This property exists only if the metrics to retrieve is "sessions"
+          type: integer
+        yearWeek:
+          description: The year and week of the target. The format is "YYYY-Www".
+          type: string
       type: object
     tag:
       description: Updatable fields are name
@@ -4891,7 +5149,7 @@ externalDocs:
   url: https://www.movabletype.jp/developers/data-api/
 info:
   title: Movable Type Data API
-  version: 8.6.0
+  version: 8.7.0
 openapi: 3.0.0
 paths:
   /:
@@ -5023,8 +5281,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Upload file size is larger than CGIMaxUpload.
-      security:
-        - mtauth: []
       summary: Upload a file
       tags:
         - Assets
@@ -5246,6 +5502,7 @@ paths:
         - $ref: '#/components/parameters/group_sortBy'
         - $ref: '#/components/parameters/group_sortOrder'
         - $ref: '#/components/parameters/group_fields'
+        - $ref: '#/components/parameters/group_filterKeys'
         - $ref: '#/components/parameters/group_dateField'
         - $ref: '#/components/parameters/group_dateFrom'
         - $ref: '#/components/parameters/group_dateTo'
@@ -5279,8 +5536,6 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to retrieve the requested groups.
-      security:
-        - mtauth: []
       summary: Retrieve a list of groups
       tags:
         - Groups
@@ -5314,8 +5569,6 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to create a group.
-      security:
-        - mtauth: []
       summary: Create a new group
       tags:
         - Groups
@@ -5345,8 +5598,6 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to synchronize groups.
-      security:
-        - mtauth: []
       summary: Synchronize groups
       tags:
         - Groups
@@ -5395,8 +5646,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete a group
       tags:
         - Groups
@@ -5435,8 +5684,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Group not found.
-      security:
-        - mtauth: []
       summary: Retrieve single group by its ID
       tags:
         - Groups
@@ -5492,8 +5739,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update a group
       tags:
         - Groups
@@ -5512,6 +5757,7 @@ paths:
         - $ref: '#/components/parameters/group_sortBy'
         - $ref: '#/components/parameters/group_sortOrder'
         - $ref: '#/components/parameters/group_fields'
+        - $ref: '#/components/parameters/group_filterKeys'
         - $ref: '#/components/parameters/user_dateField'
         - $ref: '#/components/parameters/user_dateFrom'
         - $ref: '#/components/parameters/user_dateTo'
@@ -5551,8 +5797,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Group not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of members for specified group
       tags:
         - Groups
@@ -5601,8 +5845,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Group or Member not found.
-      security:
-        - mtauth: []
       tags:
         - Groups
   '/groups/{group_id}/members/{member_id}':
@@ -5655,8 +5897,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       tags:
         - Groups
     get:
@@ -5699,8 +5939,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Group or Member not found.
-      security:
-        - mtauth: []
       summary: Retrieve single member by its ID for specified group
       tags:
         - Groups
@@ -5721,6 +5959,7 @@ paths:
         - $ref: '#/components/parameters/permission_sortOrder'
         - $ref: '#/components/parameters/permission_fields'
         - $ref: '#/components/parameters/permission_blogIds'
+        - $ref: '#/components/parameters/permission_filterKeys'
         - $ref: '#/components/parameters/permission_dateField'
         - $ref: '#/components/parameters/permission_dateFrom'
         - $ref: '#/components/parameters/permission_dateTo'
@@ -5760,8 +5999,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Group not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of permissions for group
       tags:
         - Groups
@@ -5819,8 +6056,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Group not found
-      security:
-        - mtauth: []
       summary: Grant permissions to group
       tags:
         - Groups
@@ -5878,8 +6113,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Group not found
-      security:
-        - mtauth: []
       summary: Revoke permissions from group
       tags:
         - Groups
@@ -5896,6 +6129,7 @@ paths:
         - $ref: '#/components/parameters/permission_sortOrder'
         - $ref: '#/components/parameters/permission_fields'
         - $ref: '#/components/parameters/permission_blogIds'
+        - $ref: '#/components/parameters/permission_filterKeys'
         - $ref: '#/components/parameters/permission_dateField'
         - $ref: '#/components/parameters/permission_dateFrom'
         - $ref: '#/components/parameters/permission_dateTo'
@@ -5935,8 +6169,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of permissions
       tags:
         - Permissions
@@ -5978,8 +6210,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of plugins in the specified site
       tags:
         - Plugins
@@ -6015,8 +6245,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Plugin not found
-      security:
-        - mtauth: []
       summary: Disable all plugins
       tags:
         - Plugins
@@ -6052,8 +6280,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Plugin not found
-      security:
-        - mtauth: []
       summary: Enable all plugins
       tags:
         - Plugins
@@ -6092,8 +6318,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Plugin not found.
-      security:
-        - mtauth: []
       summary: Retrieve single plugin by its ID
       tags:
         - Plugins
@@ -6135,8 +6359,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Plugin not found
-      security:
-        - mtauth: []
       summary: Disable a plugin
       tags:
         - Plugins
@@ -6178,8 +6400,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Plugin not found
-      security:
-        - mtauth: []
       summary: Enable a plugin
       tags:
         - Plugins
@@ -6242,8 +6462,6 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to publish content_data.
-      security:
-        - mtauth: []
       summary: Publish Content Data
       tags:
         - Content Data
@@ -6321,8 +6539,6 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to publish.
-      security:
-        - mtauth: []
       summary: Rebuild the static archives in relation to specified entries
       tags:
         - Entries
@@ -6424,8 +6640,6 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to retrieve the list of roles.
-      security:
-        - mtauth: []
       summary: Retrieve a list of roles
       tags:
         - Roles
@@ -6465,8 +6679,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new role
       tags:
         - Roles
@@ -6515,8 +6727,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an existing role
       tags:
         - Roles
@@ -6555,8 +6765,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Role not found.
-      security:
-        - mtauth: []
       summary: Retrieve a single role by its ID
       tags:
         - Roles
@@ -6612,8 +6820,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an existing role
       tags:
         - Roles
@@ -6637,6 +6843,7 @@ paths:
         - $ref: '#/components/parameters/permission_sortOrder'
         - $ref: '#/components/parameters/permission_fields'
         - $ref: '#/components/parameters/permission_blogIds'
+        - $ref: '#/components/parameters/permission_filterKeys'
         - $ref: '#/components/parameters/permission_dateField'
         - $ref: '#/components/parameters/permission_dateFrom'
         - $ref: '#/components/parameters/permission_dateTo'
@@ -6676,8 +6883,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Role not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of permissions by role
       tags:
         - Roles
@@ -6925,8 +7130,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new website
       tags:
         - Sites
@@ -6981,8 +7184,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an existing blog or website
       tags:
         - Sites
@@ -7081,8 +7282,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new blog
       tags:
         - Sites
@@ -7143,8 +7342,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an existing blog or website
       tags:
         - Sites
@@ -7165,6 +7362,7 @@ paths:
         - $ref: '#/components/parameters/asset_searchFields'
         - $ref: '#/components/parameters/asset_limit'
         - $ref: '#/components/parameters/asset_offset'
+        - $ref: '#/components/parameters/asset_filterKeys'
         - description: 'The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.'
           in: query
           name: class
@@ -7336,8 +7534,6 @@ paths:
                     type: object
                 type: object
           description: Conflict
-      security:
-        - mtauth: []
       summary: Upload a file
       tags:
         - Assets
@@ -7396,8 +7592,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an asset
       tags:
         - Assets
@@ -7511,8 +7705,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an asset
       tags:
         - Assets
@@ -7554,6 +7746,7 @@ paths:
         - $ref: '#/components/parameters/entry_maxComments'
         - $ref: '#/components/parameters/entry_maxTrackbacks'
         - $ref: '#/components/parameters/entry_no_text_filter'
+        - $ref: '#/components/parameters/entry_filterKeys'
         - $ref: '#/components/parameters/entry_dateField'
         - $ref: '#/components/parameters/entry_dateFrom'
         - $ref: '#/components/parameters/entry_dateTo'
@@ -7635,6 +7828,7 @@ paths:
         - $ref: '#/components/parameters/page_maxComments'
         - $ref: '#/components/parameters/page_maxTrackbacks'
         - $ref: '#/components/parameters/page_no_text_filter'
+        - $ref: '#/components/parameters/page_filterKeys'
         - $ref: '#/components/parameters/page_dateField'
         - $ref: '#/components/parameters/page_dateFrom'
         - $ref: '#/components/parameters/page_dateTo'
@@ -7794,8 +7988,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found
-      security:
-        - mtauth: []
       summary: Backup specified site
       tags:
         - Sites
@@ -7953,8 +8145,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new category
       tags:
         - Categories
@@ -8016,8 +8206,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Rearrange existing categories in a new order
       tags:
         - Categories
@@ -8077,8 +8265,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an existing category
       tags:
         - Categories
@@ -8192,8 +8378,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an existing category
       tags:
         - Categories
@@ -8316,6 +8500,7 @@ paths:
         - $ref: '#/components/parameters/entry_maxComments'
         - $ref: '#/components/parameters/entry_maxTrackbacks'
         - $ref: '#/components/parameters/entry_no_text_filter'
+        - $ref: '#/components/parameters/entry_filterKeys'
         - $ref: '#/components/parameters/entry_dateField'
         - $ref: '#/components/parameters/entry_dateFrom'
         - $ref: '#/components/parameters/entry_dateTo'
@@ -8688,8 +8873,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new category set
       tags:
         - Category Sets
@@ -8746,8 +8929,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete category set
       tags:
         - Category Sets
@@ -8865,8 +9046,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update category set
       tags:
         - Category Sets
@@ -8905,6 +9084,11 @@ paths:
               - 0
               - 1
             type: integer
+        - $ref: '#/components/parameters/category_limit'
+        - $ref: '#/components/parameters/category_offset'
+        - $ref: '#/components/parameters/category_searchFields'
+        - $ref: '#/components/parameters/category_sortBy'
+        - $ref: '#/components/parameters/category_sortOrder'
         - $ref: '#/components/parameters/category_dateField'
         - $ref: '#/components/parameters/category_dateFrom'
         - $ref: '#/components/parameters/category_dateTo'
@@ -9003,8 +9187,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site pr Category_set not found.
-      security:
-        - mtauth: []
       summary: Create a new category for category set
       tags:
         - Categories
@@ -9078,8 +9260,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Category_set not found.
-      security:
-        - mtauth: []
       summary: Save hierarchical categories order in category set
       tags:
         - Categories
@@ -9144,8 +9324,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete single category in category set
       tags:
         - Categories
@@ -9276,8 +9454,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update single category in category set
       tags:
         - Categories
@@ -9676,6 +9852,10 @@ paths:
               - Future
               - Spam
             type: string
+        - $ref: '#/components/parameters/field_filterKeys'
+        - $ref: '#/components/parameters/field_searchFields'
+        - $ref: '#/components/parameters/field_sortBy'
+        - $ref: '#/components/parameters/field_sortOrder'
         - $ref: '#/components/parameters/comment_dateField'
         - $ref: '#/components/parameters/comment_dateFrom'
         - $ref: '#/components/parameters/comment_dateTo'
@@ -9771,8 +9951,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete a comment
       tags:
         - Comments
@@ -9887,8 +10065,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update a comment
       tags:
         - Comments
@@ -9908,6 +10084,7 @@ paths:
             type: integer
         - $ref: '#/components/parameters/content_type_limit'
         - $ref: '#/components/parameters/content_type_offset'
+        - $ref: '#/components/parameters/content_type_searchFields'
         - description: |
             The field name for sort. You can specify one of following values.
             - name
@@ -9964,8 +10141,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Content Type Collection
       tags:
         - Content Types
@@ -10021,8 +10196,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create Content Type
       tags:
         - Content Types
@@ -10081,8 +10254,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete Content Type
       tags:
         - Content Types
@@ -10132,8 +10303,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Content_type not found.
-      security:
-        - mtauth: []
       summary: Fetch single Content Type
       tags:
         - Content Types
@@ -10199,8 +10368,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update Content Type
       tags:
         - Content Types
@@ -10232,6 +10399,8 @@ paths:
             type: string
         - $ref: '#/components/parameters/content_data_limit'
         - $ref: '#/components/parameters/content_data_offset'
+        - $ref: '#/components/parameters/content_data_filterKeys'
+        - $ref: '#/components/parameters/content_data_searchFields'
         - description: |
             The field name for sort. You can specify one of following values.
             - id
@@ -10323,6 +10492,7 @@ paths:
           required: 1
           schema:
             type: integer
+        - $ref: '#/components/parameters/content_data_saveRevision'
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -10358,8 +10528,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Content_type not found.
-      security:
-        - mtauth: []
       summary: Create Content Data
       tags:
         - Content Types
@@ -10443,8 +10611,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Content_type not found
-      security:
-        - mtauth: []
       summary: Make a preview by data
       tags:
         - Content Types
@@ -10511,8 +10677,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete single content data
       tags:
         - Content Types
@@ -10609,6 +10773,7 @@ paths:
           required: 1
           schema:
             type: integer
+        - $ref: '#/components/parameters/content_data_saveRevision'
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -10650,8 +10815,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update Content Data
       tags:
         - Content Types
@@ -10740,8 +10903,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Content_type or Content_data not found
-      security:
-        - mtauth: []
       summary: Make a preview by id
       tags:
         - Content Types
@@ -10767,6 +10928,7 @@ paths:
             type: integer
         - $ref: '#/components/parameters/content_field_limit'
         - $ref: '#/components/parameters/content_field_offset'
+        - $ref: '#/components/parameters/content_field_searchFields'
         - description: |
             The field name for sort. You can specify one of following values.
             - name
@@ -10823,8 +10985,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Content_type not found.
-      security:
-        - mtauth: []
       summary: Content Field Collection
       tags:
         - Content Fields
@@ -10886,8 +11046,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Content_type not found.
-      security:
-        - mtauth: []
       summary: Create Content Field
       tags:
         - Content Types
@@ -10960,8 +11118,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Content_type not found.
-      security:
-        - mtauth: []
       summary: Save hierarchical content field order
       tags:
         - Content Types
@@ -11026,8 +11182,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete Content Field
       tags:
         - Content Types
@@ -11083,8 +11237,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Content_type or Content_field not found.
-      security:
-        - mtauth: []
       summary: Fetch single Content Field
       tags:
         - Content Types
@@ -11158,8 +11310,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update Content Field
       tags:
         - Content Types
@@ -11194,6 +11344,7 @@ paths:
         - $ref: '#/components/parameters/entry_maxTrackbacks'
         - $ref: '#/components/parameters/entry_fields'
         - $ref: '#/components/parameters/entry_no_text_filter'
+        - $ref: '#/components/parameters/entry_filterKeys'
         - $ref: '#/components/parameters/entry_dateField'
         - $ref: '#/components/parameters/entry_dateFrom'
         - $ref: '#/components/parameters/entry_dateTo'
@@ -11253,6 +11404,7 @@ paths:
           required: 1
           schema:
             type: integer
+        - $ref: '#/components/parameters/entry_saveRevision'
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -11294,8 +11446,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new entry
       tags:
         - Entries
@@ -11334,8 +11484,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Export entries
       tags:
         - Entries
@@ -11418,8 +11566,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Import entries
       tags:
         - Entries
@@ -11487,8 +11633,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Entry not found
-      security:
-        - mtauth: []
       summary: Make a preview for a entry
       tags:
         - Entries
@@ -11546,8 +11690,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an entry
       tags:
         - Entries
@@ -11643,6 +11785,7 @@ paths:
           required: 1
           schema:
             type: integer
+        - $ref: '#/components/parameters/entry_saveRevision'
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -11690,8 +11833,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an entry
       tags:
         - Entries
@@ -11745,6 +11886,8 @@ paths:
             type: string
         - $ref: '#/components/parameters/asset_sortOrder'
         - $ref: '#/components/parameters/asset_fields'
+        - $ref: '#/components/parameters/asset_filterKeys'
+        - $ref: '#/components/parameters/asset_searchFields'
         - $ref: '#/components/parameters/asset_dateField'
         - $ref: '#/components/parameters/asset_dateFrom'
         - $ref: '#/components/parameters/asset_dateTo'
@@ -11950,6 +12093,10 @@ paths:
           name: offset
           schema:
             type: integer
+        - $ref: '#/components/parameters/field_filterKeys'
+        - $ref: '#/components/parameters/field_searchFields'
+        - $ref: '#/components/parameters/field_sortBy'
+        - $ref: '#/components/parameters/field_sortOrder'
         - $ref: '#/components/parameters/comment_dateField'
         - $ref: '#/components/parameters/comment_dateFrom'
         - $ref: '#/components/parameters/comment_dateTo'
@@ -12044,8 +12191,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Not Found
-      security:
-        - mtauth: []
       summary: Create a new comment on an entry
       tags:
         - Comments
@@ -12107,8 +12252,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Not Found
-      security:
-        - mtauth: []
       summary: Reply to specified comment
       tags:
         - Comments
@@ -12183,8 +12326,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Entry not found
-      security:
-        - mtauth: []
       summary: Make a preview for a entry with existing data
       tags:
         - Entries
@@ -12288,8 +12429,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Theme not found
-      security:
-        - mtauth: []
       summary: Export site's theme
       tags:
         - Themes
@@ -12308,6 +12447,7 @@ paths:
         - $ref: '#/components/parameters/field_sortBy'
         - $ref: '#/components/parameters/field_sortOrder'
         - $ref: '#/components/parameters/field_fields'
+        - $ref: '#/components/parameters/field_filterKeys'
         - $ref: '#/components/parameters/field_dateField'
         - $ref: '#/components/parameters/field_dateFrom'
         - $ref: '#/components/parameters/field_dateTo'
@@ -12347,8 +12487,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of fields in the specified site
       tags:
         - CustomFields
@@ -12394,8 +12532,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new field
       tags:
         - CustomFields
@@ -12449,8 +12585,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete a field
       tags:
         - CustomFields
@@ -12494,8 +12628,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Field not found.
-      security:
-        - mtauth: []
       summary: Retrieve single field by its ID
       tags:
         - CustomFields
@@ -12556,8 +12688,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update a field
       tags:
         - CustomFields
@@ -12710,8 +12840,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new folder.
       tags:
         - Folders
@@ -12773,8 +12901,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Rearrange existing folders in a new order
       tags:
         - Folders
@@ -12834,8 +12960,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an existing folder
       tags:
         - Folders
@@ -12949,8 +13073,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an existing folder
       tags:
         - Folders
@@ -13068,6 +13190,7 @@ paths:
         - $ref: '#/components/parameters/page_maxComments'
         - $ref: '#/components/parameters/page_maxTrackbacks'
         - $ref: '#/components/parameters/page_no_text_filter'
+        - $ref: '#/components/parameters/page_filterKeys'
         - $ref: '#/components/parameters/page_dateField'
         - $ref: '#/components/parameters/page_dateFrom'
         - $ref: '#/components/parameters/page_dateTo'
@@ -13349,8 +13472,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of formatted_texts in the specified site
       tags:
         - FormattedText
@@ -13396,8 +13517,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new formatted_text
       tags:
         - FormattedText
@@ -13451,8 +13570,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete a formatted_text
       tags:
         - FormattedText
@@ -13496,8 +13613,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or FormattedText not found.
-      security:
-        - mtauth: []
       summary: Retrieve single formatted_text by its ID
       tags:
         - FormattedText
@@ -13558,8 +13673,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update a formatted_text
       tags:
         - FormattedText
@@ -13611,8 +13724,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Reset logs
       tags:
         - Logs
@@ -13634,6 +13745,7 @@ paths:
         - $ref: '#/components/parameters/log_searchFields'
         - $ref: '#/components/parameters/log_limit'
         - $ref: '#/components/parameters/log_offset'
+        - $ref: '#/components/parameters/log_filterKeys'
         - description: |
             - id
             - created_on
@@ -13724,8 +13836,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of logs in the specified site
       tags:
         - Logs
@@ -13771,8 +13881,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new log
       tags:
         - Logs
@@ -13815,8 +13923,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Export logs
       tags:
         - Logs
@@ -13870,8 +13976,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an existing log
       tags:
         - Logs
@@ -13915,8 +14019,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Log not found.
-      security:
-        - mtauth: []
       summary: Retrieve a single log by its ID
       tags:
         - Logs
@@ -13977,8 +14079,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an existing log
       tags:
         - Logs
@@ -14015,6 +14115,7 @@ paths:
         - $ref: '#/components/parameters/page_maxComments'
         - $ref: '#/components/parameters/page_maxTrackbacks'
         - $ref: '#/components/parameters/page_no_text_filter'
+        - $ref: '#/components/parameters/page_filterKeys'
         - $ref: '#/components/parameters/page_dateField'
         - $ref: '#/components/parameters/page_dateFrom'
         - $ref: '#/components/parameters/page_dateTo'
@@ -14074,6 +14175,7 @@ paths:
           required: 1
           schema:
             type: integer
+        - $ref: '#/components/parameters/page_saveRevision'
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -14115,8 +14217,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new page
       tags:
         - Pages
@@ -14184,8 +14284,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Page not found
-      security:
-        - mtauth: []
       summary: Make a preview for a page
       tags:
         - Pages
@@ -14244,8 +14342,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an existing page
       tags:
         - Pages
@@ -14323,6 +14419,7 @@ paths:
           required: 1
           schema:
             type: integer
+        - $ref: '#/components/parameters/page_saveRevision'
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -14370,8 +14467,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an existing page
       tags:
         - Pages
@@ -14395,6 +14490,8 @@ paths:
             type: string
         - $ref: '#/components/parameters/asset_limit'
         - $ref: '#/components/parameters/asset_offset'
+        - $ref: '#/components/parameters/asset_filterKeys'
+        - $ref: '#/components/parameters/asset_searchFields'
         - description: 'The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.'
           in: query
           name: class
@@ -14498,6 +14595,10 @@ paths:
           name: offset
           schema:
             type: integer
+        - $ref: '#/components/parameters/field_filterKeys'
+        - $ref: '#/components/parameters/field_searchFields'
+        - $ref: '#/components/parameters/field_sortBy'
+        - $ref: '#/components/parameters/field_sortOrder'
         - $ref: '#/components/parameters/comment_dateField'
         - $ref: '#/components/parameters/comment_dateFrom'
         - $ref: '#/components/parameters/comment_dateTo'
@@ -14592,8 +14693,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Not Found
-      security:
-        - mtauth: []
       summary: Create a new comment on a page
       tags:
         - Comments
@@ -14655,8 +14754,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Not Found
-      security:
-        - mtauth: []
       summary: Reply to specified comment
       tags:
         - Comments
@@ -14731,8 +14828,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Page not found
-      security:
-        - mtauth: []
       summary: Make a preview for a page with existing data
       tags:
         - Pages
@@ -14796,8 +14891,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of permissions for site
       tags:
         - Sites
@@ -14855,8 +14948,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Role or User not found
-      security:
-        - mtauth: []
       summary: Grant permissions to site
       tags:
         - Sites
@@ -14914,8 +15005,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Role or User not found
-      security:
-        - mtauth: []
       summary: Revoke permissions from site
       tags:
         - Sites
@@ -14984,15 +15073,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found
-      security:
-        - mtauth: []
       summary: Reset all templates in the site
       tags:
         - Templates
   '/sites/{site_id}/stats/date/pageviews':
     get:
       description: |
-        Retrieve pageviews count for each date from provider (e.g. Google Analytics).
+        Retrieve screenPageViews count for each date from provider (e.g. Google Analytics V4).
         
         Authorization is required.
       parameters:
@@ -15001,14 +15088,14 @@ paths:
           required: 1
           schema:
             type: integer
-        - description: This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
           in: query
           name: startDate
           required: 1
           schema:
             format: date
             type: string
-        - description: This is an required parameter. End date of data. The format is "YYYY-MM-DD".
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
           in: query
           name: endDate
           required: 1
@@ -15028,10 +15115,10 @@ paths:
             type: string
         - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
           in: query
-          name: path
+          name: pagePath
           schema:
             type: string
-        - description: 'This is an optional parameter. If true is given, the MT can return total pageviews for each uniqueness paths. However, that data does not contain page title because its spec. (Sometimes, Google Analytics will return another pageviews by same path.)'
+        - description: 'This is an optional parameter. If true is given, the MT can return total screenPageViews for each unique path. However, that data does not contain page title because of its spec. (Sometimes, Google Analytics will return another screenPageViews by same path.)'
           in: query
           name: uniquePath
           schema:
@@ -15056,7 +15143,7 @@ paths:
                   totals:
                     properties:
                       screenPageViews:
-                        description: The sum total of the pageviews in the specified period.
+                        description: The sum total of the screenPageViews in the specified period.
                         type: integer
                     type: object
                 type: object
@@ -15079,15 +15166,191 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Not Found
-      security:
-        - mtauth: []
-      summary: Retrieve pageviews count for each date from provider (e.g. Google Analytics)
+      summary: Retrieve screenPageViews count for each date from provider (e.g. Google Analytics V4)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/date/screenPageViews':
+    get:
+      description: |
+        Retrieve screenPageViews count for each date from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            default: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
+          schema:
+            type: string
+        - description: 'This is an optional parameter. If true is given, the MT can return total screenPageViews for each unique path. However, that data does not contain page title because of its spec. (Sometimes, Google Analytics will return another screenPageViews by same path.)'
+          in: query
+          name: uniquePath
+          schema:
+            enum:
+              - 0
+              - 1
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsdate'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      screenPageViews:
+                        description: The sum total of the screenPageViews in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve screenPageViews count for each date from provider (e.g. Google Analytics V4)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/date/sessions':
+    get:
+      description: |
+        Retrieve sessions count for each date from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            default: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsdate'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      sessions:
+                        description: The sum total of the sessions in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve sessions count for each date from provider (e.g. Google Analytics V4)
       tags:
         - Statistics
   '/sites/{site_id}/stats/date/visits':
     get:
       description: |
-        Retrieve visits count for each date from provider (e.g. Google Analytics).
+        Retrieve sessions count for each date from provider (e.g. Google Analytics V4).
         
         Authorization is required.
       parameters:
@@ -15096,14 +15359,14 @@ paths:
           required: 1
           schema:
             type: integer
-        - description: This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
           in: query
           name: startDate
           required: 1
           schema:
             format: date
             type: string
-        - description: This is an required parameter. End date of data. The format is "YYYY-MM-DD".
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
           in: query
           name: endDate
           required: 1
@@ -15123,7 +15386,7 @@ paths:
             type: string
         - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
           in: query
-          name: path
+          name: pagePath
           schema:
             type: string
       responses:
@@ -15166,15 +15429,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Not Found
-      security:
-        - mtauth: []
-      summary: Retrieve visits count for each date from provider (e.g. Google Analytics)
+      summary: Retrieve sessions count for each date from provider (e.g. Google Analytics V4)
       tags:
         - Statistics
   '/sites/{site_id}/stats/path/pageviews':
     get:
       description: |
-        Retrieve pageviews count for each path from provider (e.g. Google Analytics).
+        Retrieve screenPageViews count for each path from provider (e.g. Google Analytics V4).
         
         Authorization is required.
       parameters:
@@ -15183,14 +15444,14 @@ paths:
           required: 1
           schema:
             type: integer
-        - description: This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
           in: query
           name: startDate
           required: 1
           schema:
             format: date
             type: string
-        - description: This is an required parameter. End date of data. The format is "YYYY-MM-DD".
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
           in: query
           name: endDate
           required: 1
@@ -15210,10 +15471,10 @@ paths:
             type: string
         - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
           in: query
-          name: path
+          name: pagePath
           schema:
             type: string
-        - description: 'This is an optional parameter. If true is given, the MT can return total pageviews for each uniqueness paths. However, that data does not contain page title because its spec. (Sometimes, Google Analytics will return another pageviews by same path.)'
+        - description: 'This is an optional parameter. If true is given, the MT can return total scrrenPageViews for each unique path. However, that data does not contain page title because of its spec. (Sometimes, Google Analytics will return another screenPageViews by same path.)'
           in: query
           name: uniquePath
           schema:
@@ -15238,7 +15499,7 @@ paths:
                   totals:
                     properties:
                       screenPageViews:
-                        description: The sum total of the pageviews in the specified period.
+                        description: The sum total of the screenPageViews in the specified period.
                         type: integer
                     type: object
                 type: object
@@ -15261,15 +15522,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Not Found
-      security:
-        - mtauth: []
-      summary: Retrieve pageviews count for each path from provider (e.g. Google Analytics)
+      summary: Retrieve screenPageViews count for each path from provider (e.g. Google Analytics V4)
       tags:
         - Statistics
-  '/sites/{site_id}/stats/path/visits':
+  '/sites/{site_id}/stats/path/screenPageViews':
     get:
       description: |
-        Retrieve visits count for each date from provider (e.g. Google Analytics).
+        Retrieve screenPageViews count for each path from provider (e.g. Google Analytics V4).
         
         Authorization is required.
       parameters:
@@ -15278,14 +15537,14 @@ paths:
           required: 1
           schema:
             type: integer
-        - description: This is an required parameter. Start date of data. The format is "YYYY-MM-DD".
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
           in: query
           name: startDate
           required: 1
           schema:
             format: date
             type: string
-        - description: This is an required parameter. End date of data. The format is "YYYY-MM-DD".
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
           in: query
           name: endDate
           required: 1
@@ -15305,7 +15564,100 @@ paths:
             type: string
         - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
           in: query
-          name: path
+          name: pagePath
+          schema:
+            type: string
+        - description: 'This is an optional parameter. If true is given, the MT can return total scrrenPageViews for each unique path. However, that data does not contain page title because of its spec. (Sometimes, Google Analytics will return another screenPageViews by same path.)'
+          in: query
+          name: uniquePath
+          schema:
+            enum:
+              - 0
+              - 1
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for path resource.
+                    items:
+                      $ref: '#/components/schemas/statisticspath'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      screenPageViews:
+                        description: The sum total of the screenPageViews in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve screenPageViews count for each path from provider (e.g. Google Analytics V4)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/path/sessions':
+    get:
+      description: |
+        Retrieve sessions count for each date from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            limit: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
           schema:
             type: string
       responses:
@@ -15348,9 +15700,92 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Not Found
-      security:
-        - mtauth: []
-      summary: Retrieve visits count for each path from provider (e.g. Google Analytics)
+      summary: Retrieve sessions count for each path from provider (e.g. Google Analytics V4)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/path/visits':
+    get:
+      description: |
+        Retrieve sessions count for each date from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            limit: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for path resource.
+                    items:
+                      $ref: '#/components/schemas/statisticspath'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      sessions:
+                        description: The sum total of the sessions in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve sessions count for each path from provider (e.g. Google Analytics V4)
       tags:
         - Statistics
   '/sites/{site_id}/stats/provider':
@@ -15393,9 +15828,541 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Not Found
-      security:
-        - mtauth: []
       summary: Retrieve a current effective provider
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/year/screenPageViews':
+    get:
+      description: |
+        Retrieve screenPageViews count for each year from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            default: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
+          schema:
+            type: string
+        - description: 'This is an optional parameter. If true is given, the MT can return total screenPageViews for each unique path. However, that data does not contain page title because of its spec. (Sometimes, Google Analytics will return another screenPageViews by same path.)'
+          in: query
+          name: uniquePath
+          schema:
+            enum:
+              - 0
+              - 1
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsyear'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      screenPageViews:
+                        description: The sum total of the screenPageViews in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve screenPageViews count for each year from provider (e.g. Google Analytics V4)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/year/sessions':
+    get:
+      description: |
+        Retrieve sessions count for each year from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            default: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsyear'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      sessions:
+                        description: The sum total of the sessions in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve sessions count for each year from provider (e.g. Google Analytics V4)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/yearMonth/screenPageViews':
+    get:
+      description: |
+        Retrieve screenPageViews count for each yearMonth from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            default: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
+          schema:
+            type: string
+        - description: 'This is an optional parameter. If true is given, the MT can return total screenPageViews for each unique path. However, that data does not contain page title because of its spec. (Sometimes, Google Analytics will return another screenPageViews by same path.)'
+          in: query
+          name: uniquePath
+          schema:
+            enum:
+              - 0
+              - 1
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsyearmonth'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      screenPageViews:
+                        description: The sum total of the screenPageViews in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve screenPageViews count for each yearMonth from provider (e.g. Google Analytics V4)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/yearMonth/sessions':
+    get:
+      description: |
+        Retrieve sessions count for each yearMonth from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            default: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsyearmonth'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      sessions:
+                        description: The sum total of the sessions in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve sessions count for each yearMonth from provider (e.g. Google Analytics V4)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/yearWeek/screenPageViews':
+    get:
+      description: |
+        Retrieve screenPageViews count for each yearWeek from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            default: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
+          schema:
+            type: string
+        - description: 'This is an optional parameter. If true is given, the MT can return total screenPageViews for each unique path. However, that data does not contain page title because of its spec. (Sometimes, Google Analytics will return another screenPageViews by same path.)'
+          in: query
+          name: uniquePath
+          schema:
+            enum:
+              - 0
+              - 1
+            type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsyearweek'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      screenPageViews:
+                        description: The sum total of the screenPageViews in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve screenPageViews count for each yearWeek from provider (e.g. Google Analytics V4)
+      tags:
+        - Statistics
+  '/sites/{site_id}/stats/yearWeek/sessions':
+    get:
+      description: |
+        Retrieve sessions count for each yearWeek from provider (e.g. Google Analytics V4).
+        
+        Authorization is required.
+      parameters:
+        - in: path
+          name: site_id
+          required: 1
+          schema:
+            type: integer
+        - description: This is a required parameter. Start date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: startDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is a required parameter. End date of data. The format is "YYYY-MM-DD".
+          in: query
+          name: endDate
+          required: 1
+          schema:
+            format: date
+            type: string
+        - description: This is an optional parameter. Maximum number of paths to retrieve. Default is 50.
+          in: query
+          name: limit
+          schema:
+            default: 50
+            type: integer
+        - description: This is an optional parameter. 0-indexed offset. Default is 0.
+          in: query
+          name: offset
+          schema:
+            type: string
+        - description: This is an optional parameter. The target path of data to retrieve. Default is the path of the current site.
+          in: query
+          name: pagePath
+          schema:
+            type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                properties:
+                  items:
+                    description: An array of Items for date resource.
+                    items:
+                      $ref: '#/components/schemas/statisticsyearweek'
+                    type: array
+                  totalResults:
+                    description: The total number of paths.
+                    type: integer
+                  totals:
+                    properties:
+                      sessions:
+                        description: The sum total of the sessions in the specified period.
+                        type: integer
+                    type: object
+                type: object
+          description: OK
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Invalid login
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorContent'
+          description: Not Found
+      summary: Retrieve sessions count for each yearWeek from provider (e.g. Google Analytics V4)
       tags:
         - Statistics
   '/sites/{site_id}/tags':
@@ -15505,8 +16472,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an existing tag
       tags:
         - Tags
@@ -15610,8 +16575,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an existing tag
       tags:
         - Tags
@@ -15635,6 +16598,8 @@ paths:
             type: string
         - $ref: '#/components/parameters/asset_limit'
         - $ref: '#/components/parameters/asset_offset'
+        - $ref: '#/components/parameters/asset_filterKeys'
+        - $ref: '#/components/parameters/asset_searchFields'
         - description: 'The target asset class to retrieve. Supported values are image, audio, video, file and any values added by plugins. If you want to retrieve multiple classes, specify the values separated by commas.'
           in: query
           name: class
@@ -15744,6 +16709,7 @@ paths:
         - $ref: '#/components/parameters/entry_maxComments'
         - $ref: '#/components/parameters/entry_maxTrackbacks'
         - $ref: '#/components/parameters/entry_no_text_filter'
+        - $ref: '#/components/parameters/entry_filterKeys'
         - $ref: '#/components/parameters/entry_dateField'
         - $ref: '#/components/parameters/entry_dateFrom'
         - $ref: '#/components/parameters/entry_dateTo'
@@ -15825,6 +16791,7 @@ paths:
         - $ref: '#/components/parameters/page_maxComments'
         - $ref: '#/components/parameters/page_maxTrackbacks'
         - $ref: '#/components/parameters/page_no_text_filter'
+        - $ref: '#/components/parameters/page_filterKeys'
         - $ref: '#/components/parameters/page_dateField'
         - $ref: '#/components/parameters/page_dateFrom'
         - $ref: '#/components/parameters/page_dateTo'
@@ -15886,6 +16853,7 @@ paths:
         - $ref: '#/components/parameters/template_searchFields'
         - $ref: '#/components/parameters/template_limit'
         - $ref: '#/components/parameters/template_offset'
+        - $ref: '#/components/parameters/template_filterKeys'
         - description: |
             #### id
             
@@ -15977,8 +16945,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of templates in the specified site
       tags:
         - Templates
@@ -15995,6 +16961,7 @@ paths:
           required: 1
           schema:
             type: integer
+        - $ref: '#/components/parameters/template_saveRevision'
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -16030,8 +16997,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new template
       tags:
         - Templates
@@ -16100,8 +17065,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found
-      security:
-        - mtauth: []
       summary: Make a preview for a template
       tags:
         - Templates
@@ -16160,8 +17123,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete a template
       tags:
         - Templates
@@ -16211,8 +17172,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Template not found.
-      security:
-        - mtauth: []
       summary: Retrieve single template by its ID
       tags:
         - Templates
@@ -16237,6 +17196,7 @@ paths:
           required: 1
           schema:
             type: integer
+        - $ref: '#/components/parameters/template_saveRevision'
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -16278,8 +17238,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update a template
       tags:
         - Templates
@@ -16332,8 +17290,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Template not found
-      security:
-        - mtauth: []
       summary: Make a clone of a template
       tags:
         - Templates
@@ -16413,8 +17369,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Template not found
-      security:
-        - mtauth: []
       summary: Make a preview for a template with existing data
       tags:
         - Templates
@@ -16473,8 +17427,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Template not found
-      security:
-        - mtauth: []
       summary: Publish a template
       tags:
         - Templates
@@ -16531,8 +17483,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Template not found
-      security:
-        - mtauth: []
       summary: Reset template text to theme default or tempalte_set default
       tags:
         - Templates
@@ -16558,6 +17508,7 @@ paths:
         - $ref: '#/components/parameters/templatemap_fields'
         - $ref: '#/components/parameters/templatemap_includeIds'
         - $ref: '#/components/parameters/templatemap_excludeIds'
+        - $ref: '#/components/parameters/templatemap_filterKeys'
         - $ref: '#/components/parameters/templatemap_dateField'
         - $ref: '#/components/parameters/templatemap_dateFrom'
         - $ref: '#/components/parameters/templatemap_dateTo'
@@ -16597,8 +17548,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Template not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of templatemaps in the specified site
       tags:
         - Templates
@@ -16650,8 +17599,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Template not found.
-      security:
-        - mtauth: []
       summary: Create a new templatemap
       tags:
         - Templates
@@ -16711,8 +17658,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an existing templatemap
       tags:
         - Templates
@@ -16761,8 +17706,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Template or TemplateMap not found.
-      security:
-        - mtauth: []
       summary: Retrieve a single templatemap by its ID
       tags:
         - Templates
@@ -16829,8 +17772,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an existing templatemap
       tags:
         - Templates
@@ -16885,8 +17826,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of themes for site
       tags:
         - Themes
@@ -16936,8 +17875,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Theme not found.
-      security:
-        - mtauth: []
       summary: Retrieve a single theme by its ID for site
       tags:
         - Themes
@@ -16990,8 +17927,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Theme not found
-      security:
-        - mtauth: []
       summary: Apply a theme to site
       tags:
         - Themes
@@ -17051,8 +17986,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of widgets in the specified site
       tags:
         - Widgets
@@ -17098,8 +18031,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new widget
       tags:
         - Widgets
@@ -17153,8 +18084,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete a widget
       tags:
         - Widgets
@@ -17198,8 +18127,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Widget not found.
-      security:
-        - mtauth: []
       summary: Retrieve a single widget by its ID
       tags:
         - Widgets
@@ -17260,8 +18187,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update a widget
       tags:
         - Widgets
@@ -17308,8 +18233,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Widget not found
-      security:
-        - mtauth: []
       summary: Make a clone of a widget
       tags:
         - Widgets
@@ -17360,8 +18283,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Widget not found
-      security:
-        - mtauth: []
       summary: Reset widget text to default
       tags:
         - Widgets
@@ -17421,8 +18342,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of widgetsets in the specified site
       tags:
         - WidgetSets
@@ -17468,8 +18387,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new widgetset
       tags:
         - WidgetSets
@@ -17523,8 +18440,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete an existing widgetset
       tags:
         - WidgetSets
@@ -17568,8 +18483,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or WidgetSet not found.
-      security:
-        - mtauth: []
       summary: Retrieve a single widgetset by its ID
       tags:
         - WidgetSets
@@ -17630,8 +18543,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update an existing widgetset
       tags:
         - WidgetSets
@@ -17696,8 +18607,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or WidgetSet not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of widgets in the specified widgetset
       tags:
         - Widgets
@@ -17748,8 +18657,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Widget not found.
-      security:
-        - mtauth: []
       summary: Retrieve a single widget by widgetset ID
       tags:
         - Widgets
@@ -17838,8 +18745,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of themes
       tags:
         - Themes
@@ -17894,8 +18799,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Uninstall a specified theme from the MT
       tags:
         - Themes
@@ -17939,8 +18842,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Theme not found.
-      security:
-        - mtauth: []
       summary: Retrieve a single theme by its ID
       tags:
         - Themes
@@ -17982,8 +18883,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Invalidate current session. This is like logout
       tags:
         - Authentication
@@ -18060,6 +18959,7 @@ paths:
         - $ref: '#/components/parameters/user_searchFields'
         - $ref: '#/components/parameters/user_limit'
         - $ref: '#/components/parameters/user_offset'
+        - $ref: '#/components/parameters/user_filterKeys'
         - description: |
             The field name for sort. You can specify one of following values
             - id
@@ -18201,8 +19101,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site not found.
-      security:
-        - mtauth: []
       summary: Create a new user
       tags:
         - Users
@@ -18229,8 +19127,6 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to export users.
-      security:
-        - mtauth: []
       summary: Export users
       tags:
         - Users
@@ -18275,8 +19171,6 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to import users.
-      security:
-        - mtauth: []
       summary: Import users
       tags:
         - Users
@@ -18306,8 +19200,6 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to synchronize users.
-      security:
-        - mtauth: []
       summary: Synchronize users
       tags:
         - Users
@@ -18362,8 +19254,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not DELETE or POST with __method=DELETE
-      security:
-        - mtauth: []
       summary: Delete user
       tags:
         - Users
@@ -18473,8 +19363,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Request method is not PUT or POST with __method=PUT
-      security:
-        - mtauth: []
       summary: Update user data
       tags:
         - Users
@@ -18493,6 +19381,7 @@ paths:
         - $ref: '#/components/parameters/group_sortBy'
         - $ref: '#/components/parameters/group_sortOrder'
         - $ref: '#/components/parameters/group_fields'
+        - $ref: '#/components/parameters/group_filterKeys'
         - $ref: '#/components/parameters/group_dateField'
         - $ref: '#/components/parameters/group_dateFrom'
         - $ref: '#/components/parameters/group_dateTo'
@@ -18532,8 +19421,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: User not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of groups
       tags:
         - Users
@@ -18555,6 +19442,7 @@ paths:
         - $ref: '#/components/parameters/permission_sortOrder'
         - $ref: '#/components/parameters/permission_fields'
         - $ref: '#/components/parameters/permission_blogIds'
+        - $ref: '#/components/parameters/permission_filterKeys'
         - $ref: '#/components/parameters/permission_dateField'
         - $ref: '#/components/parameters/permission_dateFrom'
         - $ref: '#/components/parameters/permission_dateTo'
@@ -18594,8 +19482,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or User not found.
-      security:
-        - mtauth: []
       summary: Retrieve a list of permissions for user
       tags:
         - Users
@@ -18653,8 +19539,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Role or User not found
-      security:
-        - mtauth: []
       summary: Grant permissions to user
       tags:
         - Users
@@ -18712,8 +19596,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or Role or User not found
-      security:
-        - mtauth: []
       summary: Revoke permissions from user
       tags:
         - Users
@@ -18764,8 +19646,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or User not found
-      security:
-        - mtauth: []
       summary: Send the link for password recovery to specified user by email
       tags:
         - Users
@@ -18929,8 +19809,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorContent'
           description: Site or User not found
-      security:
-        - mtauth: []
       summary: Unlock user account
       tags:
         - Users
@@ -18971,6 +19849,8 @@ paths:
       summary: Get server API version
       tags:
         - Common API
+security:
+  - mtauth: []
 servers:
   - url: https://example.com/mt/mt-data-api.cgi/v7
 tags:
