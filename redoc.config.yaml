@@ -1,3 +1,2 @@
-theme:
-  openapi:
-    sortTagsAlphabetically: true
+openapi:
+  sortTagsAlphabetically: true
