@@ -1,6 +1,95 @@
 {
   "components": {
     "parameters": {
+      "category_excludeIds": {
+        "description": "The comma separated ID list of categories to exclude from result.",
+        "in": "query",
+        "name": "excludeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_fields": {
+        "description": "The field list to retrieve as part of the category resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.",
+        "in": "query",
+        "name": "fields",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_filterKeys": {
+        "description": "The comma separated field name list to filter.",
+        "in": "query",
+        "name": "filterKeys",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_includeIds": {
+        "description": "The comma separated ID list of categories to include to result.",
+        "in": "query",
+        "name": "includeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_limit": {
+        "description": "Maximum number of categories to retrieve.\n\n**Default**: 10",
+        "in": "query",
+        "name": "limit",
+        "schema": {
+          "default": "10",
+          "type": "integer"
+        }
+      },
+      "category_offset": {
+        "description": "0-indexed offset.\n\n**Default**: 0",
+        "in": "query",
+        "name": "offset",
+        "schema": {
+          "default": "0",
+          "type": "integer"
+        }
+      },
+      "category_search": {
+        "description": "Search query.",
+        "in": "query",
+        "name": "search",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "category_searchFields": {
+        "description": "The comma separated field name list to search.\n\n**Default**: label,basename",
+        "in": "query",
+        "name": "searchFields",
+        "schema": {
+          "default": "label,basename",
+          "type": "string"
+        }
+      },
+      "category_sortBy": {
+        "description": "\n\n**Default**: user_custom",
+        "in": "query",
+        "name": "sortBy",
+        "schema": {
+          "default": "user_custom",
+          "type": "string"
+        }
+      },
+      "category_sortOrder": {
+        "description": "#### descend\n\nReturn categories in descending order.\n\n#### ascend\n\nReturn categories in ascending order.\n\n\n\n**Default**: ascend",
+        "in": "query",
+        "name": "sortOrder",
+        "schema": {
+          "default": "ascend",
+          "enum": [
+            "descend",
+            "ascend"
+          ],
+          "type": "string"
+        }
+      },
       "comment_excludeIds": {
         "description": "The comma separated ID list of comments to exclude from result.",
         "in": "query",
@@ -14,6 +103,15 @@
         "in": "query",
         "name": "fields",
         "schema": {
+          "type": "string"
+        }
+      },
+      "comment_filterKeys": {
+        "description": "The comma separated field name list to filter.\n\n**Default**: status",
+        "in": "query",
+        "name": "filterKeys",
+        "schema": {
+          "default": "status",
           "type": "string"
         }
       },
@@ -98,6 +196,15 @@
           "type": "string"
         }
       },
+      "entry_filterKeys": {
+        "description": "The comma separated field name list to filter.\n\n**Default**: status",
+        "in": "query",
+        "name": "filterKeys",
+        "schema": {
+          "default": "status",
+          "type": "string"
+        }
+      },
       "entry_includeIds": {
         "description": "The comma separated ID list of entries to include to result.",
         "in": "query",
@@ -149,6 +256,18 @@
         "name": "offset",
         "schema": {
           "default": "0",
+          "type": "integer"
+        }
+      },
+      "entry_saveRevision": {
+        "description": "Save a revision or not",
+        "in": "query",
+        "name": "saveRevision",
+        "schema": {
+          "enum": [
+            0,
+            1
+          ],
           "type": "integer"
         }
       },
@@ -213,6 +332,114 @@
           "type": "string"
         }
       },
+      "field_filterKeys": {},
+      "field_searchFields": {},
+      "field_sortBy": {},
+      "field_sortOrder": {},
+      "permission_blogIds": {
+        "description": "The comma-separated blog id list that to be included in the result.",
+        "in": "query",
+        "name": "blogIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "permission_excludeIds": {
+        "description": "The comma separated ID list of permissions to exclude from result.",
+        "in": "query",
+        "name": "excludeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "permission_fields": {
+        "description": "The field list to retrieve as part of the permission resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.",
+        "in": "query",
+        "name": "fields",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "permission_filterKeys": {
+        "description": "The comma separated field name list to filter.\n\n**Default**: blogIds",
+        "in": "query",
+        "name": "filterKeys",
+        "schema": {
+          "default": "blogIds",
+          "type": "string"
+        }
+      },
+      "permission_includeIds": {
+        "description": "The comma separated ID list of permissions to include to result.",
+        "in": "query",
+        "name": "includeIds",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "permission_limit": {
+        "description": "Maximum number of permissions to retrieve.\n\n**Default**: 25",
+        "in": "query",
+        "name": "limit",
+        "schema": {
+          "default": "25",
+          "type": "integer"
+        }
+      },
+      "permission_offset": {
+        "description": "0-indexed offset.\n\n**Default**: 0",
+        "in": "query",
+        "name": "offset",
+        "schema": {
+          "default": "0",
+          "type": "integer"
+        }
+      },
+      "permission_search": {
+        "description": "Search query.",
+        "in": "query",
+        "name": "search",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "permission_searchFields": {
+        "description": "The comma separated field name list to search.",
+        "in": "query",
+        "name": "searchFields",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "permission_sortBy": {
+        "description": "The field name for sort. You can specify one of following values\n\n- id\n- blog_id\n- author_id\n- created_by\n- created_on\n\n\n**Default**: blog_id",
+        "in": "query",
+        "name": "sortBy",
+        "schema": {
+          "default": "blog_id",
+          "enum": [
+            "id",
+            "blog_id",
+            "author_id",
+            "created_by",
+            "created_on"
+          ],
+          "type": "string"
+        }
+      },
+      "permission_sortOrder": {
+        "description": "#### descend\n\nReturn permissions in descending order.\n\n#### ascend\n\nReturn permissions in ascending order.\n\n\n\n**Default**: ascend",
+        "in": "query",
+        "name": "sortOrder",
+        "schema": {
+          "default": "ascend",
+          "enum": [
+            "descend",
+            "ascend"
+          ],
+          "type": "string"
+        }
+      },
       "site_excludeIds": {
         "description": "The comma separated ID list of sites to exclude from result.",
         "in": "query",
@@ -225,6 +452,14 @@
         "description": "The field list to retrieve as part of the site resource. That list should be separated by comma. If this parameter is not specified, All fields will be returned.",
         "in": "query",
         "name": "fields",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "site_filterKeys": {
+        "description": "The comma separated field name list to filter.",
+        "in": "query",
+        "name": "filterKeys",
         "schema": {
           "type": "string"
         }
@@ -981,7 +1216,7 @@
   },
   "info": {
     "title": "Movable Type Data API",
-    "version": "8.6.0"
+    "version": "8.7.0"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -1425,11 +1660,6 @@
             "description": "Do not have permission to publish."
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Rebuild the static archives in relation to specified entries",
         "tags": [
           "Entries",
@@ -1640,11 +1870,6 @@
             "description": "Conflict"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Upload a file",
         "tags": [
           "Assets"
@@ -1686,6 +1911,15 @@
               ],
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/category_limit"
+          },
+          {
+            "$ref": "#/components/parameters/category_offset"
+          },
+          {
+            "$ref": "#/components/parameters/category_searchFields"
           }
         ],
         "responses": {
@@ -1830,6 +2064,50 @@
               ],
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/field_filterKeys"
+          },
+          {
+            "$ref": "#/components/parameters/field_searchFields"
+          },
+          {
+            "$ref": "#/components/parameters/field_sortBy"
+          },
+          {
+            "$ref": "#/components/parameters/field_sortOrder"
+          },
+          {
+            "in": "query",
+            "name": "filterKeys",
+            "schema": {
+              "default": "status,entryStatus",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "searchFields",
+            "schema": {
+              "default": "body",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "default": "id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "schema": {
+              "default": "descend",
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1972,11 +2250,6 @@
             "description": "Request method is not DELETE or POST with __method=DELETE"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Delete a comment",
         "tags": [
           "Comments"
@@ -2149,11 +2422,6 @@
             "description": "Request method is not PUT or POST with __method=PUT"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Update a comment",
         "tags": [
           "Comments"
@@ -2293,6 +2561,9 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/entry_filterKeys"
           }
         ],
         "responses": {
@@ -2368,6 +2639,9 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "$ref": "#/components/parameters/entry_saveRevision"
           }
         ],
         "requestBody": {
@@ -2429,11 +2703,6 @@
             "description": "Not Found"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Create a new entry",
         "tags": [
           "Entries"
@@ -2516,11 +2785,6 @@
             "description": "Request method is not DELETE or POST with __method=DELETE"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Delete an entry",
         "tags": [
           "Entries"
@@ -2646,6 +2910,9 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "$ref": "#/components/parameters/entry_saveRevision"
           }
         ],
         "requestBody": {
@@ -2717,11 +2984,6 @@
             "description": "Request method is not PUT or POST with __method=PUT"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Update an entry",
         "tags": [
           "Entries"
@@ -2770,6 +3032,50 @@
             "name": "offset",
             "schema": {
               "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/field_filterKeys"
+          },
+          {
+            "$ref": "#/components/parameters/field_searchFields"
+          },
+          {
+            "$ref": "#/components/parameters/field_sortBy"
+          },
+          {
+            "$ref": "#/components/parameters/field_sortOrder"
+          },
+          {
+            "in": "query",
+            "name": "filterKeys",
+            "schema": {
+              "default": "status",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "searchFields",
+            "schema": {
+              "default": "body",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "default": "id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sortOrder",
+            "schema": {
+              "default": "descend",
+              "type": "string"
             }
           }
         ],
@@ -2916,11 +3222,6 @@
             "description": "Not Found"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Create a new comment on an entry",
         "tags": [
           "Comments",
@@ -3016,11 +3317,6 @@
             "description": "Not Found"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Reply to specified comment",
         "tags": [
           "Comments",
@@ -3041,7 +3337,7 @@
             }
           },
           {
-            "description": "This is an required parameter. Start date of data. The format is \"YYYY-MM-DD\".",
+            "description": "This is a required parameter. Start date of data. The format is \"YYYY-MM-DD\".",
             "in": "query",
             "name": "startDate",
             "required": true,
@@ -3051,7 +3347,7 @@
             }
           },
           {
-            "description": "This is an required parameter. End date of data. The format is \"YYYY-MM-DD\".",
+            "description": "This is a required parameter. End date of data. The format is \"YYYY-MM-DD\".",
             "in": "query",
             "name": "endDate",
             "required": true,
@@ -3085,7 +3381,7 @@
             }
           },
           {
-            "description": "This is an optional parameter. If true is given, the MT can return total pageviews for each uniqueness paths. However, that data does not contain page title because its spec. (Sometimes, Google Analytics will return another pageviews by same path.)",
+            "description": "This is an optional parameter. If true is given, the MT can return total pageviews for each unique path. However, that data does not contain page title because of its spec. (Sometimes, Google Analytics will return another pageviews by same path.)",
             "in": "query",
             "name": "uniquePath",
             "schema": {
@@ -3161,11 +3457,6 @@
             "description": "Not Found"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Retrieve pageviews count for each date from provider (e.g. Google Analytics)",
         "tags": [
           "Statistics"
@@ -3185,7 +3476,7 @@
             }
           },
           {
-            "description": "This is an required parameter. Start date of data. The format is \"YYYY-MM-DD\".",
+            "description": "This is a required parameter. Start date of data. The format is \"YYYY-MM-DD\".",
             "in": "query",
             "name": "startDate",
             "required": true,
@@ -3195,7 +3486,7 @@
             }
           },
           {
-            "description": "This is an required parameter. End date of data. The format is \"YYYY-MM-DD\".",
+            "description": "This is a required parameter. End date of data. The format is \"YYYY-MM-DD\".",
             "in": "query",
             "name": "endDate",
             "required": true,
@@ -3293,11 +3584,6 @@
             "description": "Not Found"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Retrieve visits count for each date from provider (e.g. Google Analytics)",
         "tags": [
           "Statistics"
@@ -3317,7 +3603,7 @@
             }
           },
           {
-            "description": "This is an required parameter. Start date of data. The format is \"YYYY-MM-DD\".",
+            "description": "This is a required parameter. Start date of data. The format is \"YYYY-MM-DD\".",
             "in": "query",
             "name": "startDate",
             "required": true,
@@ -3327,7 +3613,7 @@
             }
           },
           {
-            "description": "This is an required parameter. End date of data. The format is \"YYYY-MM-DD\".",
+            "description": "This is a required parameter. End date of data. The format is \"YYYY-MM-DD\".",
             "in": "query",
             "name": "endDate",
             "required": true,
@@ -3361,7 +3647,7 @@
             }
           },
           {
-            "description": "This is an optional parameter. If true is given, the MT can return total pageviews for each uniqueness paths. However, that data does not contain page title because its spec. (Sometimes, Google Analytics will return another pageviews by same path.)",
+            "description": "This is an optional parameter. If true is given, the MT can return total pageviews for each unique path. However, that data does not contain page title because of its spec. (Sometimes, Google Analytics will return another pageviews by same path.)",
             "in": "query",
             "name": "uniquePath",
             "schema": {
@@ -3437,11 +3723,6 @@
             "description": "Not Found"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Retrieve pageviews count for each path from provider (e.g. Google Analytics)",
         "tags": [
           "Statistics"
@@ -3461,7 +3742,7 @@
             }
           },
           {
-            "description": "This is an required parameter. Start date of data. The format is \"YYYY-MM-DD\".",
+            "description": "This is a required parameter. Start date of data. The format is \"YYYY-MM-DD\".",
             "in": "query",
             "name": "startDate",
             "required": true,
@@ -3471,7 +3752,7 @@
             }
           },
           {
-            "description": "This is an required parameter. End date of data. The format is \"YYYY-MM-DD\".",
+            "description": "This is a required parameter. End date of data. The format is \"YYYY-MM-DD\".",
             "in": "query",
             "name": "endDate",
             "required": true,
@@ -3569,11 +3850,6 @@
             "description": "Not Found"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Retrieve visits count for each path from provider (e.g. Google Analytics)",
         "tags": [
           "Statistics"
@@ -3640,11 +3916,6 @@
             "description": "Not Found"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Retrieve a current effective provider",
         "tags": [
           "Statistics"
@@ -3702,11 +3973,6 @@
             "description": "Request method is not DELETE or POST with __method=DELETE"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Invalidate current session. This is like logout",
         "tags": [
           "Authentication"
@@ -3829,11 +4095,6 @@
             "description": "Do not have permission to synchronize users."
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Synchronize users",
         "tags": [
           "Users"
@@ -4000,11 +4261,6 @@
             "description": "Request method is not PUT or POST with __method=PUT"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Update user data",
         "tags": [
           "Users"
@@ -4030,6 +4286,21 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "$ref": "#/components/parameters/permission_filterKeys"
+          },
+          {
+            "$ref": "#/components/parameters/permission_limit"
+          },
+          {
+            "$ref": "#/components/parameters/permission_offset"
+          },
+          {
+            "$ref": "#/components/parameters/permission_sortBy"
+          },
+          {
+            "$ref": "#/components/parameters/permission_sortOrder"
           }
         ],
         "responses": {
@@ -4089,11 +4360,6 @@
             "description": "Not Found"
           }
         },
-        "security": [
-          {
-            "mtauth": []
-          }
-        ],
         "summary": "Retrieve a list of permissions for a user",
         "tags": [
           "Users",
@@ -4294,6 +4560,11 @@
       }
     }
   },
+  "security": [
+    {
+      "mtauth": []
+    }
+  ],
   "servers": [
     {
       "url": "https://example.com/mt/mt-data-api.cgi/v1"
