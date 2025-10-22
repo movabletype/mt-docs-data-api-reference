@@ -3084,12 +3084,6 @@
           "basenameLimit": {
             "type": "integer"
           },
-          "ccLicenseImage": {
-            "type": "string"
-          },
-          "ccLicenseUrl": {
-            "type": "string"
-          },
           "class": {
             "type": "string"
           },
@@ -5263,6 +5257,9 @@
             },
             "type": "array"
           },
+          "label": {
+            "type": "string"
+          },
           "name": {
             "type": "string"
           },
@@ -5757,11 +5754,8 @@
         "type": "object"
       },
       "user": {
-        "description": "Updatable fields are displayName, email, url, status, name, password, language, dateFormat, textFormat, tagDelimiter, systemPermissions, customFields, apiPassword",
+        "description": "Updatable fields are displayName, email, url, status, name, password, language, dateFormat, textFormat, tagDelimiter, systemPermissions, customFields",
         "properties": {
-          "apiPassword": {
-            "type": "string"
-          },
           "createdBy": {
             "properties": {
               "displayName": {
@@ -5868,9 +5862,6 @@
       },
       "user_updatable": {
         "properties": {
-          "apiPassword": {
-            "type": "string"
-          },
           "customFields": {
             "items": {
               "properties": {
@@ -5965,12 +5956,6 @@
           },
           "basenameLimit": {
             "type": "integer"
-          },
-          "ccLicenseImage": {
-            "type": "string"
-          },
-          "ccLicenseUrl": {
-            "type": "string"
           },
           "class": {
             "type": "string"
@@ -6422,7 +6407,7 @@
   },
   "info": {
     "title": "Movable Type Data API",
-    "version": "8.7.0"
+    "version": "9.0.4"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -13636,16 +13621,16 @@
             }
           },
           {
-            "$ref": "#/components/parameters/field_filterKeys"
+            "$ref": "#/components/parameters/comment_filterKeys"
           },
           {
-            "$ref": "#/components/parameters/field_searchFields"
+            "$ref": "#/components/parameters/comment_searchFields"
           },
           {
-            "$ref": "#/components/parameters/field_sortBy"
+            "$ref": "#/components/parameters/comment_sortBy"
           },
           {
-            "$ref": "#/components/parameters/field_sortOrder"
+            "$ref": "#/components/parameters/comment_sortOrder"
           },
           {
             "$ref": "#/components/parameters/comment_dateField"
@@ -16882,16 +16867,16 @@
             }
           },
           {
-            "$ref": "#/components/parameters/field_filterKeys"
+            "$ref": "#/components/parameters/comment_filterKeys"
           },
           {
-            "$ref": "#/components/parameters/field_searchFields"
+            "$ref": "#/components/parameters/comment_searchFields"
           },
           {
-            "$ref": "#/components/parameters/field_sortBy"
+            "$ref": "#/components/parameters/comment_sortBy"
           },
           {
-            "$ref": "#/components/parameters/field_sortOrder"
+            "$ref": "#/components/parameters/comment_sortOrder"
           },
           {
             "$ref": "#/components/parameters/comment_dateField"
@@ -20627,16 +20612,16 @@
             }
           },
           {
-            "$ref": "#/components/parameters/field_filterKeys"
+            "$ref": "#/components/parameters/comment_filterKeys"
           },
           {
-            "$ref": "#/components/parameters/field_searchFields"
+            "$ref": "#/components/parameters/comment_searchFields"
           },
           {
-            "$ref": "#/components/parameters/field_sortBy"
+            "$ref": "#/components/parameters/comment_sortBy"
           },
           {
-            "$ref": "#/components/parameters/field_sortOrder"
+            "$ref": "#/components/parameters/comment_sortOrder"
           },
           {
             "$ref": "#/components/parameters/comment_dateField"
