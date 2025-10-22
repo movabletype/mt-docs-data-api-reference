@@ -332,10 +332,6 @@
           "type": "string"
         }
       },
-      "field_filterKeys": {},
-      "field_searchFields": {},
-      "field_sortBy": {},
-      "field_sortOrder": {},
       "permission_blogIds": {
         "description": "The comma-separated blog id list that to be included in the result.",
         "in": "query",
@@ -1216,7 +1212,7 @@
   },
   "info": {
     "title": "Movable Type Data API",
-    "version": "8.7.0"
+    "version": "9.0.4"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -2066,48 +2062,16 @@
             }
           },
           {
-            "$ref": "#/components/parameters/field_filterKeys"
+            "$ref": "#/components/parameters/comment_filterKeys"
           },
           {
-            "$ref": "#/components/parameters/field_searchFields"
+            "$ref": "#/components/parameters/comment_searchFields"
           },
           {
-            "$ref": "#/components/parameters/field_sortBy"
+            "$ref": "#/components/parameters/comment_sortBy"
           },
           {
-            "$ref": "#/components/parameters/field_sortOrder"
-          },
-          {
-            "in": "query",
-            "name": "filterKeys",
-            "schema": {
-              "default": "status,entryStatus",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "searchFields",
-            "schema": {
-              "default": "body",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "sortBy",
-            "schema": {
-              "default": "id",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "sortOrder",
-            "schema": {
-              "default": "descend",
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/comment_sortOrder"
           }
         ],
         "responses": {
@@ -3035,48 +2999,16 @@
             }
           },
           {
-            "$ref": "#/components/parameters/field_filterKeys"
+            "$ref": "#/components/parameters/comment_filterKeys"
           },
           {
-            "$ref": "#/components/parameters/field_searchFields"
+            "$ref": "#/components/parameters/comment_searchFields"
           },
           {
-            "$ref": "#/components/parameters/field_sortBy"
+            "$ref": "#/components/parameters/comment_sortBy"
           },
           {
-            "$ref": "#/components/parameters/field_sortOrder"
-          },
-          {
-            "in": "query",
-            "name": "filterKeys",
-            "schema": {
-              "default": "status",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "searchFields",
-            "schema": {
-              "default": "body",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "sortBy",
-            "schema": {
-              "default": "id",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "sortOrder",
-            "schema": {
-              "default": "descend",
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/comment_sortOrder"
           }
         ],
         "responses": {
