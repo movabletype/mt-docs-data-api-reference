@@ -3926,7 +3926,7 @@ externalDocs:
   url: https://www.movabletype.jp/developers/data-api/
 info:
   title: Movable Type Data API
-  version: 9.0.4
+  version: 9.1.0
 openapi: 3.0.0
 paths:
   /:
@@ -5616,7 +5616,7 @@ paths:
           schema:
             type: string
         - description: |
-            Maximum number of entries to retrieve.
+            Maximum number of entries/pages to retrieve.
             
             **Default**: 20
           in: query
@@ -5636,11 +5636,11 @@ paths:
             
             #### created_on
             
-            Will sort the entries by the authored on date.
+            Will sort the entries/pages by the authored on date.
             
             #### title
             
-            Will sort the entries by title.
+            Will sort the entries/pages by title.
           in: query
           name: SearchSortBy
           schema:
@@ -5653,11 +5653,11 @@ paths:
             
             #### ascend
             
-            will list the entries in chronological order (oldest entry at the top)
+            will list the entries/pages in chronological order (oldest entry/page at the top)
             
             #### descend
             
-            will list the entries in reverse chronological order (newest entry at the top).
+            will list the entries/pages in reverse chronological order (newest entry/page at the top).
             
             **Default**: ascend
           in: query
@@ -5669,7 +5669,7 @@ paths:
               - descend
             type: string
         - description: |
-            Maximum number of entries to retrieve.
+            Maximum number of entries/pages to retrieve.
             
             NOTE: By default, "SearchMaxResults" override is disabled.
             
@@ -5678,6 +5678,25 @@ paths:
           name: SearchMaxResults
           schema:
             type: integer
+        - description: |
+            Class name of the object to be searched. Available values are as follows.
+            
+            - entry: Search results will only contain entries.
+            - page: Search results will only contain pages.
+          in: query
+          name: class
+          schema:
+            type: string
+        - description: 'If set to 1, searching entries/pages by tags.'
+          in: query
+          name: tagSearch
+          schema:
+            type: integer
+        - description: The search term for tag search mode.
+          in: query
+          name: tag
+          schema:
+            type: string
       responses:
         200:
           content:
@@ -5685,12 +5704,14 @@ paths:
               schema:
                 properties:
                   items:
-                    description: 'An array of Entries resource. '
+                    description: 'An array of Entries/Pages resource. '
                     items:
-                      $ref: '#/components/schemas/entry'
+                      oneOf:
+                        - $ref: '#/components/schemas/entry'
+                        - $ref: '#/components/schemas/page'
                     type: array
                   totalResults:
-                    description: ' The total number of entries.'
+                    description: ' The total number of entries/pages.'
                     type: integer
                 type: object
           description: OK
@@ -5708,7 +5729,7 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to search objects.
-      summary: Searching entries
+      summary: Searching entries/pages
       tags:
         - Search
   /sites:

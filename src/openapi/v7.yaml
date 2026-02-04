@@ -5139,7 +5139,7 @@ externalDocs:
   url: https://www.movabletype.jp/developers/data-api/
 info:
   title: Movable Type Data API
-  version: 9.0.4
+  version: 9.1.0
 openapi: 3.0.0
 paths:
   /:
@@ -6916,7 +6916,7 @@ paths:
           schema:
             type: string
         - description: |
-            Maximum number of entries to retrieve.
+            Maximum number of entries/pages/content data to retrieve.
             
             **Default**: 20
           in: query
@@ -6936,11 +6936,11 @@ paths:
             
             #### created_on
             
-            Will sort the entries by the authored on date.
+            Will sort the entries/pages/content data by the authored on date.
             
             #### title
             
-            Will sort the entries by title.
+            Will sort the entries/pages/content data by title.
           in: query
           name: SearchSortBy
           schema:
@@ -6953,11 +6953,11 @@ paths:
             
             #### ascend
             
-            will list the entries in chronological order (oldest entry at the top)
+            will list the entries/pages/content data in chronological order (oldest entry/page/content data at the top)
             
             #### descend
             
-            will list the entries in reverse chronological order (newest entry at the top).
+            will list the entries/pages/content data in reverse chronological order (newest entry/page/content data at the top).
             
             **Default**: ascend
           in: query
@@ -6969,7 +6969,7 @@ paths:
               - descend
             type: string
         - description: |
-            Maximum number of entries to retrieve.
+            Maximum number of entries/pages/content data to retrieve.
             
             NOTE: By default, "SearchMaxResults" override is disabled.
             
@@ -6987,7 +6987,17 @@ paths:
           name: class
           schema:
             type: string
-        - description: 'If 1 specified, searching content data only.'
+        - description: 'If set to 1, searching entries/pages by tags.'
+          in: query
+          name: tagSearch
+          schema:
+            type: integer
+        - description: The search term for tag search mode.
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: 'If set to 1, searching content data only.'
           in: query
           name: cdSearch
           schema:
@@ -6999,12 +7009,15 @@ paths:
               schema:
                 properties:
                   items:
-                    description: 'An array of Entries resource. '
+                    description: 'An array of Entries/Pages/Content Data resource. '
                     items:
-                      $ref: '#/components/schemas/entry'
+                      oneOf:
+                        - $ref: '#/components/schemas/entry'
+                        - $ref: '#/components/schemas/page'
+                        - $ref: '#/components/schemas/cd'
                     type: array
                   totalResults:
-                    description: ' The total number of entries.'
+                    description: ' The total number of entries/pages/content data.'
                     type: integer
                 type: object
           description: OK
@@ -7022,7 +7035,7 @@ paths:
           description: Invalid login
         403:
           description: Do not have permission to search objects.
-      summary: Searching entries
+      summary: Searching entries/pages/content data
       tags:
         - Search
   /sites:
@@ -15638,7 +15651,7 @@ paths:
           in: query
           name: limit
           schema:
-            limit: 50
+            maximum: 50
             type: integer
         - description: This is an optional parameter. 0-indexed offset. Default is 0.
           in: query
@@ -15723,7 +15736,7 @@ paths:
           in: query
           name: limit
           schema:
-            limit: 50
+            maximum: 50
             type: integer
         - description: This is an optional parameter. 0-indexed offset. Default is 0.
           in: query
