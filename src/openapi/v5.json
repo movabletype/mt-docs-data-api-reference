@@ -64,7 +64,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -73,7 +73,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -178,7 +178,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -187,7 +187,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -270,7 +270,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "25",
+          "default": 25,
           "type": "integer"
         }
       },
@@ -279,7 +279,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -407,7 +407,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -416,7 +416,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -522,7 +522,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -531,7 +531,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -648,7 +648,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -657,7 +657,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -762,7 +762,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -771,7 +771,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -877,7 +877,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -914,7 +914,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -1054,7 +1054,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "25",
+          "default": 25,
           "type": "integer"
         }
       },
@@ -1063,7 +1063,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -1168,7 +1168,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -1177,7 +1177,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -1282,7 +1282,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -1291,7 +1291,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -1397,7 +1397,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "25",
+          "default": 25,
           "type": "integer"
         }
       },
@@ -1406,7 +1406,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -1512,7 +1512,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "25",
+          "default": 25,
           "type": "integer"
         }
       },
@@ -1521,7 +1521,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -1627,7 +1627,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -1664,7 +1664,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -1812,7 +1812,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "25",
+          "default": 25,
           "type": "integer"
         }
       },
@@ -1821,7 +1821,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -1932,7 +1932,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "25",
+          "default": 25,
           "type": "integer"
         }
       },
@@ -1941,7 +1941,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -2053,7 +2053,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "25",
+          "default": 25,
           "type": "integer"
         }
       },
@@ -2062,7 +2062,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -2170,7 +2170,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "25",
+          "default": 25,
           "type": "integer"
         }
       },
@@ -2179,7 +2179,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -2285,7 +2285,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -2294,7 +2294,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -2412,7 +2412,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -2421,7 +2421,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -2526,7 +2526,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -2535,7 +2535,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -2640,7 +2640,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -2649,7 +2649,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -2754,7 +2754,7 @@
         "in": "query",
         "name": "limit",
         "schema": {
-          "default": "10",
+          "default": 10,
           "type": "integer"
         }
       },
@@ -2763,7 +2763,7 @@
         "in": "query",
         "name": "offset",
         "schema": {
-          "default": "0",
+          "default": 0,
           "type": "integer"
         }
       },
@@ -6407,7 +6407,7 @@
   },
   "info": {
     "title": "Movable Type Data API",
-    "version": "9.0.4"
+    "version": "9.1.0"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -9250,7 +9250,7 @@
             }
           },
           {
-            "description": "Maximum number of entries to retrieve.\n\n**Default**: 20\n",
+            "description": "Maximum number of entries/pages/content data to retrieve.\n\n**Default**: 20\n",
             "in": "query",
             "name": "limit",
             "schema": {
@@ -9266,7 +9266,7 @@
             }
           },
           {
-            "description": "The sort column for the search results. Available values are as follows.\n\n#### created_on\n\nWill sort the entries by the authored on date.\n\n#### title\n\nWill sort the entries by title.\n",
+            "description": "The sort column for the search results. Available values are as follows.\n\n#### created_on\n\nWill sort the entries/pages/content data by the authored on date.\n\n#### title\n\nWill sort the entries/pages/content data by title.\n",
             "in": "query",
             "name": "SearchSortBy",
             "schema": {
@@ -9278,7 +9278,7 @@
             }
           },
           {
-            "description": "Defines the sort order search results. Available values are as follows.\n\n#### ascend\n\nwill list the entries in chronological order (oldest entry at the top)\n\n#### descend\n\nwill list the entries in reverse chronological order (newest entry at the top).\n\n**Default**: ascend\n",
+            "description": "Defines the sort order search results. Available values are as follows.\n\n#### ascend\n\nwill list the entries/pages/content data in chronological order (oldest entry/page/content data at the top)\n\n#### descend\n\nwill list the entries/pages/content data in reverse chronological order (newest entry/page/content data at the top).\n\n**Default**: ascend\n",
             "in": "query",
             "name": "SearchResultDisplay",
             "schema": {
@@ -9291,7 +9291,7 @@
             }
           },
           {
-            "description": "Maximum number of entries to retrieve.\n\nNOTE: By default, \"SearchMaxResults\" override is disabled.\n\n**Default**: 20\n",
+            "description": "Maximum number of entries/pages/content data to retrieve.\n\nNOTE: By default, \"SearchMaxResults\" override is disabled.\n\n**Default**: 20\n",
             "in": "query",
             "name": "SearchMaxResults",
             "schema": {
@@ -9307,7 +9307,23 @@
             }
           },
           {
-            "description": "If 1 specified, searching content data only.",
+            "description": "If set to 1, searching entries/pages by tags.",
+            "in": "query",
+            "name": "tagSearch",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The search term for tag search mode.",
+            "in": "query",
+            "name": "tag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "If set to 1, searching content data only.",
             "in": "query",
             "name": "cdSearch",
             "schema": {
@@ -9322,14 +9338,24 @@
                 "schema": {
                   "properties": {
                     "items": {
-                      "description": "An array of Entries resource. ",
+                      "description": "An array of Entries/Pages/Content Data resource. ",
                       "items": {
-                        "$ref": "#/components/schemas/entry"
+                        "oneOf": [
+                          {
+                            "$ref": "#/components/schemas/entry"
+                          },
+                          {
+                            "$ref": "#/components/schemas/page"
+                          },
+                          {
+                            "$ref": "#/components/schemas/cd"
+                          }
+                        ]
                       },
                       "type": "array"
                     },
                     "totalResults": {
-                      "description": " The total number of entries.",
+                      "description": " The total number of entries/pages/content data.",
                       "type": "integer"
                     }
                   },
@@ -9363,7 +9389,7 @@
             "description": "Do not have permission to search objects."
           }
         },
-        "summary": "Searching entries",
+        "summary": "Searching entries/pages/content data",
         "tags": [
           "Search"
         ]

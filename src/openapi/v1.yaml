@@ -1008,7 +1008,7 @@ externalDocs:
   url: https://www.movabletype.jp/developers/data-api/
 info:
   title: Movable Type Data API
-  version: 9.0.4
+  version: 9.1.0
 openapi: 3.0.0
 paths:
   /:
